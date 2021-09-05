@@ -16,7 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\UserEnrollmentController;
-
+use App\Http\Controllers\ClassroomCourseController;
 
 
 /*
@@ -78,7 +78,7 @@ Route::post('admin/home/course_category/update',[CourseCategoryController::class
 Route::get('admin/home/course_category/delete/{id}',[CourseCategoryController::class,'deleteCourseCategory'])->middleware('is_admin');
 
 
-//admin add course routes
+//admin add e-learning course routes
 Route::get('/admin/home/courses/manage', [CourseController::class, 'Manage'])->name('manage-course')->
 middleware('is_admin');
 Route::post('/admin/home/courses/store', [CourseController::class, 'StoreCourse'])->name('store-course')->
@@ -103,3 +103,6 @@ Route::post('admin/home/courses/course_details/sections/lessons/store',[CourseCo
 
 Route::get('admin/home/course_details/view/{id}',[UserEnrollmentController::class,'index']);
 //Route::get('users/home/course_details/view/{id}',[CourseController::class,'index']);
+//admin add classroom course routes
+Route::get('/admin/home/e-learning/courses/manage', [ClassroomCourseController::class, 'Manage'])->name('manage-classroom-course')->
+middleware('is_admin');

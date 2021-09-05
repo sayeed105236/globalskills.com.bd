@@ -41,9 +41,15 @@
           <li>
           <a href="{{route('manage-course')}}" class="ttr-material-button">
             <span class="ttr-icon"><i class="ti-book"></i></span>
-                    <span class="ttr-label">Courses</span>
+                    <span class="ttr-label">E-Learning Courses</span>
                   </a>
               </li>
+              <li>
+              <a href="{{route('manage-classroom-course')}}" class="ttr-material-button">
+                <span class="ttr-icon"><i class="fas fa-person-booth"></i></span>
+                        <span class="ttr-label">Classroom Courses</span>
+                      </a>
+                  </li>
               <li>
               <a href="{{route('user-lists')}}" class="ttr-material-button">
                 <span class="ttr-icon"><i class="fas fa-users"></i></span>

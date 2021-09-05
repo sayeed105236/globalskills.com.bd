@@ -82,6 +82,7 @@
                   <span class="lead collapse-title collapse-hover-title">{{$row->section_name}}</span>
                   <br>
                   <a href="#"  data-toggle="modal" data-target="#LessonAddModal"><i class="fas fa-file-upload"></i></a>
+                  @include('backend.modals.lesson_addmodal')
                   <a href="#"><i class="fas fa-edit"></i></a>
                   <a href="#"><i class="fas fa-trash"></i></a>
 
@@ -123,7 +124,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          
+
 
 
 

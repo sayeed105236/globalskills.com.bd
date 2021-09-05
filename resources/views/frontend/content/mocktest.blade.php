@@ -127,3 +127,6 @@
 
   </div>
 </div>
+<div class="text-center">
+  <a href="{{route('courses')}}" class="btn">View All</a>
+</div>

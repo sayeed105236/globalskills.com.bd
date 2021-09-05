@@ -10,10 +10,10 @@
 
 <div class="container-fluid">
   <div class="db-breadcrumb">
-    <h4 class="breadcrumb-title">Manage Courses</h4>
+    <h4 class="breadcrumb-title">E-Learning Courses</h4>
     <ul class="db-breadcrumb-list">
       <li><a href="{{route('admin.home')}}"><i class="fa fa-home"></i>Home</a></li>
-      <li>Manage Courses</li>
+      <li>E-Learning Courses</li>
     </ul>
   </div>
   <!-- Card -->
@@ -22,7 +22,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Courses</h4>
+          <h4 class="card-title">E-Learning Courses</h4>
           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#CourseAddModal">Add</a>
         </div>
         @if(Session::has('category_added'))
@@ -127,7 +127,7 @@
           </div>
         </div>
         <div class="table-responsive">
-          <table class="table">
+          <table class="table" id="course_table">
             <thead>
               <tr>
                 <th>
@@ -214,8 +214,6 @@
   </div>
 
 </div>
-
-
 
 
 

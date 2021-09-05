@@ -22,6 +22,8 @@
 
   <!-- Mock Test -->
   @include('frontend.content.mocktest')
+  <br>
+  <br>
 
   <!-- Mock Test -->
 

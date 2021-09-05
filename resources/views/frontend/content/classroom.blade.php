@@ -2,8 +2,8 @@
           <div class="container">
     <div class="row">
       <div class="col-md-12 heading-bx left">
-        <h2 class="title-head">Classroom <span>Courses</span></h2>
-        <p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
+        <h2 class="title-head">Popular <span>Courses</span></h2>
+
       </div>
     </div>
     <div class="row">
@@ -21,17 +21,12 @@
           </div>
           <div class="cours-more-info">
             <div class="review">
-              <span>3 Review</span>
-              <ul class="cours-star">
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
+              <span></span>
+              <h7>Exam Fee</h7>
+            <h5>$120</h5>
             </div>
             <div class="price">
-              <del>$190</del>
+                <h7>Training Fee</h7>
               <h5>$120</h5>
             </div>
           </div>
@@ -49,17 +44,12 @@
           </div>
           <div class="cours-more-info">
             <div class="review">
-              <span>3 Review</span>
-              <ul class="cours-star">
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
+              <span></span>
+              <h7>Exam Fee</h7>
+            <h5>$120</h5>
             </div>
             <div class="price">
-              <del>$190</del>
+                <h7>Training Fee</h7>
               <h5>$120</h5>
             </div>
           </div>
@@ -77,17 +67,12 @@
           </div>
           <div class="cours-more-info">
             <div class="review">
-              <span>3 Review</span>
-              <ul class="cours-star">
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
+              <<span></span>
+              <h7>Exam Fee</h7>
+            <h5>$120</h5>
             </div>
             <div class="price">
-              <del>$190</del>
+            <h7>Training Fee</h7>
               <h5>$120</h5>
             </div>
           </div>
@@ -105,17 +90,12 @@
           </div>
           <div class="cours-more-info">
             <div class="review">
-              <span>3 Review</span>
-              <ul class="cours-star">
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
+              <span></span>
+              <h7>Exam Fee</h7>
+            <h5>$120</h5>
             </div>
             <div class="price">
-              <del>$190</del>
+                <h7>Training Fee</h7>
               <h5>$120</h5>
             </div>
           </div>
@@ -126,4 +106,7 @@
     </div>
 
   </div>
+</div>
+<div class="text-center">
+  <a href="{{route('courses')}}" class="btn">View All</a>
 </div>
