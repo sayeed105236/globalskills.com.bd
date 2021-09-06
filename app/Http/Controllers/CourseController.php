@@ -23,6 +23,7 @@ class CourseController extends Controller
     $main_categories= MainCategory::all();
     $section= Section::all();
     $lessons= Lesson::all();
+  
 
     return view('backend.pages.courses.manage',compact('course_categories','main_categories','courses','course_details','section','lessons'));
   }

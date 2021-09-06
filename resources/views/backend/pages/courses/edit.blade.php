@@ -22,8 +22,9 @@
 
 <h4 class="center">{{$course->course_title}}</h4>
 </div>
-  <div class="col-xl-12 col-lg-12">
+  <div class="col-xl-8 col-lg-12">
     <div class="card">
+      <br>
       <div class="container" >
 
 
@@ -135,7 +136,7 @@
     <br/>
     <br/>
 
-    
+
   </div>
 
 

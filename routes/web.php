@@ -103,6 +103,12 @@ Route::post('admin/home/courses/course_details/sections/lessons/store',[CourseCo
 
 Route::get('admin/home/course_details/view/{id}',[UserEnrollmentController::class,'index']);
 //Route::get('users/home/course_details/view/{id}',[CourseController::class,'index']);
+
 //admin add classroom course routes
 Route::get('/admin/home/e-learning/courses/manage', [ClassroomCourseController::class, 'Manage'])->name('manage-classroom-course')->
 middleware('is_admin');
+Route::post('/admin/home/e-learning/courses/store', [ClassroomCourseController::class, 'StoreCourse'])->name('store-classroom-course')->
+middleware('is_admin');
+Route::get('admin/home/e-learning/courses/edit/{id}',[ClassroomCourseController::class,'editCourse'])->middleware('is_admin');
+Route::post('admin/home/e-learning/courses/update',[ClassroomCourseController::class,'updateCourse'])->name('update-classroom-course')->middleware('is_admin');
+Route::get('admin/home/e-learning/courses/delete/{id}',[ClassroomCourseController::class,'deleteCourse'])->middleware('is_admin');

@@ -23,8 +23,26 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Classroom Courses</h4>
-          <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#CourseAddModal">Add</a>
+          <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#ClassroomCourseAddModal"><i class="fas fa-plus-circle"></i></a>
+          @include('backend.modals.classroom_courseaddmodal')
         </div>
+        @if(Session::has('course_added'))
+        <div class="alert alert-success" role="alert">
+
+          <div class="alert-body">
+            {{Session::get('course_added')}}
+          </div>
+        </div>
+
+        @elseif(Session::has('course_deleted'))
+        <div class="alert alert-danger" role="alert">
+
+          <div class="alert-body">
+            {{Session::get('course_deleted')}}
+          </div>
+        </div>
+
+        @endif
 
 
 
@@ -52,12 +70,13 @@
             </thead>
             <tbody>
 
-
+              @foreach($classroom_courses as $row)
               <tr>
-                <td></td>
+
+                <td>{{$row->id}}</td>
                 <td>
 
-                  <span class="font-weight-bold"></span>
+                  <span class="font-weight-bold">{{$row->classroom_course_title}}</span>
                 </td>
                 <td>
                   <div class="avatar-group">
@@ -70,7 +89,7 @@
                       data-original-title=""
                     >
                       <img
-                        src="#"
+                        src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}"
                         alt="image"
                         height="50"
                         width="50"
@@ -82,30 +101,42 @@
                   </div>
                 <td>
 
-                  <span class="font-weight-bold"> </span>
+                  <span class="font-weight-bold">{{$row->main_category->mcategory_title}} </span>
                 </td>
                 <td>
 
-                  <span class="font-weight-bold"> </span>
+                  <span class="font-weight-bold"> {{$row->course_category->mcategory_title}}</span>
                 </td>
-                <td> BDT</td>
-                <td> BDT</td>
+
+                <td>{{$row->exam_fee}} BDT</td>
+                <td>{{$row->training_fee}} BDT</td>
 
 
                 </td>
                 <td>
+                  @if($row->status==1)
+                  Active
 
+                  @else
+                  Inactive
+                  @endif
                   </td>
                 <td>
                   <a href="#"><i class="fas fa-file-upload"></i></a>
-                  <a href="#"><i class="fas fa-edit"></i></a>
-                  <a href="#"><i class="fas fa-trash"></i></a>
+                  <a href="/admin/home/e-learning/courses/edit/{{$row->id}}"><i class="fas fa-edit"></i></a>
+
+                  <a href="/admin/home/e-learning/courses/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
 
                 </td>
               </tr>
-
+              @endforeach
             </tbody>
           </table>
+        </div>
+        <div class="col-lg-12 m-b20">
+
+            {{$classroom_courses->links('frontend.partials.pagination')}}
+
         </div>
       </div>
     </div>
