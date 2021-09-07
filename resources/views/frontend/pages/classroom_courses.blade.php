@@ -14,7 +14,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-                <h1 class="text-white">Our E-learning Courses</h1>
+                <h1 class="text-white">Our Classroom Courses</h1>
      </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
   <div class="container">
     <ul class="list-inline">
       <li><a href="{{route('home')}}">Home</a></li>
-      <li>Our E-learning Courses</li>
+      <li>Our Classroom Courses</li>
     </ul>
   </div>
 </div>
@@ -97,35 +97,33 @@
         </div>
         <div class="col-lg-9 col-md-8 col-sm-12">
           <div class="row">
-            @foreach($courses as $row)
+            @foreach($classroom_courses as $row)
             @if($row->status==1)
-            @if($row->main_category->id==1)
+            @if($row->main_category->id==2)
             <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
               <div class="cours-bx">
                 <div class="action-box">
-                  <img src="{{asset("storage/courses/$row->course_image")}}" alt="">
+                  <img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" alt="">
                   <a href="#" class="btn">Read More</a>
                 </div>
                 <div class="info-bx text-center">
-                  <h5><a href="admin/home/course_details/{{$row->id}}">{{$row->course_title}}</a></h5>
+                  <h5><a href="#">{{$row->classroom_course_title}}</a></h5>
                   <span>{{$row->course_category->mcategory_title}}</span>
                 </div>
-                <div class="cours-more-info">
-                  <div class="review">
-                    <span>3 Review</span>
-                    <ul class="cours-star">
-                      <li class="active"><i class="fa fa-star"></i></li>
-                      <li class="active"><i class="fa fa-star"></i></li>
-                      <li class="active"><i class="fa fa-star"></i></li>
-                      <li><i class="fa fa-star"></i></li>
-                      <li><i class="fa fa-star"></i></li>
-                    </ul>
+
+                  <div class="cours-more-info">
+                    <div class="review">
+                      <span></span>
+                      <h7>Exam Fee</h7>
+                    <h5>{{$row->exam_fee}}৳</h5>
+                    </div>
+                    <div class="price">
+                        <h7>Training Fee</h7>
+                      <h5>{{$row->training_fee}}৳</h5>
+                    </div>
                   </div>
-                  <div class="price">
-                    <del>{{$row->regular_price}}৳</del>
-                    <h5>{{$row->sale_price}}৳</h5>
-                  </div>
-                </div>
+
+
               </div>
             </div>
             @endif
@@ -133,7 +131,7 @@
             @endforeach
             <div class="col-lg-12 m-b20">
 
-                {{$courses->links('frontend.partials.pagination')}}
+                {{$classroom_courses->links('frontend.partials.pagination')}}
 
             </div>
           </div>

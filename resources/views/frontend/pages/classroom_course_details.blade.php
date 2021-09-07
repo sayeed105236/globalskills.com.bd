@@ -29,29 +29,6 @@
 </div>
 <!-- Breadcrumb row END -->
     <!-- inner page banner END -->
-    <?php
-    $courses = App\Models\Course::all();
-
-    ?>
-
-
-    <?php
-    $course_categories= App\Models\CourseCategory::all();
-    $main_categories= App\Models\MainCategory::all();
-
-
-
-
-
-
-
-
-     ?>
-
-
-
-
-
 <div class="content-block">
         <!-- About Us -->
   <div class="section-area section-sp1">
@@ -60,11 +37,11 @@
         <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
           <div class="course-detail-bx">
             <div class="course-price">
-              <del>{{$course->regular_price}}৳</del>
-              <h4 class="price">{{$course->sale_price}}৳</h4>
+              <del>$190</del>
+              <h4 class="price">$120</h4>
             </div>
             <div class="course-buy-now text-center">
-              <a href="/home/course_details/view/{{$course->id}}" class="btn radius-xl text-uppercase">Enroll this Course</a>
+              <a href="#" class="btn radius-xl text-uppercase">Booking Now This Courses</a>
             </div>
             <div class="teacher-bx">
               <div class="teacher-info">
@@ -90,13 +67,13 @@
               </div>
               <div class="price categories">
                 <span>Categories</span>
-                <h5 class="text-primary">{{$course->course_category->mcategory_title}}</h5>
+                <h5 class="text-primary">Frontend</h5>
               </div>
             </div>
             <div class="course-info-list scroll-page">
               <ul class="navbar">
-                <li><a class="nav-link" href="#overview"><i class="ti-zip"></i>Overview</a></li>
-                <li><a class="nav-link" href="#curriculum"><i class="ti-bookmark-alt"></i>Curriculum</a></li>
+                <li><a class="nav-link" href="#overview"><i class="ti-zip"></i>Course Description</a></li>
+                <li><a class="nav-link" href="#curriculum"><i class="ti-bookmark-alt"></i>Exam Format</a></li>
                 <li><a class="nav-link" href="#instructor"><i class="ti-user"></i>Instructor</a></li>
                 <li><a class="nav-link" href="#reviews"><i class="ti-comments"></i>Reviews</a></li>
               </ul>
@@ -111,73 +88,46 @@
             </div>
             <div class="ttr-post-info">
               <div class="ttr-post-title ">
-                <h2 class="post-title">{{$course->course_title}}</h2>
+                <h2 class="post-title">Nvidia and UE4 Technologies Practice</h2>
               </div>
               <div class="ttr-post-text">
-                <p>{{$course->course_details->short_description}}</p>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
               </div>
             </div>
           </div>
           <div class="courese-overview" id="overview">
-            <h4>Overview</h4>
+
             <div class="row">
-              <div class="col-md-12 col-lg-4">
-                <ul class="course-features">
-                  <li><i class="ti-book"></i> <span class="label">Lectures</span> <span class="value">8</span></li>
-                  <li><i class="ti-help-alt"></i> <span class="label">Quizzes</span> <span class="value">{{$course->course_details->quiz}}</span></li>
-                  <li><i class="ti-time"></i> <span class="label">Duration</span> <span class="value">60 hours</span></li>
-                  <li><i class="ti-stats-up"></i> <span class="label">Skill level</span> <span class="value">{{$course->course_details->skill}}</span></li>
-                  <li><i class="ti-smallcap"></i> <span class="label">Language</span> <span class="value">{{$course->course_details->language}}</span></li>
-                  <li><i class="ti-user"></i> <span class="label">Students</span> <span class="value">32</span></li>
-                  <li><i class="ti-check-box"></i> <span class="label">Assessments</span> <span class="value">Yes</span></li>
-                </ul>
-              </div>
+
               <div class="col-md-12 col-lg-8">
                 <h5 class="m-b5">Course Description</h5>
-                <p>{{$course->course_details->course_description}}</p>
-                <h5 class="m-b5">Certification</h5>
-                <p>{{$course->course_details->certification}}</p>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                <h5 class="m-b5">THe Certification can help:</h5>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                 <h5 class="m-b5">Learning Outcomes</h5>
                 <ul class="list-checked primary">
-                  <li>{{$course->course_details->learning_outcomes}}</li>
-
+                  <li>Over 37 lectures and 55.5 hours of content!</li>
+                  <li>LIVE PROJECT End to End Software Testing Training Included.</li>
+                  <li>Learn Software Testing and Automation basics from a professional trainer from your own desk.</li>
+                  <li>Information packed practical training starting from basics to advanced testing techniques.</li>
+                  <li>Best suitable for beginners to advanced level users and who learn faster when demonstrated.</li>
+                  <li>Course content designed by considering current software testing technology and the job market.</li>
+                  <li>Practical assignments at the end of every session.</li>
+                  <li>Practical learning experience with live project work and examples.cv</li>
                 </ul>
               </div>
             </div>
           </div>
           <div class="m-b30" id="curriculum">
-            <h4>Curriculum</h4>
-            <ul class="curriculum-list">
+            <h4>Exam Format</h4>
+            <ul class="list-checked primary">
+              <li>Multiple choice examination questions</li>
+              <li>40 questions</li>
+              <li>26 marks required to pass (out of 40 available) – 65%</li>
+              <li>60 minutes’ duration</li>
+              <li>Closed book</li>
 
-
-              @foreach($sections as $row)
-                <li>
-                  <h5>{{$row->section_name}}</h5>
-                  <ul>
-
-                    @foreach($lessons as $lesson)
-                    <?php
-                      $lessons = App\Models\Lesson::where('section_id', $lessons)->get();
-
-
-                    ?>
-
-                    <li>
-
-                      <div class="curriculum-list-box">
-                        <span>Lesson: </span> {{$lesson->lesson_title}}
-                      </div>
-                      <span>120 minutes</span>
-                    </li>
-                    @endforeach
-
-
-
-                  </ul>
-                </li>
-
-                @endforeach
-              </ul>
+            </ul>
           </div>
           <div class="" id="instructor">
             <h4>Instructor</h4>
@@ -186,7 +136,7 @@
                 <img src="{{ asset('images/testimonials/pic1.jpg')}}" alt="">
               </div>
               <div class="instructor-info">
-                <h6>{{$course->course_details->instructor_id}}</h6>
+                <h6>Keny White </h6>
                 <span>Professor</span>
                 <ul class="list-inline m-tb10">
                   <li><a href="#" class="btn sharp-sm facebook"><i class="fa fa-facebook"></i></a></li>
@@ -305,12 +255,6 @@
     </div>
         </div>
     </div>
-
-
-
-
-
-
 <!-- contact area END -->
 
 </div>

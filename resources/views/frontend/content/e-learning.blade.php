@@ -35,7 +35,7 @@
             <a href="#" class="btn">Read More</a>
           </div>
           <div class="info-bx text-center">
-            <h5><a href="admin/home/course_details/{{$row->id}}">{{$row->course_title}}</a></h5>
+            <h5><a href="home/course_details/{{$row->id}}">{{$row->course_title}}</a></h5>
             <span>{{$row->course_category->mcategory_title}}</span>
           </div>
           <div class="cours-more-info">
@@ -50,8 +50,8 @@
               </ul>
             </div>
             <div class="price">
-              <del>BDT{{$row->regular_price}}</del>
-              <h5>BDT{{$row->sale_price}}</h5>
+              <del>{{$row->regular_price}}৳</del>
+              <h5>{{$row->sale_price}}৳</h5>
             </div>
           </div>
         </div>

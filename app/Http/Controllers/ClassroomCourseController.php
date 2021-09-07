@@ -125,4 +125,11 @@ class ClassroomCourseController extends Controller
       return back()->with('course_deleted','Course record has been deleted successfully!');
     }
 
-}
+    public function CourseDetailsBackend($id)
+    {
+
+      $classroom_courses= ClassroomCourse::find($id);
+
+      return view('backend.pages.classroom_courses.course_details',compact('classroom_courses'));
+    }
+  }

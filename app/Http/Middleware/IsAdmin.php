@@ -19,11 +19,9 @@ class IsAdmin
       if(auth()->user()->is_admin==1)
       {
         return $next($request);
-      }
+      }else
       //not admin redirection
-      return redirect('home')->with('error','You can not access the admin area');
-
-
+      return view('frontend.pages.404')->with('error','You can not access the admin area');
 
     }
 }

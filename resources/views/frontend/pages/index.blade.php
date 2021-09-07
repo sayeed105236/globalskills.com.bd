@@ -21,7 +21,7 @@
   <!-- Classroom -->
 
   <!-- Mock Test -->
-  @include('frontend.content.mocktest')
+  
   <br>
   <br>
 

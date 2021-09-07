@@ -41,6 +41,7 @@ Route::get('/event_details', [EventController::class,'event_details'])->name('ev
 Route::get('/faqs', [FaqController::class,'index'])->name('faq');
 Route::get('/errors', [ErrorController::class,'index'])->name('error');
 Route::get('/courses', [FrontendController::class,'index'])->name('courses');
+Route::get('/classroom_courses', [FrontendController::class,'index_classroom'])->name('classroom-courses');
 Route::get('/course_details', [FrontendController::class,'course_details'])->name('course_details');
 //Route::get('/course_details/{id}', [FrontendController::class,'course_details'])->name('course_details');
 Route::get('/user_profile', [UserProfileController::class,'user_profile'])->name('user_profile');
@@ -93,7 +94,7 @@ Route::get('admin/home/courses/course_overviews/{id}',[CourseController::class,'
 
 Route::post('admin/home/courses/course_details/store',[CourseController::class,'StoreCourseDetails'])->name('store-course-details')->middleware('is_admin');
 
-Route::get('admin/home/course_details/{id}',[CourseController::class,'course_details_frontend']);
+Route::get('home/course_details/{id}',[CourseController::class,'course_details_frontend']);
 Route::get('admin/home/course_details/sections/{id}',[CourseController::class,'Section'])->middleware('is_admin');
 Route::post('admin/home/courses/course_details/sections/store',[CourseController::class,'StoreSection'])->name('store-section')->middleware('is_admin');
 Route::get('admin/home/course_details/sections/edit/{id}',[CourseController::class,'editSection'])->middleware('is_admin');
@@ -101,14 +102,16 @@ Route::post('admin/home/course_details/sections/update',[CourseController::class
 Route::get('admin/home/course_details/sections/delete/{id}',[CourseController::class,'deleteSection'])->middleware('is_admin');
 Route::post('admin/home/courses/course_details/sections/lessons/store',[CourseController::class,'StoreLesson'])->name('store-lesson')->middleware('is_admin');
 
-Route::get('admin/home/course_details/view/{id}',[UserEnrollmentController::class,'index']);
+Route::get('home/course_details/view/{id}',[UserEnrollmentController::class,'index']);
 //Route::get('users/home/course_details/view/{id}',[CourseController::class,'index']);
 
 //admin add classroom course routes
-Route::get('/admin/home/e-learning/courses/manage', [ClassroomCourseController::class, 'Manage'])->name('manage-classroom-course')->
+Route::get('/admin/home/classroom/courses/manage', [ClassroomCourseController::class, 'Manage'])->name('manage-classroom-course')->
 middleware('is_admin');
-Route::post('/admin/home/e-learning/courses/store', [ClassroomCourseController::class, 'StoreCourse'])->name('store-classroom-course')->
+Route::post('/admin/home/classroom/courses/store', [ClassroomCourseController::class, 'StoreCourse'])->name('store-classroom-course')->
 middleware('is_admin');
-Route::get('admin/home/e-learning/courses/edit/{id}',[ClassroomCourseController::class,'editCourse'])->middleware('is_admin');
-Route::post('admin/home/e-learning/courses/update',[ClassroomCourseController::class,'updateCourse'])->name('update-classroom-course')->middleware('is_admin');
-Route::get('admin/home/e-learning/courses/delete/{id}',[ClassroomCourseController::class,'deleteCourse'])->middleware('is_admin');
+Route::get('admin/home/classroom/courses/edit/{id}',[ClassroomCourseController::class,'editCourse'])->middleware('is_admin');
+Route::post('admin/home/classroom/courses/update',[ClassroomCourseController::class,'updateCourse'])->name('update-classroom-course')->middleware('is_admin');
+Route::get('admin/home/classroom/courses/delete/{id}',[ClassroomCourseController::class,'deleteCourse'])->middleware('is_admin');
+Route::get('/home/classroom/course_details', [FrontendController::class,'course_details_frontend'])->name('classroom-course-details');
+Route::get('admin/home/classroom/courses/course_details/{id}',[ClassroomCourseController::class,'CourseDetailsBackend'])->middleware('is_admin');

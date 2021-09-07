@@ -185,8 +185,8 @@
 
                   <span class="font-weight-bold">{{$row->course_category->mcategory_title}}</span>
                 </td>
-                <td>{{$row->regular_price}} BDT</td>
-                <td>{{$row->sale_price}} BDT</td>
+                <td>{{$row->regular_price}}৳</td>
+                <td>{{$row->sale_price}}৳</td>
 
 
                 </td>
@@ -212,7 +212,7 @@
       </div>
     </div>
   </div>
-  
+
 
 </div>
 
