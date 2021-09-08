@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\MainCategory;
 use App\Models\CourseCategory;
 use App\Models\ClassroomCourse;
+use App\Models\ClassroomInfo;
 
 class ClassroomCourseController extends Controller
 {
@@ -127,9 +128,95 @@ class ClassroomCourseController extends Controller
 
     public function CourseDetailsBackend($id)
     {
-
+      $course_categories= CourseCategory::all();
+      $main_categories= MainCategory::all();
       $classroom_courses= ClassroomCourse::find($id);
+      $classroom_course_details = ClassroomInfo::where('classroom_course_id',$id)->get();
 
-      return view('backend.pages.classroom_courses.course_details',compact('classroom_courses'));
+      return view('backend.pages.classroom_courses.course_details',compact('classroom_courses','course_categories','main_categories','classroom_course_details'));
     }
+    public function ClassroomCourseInfo($id)
+
+    {
+
+          //$classroom_courses = ClassroomCourse::all();
+          //$classroom_course_details= ClassroomInfo::find($id);
+          //$course_categories= CourseCategory::all();
+          $course_categories= CourseCategory::all();
+          $main_categories= MainCategory::all();
+          $classroom_course_details= ClassroomInfo::where('classroom_course_id',$id)->first();
+          $classroom_course = ClassroomCourse::find($id);
+
+
+
+
+
+
+
+
+
+
+
+
+          return view('/backend/pages/classroom_courses.classroom_course_info',compact('course_categories','main_categories','classroom_course','classroom_course_details'));
+        }
+        public function StoreClassroomCourseDetails(Request $request)
+        {
+
+          $classroom_course_id = $request->classroom_course_id;
+          $classroom_short_description = $request->classroom_short_description;
+          $classroom_course_description=$request->classroom_course_description;
+          $classroom_certification = $request->classroom_certification;
+          $classroom_learning_outcomes = $request->classroom_learning_outcomes;
+
+          $classroom_instructor_id= $request->classroom_instructor_id;
+          $pass_mark=$request->pass_mark;
+          $out_of=$request->out_of;
+          $no_of_questions=$request->no_of_questions;
+          $exam_type=$request->exam_type;
+          $duration=$request->duration;
+          $book=$request->book;
+
+
+
+          $classroom_banner_image =$request->file('file');
+          $filename=null;
+          if ($classroom_banner_image) {
+              $filename = time() . $classroom_banner_image->getClientOriginalName();
+
+              Storage::disk('public')->putFileAs(
+                  'Classroomk Courses/banners/',
+                  $classroom_banner_image,
+                  $filename
+              );
+
+
+          }
+
+          $classroom_course_details = new ClassroomInfo();
+
+          $classroom_course_details->classroom_course_id=$classroom_course_id;
+          $classroom_course_details->classroom_short_description=$classroom_short_description;
+          $classroom_course_details->classroom_course_description=$classroom_course_description;
+          $classroom_course_details->classroom_certification=$classroom_certification;
+
+          $classroom_course_details->classroom_learning_outcomes= $classroom_learning_outcomes;
+
+
+          $classroom_course_details->classroom_instructor_id= $classroom_instructor_id;
+          $classroom_course_details->pass_mark= $pass_mark;
+          $classroom_course_details->out_of= $out_of;
+          $classroom_course_details-> no_of_questions =$no_of_questions;
+
+          $classroom_course_details->classroom_banner_image= $filename;
+          $classroom_course_details->exam_type=$exam_type;
+          $classroom_course_details->duration=$duration;
+          $classroom_course_details->book=$book;
+
+          $classroom_course_details->save();
+          return back()->with('classroom_coursedetails_added','Course details record has been added successfully!');
+
+
+        }
+
   }

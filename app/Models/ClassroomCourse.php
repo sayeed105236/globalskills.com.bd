@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\MainCategory;
 use App\Models\CourseCategory;
+use App\Models\ClassroomInfo;
 
 class ClassroomCourse extends Model
 {
@@ -19,5 +20,8 @@ class ClassroomCourse extends Model
   public function course_category(){
     return $this->belongsTo(CourseCategory::class, 'course_category_id');
   }
-
+  public function classroom_course_details()
+  {
+    return $this->belongsTo(ClassroomInfo::class, 'classroom_course_id','id');
+  }
 }

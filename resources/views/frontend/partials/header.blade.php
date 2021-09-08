@@ -26,7 +26,7 @@
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!--[if lt IE 9]>
+	<!--[if lt IE 9]
 	<script src="{{ asset('js/html5shiv.min.js')}}"></script>
 	<script src="{{ asset('js/respond.min.js')}}"></script>
 	<![endif]-->

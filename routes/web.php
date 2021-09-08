@@ -87,6 +87,9 @@ middleware('is_admin');
 Route::get('admin/home/courses/edit/{id}',[CourseController::class,'editCourse'])->middleware('is_admin');
 Route::post('admin/home/courses/update',[CourseController::class,'updateCourse'])->name('update-course')->middleware('is_admin');
 Route::get('admin/home/courses/delete/{id}',[CourseController::class,'deleteCourse'])->middleware('is_admin');
+
+
+//admin add e-learning course details
 Route::get('admin/home/courses/course_details/{id}',[CourseController::class,'CourseDetails'])->middleware('is_admin');
 Route::get('admin/home/courses/course_details/course_info/{id}',[CourseController::class,'CourseInfo'])->middleware('is_admin');
 Route::get('admin/home/courses/course_details/course_curricullum/{id}',[CourseController::class,'CourseCurricullum'])->middleware('is_admin');
@@ -103,6 +106,7 @@ Route::get('admin/home/course_details/sections/delete/{id}',[CourseController::c
 Route::post('admin/home/courses/course_details/sections/lessons/store',[CourseController::class,'StoreLesson'])->name('store-lesson')->middleware('is_admin');
 
 Route::get('home/course_details/view/{id}',[UserEnrollmentController::class,'index']);
+
 //Route::get('users/home/course_details/view/{id}',[CourseController::class,'index']);
 
 //admin add classroom course routes
@@ -113,5 +117,10 @@ middleware('is_admin');
 Route::get('admin/home/classroom/courses/edit/{id}',[ClassroomCourseController::class,'editCourse'])->middleware('is_admin');
 Route::post('admin/home/classroom/courses/update',[ClassroomCourseController::class,'updateCourse'])->name('update-classroom-course')->middleware('is_admin');
 Route::get('admin/home/classroom/courses/delete/{id}',[ClassroomCourseController::class,'deleteCourse'])->middleware('is_admin');
+
+
+//admin add classroom course details
 Route::get('/home/classroom/course_details', [FrontendController::class,'course_details_frontend'])->name('classroom-course-details');
-Route::get('admin/home/classroom/courses/course_details/{id}',[ClassroomCourseController::class,'CourseDetailsBackend'])->middleware('is_admin');
+Route::get('/admin/home/classroom/courses/course_details/{id}',[ClassroomCourseController::class,'CourseDetailsBackend'])->middleware('is_admin');
+Route::get('/admin/home/classroom/courses/course_details/course_info/{id}',[ClassroomCourseController::class,'ClassroomCourseInfo'])->middleware('is_admin');
+Route::post('admin/home/classroom/courses/course_details/store',[ClassroomCourseController::class,'StoreClassroomCourseDetails'])->name('store-classroom-course-details')->middleware('is_admin');

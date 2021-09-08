@@ -23,18 +23,15 @@
 
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Course Info</a>
+            <a class="nav-link active" href="/admin/home/classroom/courses/course_details/course_info/{{$classroom_courses->id}}">Course Info</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">Course Curricullum</a>
-          </li>
 
           <li class="nav-item">
             <a class="nav-link" href="javascript:void(0);">Media</a>
           </li>
-            <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#CourseDetailsAddModal"><i class="fas fa-plus-circle"></i></a>
-            
+            <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#ClassroomCourseDetailsAddModal"><i class="fas fa-plus-circle"></i></a>
+              @include('backend.modals.classroom_course_detailsaddmodal')
         </ul>
       </div>
     </div>
