@@ -19,9 +19,10 @@
   <!-- Classroom -->
   @include('frontend.content.classroom')
   <!-- Classroom -->
+  @include('frontend.content.accreditation')
 
   <!-- Mock Test -->
-  
+
   <br>
   <br>
 

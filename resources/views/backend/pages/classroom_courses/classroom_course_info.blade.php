@@ -114,44 +114,46 @@
 
         </td>
         <td>
+            {{$classroom_course_details->classroom_course_description}}
+
+        </td>
+        <td>
+            {{$classroom_course_details->classroom_learning_outcomes}}
 
 
         </td>
         <td>
-
-
-
-        </td>
-        <td>
-
+            {{$classroom_course_details->classroom_certification}}
 
         </td>
 
         <td>
-
+            {{$classroom_course_details->classroom_instructor_id}}
         </td>
         <td>
-
+              {{$classroom_course_details->pass_mark}}
           </td>
         <td>
+            {{$classroom_course_details->out_of}}
+
+        </td>
+        <td>
+          {{$classroom_course_details->pass_mark/$classroom_course_details->out_of*100}}%
 
 
         </td>
         <td>
-
-
+            {{$classroom_course_details->no_of_questions}}
         </td>
         <td>
 
+            {{$classroom_course_details->exam_type}}
         </td>
         <td>
-
-
+            {{$classroom_course_details->duration}}
         </td>
         <td>
-        </td>
-        <td>
-
+            {{$classroom_course_details->book}}
         </td>
 
       </tr>

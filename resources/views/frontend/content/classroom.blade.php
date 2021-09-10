@@ -6,11 +6,12 @@
         $classroom_courses = App\Models\ClassroomCourse::all();
 
          ?>
-         @foreach($classroom_courses as $row)
-         @if($row->id==1)
-        <h2 class="title-head">{{$row->main_category->mcategory_title}} <span>Courses</span></h2>
-          @endif
-        @endforeach
+
+
+        <h2 class="title-head">Classroom <span>Courses</span></h2>
+
+      
+
       </div>
     </div>
     <div class="row">
@@ -25,11 +26,11 @@
       <div class="item" >
         <div class="cours-bx">
           <div class="action-box">
-            <img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}"" alt="">
+            <img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" alt="">
             <a href="#" class="btn">Read More</a>
           </div>
           <div class="info-bx text-center">
-            <h5><a href="{{route('classroom-course-details')}}">{{$row->classroom_course_title}}</a></h5>
+            <h5><a href="/home/classroom/course_details/{{$row->id}}">{{$row->classroom_course_title}}</a></h5>
             <span>{{$row->course_category->mcategory_title}}</span>
           </div>
           <div class="cours-more-info">

@@ -139,25 +139,11 @@ class ClassroomCourseController extends Controller
 
     {
 
-          //$classroom_courses = ClassroomCourse::all();
-          //$classroom_course_details= ClassroomInfo::find($id);
-          //$course_categories= CourseCategory::all();
+        
           $course_categories= CourseCategory::all();
           $main_categories= MainCategory::all();
           $classroom_course_details= ClassroomInfo::where('classroom_course_id',$id)->first();
           $classroom_course = ClassroomCourse::find($id);
-
-
-
-
-
-
-
-
-
-
-
-
           return view('/backend/pages/classroom_courses.classroom_course_info',compact('course_categories','main_categories','classroom_course','classroom_course_details'));
         }
         public function StoreClassroomCourseDetails(Request $request)

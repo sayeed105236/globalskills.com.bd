@@ -17,6 +17,7 @@ use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\UserEnrollmentController;
 use App\Http\Controllers\ClassroomCourseController;
+use App\Http\Controllers\AccreditationController;
 
 
 /*
@@ -120,7 +121,13 @@ Route::get('admin/home/classroom/courses/delete/{id}',[ClassroomCourseController
 
 
 //admin add classroom course details
-Route::get('/home/classroom/course_details', [FrontendController::class,'course_details_frontend'])->name('classroom-course-details');
+Route::get('/home/classroom/course_details/{id}', [FrontendController::class,'course_details_frontend'])->name('classroom-course-details');
 Route::get('/admin/home/classroom/courses/course_details/{id}',[ClassroomCourseController::class,'CourseDetailsBackend'])->middleware('is_admin');
 Route::get('/admin/home/classroom/courses/course_details/course_info/{id}',[ClassroomCourseController::class,'ClassroomCourseInfo'])->middleware('is_admin');
 Route::post('admin/home/classroom/courses/course_details/store',[ClassroomCourseController::class,'StoreClassroomCourseDetails'])->name('store-classroom-course-details')->middleware('is_admin');
+
+//admin add accreditation images
+Route::get('/admin/home/accreditation/manage', [AccreditationController::class, 'Manage'])->name('accreditation')->
+middleware('is_admin');
+Route::post('admin/home/accreditation/store',[AccreditationController::class,'Store'])->name('store-accreditation')->middleware('is_admin');
+Route::get('admin/home/accreditation/delete/{id}',[AccreditationController::class,'delete'])->middleware('is_admin');

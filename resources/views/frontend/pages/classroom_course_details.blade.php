@@ -24,6 +24,7 @@
     <ul class="list-inline">
       <li><a href="{{route('course_details')}}">Home</a></li>
       <li>Courses Details</li>
+      <li>{{$classroom_course->classroom_course_title}}</li>
     </ul>
   </div>
 </div>
@@ -37,8 +38,10 @@
         <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
           <div class="course-detail-bx">
             <div class="course-price">
-              <del>$190</del>
-              <h4 class="price">$120</h4>
+              <h6>Training Fee</h6>
+              <h4 class="price">{{$classroom_course->training_fee}}৳</h4>
+              <h6>Exam Fee</h6>
+              <h4 class="price">{{$classroom_course->exam_fee}}৳</h4>
             </div>
             <div class="course-buy-now text-center">
               <a href="#" class="btn radius-xl text-uppercase">Booking Now This Courses</a>
@@ -46,11 +49,11 @@
             <div class="teacher-bx">
               <div class="teacher-info">
                 <div class="teacher-thumb">
-                  <img src="{{ asset('images/testimonials/pic1.jpg')}}" alt=""/>
+                  <img src="{{asset('images/testimonials/pic1.jpg')}}" alt=""/>
                 </div>
                 <div class="teacher-name">
-                  <h5>Hinata Hyuga</h5>
-                  <span>Science Teacher</span>
+                  <h5>{{$classroom_course_details->classroom_instructor_id}}</h5>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -67,7 +70,7 @@
               </div>
               <div class="price categories">
                 <span>Categories</span>
-                <h5 class="text-primary">Frontend</h5>
+                <h5 class="text-primary">{{$classroom_course->course_category->mcategory_title}}</h5>
               </div>
             </div>
             <div class="course-info-list scroll-page">
@@ -83,15 +86,17 @@
 
         <div class="col-lg-9 col-md-8 col-sm-12">
           <div class="courses-post">
-            <div class="ttr-post-media media-effect">
-              <a href="#"><img src="{{ asset('images/blog/default/thum1.jpg')}}" alt=""></a>
+            <div class="ttr-post-media media-effec">
+              <a href="#"><img src="{{asset("storage/Classroomk Courses/banners/$classroom_course_details->classroom_banner_image")}}"   alt="image"
+                height="600"
+                width="1000"></a>
             </div>
             <div class="ttr-post-info">
               <div class="ttr-post-title ">
-                <h2 class="post-title">Nvidia and UE4 Technologies Practice</h2>
+                <h2 class="post-title">{{$classroom_course->classroom_course_title}}</h2>
               </div>
               <div class="ttr-post-text">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p>{{$classroom_course_details->classroom_short_description}}</p>
               </div>
             </div>
           </div>
@@ -101,19 +106,13 @@
 
               <div class="col-md-12 col-lg-8">
                 <h5 class="m-b5">Course Description</h5>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                <p>{{$classroom_course_details->classroom_course_description}}</p>
                 <h5 class="m-b5">THe Certification can help:</h5>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                <p>{{$classroom_course_details->classroom_certification}}</p>
                 <h5 class="m-b5">Learning Outcomes</h5>
                 <ul class="list-checked primary">
-                  <li>Over 37 lectures and 55.5 hours of content!</li>
-                  <li>LIVE PROJECT End to End Software Testing Training Included.</li>
-                  <li>Learn Software Testing and Automation basics from a professional trainer from your own desk.</li>
-                  <li>Information packed practical training starting from basics to advanced testing techniques.</li>
-                  <li>Best suitable for beginners to advanced level users and who learn faster when demonstrated.</li>
-                  <li>Course content designed by considering current software testing technology and the job market.</li>
-                  <li>Practical assignments at the end of every session.</li>
-                  <li>Practical learning experience with live project work and examples.cv</li>
+                  <li>{{$classroom_course_details->classroom_learning_outcomes}}</li>
+
                 </ul>
               </div>
             </div>
@@ -122,10 +121,10 @@
             <h4>Exam Format</h4>
             <ul class="list-checked primary">
               <li>Multiple choice examination questions</li>
-              <li>40 questions</li>
-              <li>26 marks required to pass (out of 40 available) – 65%</li>
-              <li>60 minutes’ duration</li>
-              <li>Closed book</li>
+              <li>{{$classroom_course_details->no_of_questions}} questions</li>
+              <li>{{$classroom_course_details->pass_mark}} marks required to pass (out of {{$classroom_course_details->out_of}} available) – {{$classroom_course_details->pass_mark/$classroom_course_details->out_of*100}}%</li>
+              <li>{{$classroom_course_details->duration}} minutes’ duration</li>
+              <li>{{$classroom_course_details->book}} book</li>
 
             </ul>
           </div>

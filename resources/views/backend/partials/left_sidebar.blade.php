@@ -56,6 +56,12 @@
                         <span class="ttr-label">Users</span>
                       </a>
                   </li>
+                  <li>
+                  <a href="{{route('accreditation')}}" class="ttr-material-button">
+                    <span class="ttr-icon"><i class="fab fa-cc-diners-club"></i></span>
+                            <span class="ttr-label">Accreditation</span>
+                          </a>
+                      </li>
         <li>
           <a href="#" class="ttr-material-button">
             <span class="ttr-icon"><i class="ti-email"></i></span>
