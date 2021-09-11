@@ -48,5 +48,5 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('admin/css/style.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('admin/css/dashboard.css')}}">
 	<link class="skin" rel="stylesheet" type="text/css" href="{{ asset('admin/css/color/color-1.css')}}">
-
+    @stack('css')
 </head>

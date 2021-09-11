@@ -26,14 +26,14 @@ class Course extends Model
 
      return $this->belongsTo(CourseOverview::class,'id','course_id','section_id');
     }
-    public function section(){
+    public function sections(){
 
-     return $this->belongsTo(Section::class,'id','course_id');
+     return $this->hasMany(Section::class);
     }
-    public function lesson(){
+   /* public function lesson(){
 
      return $this->belongsTo(Lesson::class,'section_id','course_id');
-    }
+    }*/
 
 
 }

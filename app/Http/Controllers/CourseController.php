@@ -213,7 +213,7 @@ class CourseController extends Controller
     $course_details= CourseOverview::where('course_id',$id)->get();
     $sections= Section::where('course_id',$id)->get();
     $lessons= Lesson::where('course_id',$id)->get();
-      
+
 
 
 
@@ -353,19 +353,20 @@ public function CourseInfo($id)
 
     {
           //dd($id);
-          $course_categories= CourseCategory::all();
-          $main_categories= MainCategory::all();
-          $course = Course::find($id);
-          $section= Section::where('course_id',$id)->first();
+         // $course_categories= CourseCategory::all();
+         // $main_categories= MainCategory::all();
+          //$course = Course::find($id);
+         // $section= Section::where('course_id',$id)->first();
 
-          $course_details= CourseOverview::where('course_id',$id)->get();
-          $sections= Section::where('course_id',$id)->get();
+          //$course_details= CourseOverview::where('course_id',$id)->get();
+          //$sections= Section::where('course_id',$id)->get();
 
-          $lessons= Lesson::where('course_id',$id)->get();
+          //$lessons= Lesson::where('course_id',$id)->get();
+
+        $course= Course::with(['sections.lessons'])->where('id',$id)->first();
 
 
-
-          return view('/backend/pages/courses.course_curricullum',compact('course','main_categories','course_categories','course_details', 'sections','lessons','section'));
+          return view('/backend/pages/courses.course_curricullum',compact('course'));
         }
 
 

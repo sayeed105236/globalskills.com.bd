@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Models;
-use App\Models\Section;
-use App\Models\Lesson;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,11 +11,11 @@ class Section extends Model
 
     protected $table ="sections";
     public function course(){
-      return $this->belongsTo(Course::class, 'course_id');
+      return $this->belongsTo(Course::class);
     }
 
-    public function lesson(){
+    public function lessons(){
 
-      return $this->belongsTo(Lesson::class,'lesson_id');
+      return $this->hasMany(Lesson::class);
     }
 }
