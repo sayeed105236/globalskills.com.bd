@@ -17,7 +17,8 @@ class FrontendController extends Controller
     $course_categories= CourseCategory::all();
     $courses= Course::all();
     $courses = Course::paginate(9);
-    return view('frontend.pages.courses',compact('main_categories','course_categories','courses'));
+    $lts_c =Course::where('status',1)->latest()->limit(2)->get();
+    return view('frontend.pages.courses',compact('main_categories','course_categories','courses','lts_c'));
 
   }
   public function course_details()
@@ -32,7 +33,8 @@ class FrontendController extends Controller
     $course_categories= CourseCategory::all();
     $classroom_courses= ClassroomCourse::all();
     $classroom_courses = ClassroomCourse::paginate(9);
-    return view('frontend.pages.classroom_courses',compact('main_categories','course_categories','classroom_courses'));
+    $lts_c_c =ClassroomCourse::where('status',1)->latest()->limit(2)->get();
+    return view('frontend.pages.classroom_courses',compact('main_categories','course_categories','classroom_courses','lts_c_c'));
 
   }
   public function course_details_frontend($id)

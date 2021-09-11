@@ -62,6 +62,12 @@
                             <span class="ttr-label">Accreditation</span>
                           </a>
                       </li>
+                      <li>
+                      <a href="{{route('blogs')}}" class="ttr-material-button">
+                        <span class="ttr-icon"><i class="fab fa-blogger"></i></i></span>
+                                <span class="ttr-label">Blogs</span>
+                              </a>
+                          </li>
         <li>
           <a href="#" class="ttr-material-button">
             <span class="ttr-icon"><i class="ti-email"></i></span>

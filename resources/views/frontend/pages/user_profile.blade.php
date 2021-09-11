@@ -39,8 +39,8 @@
               <img src="{{ asset('images/profile/pic1.jpg')}}" alt=""/>
             </div>
             <div class="profile-info">
-              <h4>Mark Andre</h4>
-              <span>mark.example@info.com</span>
+              <h4>{{Auth::user()->name}}</h4>
+              <span>{{Auth::user()->email}}</span>
             </div>
             <div class="profile-social">
               <ul class="list-inline m-a0">

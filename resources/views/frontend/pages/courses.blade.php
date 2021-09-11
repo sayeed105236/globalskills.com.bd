@@ -59,39 +59,26 @@
           <div class="widget recent-posts-entry widget-courses">
                             <h5 class="widget-title style-1">Recent Courses</h5>
                             <div class="widget-post-bx">
+                              @foreach($lts_c as $row)
                                 <div class="widget-post clearfix">
-                                    <div class="ttr-post-media"> <img src="{{ asset('images/blog/recent-blog/pic1.jpg')}}" width="200" height="143" alt=""> </div>
+                                    <div class="ttr-post-media"> <img src="{{asset("storage/courses/$row->course_image")}}" width="200" height="143" alt=""> </div>
                                     <div class="ttr-post-info">
                                         <div class="ttr-post-header">
-                                            <h6 class="post-title"><a href="#">Introduction EduChamp</a></h6>
+                                            <h6 class="post-title"><a href="admin/home/course_details/{{$row->id}}">{{$row->course_title}}</a></h6>
                                         </div>
                                         <div class="ttr-post-meta">
                                             <ul>
                                                 <li class="price">
-                                                  <del>$190</del>
-                                                  <h5>$120</h5>
+                                                  <del>{{$row->regular_price}}৳</del>
+                                                  <h5>{{$row->sale_price}}৳</h5>
                                                 </li>
                                                 <li class="review">03 Review</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-post clearfix">
-                                    <div class="ttr-post-media"> <img src=" {{ asset('images/blog/recent-blog/pic3.jpg')}}" width="200" height="160" alt=""> </div>
-                                    <div class="ttr-post-info">
-                                        <div class="ttr-post-header">
-                                            <h6 class="post-title"><a href="#">English For Tommorow</a></h6>
-                                        </div>
-                                        <div class="ttr-post-meta">
-                                            <ul>
-                                                <li class="price">
-                        <h5 class="free">Free</h5>
-                      </li>
-                                                <li class="review">07 Review</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+
                             </div>
                         </div>
         </div>

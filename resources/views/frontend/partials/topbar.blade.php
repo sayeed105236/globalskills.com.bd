@@ -9,12 +9,7 @@
       </div>
       <div class="topbar-right">
         <ul>
-          <li>
-            <select class="header-lang-bx">
-              <option data-icon="flag flag-uk">English UK</option>
-              <option data-icon="flag flag-us">English US</option>
-            </select>
-          </li>
+
           @guest
               @if (Route::has('login'))
                   <li class="nav-item">
@@ -30,10 +25,12 @@
           @else
               <li class="nav-item">
                 {{ Auth::user()->name }}
-                  
+
 
 
               </li>
+              <li><a class="btn btn-light" href="{{route('user_profile')}}">Dashboard</a></li>
+
               <li>
                   <a href="{{ route('logout') }}" class="btn btn-primary" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">Logout</a>
@@ -41,6 +38,7 @@
                       @csrf
                   </form>
               </li>
+
           @endguest
         </ul>
       </div>
