@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Course;
 use App\Models\User;
 use App\Models\ClassroomCourse;
-
+use Auth;
 class Cart extends Model
 {
     use HasFactory;
@@ -27,4 +27,23 @@ class Cart extends Model
           public function order(){
             return $this->belongsTo(Order::class, 'order_id');
           }
+          public function totalItems()
+          {
+            if (Auth::check()) {
+              $carts =Cart::orWhere('user_id',Auth::id())
+              ->orWhere('ip_address', request()->ip())->get();
+            }else{
+
+              $carts = Cart::orWhere('ip_address',request()->ip())->get();
+            }
+
+            $total_item = 0;
+            foreach($carts as $cart)
+            {
+              $total_items += $cart;
+            }
+            return $total_item;
+
+          }
+
 }

@@ -28,7 +28,7 @@ class CartController extends Controller
 
 
 
-
+          
           $cart = new Cart();
 
           if (Auth::check()) {

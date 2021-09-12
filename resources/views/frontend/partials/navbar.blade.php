@@ -22,10 +22,14 @@
             <li><a href="https://www.linkedin.com/company/globalskillsbd" class="btn-link"><i class="fa fa-linkedin"></i></a></li>
             <!-- Search Button ==== -->
             <li class="search-btn"><button id="quik-search-btn" type="button" class="btn-link"><i class="fa fa-search"></i></button></li>
-            <li><a href="{{route('carts')}}" class="btn-link"><i class="fa fa-cart-plus fa-2x"></i></a></li>
+            <li><a href="{{route('carts')}}" class="btn-link"><i class="fa fa-cart-plus fa-2x"></i>
+              <span class="badge badge-danger">10</span>
+
+            </a></li>
+
           </ul>
         </div>
-                </div>
+      </div>
       <!-- Search Box ==== -->
                 <div class="nav-search-bar">
                     <form action="#">
