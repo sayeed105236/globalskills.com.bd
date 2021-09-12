@@ -62,6 +62,7 @@
           <thead>
             <tr>
               <th>Course Name</th>
+              <th>Image</th>
               <th>Category</th>
               <th>Regular Price</th>
               <th>Sale Price</th>
@@ -74,6 +75,9 @@
 
                 <span class="font-weight-bold">Angular Project</span>
               </td>
+              <td><img src="{{ asset('images/profile/pic1.jpg')}}" alt="image"
+              height="50"
+              width="50"/></td>
               <td>ITIL 4</td>
               <td>
                 <del>  20000 Tk</del>

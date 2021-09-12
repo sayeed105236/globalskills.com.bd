@@ -49,6 +49,10 @@ Route::get('/course_details', [FrontendController::class,'course_details'])->nam
 Route::get('/user_profile', [UserProfileController::class,'user_profile'])->name('user_profile');
 Route::get('/blogs', [BlogsController::class,'index'])->name('blogs');
 Route::get('/blogs_details', [BlogsController::class,'blogs_details'])->name('blogs_details');
+
+
+
+//add to carts Routes
 Route::get('/carts', [CartController::class,'index'])->name('carts');
 Route::post('/add_to_carts', [CartController::class,'add_cart'])->name('add-carts');
 

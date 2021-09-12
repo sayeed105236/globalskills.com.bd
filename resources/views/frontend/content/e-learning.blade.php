@@ -36,7 +36,7 @@
             <form class="hidden" action="{{route('add-carts')}}" method="post">
               @csrf
               <input type="hidden" name="course_id" value="{{$row->id}}">
-              
+
               <button  class="btn">Add to Cart</button>
             </form>
           </div>
