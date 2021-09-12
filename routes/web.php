@@ -18,6 +18,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\UserEnrollmentController;
 use App\Http\Controllers\ClassroomCourseController;
 use App\Http\Controllers\AccreditationController;
+use App\Http\Controllers\CartController;
 
 
 /*
@@ -48,6 +49,7 @@ Route::get('/course_details', [FrontendController::class,'course_details'])->nam
 Route::get('/user_profile', [UserProfileController::class,'user_profile'])->name('user_profile');
 Route::get('/blogs', [BlogsController::class,'index'])->name('blogs');
 Route::get('/blogs_details', [BlogsController::class,'blogs_details'])->name('blogs_details');
+Route::get('/carts', [CartController::class,'index'])->name('carts');
 
 Auth::routes();
 

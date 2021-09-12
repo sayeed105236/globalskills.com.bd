@@ -32,7 +32,7 @@
           <div class="action-box">
             <img src="{{asset("storage/courses/$row->course_image")}}" alt="" height="420"
             width="700">
-            <a href="#" class="btn">Read More</a>
+            <a href="#" class="btn">Add to Cart</a>
           </div>
           <div class="info-bx text-center">
             <h5><a href="home/course_details/{{$row->id}}">{{$row->course_title}}</a></h5>

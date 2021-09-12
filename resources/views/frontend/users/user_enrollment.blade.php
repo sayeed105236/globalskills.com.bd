@@ -32,39 +32,98 @@
   <div class="section-area section-sp1">
             <div class="container">
        <div class="row d-flex flex-row-reverse">
-        <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
+        <div class="col-lg-4 col-md-4 col-sm-12 m-b30">
           <div class="m-b30" id="curriculum">
-            <h4>Curriculum</h4>
-            <ul class="curriculum-list">
-                @foreach($sections as $row)
-                <li>
-                  <h5>{{$row->section_name}}</h5>
-                  <ul>
-                    @foreach($lessons as $lesson)
 
-                    <li>
-                      <div class="curriculum-list-box">
-                        <span>Lesson: </span><a id="{{$lesson->id}}" >{{$lesson->lesson_title}}</a>
+
+              <section id="accordion-hover">
+                <div class="row">
+                  <div class="col-lg-12 col-md-4 col-sm-12 m-b30">
+                    <div class="card collapse-icon">
+                      <div class="card-header">
+                        <h4 class="card-title">Curriculum</h4>
                       </div>
-                      <span>120 minutes</span>
-                    </li>
+                      <div class="card-body">
 
-                    @endforeach
-                  </ul>
-                </li>
+                        <div class="accordion" id="accordionExample{{$section->id}}" data-toggle-hover="true">
+                          <div class="collapse-default">
+                            @if(count($course->sections) > 0)
+                            @foreach($course->sections as $section)
+
+                            <div class="card" >
+                              <div
+                                class="card-header"
+                                id="heading{{$section->id}}"
+                                data-toggle="collapse"
+                                role="button"
+                                data-target="#collapse{{$section->id}}"
+                                aria-expanded="true"
+                                aria-controls="collapse{{$section->id}}"
+                              >
+                                <h5 class="curriculum-list" style="color:#ca2128; text-transform:uppercase;" > {{$section->section_name}} </h5>
+                              </div>
+
+                              <div
+                                id="collapse{{$section->id}}"
+                                class="collapse show"
+                                aria-labelledby="heading{{$section->id}}"
+                                data-parent="#accordionExample{{$section->id}}"
+                              >
+                                <div class="card-body">
 
 
-                @endforeach
-              </ul>
+                                  <ul>
+                                    @if(count($section->lessons) > 0)
+                                    @foreach($section->lessons as $lesson)
+
+
+
+
+                                      <div class="curriculum-list-box">
+                                        <div class="row">
+
+                                      <div class="col">
+
+
+                                        <span></span> <a class="font-weight-bold" href="#" data-target="">{{$lesson->lesson_title}}</a>
+                                          </div>
+                                      <div class="col">
+
+
+                                      <span>120 minutes</span>
+                                      </div>
+                                      </div>
+                                        </div>
+
+                                    @endforeach
+                                      @endif
+
+
+
+                                  </ul>
+
+                                </div>
+                              </div>
+                            </div>
+                            @endforeach
+                            @endif
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
           </div>
         </div>
 
-        <div class="col-lg-9 col-md-8 col-sm-12">
+        <div class="col-lg-8 col-md-8 col-sm-12">
           <div class="courses-post">
             <div class="ttr-post-media media-effect">
               @foreach($lessons as $lesson)
 
-  <div data-vimeo-id="{{$lesson->vimeo_id}}" data-vimeo-width="800" data-vimeo-height="500" id="{{$lesson->id}}"></div>
+  <div data-vimeo-id="{{$lesson->vimeo_id}}" data-vimeo-width="700" data-vimeo-height="400" id="{{$lesson->id}}"></div>
               @endforeach
 
             </div>

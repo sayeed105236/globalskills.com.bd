@@ -208,16 +208,17 @@ class CourseController extends Controller
 
     $course_categories= CourseCategory::all();
     $main_categories= MainCategory::all();
-    $course = Course::find($id);
+    //$course = Course::find($id);
 
     $course_details= CourseOverview::where('course_id',$id)->get();
-    $sections= Section::where('course_id',$id)->get();
-    $lessons= Lesson::where('course_id',$id)->get();
+    //$sections= Section::where('course_id',$id)->get();
+    //$lessons= Lesson::where('course_id',$id)->get();
+    $course= Course::with(['sections.lessons'])->where('id',$id)->first();
 
 
 
 
-    return view('/backend/pages/courses.course_details_index',compact('course_details','main_categories','course_categories','course','sections','lessons'));
+    return view('/backend/pages/courses.course_details_index',compact('course_details','main_categories','course_categories','course'));
   }
 
   public function StoreSection(Request $request)

@@ -147,37 +147,100 @@
           </div>
           <div class="m-b30" id="curriculum">
             <h4>Curriculum</h4>
-            <ul class="curriculum-list">
+
+              <section id="accordion-hover">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="card collapse-icon">
+
+                      <div class="card-body">
+                        @if(count($course->sections) > 0)
+                        @foreach($course->sections as $section)
+                        <div class="accordion" id="accordionExample{{$section->id}}" data-toggle-hover="true">
+                          <div class="collapse-default">
+
+                            <div class="card">
+                              <div
+                                class="card-header"
+                                id="heading{{$section->id}}"
+                                data-toggle="collapse"
+                                role="button"
+                                data-target="#collapse{{$section->id}}"
+                                aria-expanded="true"
+                                aria-controls="collapse{{$section->id}}"
+                              >
+                                <h6 class="curriculum-list" style="color:#ca2128; text-transform:uppercase;" >{{$section->section_name}}</h6>
+                              </div>
+
+                              <div
+                                id="collapse{{$section->id}}"
+                                class="collapse show"
+                                aria-labelledby="heading{{$section->id}}"
+                                data-parent="#accordionExample{{$section->id}}"
+                              >
+                                <div class="card-body">
+                                  <ul>
+                                    @if(count($section->lessons) > 0)
+                                    @foreach($section->lessons as $lesson)
 
 
-              @foreach($sections as $row)
-                <li>
-                  <h5>{{$row->section_name}}</h5>
-                  <ul>
-
-                    @foreach($lessons as $lesson)
-                    <?php
-                      $lessons = App\Models\Lesson::where('section_id', $lessons)->get();
 
 
-                    ?>
+                                      <div class="curriculum-list-box">
+                                        <div class="row">
 
-                    <li>
+                                      <div class="col">
 
-                      <div class="curriculum-list-box">
-                        <span>Lesson: </span> {{$lesson->lesson_title}}
+
+                                         <strong>{{$lesson->lesson_title}}</strong>
+                                        </div>
+                                    <div class="col">
+
+
+                                      <span><strong>120 minutes</strong></span>
+                                    </div>
+                                        </div>
+                                        </div>
+
+                                    @endforeach
+                                      @endif
+
+
+
+                                  </ul>
+
+
+                                </div>
+                              </div>
+                            </div>
+
+
+                          </div>
+                        </div>
+                        @endforeach
+                        @endif
+
                       </div>
-                      <span>120 minutes</span>
-                    </li>
-                    @endforeach
+                    </div>
+                  </div>
+                </div>
+              </section>
 
 
 
-                  </ul>
-                </li>
 
-                @endforeach
-              </ul>
+
+
+
+
+
+
+
+
+
+
+
+
           </div>
           <div class="" id="instructor">
             <h4>Instructor</h4>
