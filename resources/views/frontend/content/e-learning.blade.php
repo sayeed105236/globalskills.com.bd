@@ -32,7 +32,13 @@
           <div class="action-box">
             <img src="{{asset("storage/courses/$row->course_image")}}" alt="" height="420"
             width="700">
-            <a href="#" class="btn">Add to Cart</a>
+
+            <form class="hidden" action="{{route('add-carts')}}" method="post">
+              @csrf
+              <input type="hidden" name="course_id" value="{{$row->id}}">
+              
+              <button  class="btn">Add to Cart</button>
+            </form>
           </div>
           <div class="info-bx text-center">
             <h5><a href="home/course_details/{{$row->id}}">{{$row->course_title}}</a></h5>
