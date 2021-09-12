@@ -64,7 +64,7 @@
                                     <div class="ttr-post-media"> <img src="{{asset("storage/courses/$row->course_image")}}" width="200" height="143" alt=""> </div>
                                     <div class="ttr-post-info">
                                         <div class="ttr-post-header">
-                                            <h6 class="post-title"><a href="admin/home/course_details/{{$row->id}}">{{$row->course_title}}</a></h6>
+                                            <h6 class="post-title"><a href="home/course_details/{{$row->id}}">{{$row->course_title}}</a></h6>
                                         </div>
                                         <div class="ttr-post-meta">
                                             <ul>
@@ -91,10 +91,15 @@
               <div class="cours-bx">
                 <div class="action-box">
                   <img src="{{asset("storage/courses/$row->course_image")}}" alt="">
-                @include('frontend.partials.cart_button')
+                  <form class="hidden" action="{{route('add-carts')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="course_id" value="{{$row->id}}">
+
+                    <button  class="btn">Add to Cart</button>
+                  </form>
                 </div>
                 <div class="info-bx text-center">
-                  <h5><a href="admin/home/course_details/{{$row->id}}">{{$row->course_title}}</a></h5>
+                  <h5><a href="home/course_details/{{$row->id}}">{{$row->course_title}}</a></h5>
                   <span>{{$row->course_category->mcategory_title}}</span>
                 </div>
                 <div class="cours-more-info">
