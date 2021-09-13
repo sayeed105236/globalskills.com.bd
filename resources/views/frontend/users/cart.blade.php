@@ -61,6 +61,7 @@
         <table class="table table-hover-animation">
           <thead>
             <tr>
+              <th>#</th>
               <th>Course Name</th>
               <th>Image</th>
               <th>Category</th>
@@ -70,25 +71,42 @@
             </tr>
           </thead>
           <tbody>
+            <?php
+              $price= 0;
+             ?>
             <tr>
+              @foreach(App\Models\Cart::totalCarts() as $row)
               <td>
 
-                <span class="font-weight-bold">Angular Project</span>
+                {{$loop->index+1}}
               </td>
-              <td><img src="{{ asset('images/profile/pic1.jpg')}}" alt="image"
+              <td>
+
+                <span class="font-weight-bold"><a href="home/course_details/{{$row->course->id}}">{{$row->course->course_title}}</a></span>
+              </td>
+              <td><img src="{{asset('storage/courses/' .$row->course->course_image)}}" alt="image"
               height="50"
               width="50"/></td>
-              <td>ITIL 4</td>
+              <td>{{$row->course->course_category->mcategory_title}}</td>
               <td>
-                <del>  20000 Tk</del>
+                <del>{{$row->course->regular_price}}৳</del>
 
               </td>
-              <td>10,000Tk</td>
+              <td>{{$row->course->sale_price}}৳</td>
 
               <td>
-              <a href="#"><i class="fa fa-trash"></i></a>
+                <?php
+                if ($row->course->sale_price>0) {
+                  $price += $row-> course->sale_price;
+                }else {
+                  $price +=$row->course->regular_price;
+                }
+
+                 ?>
+              <a href="/carts/delete/{{$row->id}}"><i class="fa fa-trash"></i></a>
               </td>
             </tr>
+            @endforeach
 
           </tbody>
         </table>
@@ -106,7 +124,7 @@
           <table class="table table-hover-animation">
             <thead>
               <tr>
-                <th>Course Name</th>
+                <th>Name</th>
                 <th></th>
 
                 <th>Price</th>
@@ -118,47 +136,64 @@
               <tr>
                 <td>
 
-                  <span class="font-weight-bold">Angular Project</span>
+                  <span class="font-weight-bold">Course Price</span>
                 </td>
                 <td></td>
 
 
-                <td>10,000Tk</td>
+                <td>{{$price}}৳</td>
+
+
+              </tr>
+              <tr>
+
+                <td>
+
+                <span class="font-weight-bold">Tax(10%)</span>
+
+
+                </td>
+
+                <td></td>
+
+                <td>{{($price*10)/100}}৳</td>
 
 
               </tr>
               <tr>
                 <td>
 
-                  <span class="font-weight-bold">Vat(15%)</span>
+
+                    <span class="font-weight-bold">Vat(15%)</span>
                 </td>
                 <td></td>
 
-                <td>100Tk</td>
+
+                <td>
+                  <?php
+                    $total_price= 0;
+                    $total_price_vat=0;
+                    $total_price=($price+(($price*10)/100));
+                    $total_price_vat= ($total_price*15)/100;
+                    $total= $total_price+$total_price_vat;
+                   ?>
+
+
+                  {{$total_price_vat}}৳</td>
 
 
               </tr>
               <tr>
                 <td>
 
-                  <span class="font-weight-bold">Tax(10%)</span>
-                </td>
-                <td></td>
 
-
-                <td>50Tk</td>
-
-
-              </tr>
-              <tr>
-                <td>
 
                   <span class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">Total</span>
                 </td>
                 <td>=</td>
 
 
-                <td class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">10,150Tk</td>
+                <td class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">{{$total}}৳</td>
 
 
               </tr>
@@ -169,7 +204,7 @@
 
       </div>
       <br>
-      <a class="text-center btn btn-primary" href="#">Procceed To Payment</a>
+      <a class="text-center btn btn-primary float-right" href="#">Procceed To Payment</a>
     </div>
 
 

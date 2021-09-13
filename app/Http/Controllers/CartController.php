@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Course;
 use App\Models\ClassroomCourse;
+use App\Models\System;
 use Auth;
 
 class CartController extends Controller
@@ -14,6 +15,7 @@ class CartController extends Controller
 
 
     {
+
 
       return view('frontend.users.cart');
     }
@@ -27,23 +29,50 @@ class CartController extends Controller
           $ip_address=$request->ip();
 
 
+            if (Auth::check()) {
 
-          
-          $cart = new Cart();
+                        $cart= Cart::where('user_id',Auth::id())
 
-          if (Auth::check()) {
-            $cart->user_id= Auth::id();
-          }
-          $cart->course_id = $course_id;
-          $cart->classroom_course_id= $classroom_course_id;
-          $cart->ip_address= $ip_address;
+                                    ->where('course_id',$request->course_id)
+
+                                    ->first();
+            }else {
+              $cart= Cart::where('ip_address',request()->ip())
+
+                          ->where('course_id',$request->course_id)
+
+                          ->first();
+            }
+                      if (!is_null($cart)) {
+                        //
+
+                      }else
+                      {
+                        $cart = new Cart();
+
+                        if (Auth::check()) {
+                          $cart->user_id= Auth::id();
+                        }
+                        $cart->course_id = $course_id;
+                        $cart->classroom_course_id= $classroom_course_id;
+                        $cart->ip_address= $ip_address;
 
 
-          $cart->save();
+                        $cart->save();
+                      }
+
 
 
           return back()->with('category_added','Category record has been added successfully!');
 
         }
+        public function deleteCart($id)
+        {
+          $cart = Cart::find($id);
+
+          $cart->delete();
+          return back()->with('cart_deleted','Category record has been deleted successfully!');
+        }
+
 
 }

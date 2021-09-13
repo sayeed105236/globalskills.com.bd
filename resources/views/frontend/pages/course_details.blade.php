@@ -41,7 +41,7 @@
               <h4 class="price">$120</h4>
             </div>
             <div class="course-buy-now text-center">
-              <a href="#" class="btn radius-xl text-uppercase">Buy Now This Courses</a>
+              <a href="#" class="btn radius-xl text-uppercase">Add to Cart</a>
             </div>
             <div class="teacher-bx">
               <div class="teacher-info">

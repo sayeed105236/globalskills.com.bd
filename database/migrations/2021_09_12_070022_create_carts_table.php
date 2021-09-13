@@ -18,13 +18,15 @@ class CreateCartsTable extends Migration
             $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('course_id')->nullable();
             $table->unsignedInteger('order_id')->nullable();
+            $table->integer('course_quantity')->default(1);
+            $table->integer('classroom_course_quantity')->default(1)->nullable();
             $table->unsignedInteger('classroom_course_id')->nullable();
             $table->string('ip_address')->nullable();
 
 
 
             $table->timestamps();
-            
+
         });
     }
 

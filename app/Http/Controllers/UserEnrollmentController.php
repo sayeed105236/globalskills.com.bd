@@ -16,7 +16,7 @@ class UserEnrollmentController extends Controller
 
     {
 
-        
+
         $course_categories= CourseCategory::all();
         $main_categories= MainCategory::all();
         $course= Course::find($id);
@@ -24,7 +24,9 @@ class UserEnrollmentController extends Controller
         $course_details= CourseOverview::where('course_id',$id)->get();
         $sections= Section::where('course_id',$id)->get();
         $lessons= Lesson::where('course_id',$id)->get();
+
         return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons'));
     }
+    
 
 }

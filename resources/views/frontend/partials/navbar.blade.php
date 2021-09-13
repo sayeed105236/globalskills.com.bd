@@ -23,7 +23,7 @@
             <!-- Search Button ==== -->
             <li class="search-btn"><button id="quik-search-btn" type="button" class="btn-link"><i class="fa fa-search"></i></button></li>
             <li><a href="{{route('carts')}}" class="btn-link"><i class="fa fa-cart-plus fa-2x"></i>
-              <span class="badge badge-danger">10</span>
+              <span class="badge badge-danger">{{App\Models\Cart::totalItems()}}</span>
 
             </a></li>
 

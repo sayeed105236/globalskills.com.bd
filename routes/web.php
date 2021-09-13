@@ -19,6 +19,8 @@ use App\Http\Controllers\UserEnrollmentController;
 use App\Http\Controllers\ClassroomCourseController;
 use App\Http\Controllers\AccreditationController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\SystemController;
+
 
 
 /*
@@ -55,6 +57,7 @@ Route::get('/blogs_details', [BlogsController::class,'blogs_details'])->name('bl
 //add to carts Routes
 Route::get('/carts', [CartController::class,'index'])->name('carts');
 Route::post('/add_to_carts', [CartController::class,'add_cart'])->name('add-carts');
+Route::get('/carts/delete/{id}',[CartController::class,'deleteCart']);
 
 Auth::routes();
 
@@ -115,7 +118,9 @@ Route::post('admin/home/courses/course_details/sections/lessons/store',[CourseCo
 
 Route::get('home/course_details/view/{id}',[UserEnrollmentController::class,'index']);
 
+
 //Route::get('users/home/course_details/view/{id}',[CourseController::class,'index']);
+
 
 //admin add classroom course routes
 Route::get('/admin/home/classroom/courses/manage', [ClassroomCourseController::class, 'Manage'])->name('manage-classroom-course')->
@@ -138,3 +143,10 @@ Route::get('/admin/home/accreditation/manage', [AccreditationController::class, 
 middleware('is_admin');
 Route::post('admin/home/accreditation/store',[AccreditationController::class,'Store'])->name('store-accreditation')->middleware('is_admin');
 Route::get('admin/home/accreditation/delete/{id}',[AccreditationController::class,'delete'])->middleware('is_admin');
+
+
+//Admin System settings
+Route::get('/admin/home/system_settings/manage', [SystemController::class, 'Manage'])->name('manage-system-settings')->
+middleware('is_admin');
+Route::post('/admin/home/system_settings/store', [SystemController::class, 'StoreSettings'])->name('store-system-settings')->
+middleware('is_admin');

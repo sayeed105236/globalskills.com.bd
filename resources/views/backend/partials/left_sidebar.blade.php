@@ -68,6 +68,12 @@
                                 <span class="ttr-label">Blogs</span>
                               </a>
                           </li>
+                          <li>
+                          <a href="{{route('manage-system-settings')}}" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="fa fa-cogs"></i></span>
+                                    <span class="ttr-label">System Settings</span>
+                                  </a>
+                              </li>
         <li>
           <a href="#" class="ttr-material-button">
             <span class="ttr-icon"><i class="ti-email"></i></span>

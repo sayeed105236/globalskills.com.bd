@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Course;
 use App\Models\User;
 use App\Models\ClassroomCourse;
+
 use Auth;
 class Cart extends Model
 {
@@ -16,6 +17,7 @@ class Cart extends Model
           public function course(){
             return $this->belongsTo(Course::class, 'course_id');
           }
+
           public function classroom_course(){
             return $this->belongsTo(Course::class, 'classroom_course_id');
           }
@@ -23,11 +25,31 @@ class Cart extends Model
           public function user(){
             return $this->belongsTo(User::class, 'user_id');
           }
+          
 
           public function order(){
             return $this->belongsTo(Order::class, 'order_id');
           }
-          public function totalItems()
+
+          Static  public function totalCarts()
+            {
+              if (Auth::check()) {
+                $carts =Cart::orWhere('user_id',Auth::id())
+                ->orWhere('ip_address', request()->ip())->get();
+              }else{
+
+                $carts = Cart::orWhere('ip_address',request()->ip())->get();
+              }
+
+
+              return $carts;
+
+            }
+
+
+
+
+        Static  public function totalItems()
           {
             if (Auth::check()) {
               $carts =Cart::orWhere('user_id',Auth::id())
@@ -37,12 +59,12 @@ class Cart extends Model
               $carts = Cart::orWhere('ip_address',request()->ip())->get();
             }
 
-            $total_item = 0;
+            $total_items = 0;
             foreach($carts as $cart)
             {
-              $total_items += $cart;
+              $total_items += $cart->course_quantity;
             }
-            return $total_item;
+            return $total_items;
 
           }
 

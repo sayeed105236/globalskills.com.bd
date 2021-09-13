@@ -64,8 +64,23 @@
               <h4 class="price">{{$course->sale_price}}৳</h4>
             </div>
             <div class="course-buy-now text-center">
+
+
+
+
               <a href="/home/course_details/view/{{$course->id}}" class="btn radius-xl text-uppercase">Enroll this Course</a>
+
+
             </div>
+            <br>
+            <div class="course-buy-now text-center">
+            <form class="hidden" action="{{route('add-carts')}}" method="post">
+              @csrf
+              <input type="hidden" name="course_id" value="{{$course->id}}">
+
+              <button  class="btn">Add to Cart</button>
+            </form>
+          </div>
             <div class="teacher-bx">
               <div class="teacher-info">
                 <div class="teacher-thumb">
