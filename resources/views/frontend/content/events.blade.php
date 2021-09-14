@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12 text-center heading-bx">
         <h2 class="title-head m-b0">Upcoming <span>Events</span></h2>
-        <p class="m-b0">Upcoming Education Events To Feed Brain. </p>
+    
       </div>
     </div>
     <div class="row">

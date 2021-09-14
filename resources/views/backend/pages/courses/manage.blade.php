@@ -126,8 +126,8 @@
             </div>
           </div>
         </div>
-        <div class="table-responsive">
-          <table class="table" id="course_table">
+        <div class="table table-responsive">
+          <table class="table table-bordered" id="course_table">
             <thead>
               <tr>
                 <th>

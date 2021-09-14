@@ -63,7 +63,7 @@
                           </a>
                       </li>
                       <li>
-                      <a href="{{route('blogs')}}" class="ttr-material-button">
+                      <a href="{{route('manage-blogs')}}" class="ttr-material-button">
                         <span class="ttr-icon"><i class="fab fa-blogger"></i></i></span>
                                 <span class="ttr-label">Blogs</span>
                               </a>

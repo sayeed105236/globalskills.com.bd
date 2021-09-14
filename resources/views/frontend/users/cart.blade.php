@@ -30,7 +30,18 @@
 </div>
 <br>
 <br>
+
 <div class="container">
+  @if(Session::has('cart_deleted'))
+  <div class="alert alert-danger" role="alert">
+
+    <div class="alert-body">
+      {{Session::get('cart_deleted')}}
+    </div>
+  </div>
+
+
+  @endif
 
 
 
@@ -57,7 +68,7 @@
         </div>
       </div>
 
-      <div class="table-responsive">
+      <div class="table table-responsive">
         <table class="table table-hover-animation">
           <thead>
             <tr>
@@ -204,7 +215,7 @@
 
       </div>
       <br>
-      <a class="text-center btn btn-primary float-right" href="#">Procceed To Payment</a>
+      <a class="text-center btn btn-primary float-right" href="{{route('payment')}}">Procceed To Payment</a>
     </div>
 
 

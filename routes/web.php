@@ -20,6 +20,8 @@ use App\Http\Controllers\ClassroomCourseController;
 use App\Http\Controllers\AccreditationController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\SystemController;
+use App\Http\Controllers\PortwalletController;
+use App\Http\Controllers\AdminBlogController;
 
 
 
@@ -58,6 +60,10 @@ Route::get('/blogs_details', [BlogsController::class,'blogs_details'])->name('bl
 Route::get('/carts', [CartController::class,'index'])->name('carts');
 Route::post('/add_to_carts', [CartController::class,'add_cart'])->name('add-carts');
 Route::get('/carts/delete/{id}',[CartController::class,'deleteCart']);
+Route::get('/home/course/carts/payment',[PortwalletController::class,'index'])->name('payment');
+//Route::get('/pay_with_portwallet',[PortwalletController::class,'payWithPortwallet'])->name('payWithPortwallet');
+//Route::post('/portwallet',[PortwalletController::class,'postPaymentWithportwallet'])->name('postPaymentWithportwallet');
+//Route::get('/portwallet',[PortwalletController::class,'getPaymentStatus'])->name('getPaymentStatus');
 
 Auth::routes();
 
@@ -149,4 +155,14 @@ Route::get('admin/home/accreditation/delete/{id}',[AccreditationController::clas
 Route::get('/admin/home/system_settings/manage', [SystemController::class, 'Manage'])->name('manage-system-settings')->
 middleware('is_admin');
 Route::post('/admin/home/system_settings/store', [SystemController::class, 'StoreSettings'])->name('store-system-settings')->
+middleware('is_admin');
+
+//admin blog add
+Route::get('/admin/home/blogs/manage', [AdminBlogController::class, 'index'])->name('manage-blogs')->
+middleware('is_admin');
+Route::post('/admin/home/addBlog', [AdminBlogController::class, 'addBlog'])->name('add-blogs')->
+middleware('is_admin');
+Route::post('/admin/home/editBlog',[AdminBlogController::class, 'editBlog'])->name('edit-blogs')->
+middleware('is_admin');
+Route::get('/admin/home/deleteBlog/{id}',[AdminBlogController::class, 'deleteBlog'])->name('delete-blogs')->
 middleware('is_admin');
