@@ -5,6 +5,19 @@
         <ul>
           <li><a href="{{route('faq')}}"><i class="fa fa-question-circle"></i>Ask a Question</a></li>
           <li><a href="javascript:;"><i class="fa fa-envelope-o"></i>info@globalskills.com.bd</a></li>
+          <li>
+            @if(Session::has('cart_added'))
+            <div class="alert alert-success" role="alert">
+
+              <div class="alert-body">
+                {{Session::get('cart_added')}}
+              </div>
+            </div>
+
+          
+            @endif
+
+          </li>
         </ul>
       </div>
       <div class="topbar-right">

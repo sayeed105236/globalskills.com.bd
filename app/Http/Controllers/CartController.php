@@ -63,7 +63,7 @@ class CartController extends Controller
 
 
 
-          return back()->with('category_added','Category record has been added successfully!');
+          return back()->with('cart_added','Course has been added to cart successfully!');
 
         }
         public function deleteCart($id)
@@ -71,7 +71,7 @@ class CartController extends Controller
           $cart = Cart::find($id);
 
           $cart->delete();
-          return back()->with('cart_deleted','Category record has been deleted successfully!');
+          return back()->with('cart_deleted','Course has been deleted from cart successfully!');
         }
 
 

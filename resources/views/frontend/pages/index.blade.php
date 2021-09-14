@@ -36,7 +36,7 @@
 
 
   <!-- Testimonials -->
-  @include('frontend.content.people_say')
+
 
   <!-- Testimonials END -->
 
@@ -44,6 +44,7 @@
   @include('frontend.content.recent_news')
 
   <!-- Recent News End -->
+
 
     </div>
 <!-- contact area END -->
