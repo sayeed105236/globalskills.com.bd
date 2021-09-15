@@ -71,7 +71,17 @@
               <a href="/home/course_details/view/{{$course->id}}" class="btn radius-xl text-uppercase">Enroll this Course</a>
 
 
+
             </div>
+            <br>
+              <div class="course-buy-now text-center">
+                <form class="hidden" action="{{route('add-carts')}}" method="post">
+                  @csrf
+                  <input type="hidden" name="course_id" value="{{$course->id}}">
+
+                  <button  class="btn">Buy Now</button>
+                </form>
+                  </div>
             <br>
             <div class="course-buy-now text-center">
             <form class="hidden" action="{{route('add-carts')}}" method="post">

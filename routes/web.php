@@ -22,6 +22,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\SystemController;
 use App\Http\Controllers\PortwalletController;
 use App\Http\Controllers\AdminBlogController;
+use App\Http\Controllers\AdminEventController;
 
 
 
@@ -53,6 +54,7 @@ Route::get('/course_details', [FrontendController::class,'course_details'])->nam
 Route::get('/user_profile', [UserProfileController::class,'user_profile'])->name('user_profile');
 Route::get('/blogs', [BlogsController::class,'index'])->name('blogs');
 Route::get('/blogs_details', [BlogsController::class,'blogs_details'])->name('blogs_details');
+Route::get('/blogs_details/{id}', [BlogsController::class,'blogs_details_index']);
 
 
 
@@ -61,16 +63,14 @@ Route::get('/carts', [CartController::class,'index'])->name('carts');
 Route::post('/add_to_carts', [CartController::class,'add_cart'])->name('add-carts');
 Route::get('/carts/delete/{id}',[CartController::class,'deleteCart']);
 Route::get('/home/course/carts/payment',[PortwalletController::class,'index'])->name('payment');
-//Route::get('/pay_with_portwallet',[PortwalletController::class,'payWithPortwallet'])->name('payWithPortwallet');
-//Route::post('/portwallet',[PortwalletController::class,'postPaymentWithportwallet'])->name('postPaymentWithportwallet');
-//Route::get('/portwallet',[PortwalletController::class,'getPaymentStatus'])->name('getPaymentStatus');
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home-user');
+Route::get('/home', [HomeController::class, 'index'])->name('home-user');
 
 //admin routes
-Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminIndex'])->name('admin.home')->
+Route::get('/admin/home', [HomeController::class, 'adminIndex'])->name('admin.home')->
 middleware('is_admin');
 
 //admin main category routes
@@ -87,7 +87,7 @@ Route::get('admin/home/users',[UserController::class,'List'])->middleware('is_ad
 Route::get('admin/home/users/delete/{id}',[UserController::class,'deleteUser'])->middleware('is_admin');
 
 //course category routes
-Route::get('/admin/home/course_category/manage', [App\Http\Controllers\CourseCategoryController::class, 'Manage'])->name('managecourse-category')->
+Route::get('/admin/home/course_category/manage', [CourseCategoryController::class, 'Manage'])->name('managecourse-category')->
 middleware('is_admin');
 Route::post('/admin/home/course_category/store',[CourseCategoryController::class,'storeCourseCategory'])->name('store-maincategory')->
 middleware('is_admin');
@@ -165,4 +165,12 @@ middleware('is_admin');
 Route::post('/admin/home/editBlog',[AdminBlogController::class, 'editBlog'])->name('edit-blogs')->
 middleware('is_admin');
 Route::get('/admin/home/deleteBlog/{id}',[AdminBlogController::class, 'deleteBlog'])->name('delete-blogs')->
+middleware('is_admin');
+
+//admin add events
+Route::get('/admin/home/events/manage', [AdminEventController::class, 'index'])->name('manage-events')->
+middleware('is_admin');
+Route::post('/admin/home/events/store', [AdminEventController::class, 'Store'])->name('store-events')->
+middleware('is_admin');
+Route::get('/admin/home/events/delete/{id}', [AdminEventController::class, 'Delete'])->
 middleware('is_admin');

@@ -37,7 +37,7 @@
 
 
 
->
+
 <script src="{{ asset('js/jquery.scroller.js')}}"></script>
 
 

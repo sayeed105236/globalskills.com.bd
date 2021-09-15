@@ -56,7 +56,7 @@
               <h5 class="footer-title">Get In Touch</h5>
               <ul>
 
-                <li><a href="blog-classic-grid.html">Blog</a></li>
+                <li><a href="#">Blog</a></li>
 
 
             </div>

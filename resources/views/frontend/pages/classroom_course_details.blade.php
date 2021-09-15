@@ -22,7 +22,7 @@
 <div class="breadcrumb-row">
   <div class="container">
     <ul class="list-inline">
-      <li><a href="{{route('course_details')}}">Home</a></li>
+      <li><a href="{{route('home')}}">Home</a></li>
       <li>Courses Details</li>
       <li>{{$classroom_course->classroom_course_title}}</li>
     </ul>
@@ -47,7 +47,7 @@
               <a href="#" class="btn radius-xl text-uppercase">Booking Now This Courses</a>
             </div>
             <div class="teacher-bx">
-              <div class="teacher-info">
+            <!--  <div class="teacher-info">
                 <div class="teacher-thumb">
                   <img src="{{asset('images/testimonials/pic1.jpg')}}" alt=""/>
                 </div>
@@ -55,17 +55,18 @@
                   <h5>{{$classroom_course_details->classroom_instructor_id}}</h5>
                   <span></span>
                 </div>
-              </div>
+              </div>-->
             </div>
             <div class="cours-more-info">
               <div class="review">
-                <span>3 Review</span>
+                <span>5 Review</span>
                 <ul class="cours-star">
                   <li class="active"><i class="fa fa-star"></i></li>
                   <li class="active"><i class="fa fa-star"></i></li>
                   <li class="active"><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
+                  <li class="active"><i class="fa fa-star"></i></li>
+                  <li class="active"><i class="fa fa-star"></i></li>
+
                 </ul>
               </div>
               <div class="price categories">
@@ -77,8 +78,8 @@
               <ul class="navbar">
                 <li><a class="nav-link" href="#overview"><i class="ti-zip"></i>Course Description</a></li>
                 <li><a class="nav-link" href="#curriculum"><i class="ti-bookmark-alt"></i>Exam Format</a></li>
-                <li><a class="nav-link" href="#instructor"><i class="ti-user"></i>Instructor</a></li>
-                <li><a class="nav-link" href="#reviews"><i class="ti-comments"></i>Reviews</a></li>
+              <!--  <li><a class="nav-link" href="#instructor"><i class="ti-user"></i>Instructor</a></li>
+                <li><a class="nav-link" href="#reviews"><i class="ti-comments"></i>Reviews</a></li> -->
               </ul>
             </div>
           </div>
@@ -128,7 +129,7 @@
 
             </ul>
           </div>
-          <div class="" id="instructor">
+        <!--  <div class="" id="instructor">
             <h4>Instructor</h4>
             <div class="instructor-bx">
               <div class="instructor-author">
@@ -246,7 +247,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div>-->
 
         </div>
 

@@ -115,7 +115,7 @@
                                   @endforeach--}}
 
                                 <div id="player"></div>
-                                <iframe src="https://player.vimeo.com/video/595181733" width="600" height="400"
+                                <iframe src="https://player.vimeo.com/video/595181733" width="700" height="400"
                                         frameborder="0" webkitallowfullscreen mozallowfullscreen
                                         allowfullscreen allow="autoplay"></iframe>
 

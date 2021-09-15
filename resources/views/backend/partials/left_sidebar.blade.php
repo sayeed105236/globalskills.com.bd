@@ -74,7 +74,13 @@
                                     <span class="ttr-label">System Settings</span>
                                   </a>
                               </li>
-        <li>
+                              <li>
+                              <a href="{{route('manage-events')}}" class="ttr-material-button">
+                                <span class="ttr-icon"><i class="fas fa-calendar-alt"></i></span>
+                                        <span class="ttr-label">Events</span>
+                                      </a>
+                                  </li>
+                    <li>
           <a href="#" class="ttr-material-button">
             <span class="ttr-icon"><i class="ti-email"></i></span>
                     <span class="ttr-label">Mailbox</span>

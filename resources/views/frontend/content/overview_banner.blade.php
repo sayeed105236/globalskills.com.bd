@@ -14,7 +14,7 @@
         </form>
       </div>
     </div>
-    <div class="mw800 m-auto">
+  <!--  <div class="mw800 m-auto">
       <div class="row">
         <div class="col-md-4 col-sm-6">
           <div class="cours-search-bx m-b30">
@@ -41,6 +41,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
 </div>

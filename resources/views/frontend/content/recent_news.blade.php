@@ -22,13 +22,13 @@
           <div class="info-bx">
             <ul class="media-post">
               <li><a href="#"><i class="fa fa-calendar"></i>{{$row->created_at}}</a></li>
-              <li><a href="#"><i class="fa fa-user"></i>{{Auth::user()->name}}</a></li>
+            <!--  <li><a href="#"><i class="fa fa-user"></i></a></li>-->
             </ul>
-            <h5 class="post-title"><a href="blog-details.html">{{$row->blogs_title}}</h5>
+            <h5 class="post-title"><a href="/blogs_details/{{$row->id}}">{{$row->blogs_title}}</h5>
             <p>{{$row->short_description}}</p>
             <div class="post-extra">
               <a href="#" class="btn-link">READ MORE</a>
-              <a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>14 Comment</a>
+            
             </div>
           </div>
         </div>

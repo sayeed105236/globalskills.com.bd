@@ -82,17 +82,21 @@
             </tr>
           </thead>
           <tbody>
+
+
+
             <?php
               $price= 0;
              ?>
+             @foreach(App\Models\Cart::totalCarts() as $row)
             <tr>
-              @foreach(App\Models\Cart::totalCarts() as $row)
+
               <td>
 
                 {{$loop->index+1}}
               </td>
               <td>
-
+              
                 <span class="font-weight-bold"><a href="home/course_details/{{$row->course->id}}">{{$row->course->course_title}}</a></span>
               </td>
               <td><img src="{{asset('storage/courses/' .$row->course->course_image)}}" alt="image"
