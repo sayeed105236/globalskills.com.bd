@@ -28,6 +28,22 @@
     </ul>
   </div>
 </div>
+<br>
+<br>
+<div class="container">
+
+
+@if(Session::has('booking_added'))
+<div class="alert alert-success" role="alert">
+
+  <div class="alert-body">
+    {{Session::get('booking_added')}}
+  </div>
+</div>
+
+
+@endif
+</div>
 <!-- Breadcrumb row END -->
     <!-- inner page banner END -->
 <div class="content-block">
@@ -44,7 +60,14 @@
               <h4 class="price">{{$classroom_course->exam_fee}}৳</h4>
             </div>
             <div class="course-buy-now text-center">
-              <a href="#" class="btn radius-xl text-uppercase">Booking Now This Courses</a>
+              <form class="hidden" action="{{route('store-bookings')}}" method="post">
+                @csrf
+                <input type="hidden" name="classroom_course_id" value="{{$classroom_course->id}}">
+                <input type="hidden" name="course_category_id" value="{{$classroom_course->course_category->id}}">
+
+                <button  class="btn">Booking Now This Course</button>
+              </form>
+
             </div>
             <div class="teacher-bx">
             <!--  <div class="teacher-info">

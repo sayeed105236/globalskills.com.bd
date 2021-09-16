@@ -23,6 +23,7 @@ use App\Http\Controllers\SystemController;
 use App\Http\Controllers\PortwalletController;
 use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminEventController;
+use App\Http\Controllers\BookingController;
 
 
 
@@ -64,6 +65,7 @@ Route::post('/add_to_carts', [CartController::class,'add_cart'])->name('add-cart
 Route::get('/carts/delete/{id}',[CartController::class,'deleteCart']);
 Route::get('/home/course/carts/payment',[PortwalletController::class,'index'])->name('payment');
 
+Route::post('/classroom_bookings', [BookingController::class,'StoreBooking'])->name('store-bookings');
 
 Auth::routes();
 
@@ -121,7 +123,7 @@ Route::get('admin/home/course_details/sections/edit/{id}',[CourseController::cla
 Route::post('admin/home/course_details/sections/update',[CourseController::class,'updateSection'])->name('update-section')->middleware('is_admin');
 Route::get('admin/home/course_details/sections/delete/{id}',[CourseController::class,'deleteSection'])->middleware('is_admin');
 Route::post('admin/home/courses/course_details/sections/lessons/store',[CourseController::class,'StoreLesson'])->name('store-lesson')->middleware('is_admin');
-
+// user enroolment route
 Route::get('home/course_details/view/{id}',[UserEnrollmentController::class,'index']);
 
 
@@ -138,8 +140,11 @@ Route::post('admin/home/classroom/courses/update',[ClassroomCourseController::cl
 Route::get('admin/home/classroom/courses/delete/{id}',[ClassroomCourseController::class,'deleteCourse'])->middleware('is_admin');
 
 
-//admin add classroom course details
+// Frontend routes for classroom
 Route::get('/home/classroom/course_details/{id}', [FrontendController::class,'course_details_frontend'])->name('classroom-course-details');
+Route::get('/home/classroom/course_details/booking/{id}', [FrontendController::class,'classroom_course_booking']);
+
+//admin add classroom course details
 Route::get('/admin/home/classroom/courses/course_details/{id}',[ClassroomCourseController::class,'CourseDetailsBackend'])->middleware('is_admin');
 Route::get('/admin/home/classroom/courses/course_details/course_info/{id}',[ClassroomCourseController::class,'ClassroomCourseInfo'])->middleware('is_admin');
 Route::post('admin/home/classroom/courses/course_details/store',[ClassroomCourseController::class,'StoreClassroomCourseDetails'])->name('store-classroom-course-details')->middleware('is_admin');

@@ -8,6 +8,7 @@ use App\Models\CourseCategory;
 use App\Models\Course;
 use App\Models\ClassroomCourse;
 use App\Models\ClassroomInfo;
+use App\Models\User;
 
 class FrontendController extends Controller
 {
@@ -47,4 +48,14 @@ class FrontendController extends Controller
     $classroom_course = ClassroomCourse::find($id);
     return view('frontend.pages.classroom_course_details',compact('course_categories','main_categories','classroom_course_details','classroom_course'));
   }
+  public function classroom_course_booking($id)
+  {
+
+    $classroom_course = ClassroomCourse::find($id);
+    dd($id);
+
+    return back();
+  }
+
+
 }
