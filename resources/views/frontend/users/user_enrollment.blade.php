@@ -309,6 +309,37 @@
 @push('scripts')
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '{{ route("get-all-vimeo-id") }}',
+            type: 'post',
+            data: {'id': id },
+            //dataType: "html",
+            success: function (response) {
+                console.log(response)
+
+                if(response.success === true){
+                    //alert("success on query!");
+                    $("#modalAddTrainee").modal('hide')
+                    //call added trainees function
+                    $('#addedTrainees-table').dataTable().fnDestroy();
+                    //$('#trainingcalendars-table').dataTable().fnDestroy();
+                    $('input:checkbox').each(function() { this.checked = false; });
+                    $('#warning-div').hide();
+                    $('#success-div').show();
+                    $("#success-text").text('Added Successfully!');
+                    addedTrainees();
+                }else if(response.success === false){
+                    alert("Cross the trainee add limit");
+                }
+
+            }
+        });
+
         /*var iframe = document.querySelector('iframe');
         var player = new Vimeo.Player(iframe);
 
@@ -340,71 +371,6 @@
     </script>
 
     <script>
-        /*var options = {
-            id: 595181733,
-            width: 640
-        };
-
-        var player = new Vimeo.Player('player', options);
-
-        player.on('ended', function() {
-
-            // Change video id and show your new video
-            var options = {
-                id: 595179458
-            };
-
-            var player = new Vimeo.Player('player', options);
-
-        });*/
-        /*var options = {
-            id: 595179458,
-            width: 640,
-            loop: true
-        };
-
-        var player = new Vimeo.Player('player', options);
-
-        player.setVolume(0);
-
-        player.on('play', function() {
-            console.log('played the video!');
-        });*/
-    </script>
-    <script>
-       /* var apiEndpoint = 'https://vimeo.com/api/v2/';
-        var oEmbedEndpoint = 'https://vimeo.com/api/oembed.json';
-        var oEmbedCallback = 'switchVideo';
-        var videosCallback = 'setupGallery';
-        var vimeoUsername = 'connectingcommunities';
-        // Get the user's videos
-        $(document).ready(function () {
-            $.getScript(apiEndpoint + vimeoUsername + '/videos.json?callback=' + videosCallback);
-        });
-
-        function getVideo(url) {
-            $.getScript(oEmbedEndpoint + '?url=' + url + '&width=504&height=280&callback=' + oEmbedCallback);
-        }*/
-
-        function setupGallery(videos) {
-            // Set the user's thumbnail and the page title
-            $('#stats').prepend('<img id="portrait" src="' + videos[0].user_portrait_medium + '" />');
-            $('#stats h2').text(videos[0].user_name + "'s Videos");
-            // Load the first video
-            getVideo(videos[0].url);
-            // Add the videos to the gallery
-            for (var i = 0; i < videos.length; i++) {
-                var html = '<li><a href="' + videos[i].url + '"><img src="' + videos[i].thumbnail_medium + '" class="thumb" />';
-                html += '<p>' + videos[i].title + '</p></a></li>';
-                $('#thumbs ul').append(html);
-            }
-            // Switch to the video when a thumbnail is clicked
-            $('#thumbs a').click(function (event) {
-                event.preventDefault();
-                getVideo(this.href);
-                return false;
-            });
-        }
        // Switch to the video when a thumbnail is clicked
        $('#thumbs a').click(function (event) {
            event.preventDefault();
