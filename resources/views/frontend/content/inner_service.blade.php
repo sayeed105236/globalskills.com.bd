@@ -17,8 +17,8 @@
             <div class="feature-box-sm radius bg-white">
               <i class="fa fa-bank text-primary"></i>
             </div>
-            <h4><a href="#">{{$row->mcategory_title}}</a></h4>
-            <a href="#" class="btn radius-xl">View More</a>
+            <h4 style="color:#ca2128; text-transform:uppercase;">{{$row->mcategory_title}}</h4>
+
           </div>
         </div>
       </div>

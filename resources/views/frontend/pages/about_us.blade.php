@@ -30,7 +30,7 @@
 <!-- Page Content Box ==== -->
 <div class="content-block">
         <!-- About Us ==== -->
-  <div class="section-area section-sp1">
+  <!--<div class="section-area section-sp1">
             <div class="container">
        <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-6 m-b30">
@@ -79,10 +79,10 @@
         </div>
       </div>
     </div>
-        </div>
+  </div>-->
   <!-- About Us END ==== -->
         <!-- Our Story ==== -->
-  <div class="section-area bg-gray section-sp1 our-story">
+<!--  <div class="section-area bg-gray section-sp1 our-story">
     <div class="container">
       <div class="row align-items-center d-flex">
         <div class="col-lg-5 col-md-12 heading-bx">
@@ -99,10 +99,10 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
   <!-- Our Story END ==== -->
   <!-- Our Status ==== -->
-  <div class="section-area content-inner section-sp1">
+<!--  <div class="section-area content-inner section-sp1">
             <div class="container">
                 <div class="section-content">
                      <div class="row">
@@ -141,10 +141,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
   <!-- Our Status END ==== -->
   <!-- About Content ==== -->
-  <div class="section-area section-sp2 bg-fix ovbl-dark join-bx text-center" style="background-image:url({{ asset('images/background/bg1.jpg')}});">
+<!--  <div class="section-area section-sp2 bg-fix ovbl-dark join-bx text-center" style="background-image:url({{ asset('images/background/bg1.jpg')}});">
             <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -157,10 +157,10 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
   <!-- About Content END ==== -->
   <!-- Testimonials ==== -->
-  <div class="section-area section-sp2">
+<!--  <div class="section-area section-sp2">
     <div class="container">
       <div class="row">
         <div class="col-md-12 heading-bx left">
@@ -199,7 +199,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
   <!-- Testimonials END ==== -->
 </div>
 <!-- Page Content Box END ==== -->

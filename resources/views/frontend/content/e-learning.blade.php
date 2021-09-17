@@ -46,13 +46,14 @@
           </div>
           <div class="cours-more-info">
             <div class="review">
-              <span>3 Review</span>
+              <span>Review</span>
               <ul class="cours-star">
                 <li class="active"><i class="fa fa-star"></i></li>
                 <li class="active"><i class="fa fa-star"></i></li>
                 <li class="active"><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
+                <li class="active"><i class="fa fa-star"></i></li>
+                <li class="active"><i class="fa fa-star"></i></li>
+
               </ul>
             </div>
             <div class="price">

@@ -27,12 +27,12 @@
         <div class="cours-bx">
           <div class="action-box">
             <img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" alt="">
-            <form class="hidden" action="{{route('add-carts')}}" method="post">
+            <!--<form class="hidden" action="{{route('add-carts')}}" method="post">
               @csrf
-              <input type="hidden" name="Classroom_course_id" value="{{$row->id}}">
+              <input type="hidden" name="classroom_course_id" value="{{$row->id}}">
 
               <button  class="btn">Add to Cart</button>
-            </form>
+            </form>-->
           </div>
           <div class="info-bx text-center">
             <h5><a href="/home/classroom/course_details/{{$row->id}}">{{$row->classroom_course_title}}</a></h5>
