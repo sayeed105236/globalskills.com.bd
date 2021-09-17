@@ -27,6 +27,10 @@ class UserEnrollmentController extends Controller
 
         return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons'));
     }
-    
+
+    public function getVimeoId(Request $request){
+        dd($request);
+    }
+
 
 }

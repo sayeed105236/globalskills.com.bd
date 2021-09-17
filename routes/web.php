@@ -126,6 +126,7 @@ Route::get('admin/home/course_details/sections/delete/{id}',[CourseController::c
 Route::post('admin/home/courses/course_details/sections/lessons/store',[CourseController::class,'StoreLesson'])->name('store-lesson')->middleware('is_admin');
 // user enroolment route
 Route::get('home/course_details/view/{id}',[UserEnrollmentController::class,'index']);
+Route::post('home/get-all-vimeo-id',[UserEnrollmentController::class,'getVimeoId'])->name('get-all-vimeo-id');
 
 
 //Route::get('users/home/course_details/view/{id}',[CourseController::class,'index']);
