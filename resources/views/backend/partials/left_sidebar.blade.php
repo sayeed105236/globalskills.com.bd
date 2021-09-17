@@ -49,7 +49,13 @@
                 <span class="ttr-icon"><i class="fas fa-person-booth"></i></span>
                         <span class="ttr-label">Classroom Courses</span>
                       </a>
-                  </li>
+              </li>
+              <li>
+              <a href="{{route('manage-training-course')}}" class="ttr-material-button">
+                <span class="ttr-icon"><i class="fas fa-book-reader"></i></span>
+                        <span class="ttr-label">Training Without Exam Courses</span>
+                      </a>
+              </li>
               <li>
               <a href="{{route('user-lists')}}" class="ttr-material-button">
                 <span class="ttr-icon"><i class="fas fa-users"></i></span>
@@ -80,6 +86,11 @@
                                         <span class="ttr-label">Events</span>
                                       </a>
                                   </li>
+                                  <a href="{{route('bookings-list')}}" class="ttr-material-button">
+                                    <span class="ttr-icon"><i class="fas fa-folder-open"></i></span>
+                                            <span class="ttr-label">Classroom Course Booking</span>
+                                          </a>
+                                      </li>
                     <li>
           <a href="#" class="ttr-material-button">
             <span class="ttr-icon"><i class="ti-email"></i></span>
