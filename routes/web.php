@@ -44,6 +44,7 @@ Route::get('/', [MasteringController::class,'index'])->name('home');
 
 //Contact us Route
 Route::get('/contact_us', [ContactUsController::class,'contact'])->name('contact');
+Route::post('/contact_us/store', [ContactUsController::class,'Store'])->name('store-contact');
 Route::get('/about_us', [AboutController::class,'index'])->name('about');
 Route::get('/events', [EventController::class,'index'])->name('event');
 Route::get('/event_details', [EventController::class,'event_details'])->name('event_details');
@@ -66,7 +67,7 @@ Route::post('/add_to_carts', [CartController::class,'add_cart'])->name('add-cart
 Route::get('/carts/delete/{id}',[CartController::class,'deleteCart']);
 Route::get('/home/course/carts/payment',[PortwalletController::class,'index'])->name('payment');
 
-Route::post('/classroom_bookings', [BookingController::class,'StoreBooking'])->name('store-bookings');
+Route::post('/classroom_bookings', [BookingController::class,'StoreBooking'])->name('store-bookings')->middleware('is_admin');
 
 Auth::routes();
 

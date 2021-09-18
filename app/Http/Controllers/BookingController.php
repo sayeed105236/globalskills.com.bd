@@ -29,34 +29,22 @@ class BookingController extends Controller
                                   ->where('classroom_course_id',$request->classroom_course_id)
 
                                   ->first();
-          }else {
-            $booking= Booking::where('ip_address',request()->ip())
-
-                        ->where('classroom_course_id',$request->classroom_course_id)
-
-                        ->first();
           }
-                    if (!is_null($booking)) {
-                      //
 
-                    }else
-                    {
                       $booking = new Booking();
 
                       if (Auth::check()) {
                         $booking->user_id= Auth::id();
+                        $booking->classroom_course_id = $classroom_course_id;
+                        $booking->course_category_id= $course_category_id;
+                        $booking->ip_address= $ip_address;
+
+
+                        $booking->save();
+                          return back()->with('booking_added','You have booked the course successfully! You will get an email or phone after confirmation. For any queries call at +8801766343434');
+                      }else {
+                        return Redirect('login');
                       }
-                      $booking->classroom_course_id = $classroom_course_id;
-                      $booking->course_category_id= $course_category_id;
-                      $booking->ip_address= $ip_address;
-
-
-                      $booking->save();
-                    }
-
-
-
-        return back()->with('booking_added','You have booked the course successfully! You will get an email or phone after confirmation. For any queries call at +8801766343434');
 
       }
      public function BookingList()

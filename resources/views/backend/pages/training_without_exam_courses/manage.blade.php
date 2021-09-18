@@ -63,6 +63,39 @@
   </div>
 
 </div>
+@push('scripts')
+<script type="text/javascript">
+
+
+$('#saveBtn').click(function (e) {
+    e.preventDefault();
+    $(this).html('Save');
+    $.ajaxSetup({
+           headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           }
+     });
+
+    $.ajax({
+      data: $('#TrainingCourseAddForm').serialize(),
+      url: "{{ route('store-training-course') }}",
+      type: "POST",
+      //dataType: 'json',
+      success: function (data) {
+
+          $('#store-training-course').trigger("reset");
+          $('#TrainingCourseAddModal').modal('hide');
+          table.draw();
+
+      },
+      error: function (data) {
+          console.log('Error:', data);
+          $('#saveBtn').html('Save Changes');
+      }
+  });
+});
+</script>
+@endpush
 <script type="text/javascript">
 $(function () {
   $.ajaxSetup({
@@ -96,28 +129,7 @@ $(function () {
        $('#TrainingCourseAddModal').modal('show');
    });
 
-   $('#saveBtn').click(function (e) {
-       e.preventDefault();
-       $(this).html('Save');
 
-       $.ajax({
-         data: $('#TrainingCourseAddForm').serialize(),
-         url: "{{ route('store-training-course') }}",
-         type: "POST",
-         dataType: 'json',
-         success: function (data) {
-
-             $('#store-training-course').trigger("reset");
-             $('#TrainingCourseAddModal').modal('hide');
-             table.draw();
-
-         },
-         error: function (data) {
-             console.log('Error:', data);
-             $('#saveBtn').html('Save Changes');
-         }
-     });
-   });
 
 
 

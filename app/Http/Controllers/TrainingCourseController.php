@@ -35,7 +35,7 @@ class TrainingCourseController extends Controller
     }
     public function Store(Request $request)
     {
-
+      dd($request->all());
       $training_course = new TrainingCourse();
       $training_course->main_category_id= $request->main_category_id;
       $training_course->course_category_id=$request->course_category_id;

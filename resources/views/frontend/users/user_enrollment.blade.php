@@ -329,7 +329,7 @@
         //console.log(video_ids[0])
         var index = 0;
         var playNext = function () {
-            alert('next');
+          //  alert('n');
             player.pause();
             if (index <= video_ids.length)
                 player.loadVideo(video_ids[index++])
@@ -353,7 +353,7 @@
                         var minutes = parseInt(totalSec / 60) % 60;
                         var seconds = totalSec % 60;
 
-                        var result = (hours < 1 ? "" : hours + ":") + (minutes < 1 ? "0" : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds)
+                        var result = (hours < 1 ? "" : hours + ":") + (minutes < 1 ? "0" : minutes+' min') + " " + (seconds < 10 ? "0" + seconds : seconds+' seconds')
                         $('#'+item +' span').text(result)
                         console.log(result)
                     });

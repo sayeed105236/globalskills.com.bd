@@ -2,19 +2,12 @@
           <div class="container">
     <div class="row">
       <div class="col-md-12 heading-bx left">
-        <?php
-        $courses = App\Models\Course::all();
-
-         ?>
-         @foreach($courses as $row)
-
-         @if($row->id==1)
 
 
-        <h2 class="title-head">{{$row->main_category->mcategory_title}} <span>Courses</span></h2>
 
-        @endif
-        @endforeach
+        <h2 class="title-head">E-learning <span>Courses</span></h2>
+
+      
       </div>
     </div>
     <div class="row">
