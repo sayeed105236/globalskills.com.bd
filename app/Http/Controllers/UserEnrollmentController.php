@@ -24,7 +24,12 @@ class UserEnrollmentController extends Controller
         $sections= Section::where('course_id',$id)->get();
         $lessons= Lesson::where('course_id',$id)->get();
 
-        return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons'));
+        $vimeo_ids= Course::
+        leftJoin('lessons', 'courses.id', '=', 'lessons.course_id')
+            ->where('courses.id',$id)
+            ->get()->pluck('vimeo_id');
+
+        return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons','vimeo_ids'));
     }
 
     public function getVimeoId(Request $request){

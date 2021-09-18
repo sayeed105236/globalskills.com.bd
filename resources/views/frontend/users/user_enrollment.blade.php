@@ -116,9 +116,9 @@
                                   @endforeach--}}
 
                                 <div id="player"></div>
-                                <iframe src="https://player.vimeo.com/video/595181733" width="700" height="400"
-                                        frameborder="0" webkitallowfullscreen mozallowfullscreen
-                                        allowfullscreen allow="autoplay"></iframe>
+
+                               <iframe id="iframe" src="" width="700" height="400"
+                                        allowfullscreen  allow="autoplay"></iframe>
 
                             </div>
 
@@ -312,31 +312,59 @@
     <script src="https://player.vimeo.com/api/player.js"></script>
 
     <script>
-       // Switch to the video when a thumbnail is clicked
-       $('#thumbs a').click(function (event) {
-           event.preventDefault();
-           var vimeoid = $(this).attr('id');
-           console.log(vimeoid)
-           var iframe = document.querySelector('iframe');
-           var player = new Vimeo.Player(iframe);
-           //player.loadVideo(vimeoid)
-          // getVideo(this.href);
-           //return false;
-           player.on('loaded', function () {
-               player.play();
-           });
+        var iframe = document.querySelector('iframe');
+        //var a = $(this).attr('data-src');
+        var video_ids = <?php echo $vimeo_ids ?>;
+        $('#iframe').attr("src", 'https://player.vimeo.com/video/'+video_ids[0])
+        var embedOptions = {
+            autoplay: true,
+            muted: true
+        };
+        // iframe.allow = "autoplay";
+        // iframe.autoplay = "";
+        var player = new Vimeo.Player(iframe, embedOptions);
+        iframe.style.zIndex = 0;
 
-           player.on('ended', playNext);
 
-       });
+        //console.log(video_ids[0])
+        var index = 0;
+        var playNext = function () {
+            alert('next');
+            player.pause();
+            if (index <= video_ids.length)
+                player.loadVideo(video_ids[index++])
+        }
+        player.pause();
+        player.loadVideo(video_ids[index++]);
+        player.on('loaded', function () {
+            player.play();
+        });
 
-        /*function switchVideo(video) {
-            $('#embed').html(unescape(video.html));
-        }*/
+        player.on('ended', playNext);
+        video_ids.forEach(function(item) {
+            console.log(item, $('#'+item +'span'),'asd');
 
-    </script>
-    <script>
-        var course_id = '<?php echo $course->id ?>';
+            player.loadVideo(item).then(() => {
+                player.ready().then(() => {
+                    player.getDuration().then(function (data) {
+
+                        var totalSec = data;
+                        var hours = parseInt(totalSec / 3600) % 24;
+                        var minutes = parseInt(totalSec / 60) % 60;
+                        var seconds = totalSec % 60;
+
+                        var result = (hours < 1 ? "" : hours + ":") + (minutes < 1 ? "0" : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds)
+                        $('#'+item +' span').text(result)
+                        console.log(result)
+                    });
+                }).catch((err) => console.log(err));
+            })
+
+            // do something with `item`
+        });
+
+
+       /* var course_id = '';
         console.log(course_id)
         $.ajaxSetup({
             headers: {
@@ -344,54 +372,17 @@
             }
         });
         $.ajax({
-            url: '{{ route("get-all-vimeo-id") }}',
+            url: '',
             type: 'post',
             data: {'course_id': course_id },
             //dataType: "html",
             success: function (response) {
                 console.log(response)
 
-                var iframe = document.querySelector('iframe');
-                var player = new Vimeo.Player(iframe);
-                var video_ids = response;
-                var index = 0;
-                var playNext = function (data) {
-                    alert('next');
-                    player.pause();
-                    if (index <= video_ids.length)
-                        player.loadVideo(video_ids[index++])
-                }
-                player.pause();
-                player.loadVideo(video_ids[index++]);
-                player.on('loaded', function () {
-                    player.play();
-                });
 
-                player.on('ended', playNext);
-                response.forEach(function(item) {
-                    console.log(item, $('#'+item +'span'),'asd');
-
-                    player.loadVideo(item).then(() => {
-                        player.ready().then(() => {
-                            player.getDuration().then(function (data) {
-
-                                var totalSec = data;
-                                var hours = parseInt(totalSec / 3600) % 24;
-                                var minutes = parseInt(totalSec / 60) % 60;
-                                var seconds = totalSec % 60;
-
-                                var result = (hours < 1 ? "" : hours + ":") + (minutes < 1 ? "0" : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds)
-                                $('#'+item +' span').text(result)
-                                console.log(result)
-                            });
-                        }).catch((err) => console.log(err));
-                    })
-
-                    // do something with `item`
-                });
 
             }
-        });
+        });*/
 
 
         /*var iframe = document.querySelector('iframe');
@@ -405,7 +396,22 @@
             console.log('title:', title);
         });*/
 
+       // Switch to the video when a thumbnail is clicked
+       $('#thumbs a').click(function (event) {
+           event.preventDefault();
+           var vimeoid = $(this).attr('id');
+           //console.log(vimeoid)
+           player.loadVideo(vimeoid)
+
+           player.on('loaded', function () {
+               player.play();
+           });
+
+           player.on('ended', playNext);
+
+       });
 
     </script>
+
     @endpush
 @endsection
