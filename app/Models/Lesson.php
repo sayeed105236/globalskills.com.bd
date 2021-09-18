@@ -14,10 +14,11 @@ class Lesson extends Model
 
     protected $table ="lessons";
     public function course(){
-      return $this->belongsTo(Course::class, 'course_id');
+      return $this->belongsTo(Course::class, 'course_id','id');
     }
 
     public function section(){
       return $this->belongsTo(Section::class);
     }
+
 }

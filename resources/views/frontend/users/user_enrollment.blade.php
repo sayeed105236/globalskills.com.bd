@@ -70,7 +70,8 @@
                                                                                     @if(count($section->lessons) > 0)
                                                                                         @foreach($section->lessons as $lesson)
                                                                                             <li>
-                                                                                                <a class="font-weight-bold" id="{{$lesson->vimeo_id}}" >{{$lesson->lesson_title}}</a>
+                                                                                                <a class="font-weight-bold" id="{{$lesson->vimeo_id}}" >
+                                                                                                    {{$lesson->lesson_title}} <span></span></a>
                                                                                             </li>
                                                                                             {{--<div class="curriculum-list-box">
                                                                                                 <div class="row">
@@ -172,6 +173,7 @@
                                 <div class="instructor-author">
                                     <img src="{{ asset('images/testimonials/pic1.jpg')}}" alt="">
                                 </div>
+
                                 <div class="instructor-info">
                                     <h6>{{$course->course_details->instructor_id}}</h6>
                                     <span>Professor</span>
@@ -308,67 +310,6 @@
     </div>
 @push('scripts')
     <script src="https://player.vimeo.com/api/player.js"></script>
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: '{{ route("get-all-vimeo-id") }}',
-            type: 'post',
-            data: {'id': id },
-            //dataType: "html",
-            success: function (response) {
-                console.log(response)
-
-                if(response.success === true){
-                    //alert("success on query!");
-                    $("#modalAddTrainee").modal('hide')
-                    //call added trainees function
-                    $('#addedTrainees-table').dataTable().fnDestroy();
-                    //$('#trainingcalendars-table').dataTable().fnDestroy();
-                    $('input:checkbox').each(function() { this.checked = false; });
-                    $('#warning-div').hide();
-                    $('#success-div').show();
-                    $("#success-text").text('Added Successfully!');
-                    addedTrainees();
-                }else if(response.success === false){
-                    alert("Cross the trainee add limit");
-                }
-
-            }
-        });
-
-        /*var iframe = document.querySelector('iframe');
-        var player = new Vimeo.Player(iframe);
-
-        player.on('play', function() {
-            console.log('played the video!');
-        });
-
-        player.getVideoTitle().then(function(title) {
-            console.log('title:', title);
-        });*/
-
-        var iframe = document.querySelector('iframe');
-        var player = new Vimeo.Player(iframe);
-        var video_ids = ['595179458', '595181733'];
-        var index = 0;
-        var playNext = function (data) {
-            alert('next');
-            player.pause();
-            if (index <= video_ids.length)
-                player.loadVideo(video_ids[index++])
-        }
-        player.pause();
-        player.loadVideo(video_ids[index++]);
-        player.on('loaded', function () {
-            player.play();
-        });
-
-        player.on('ended', playNext);
-    </script>
 
     <script>
        // Switch to the video when a thumbnail is clicked
@@ -387,16 +328,83 @@
 
            player.on('ended', playNext);
 
-           player.loadVideo(vimeoid).then(() => {
-               player.ready().then(() => {
-                   player.getDuration().then((data) => console.log(data));
-               }).catch((err) => console.log(err));
-           })
        });
 
         /*function switchVideo(video) {
             $('#embed').html(unescape(video.html));
         }*/
+
+    </script>
+    <script>
+        var course_id = '<?php echo $course->id ?>';
+        console.log(course_id)
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '{{ route("get-all-vimeo-id") }}',
+            type: 'post',
+            data: {'course_id': course_id },
+            //dataType: "html",
+            success: function (response) {
+                console.log(response)
+
+                var iframe = document.querySelector('iframe');
+                var player = new Vimeo.Player(iframe);
+                var video_ids = response;
+                var index = 0;
+                var playNext = function (data) {
+                    alert('next');
+                    player.pause();
+                    if (index <= video_ids.length)
+                        player.loadVideo(video_ids[index++])
+                }
+                player.pause();
+                player.loadVideo(video_ids[index++]);
+                player.on('loaded', function () {
+                    player.play();
+                });
+
+                player.on('ended', playNext);
+                response.forEach(function(item) {
+                    console.log(item, $('#'+item +'span'),'asd');
+
+                    player.loadVideo(item).then(() => {
+                        player.ready().then(() => {
+                            player.getDuration().then(function (data) {
+
+                                var totalSec = data;
+                                var hours = parseInt(totalSec / 3600) % 24;
+                                var minutes = parseInt(totalSec / 60) % 60;
+                                var seconds = totalSec % 60;
+
+                                var result = (hours < 1 ? "" : hours + ":") + (minutes < 1 ? "0" : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds)
+                                $('#'+item +' span').text(result)
+                                console.log(result)
+                            });
+                        }).catch((err) => console.log(err));
+                    })
+
+                    // do something with `item`
+                });
+
+            }
+        });
+
+
+        /*var iframe = document.querySelector('iframe');
+        var player = new Vimeo.Player(iframe);
+
+        player.on('play', function() {
+            console.log('played the video!');
+        });
+
+        player.getVideoTitle().then(function(title) {
+            console.log('title:', title);
+        });*/
+
 
     </script>
     @endpush

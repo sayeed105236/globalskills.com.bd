@@ -30,10 +30,11 @@ class Course extends Model
 
      return $this->hasMany(Section::class);
     }
-   /* public function lesson(){
+    public function lessons(){
 
-     return $this->belongsTo(Lesson::class,'section_id','course_id');
-    }*/
+     return $this->hasMany(Lesson::class,'course_id','id');
+    }
+
 
 
 }

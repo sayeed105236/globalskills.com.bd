@@ -16,7 +16,6 @@ class UserEnrollmentController extends Controller
 
     {
 
-
         $course_categories= CourseCategory::all();
         $main_categories= MainCategory::all();
         $course= Course::find($id);
@@ -29,7 +28,12 @@ class UserEnrollmentController extends Controller
     }
 
     public function getVimeoId(Request $request){
-        dd($request);
+        //dd($request->course_id);
+       return $course= Course::
+            leftJoin('lessons', 'courses.id', '=', 'lessons.course_id')
+            ->where('courses.id',$request->course_id)
+            ->get()->pluck('vimeo_id');
+        //dd($course);
     }
 
 
