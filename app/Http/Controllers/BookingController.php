@@ -59,11 +59,13 @@ class BookingController extends Controller
         return back()->with('booking_added','You have booked the course successfully! You will get an email or phone after confirmation. For any queries call at +8801766343434');
 
       }
-    //  public function deleteCart($id)
-      //{
-      //  $cart = Cart::find($id);
+     public function BookingList()
+      {
+       $bookings = Booking::orderBy('id','DESC')->get();
+       $data= Booking::paginate(10);
 
-    //    $cart->delete();
-      //  return back()->with('cart_deleted','Course has been deleted from cart successfully!');
-    //  }
+
+      return view('backend.pages.booking_list',compact('bookings','data'));
+      }
+
 }

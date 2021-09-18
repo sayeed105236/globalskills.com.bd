@@ -24,6 +24,7 @@ use App\Http\Controllers\PortwalletController;
 use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminEventController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\TrainingCourseController;
 
 
 
@@ -180,3 +181,12 @@ Route::post('/admin/home/events/store', [AdminEventController::class, 'Store'])-
 middleware('is_admin');
 Route::get('/admin/home/events/delete/{id}', [AdminEventController::class, 'Delete'])->
 middleware('is_admin');
+
+
+//admin add course without exam
+
+Route::get('/admin/home/training_without_exam_courses/manage', [TrainingCourseController::class, 'Manage'])->name('manage-training-course')->
+middleware('is_admin');
+Route::post('/admin/home/training_without_exam_courses/store', [TrainingCourseController::class, 'Store'])->name('store-training-course')->
+middleware('is_admin');
+Route::get('/admin/home/classroom_bookings', [BookingController::class,'BookingList'])->name('bookings-list')->middleware('is_admin');
