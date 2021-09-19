@@ -62,8 +62,8 @@
                 <th>Images</th>
                 <th>Main Category</th>
                 <th>Course Category</th>
-                <th>Exam Fee</th>
-                <th>Training Fee</th>
+                <th>Regular Price</th>
+                <th>Sale Price</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>

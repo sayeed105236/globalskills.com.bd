@@ -7,7 +7,7 @@
 
         <h2 class="title-head">E-learning <span>Courses</span></h2>
 
-      
+
       </div>
     </div>
     <div class="row">
@@ -51,7 +51,7 @@
             </div>
             <div class="price">
               <del>{{$row->regular_price}}৳</del>
-              <h5>{{$row->sale_price}}৳</h5>
+              <h5 style="color:#ca2128;">{{$row->sale_price}}৳</h5>
             </div>
           </div>
         </div>

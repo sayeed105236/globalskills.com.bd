@@ -68,13 +68,13 @@
 
             </ul>
           </li>
-          <li class="add-mega-menu"><a href="{{route('courses')}}">E-learning Courses</a>
+        <!--  <li class="add-mega-menu"><a href="{{route('courses')}}">E-learning Courses</a>-->
 
           </li>
           <li class="add-mega-menu"><a href="{{route('classroom-courses')}}">Classroom Courses</a>
 
           </li>
-        
+
 
         </ul>
         <div class="nav-social-link">

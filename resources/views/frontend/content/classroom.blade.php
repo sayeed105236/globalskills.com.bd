@@ -40,13 +40,19 @@
           </div>
           <div class="cours-more-info">
             <div class="review">
-              <span></span>
-              <h7>Exam Fee</h7>
-            <h5>{{$row->exam_fee}}৳</h5>
+              <span>Review</span>
+              <ul class="cours-star">
+                <li class="active"><i class="fa fa-star"></i></li>
+                <li class="active"><i class="fa fa-star"></i></li>
+                <li class="active"><i class="fa fa-star"></i></li>
+                <li class="active"><i class="fa fa-star"></i></li>
+                <li class="active"><i class="fa fa-star"></i></li>
+
+              </ul>
             </div>
             <div class="price">
-                <h7>Training Fee</h7>
-              <h5>{{$row->training_fee}}৳</h5>
+              <del>{{$row->exam_fee}}৳</del>
+              <h5 style="color:#ca2128;">{{$row->training_fee}}৳</h5>
             </div>
           </div>
         </div>

@@ -50,12 +50,12 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="training_fee">Training Fee</label>
+              <label for="training_fee">Regular Price</label>
               <input type="number" class="form-control" name="training_fee" aria-describedby="training_fee" placeholder="Enter Training Fee">
 
             </div>
             <div class="form-group">
-              <label for="sale_price">Exam Fee</label>
+              <label for="sale_price">Sale Price</label>
               <input type="number" class="form-control" name="exam_fee" aria-describedby="exam_fee" placeholder="Enter Exam Fee">
 
             </div>

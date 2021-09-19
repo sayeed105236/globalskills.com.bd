@@ -30,88 +30,40 @@
 <!-- Page Content Box ==== -->
 <div class="content-block">
         <!-- About Us ==== -->
-  <!--<div class="section-area section-sp1">
-            <div class="container">
-       <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-6 m-b30">
-          <div class="feature-container">
-            <div class="feature-md text-white m-b20">
-              <a href="#" class="icon-cell"><img src="{{ asset('images/icon/icon1.png')}}" alt=""/></a>
-            </div>
-            <div class="icon-content">
-              <h5 class="ttr-tilte">Our Philosophy</h5>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod..</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6 m-b30">
-          <div class="feature-container">
-            <div class="feature-md text-white m-b20">
-              <a href="#" class="icon-cell"><img src="{{ asset('images/icon/icon2.png')}}" alt=""/></a>
-            </div>
-            <div class="icon-content">
-              <h5 class="ttr-tilte">Kingster's Principle</h5>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod..</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6 m-b30">
-          <div class="feature-container">
-            <div class="feature-md text-white m-b20">
-              <a href="#" class="icon-cell"><img src="{{ asset('images/icon/icon3.png')}}" alt=""/></a>
-            </div>
-            <div class="icon-content">
-              <h5 class="ttr-tilte">Key Of Success</h5>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod..</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6 m-b30">
-          <div class="feature-container">
-            <div class="feature-md text-white m-b20">
-              <a href="#" class="icon-cell"><img src="{{ asset('images/icon/icon4.png')}}" alt=""/></a>
-            </div>
-            <div class="icon-content">
-              <h5 class="ttr-tilte">Our Philosophy</h5>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod..</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>-->
+
   <!-- About Us END ==== -->
         <!-- Our Story ==== -->
-<!--  <div class="section-area bg-gray section-sp1 our-story">
+  <div class="section-area bg-gray section-sp1 our-story">
     <div class="container">
       <div class="row align-items-center d-flex">
         <div class="col-lg-5 col-md-12 heading-bx">
-          <h2 class="m-b10">Our Story</h2>
-          <h5 class="fw4">It is a long established fact that a reade.</h5>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-          <a href="#" class="btn">Read More</a>
+          <h2 class="m-b10">Why Global Skills Development Agency?</h2>
+
+          <p></p>
+          <p>1. Our Participants doing better in Career</p>
+          <p>2. Most satisfaction rating  in Google reviews by your colleagues and friends</p>
+          <p>3. Highest Passing rate in world most difficult Exams</p>
+          <p>4. Only Authorized Training Organization with Internationally Accredited Trainers, Training Materials from Global Authority</p>
+
         </div>
-        <div class="col-lg-7 col-md-12 heading-bx p-lr">
-          <div class="video-bx">
-            <img src="{{ asset('images/about/pic1.jpg')}}" alt=""/>
-            <a href="https://www.youtube.com/watch?v=x_sJzVe9P_8" class="popup-youtube video"><i class="fa fa-play"></i></a>
-          </div>
+          <div class="col-lg-5 col-md-12 heading-bx">
+        <iframe width="700" height="420" src="https://www.youtube.com/embed/slyY95bNF8E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
     </div>
-  </div>-->
+  </div>
   <!-- Our Story END ==== -->
   <!-- Our Status ==== -->
-<!--  <div class="section-area content-inner section-sp1">
+  <div class="section-area content-inner section-sp1">
             <div class="container">
                 <div class="section-content">
                      <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6 m-b30">
                             <div class="counter-style-1">
                                 <div class="text-primary">
-                <span class="counter">3000</span><span>+</span>
+                <span class="counter">100</span><span>+</span>
               </div>
-              <span class="counter-text">Completed Projects</span>
+              <span class="counter-text">Courses</span>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6 m-b30">
@@ -122,45 +74,47 @@
               <span class="counter-text">Happy Clients</span>
             </div>
                         </div>
+
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6 m-b30">
                             <div class="counter-style-1">
               <div class="text-primary">
-                <span class="counter">1500</span><span>+</span>
+                <span class="counter">500</span><span>+</span>
               </div>
-              <span class="counter-text">Questions Answered</span>
+              <span class="counter-text">Reviews</span>
             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6 m-b30">
                             <div class="counter-style-1">
               <div class="text-black">
-                <span class="counter">1000</span><span>+</span>
+                <span class="counter">100</span><span>+</span>
               </div>
-              <span class="counter-text">Ordered Coffee's</span>
+              <span class="counter-text">Countries</span>
             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>-->
+        </div>
   <!-- Our Status END ==== -->
   <!-- About Content ==== -->
-<!--  <div class="section-area section-sp2 bg-fix ovbl-dark join-bx text-center" style="background-image:url({{ asset('images/background/bg1.jpg')}});">
+  <div class="section-area section-sp2 bg-fix ovbl-dark join-bx text-center" style="background-image:url({{ asset('images/background/bg1.jpg')}});">
             <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="join-content-bx text-white">
             <h2>Learn a new skill online on <br/> your time</h2>
-            <h4><span class="counter">57,000 </span> Online Courses</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-            <a href="#" class="btn button-md">Join Now</a>
+            <h4><span class="counter">100 </span> Online Courses</h4>
+            <br>
+
+            <a href="{{route('register')}}" class="btn button-md">Join Now</a>
           </div>
         </div>
       </div>
     </div>
-  </div>-->
+  </div>
   <!-- About Content END ==== -->
   <!-- Testimonials ==== -->
-<!--  <div class="section-area section-sp2">
+  <!--<div class="section-area section-sp2">
     <div class="container">
       <div class="row">
         <div class="col-md-12 heading-bx left">
@@ -204,6 +158,7 @@
 </div>
 <!-- Page Content Box END ==== -->
 </div>
+<br>
 <!-- Inner Content Box END ==== -->
 <!-- Content END-->
 

@@ -30,7 +30,7 @@
                             </p>
           <p class="text-capitalize m-b20">
 
- used under permission of AXELOS Limited. All rights reserved.
+              used under permission of AXELOS Limited. All rights reserved.
 
 </p>
                         <div class="subscribe-form m-b20">
@@ -65,7 +65,7 @@
             <div class="widget footer_widget">
               <h5 class="footer-title">Courses</h5>
               <ul>
-                <li><a href="{{route('courses')}}">E-learning Courses</a></li>
+              <!--  <li><a href="{{route('courses')}}">E-learning Courses</a></li>-->
                 <li><a href="{{route('classroom-courses')}}">Classroom Courses</a></li>
                 <li><a href="#">Mocktest</a></li>
 
@@ -78,14 +78,13 @@
                     <div class="widget widget_gallery gallery-grid-4">
                         <h5 class="footer-title">Our Gallery</h5>
                         <ul class="magnific-image">
-            <li><a href="{{ asset('images/gallery/pic1.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/pic1.jpg')}}" alt=""></a></li>
-            <li><a href="{{ asset('images/gallery/pic2.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/pic2.jpg')}}" alt=""></a></li>
-            <li><a href="{{ asset('images/gallery/pic3.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/pic3.jpg')}}" alt=""></a></li>
-            <li><a href="{{ asset('images/gallery/pic4.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/pic4.jpg')}}" alt=""></a></li>
-            <li><a href="{{ asset('images/gallery/pic5.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/pic5.jpg')}}" alt=""></a></li>
-            <li><a href="{{ asset('images/gallery/pic6.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/pic6.jpg')}}" alt=""></a></li>
-            <li><a href="{{ asset('images/gallery/pic7.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/pic7.jpg')}}" alt=""></a></li>
-            <li><a href="{{ asset('images/gallery/pic8.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/pic8.jpg')}}" alt=""></a></li>
+            <li><a href="{{ asset('images/gallery/1.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/1.jpg')}}" alt=""></a></li>
+            <li><a href="{{ asset('images/gallery/2.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/2.jpg')}}" alt=""></a></li>
+            <li><a href="{{ asset('images/gallery/3.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/3.jpg')}}" alt=""></a></li>
+            <li><a href="{{ asset('images/gallery/4.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/4.jpg')}}" alt=""></a></li>
+            <li><a href="{{ asset('images/gallery/5.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/5.jpg')}}" alt=""></a></li>
+            <li><a href="{{ asset('images/gallery/6.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/6.jpg')}}" alt=""></a></li>
+
           </ul>
                     </div>
                 </div>

@@ -144,7 +144,7 @@ Route::get('admin/home/classroom/courses/delete/{id}',[ClassroomCourseController
 
 
 // Frontend routes for classroom
-Route::get('/home/classroom/course_details/{id}', [FrontendController::class,'course_details_frontend'])->name('classroom-course-details');
+Route::get('/home/classroom/course_details/{classroom_course_title}', [FrontendController::class,'course_details_frontend'])->name('classroom-course-details');
 Route::get('/home/classroom/course_details/booking/{id}', [FrontendController::class,'classroom_course_booking']);
 
 //admin add classroom course details

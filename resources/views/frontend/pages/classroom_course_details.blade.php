@@ -54,10 +54,8 @@
         <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
           <div class="course-detail-bx">
             <div class="course-price">
-              <h6>Training Fee</h6>
-              <h4 class="price">{{$classroom_course->training_fee}}৳</h4>
-              <h6>Exam Fee</h6>
-              <h4 class="price">{{$classroom_course->exam_fee}}৳</h4>
+              <del>{{$classroom_course->exam_fee}}৳</del>
+              <h4 class="price" style="color:#ca2128;">{{$classroom_course->training_fee}}৳</h4>
             </div>
             <div class="course-buy-now text-center">
               <form class="hidden" action="{{route('store-bookings')}}" method="post">

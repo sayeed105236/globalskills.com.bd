@@ -54,8 +54,8 @@
                                                                         aria-expanded="true"
                                                                         aria-controls="collapse{{$section->id}}"
                                                                     >
-                                                                        <h5 class="curriculum-list"
-                                                                            style="color:#ca2128; text-transform:uppercase;"> {{$section->section_name}} </h5>
+                                                                        <h6 class="curriculum-list"
+                                                                            style="color:#ca2128;">{{$loop->index+1}}. {{$section->section_name}} </h6>
                                                                     </div>
 
                                                                     <div
@@ -69,22 +69,10 @@
                                                                                 <ul>
                                                                                     @if(count($section->lessons) > 0)
                                                                                         @foreach($section->lessons as $lesson)
-                                                                                            <li>
-                                                                                                <a class="font-weight-bold" id="{{$lesson->vimeo_id}}" >
-                                                                                                    {{$lesson->lesson_title}} <span></span></a>
-                                                                                            </li>
-                                                                                            {{--<div class="curriculum-list-box">
-                                                                                                <div class="row">
-                                                                                                    <div class="col">
-                                                                                                        <span></span>
-
-                                                                                                        <a class="font-weight-bold" href="https://vimeo.com/595181733" data-target="">{{$lesson->lesson_title}}</a>
-                                                                                                    </div>
-                                                                                                    <div class="col">
-                                                                                                        <span>120 minutes</span>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>--}}
+                                                                                            <ul>
+                                                                                                <a href="#" class="font-weight-bold" id="{{$lesson->vimeo_id}}" >
+                                                                                                {{$loop->index+1}}.    {{$lesson->lesson_title}} <br> <span></span></a>
+                                                                                            </ul>
 
                                                                                         @endforeach
                                                                                     @endif
@@ -109,11 +97,7 @@
                     <div class="col-lg-8 col-md-8 col-sm-12">
                         <div class="courses-post">
                             <div class="ttr-post-media media-effect">
-                                {{--@foreach($lessons as $lesson)
 
-                    <div data-vimeo-id="{{$lesson->vimeo_id}}" data-vimeo-width="700" data-vimeo-height="400" id="{{$lesson->id}}"></div>
-                                      <iframe src="https://player.vimeo.com/video/{{$lesson->id}}" width="{video_width}" height="{video_height}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                  @endforeach--}}
 
                                 <div id="player"></div>
 
@@ -167,7 +151,7 @@
                             </div>
                         </div>
 
-                        <div class="" id="instructor">
+                      <!--  <div class="" id="instructor">
                             <h4>Instructor</h4>
                             <div class="instructor-bx">
                                 <div class="instructor-author">
@@ -300,7 +284,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
 
@@ -329,7 +313,7 @@
         //console.log(video_ids[0])
         var index = 0;
         var playNext = function () {
-          //  alert('n');
+           alert('next video');
             player.pause();
             if (index <= video_ids.length)
                 player.loadVideo(video_ids[index++])

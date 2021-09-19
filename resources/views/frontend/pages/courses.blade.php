@@ -86,7 +86,7 @@
           <div class="row">
             @foreach($courses as $row)
             @if($row->status==1)
-            @if($row->main_category->id==1)
+            @if($row->main_category->id==4)
             <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
               <div class="cours-bx">
                 <div class="action-box">
