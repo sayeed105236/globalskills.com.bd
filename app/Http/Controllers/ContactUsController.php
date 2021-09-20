@@ -43,6 +43,7 @@ Message: $msg
 
        $receiver = "sayeed@globalskills.com.bd";
        Mail::to($receiver)->send(new ContactMail($msg));
+      
        return response()->json(['code' => 200, 'msg' => 'Thanks for contacting us, we will get back to you soon.']);
    }
 }

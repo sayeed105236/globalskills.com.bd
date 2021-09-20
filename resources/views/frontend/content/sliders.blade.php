@@ -61,8 +61,8 @@
             data-hoffset="['0','0','0','0']"
             data-y="['top','top','top','top']"
             data-voffset="['250','250','250','240']"
-            data-fontsize="['30','30','30','30']"
-            data-lineheight="['55','55','55','35']"
+            data-fontsize="['20','20','20','20']"
+            data-lineheight="['70','70','70','70']"
             data-width="full"
             data-height="none"
             data-whitespace="normal"
@@ -80,6 +80,9 @@
           </div>
 
           <!-- LAYER NR. 3 -->
+
+
+
           <div class="tp-caption Newspaper-Subtitle   tp-resizeme"
             id="slide-100-layer-3"
             data-x="['center','center','center','center']"
@@ -89,6 +92,7 @@
             data-width="none"
             data-height="none"
             data-whitespace="nowrap"
+              data-lineheight="['70','70','70','70']"
             data-type="text"
             data-responsive_offset="on"
             data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
@@ -97,9 +101,10 @@
             data-paddingright="[0,0,0,0]"
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
-            style="z-index: 7; white-space: nowrap; color:#fff; font-family:rubik; font-size:18px; font-weight:400;">
+            style="z-index: 7; white-space: nowrap; color:#fff; font-family:rubik; font-size:15px; font-weight:400;">
               Learn on your Schedule
           </div>
+
 
           <!-- LAYER NR. 3 -->
           <div class="tp-caption Newspaper-Subtitle   tp-resizeme"
@@ -120,6 +125,7 @@
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
             style="z-index: 7; text-transform:capitalize; white-space: unset; color:#fff; font-family:rubik; font-size:18px; line-height:28px; font-weight:400;">
+            <div class="container" style="margin-top:30px;">
             <form class="cours-search">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="What do you want to learn today?	">
@@ -128,6 +134,7 @@
                 </div>
               </div>
             </form>
+            <div>
           </div>
           <!-- LAYER NR. 4 -->
 
@@ -190,8 +197,8 @@
             data-hoffset="['0','0','0','0']"
             data-y="['top','top','top','top']"
             data-voffset="['250','250','250','240']"
-            data-fontsize="['30','30','30','30']"
-            data-lineheight="['55','55','55','35']"
+            data-fontsize="['20','20','20','20']"
+            data-lineheight="['70','70','70','70']"
             data-width="full"
             data-height="none"
             data-whitespace="normal"
@@ -216,6 +223,7 @@
             data-voffset="['210','210','210','210']"
             data-width="none"
             data-height="none"
+            data-lineheight="['70','70','70','70']"
             data-whitespace="nowrap"
             data-type="text"
             data-responsive_offset="on"
@@ -225,9 +233,10 @@
             data-paddingright="[0,0,0,0]"
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
-            style="z-index: 7; white-space: nowrap; color:#fff; font-family:rubik; font-size:18px; font-weight:400;">
+            style="z-index: 7; white-space: nowrap; color:#fff; font-family:rubik; font-size:15px; font-weight:400;">
               Learn on your Schedule
           </div>
+
           <!-- LAYER NR. 3 -->
           <div class="tp-caption Newspaper-Subtitle   tp-resizeme"
             id="slide-200-layer-4"
@@ -247,8 +256,10 @@
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
             style="z-index: 7; text-transform:capitalize; white-space: unset; color:#fff; font-family:rubik; font-size:18px; line-height:28px; font-weight:400;">
+            <div class="container" style="margin-top:30px;">
 
-            <form class="cours-search">
+
+            <form class="cours-search" >
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="What do you want to learn today?	">
                 <div class="input-group-append">
@@ -256,6 +267,7 @@
                 </div>
               </div>
             </form>
+            </div>
           </div>
 
           <!-- LAYER NR. 4 -->

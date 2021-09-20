@@ -65,7 +65,7 @@
             <div class="widget footer_widget">
               <h5 class="footer-title">Courses</h5>
               <ul>
-              <!--  <li><a href="{{route('courses')}}">E-learning Courses</a></li>-->
+               <li><a href="{{route('courses')}}">E-learning Courses</a></li>
                 <li><a href="{{route('classroom-courses')}}">Classroom Courses</a></li>
                 <li><a href="#">Mocktest</a></li>
 

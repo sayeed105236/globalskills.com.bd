@@ -13,13 +13,13 @@
   @include('frontend.content.inner_service')
 
   <!-- E-learning Courses -->
-  <!--@include('frontend.content.e-learning')-->
+  @include('frontend.content.e-learning')
   <!-- E-learning Courses END -->
 
   <!-- Classroom -->
   @include('frontend.content.classroom')
   <!-- Classroom -->
-<!--  @include('frontend.content.training_without_exam')-->
+  @include('frontend.content.training_without_exam')
   @include('frontend.content.accreditation')
 
   <!-- Mock Test -->

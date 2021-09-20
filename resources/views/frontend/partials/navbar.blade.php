@@ -15,7 +15,7 @@
                 <div class="secondary-menu">
                     <div class="secondary-inner">
                         <ul>
-                          <i class="fas fa-cart-plus"></i>
+
 
             <li><a href="https://www.facebook.com/globalskillsbd" class="btn-link"><i class="fa fa-facebook"></i></a></li>
             <li><a href="https://twitter.com/gsdabd?lang=en" class="btn-link"><i class="fa fa-twitter"></i></a></li>
@@ -68,7 +68,7 @@
 
             </ul>
           </li>
-        <!--  <li class="add-mega-menu"><a href="{{route('courses')}}">E-learning Courses</a>-->
+         <li class="add-mega-menu"><a href="{{route('courses')}}">E-learning Courses</a>
 
           </li>
           <li class="add-mega-menu"><a href="{{route('classroom-courses')}}">Classroom Courses</a>

@@ -4,14 +4,7 @@
       <div class="col-md-12 text-center text-white">
         <h2>Online Courses To Learn</h2>
         <h5>Own Your Feature Learning New Skills Online</h5>
-        <form class="cours-search">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="What do you want to learn today?	">
-            <div class="input-group-append">
-              <button class="btn" type="submit">Search</button>
-            </div>
-          </div>
-        </form>
+      <iframe width="460" height="215" src="https://www.youtube.com/embed/slyY95bNF8E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   <!--  <div class="mw800 m-auto">
