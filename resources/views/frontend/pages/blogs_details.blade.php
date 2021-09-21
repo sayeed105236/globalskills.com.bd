@@ -55,7 +55,7 @@
                 <div class="col-lg-6 col-xl-6">
                   <div class="service-bx">
                     <div class="action-box">
-                      <img src="{{ asset('images/blog/default/thum1.jpg')}}" alt="">
+                    <iframe width="350" height="210" src="https://www.youtube.com/embed/wjZTzFAmQeQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                     </div>
 

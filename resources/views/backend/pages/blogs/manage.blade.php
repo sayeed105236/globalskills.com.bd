@@ -101,7 +101,7 @@
 
 
                 <td>
-                  <a href="#"><i class="fas fa-file-upload"></i></a>
+                  <a href="/admin/home/blogs/details/{{$row->id}}"><i class="fas fa-file-upload"></i></a>
                   <a href="#"><i class="fas fa-edit"></i></a>
 
                   <a href="/admin/home/deleteBlog/{{$row->id}}"><i class="fas fa-trash"></i></a>

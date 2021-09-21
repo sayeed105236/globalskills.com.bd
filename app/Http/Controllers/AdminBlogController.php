@@ -100,5 +100,41 @@ class AdminBlogController extends Controller
 
     return back()->with('blog_deleted','Blog has been deleted successfully!');
 }
+    public function BlogDetails($id)
+    {
+
+      $blogs=AdminBlog::find($id);
+      return view('backend.pages.blogs.blogs_details',compact('blogs'));
+    }
+    public function BlogSubTitle($id)
+    {
+
+      $blogs=AdminBlog::find($id);
+      return view('backend.pages.blogs.blogs_subtitle_info',compact('blogs'));
+    }
+    public function BlogMedia($id)
+    {
+
+      $blogs=AdminBlog::find($id);
+      return view('backend.pages.blogs.media',compact('blogs'));
+    }
+    public function LearningOutcomes($id)
+    {
+
+      $blogs=AdminBlog::find($id);
+      return view('backend.pages.blogs.learning_outcomes',compact('blogs'));
+    }
+    public function Benifits($id)
+    {
+
+      $blogs=AdminBlog::find($id);
+      return view('backend.pages.blogs.benifit',compact('blogs'));
+    }
+    public function Need($id)
+    {
+
+      $blogs=AdminBlog::find($id);
+      return view('backend.pages.blogs.need',compact('blogs'));
+    }
 
 }
