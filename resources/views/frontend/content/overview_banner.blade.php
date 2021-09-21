@@ -4,7 +4,7 @@
       <div class="col-md-12 text-center text-white">
         <h2>Online Courses To Learn</h2>
         <h5>Own Your Feature Learning New Skills Online</h5>
-      <iframe width="460" height="215" src="https://www.youtube.com/embed/slyY95bNF8E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe class="col-md-4 text-center text-white" width="460" height="215" src="https://www.youtube.com/embed/slyY95bNF8E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   <!--  <div class="mw800 m-auto">

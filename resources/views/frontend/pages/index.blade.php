@@ -19,7 +19,7 @@
   <!-- Classroom -->
   @include('frontend.content.classroom')
   <!-- Classroom -->
-  @include('frontend.content.training_without_exam')
+  <!--@include('frontend.content.training_without_exam')-->
   @include('frontend.content.accreditation')
 
   <!-- Mock Test -->

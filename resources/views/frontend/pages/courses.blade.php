@@ -95,7 +95,7 @@
                     @csrf
                     <input type="hidden" name="course_id" value="{{$row->id}}">
 
-                    <button  class="btn">Add to Cart</button>
+                    <button  class="btn"><i class="fa fa-shopping-cart"></i></button>
                   </form>
                 </div>
                 <div class="info-bx text-center">
