@@ -43,7 +43,7 @@ class BookingController extends Controller
                         $booking->save();
                           return back()->with('booking_added','You have booked the course successfully! You will get an email or phone after confirmation. For any queries call at +8801766343434');
                       }else {
-                        return Redirect('login');
+                        return Redirect('register');
                       }
 
       }

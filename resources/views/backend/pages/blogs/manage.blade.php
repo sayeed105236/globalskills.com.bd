@@ -23,7 +23,7 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Blogs</h4>
-          <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#BlogsAddModal"><i class="fas fa-plus-circle"></i></a>
+          <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#BlogsAddModal"><i class="fas fa-plus-circle"></i></a>
           @include('backend.modals.blogsaddmodal')
         </div>
 

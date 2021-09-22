@@ -43,7 +43,7 @@
                 <li><a href="#"><i class="fa fa-calendar"></i>May 14 2019</a></li>
                 <li><a href="#"><i class="fa fa-comments-o"></i>10 Comment</a></li>
               </ul>
-              <h5 class="post-title" style="color:#ca2128;">Title</h5>
+              <h1 class="post-title" style="color:#ca2128;">Title</h1>
               <p>Short Description</p>
 
               <h5 class="post-title"style="color:#ca2128;">Sub Title</h5>

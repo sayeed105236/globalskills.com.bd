@@ -118,7 +118,8 @@
                 <h2 class="post-title">{{$classroom_course->classroom_course_title}}</h2>
               </div>
               <div class="ttr-post-text">
-                <p>{{$classroom_course_details->classroom_short_description}}</p>
+
+                {!!$classroom_course_details->classroom_short_description!!}
               </div>
             </div>
           </div>
@@ -128,12 +129,12 @@
 
               <div class="col-md-12 col-lg-8">
                 <h5 class="m-b5">Course Description</h5>
-                <p>{{$classroom_course_details->classroom_course_description}}</p>
+                <p>{!!$classroom_course_details->classroom_course_description!!}</p>
                 <h5 class="m-b5">THe Certification can help:</h5>
                 <p>{{$classroom_course_details->classroom_certification}}</p>
                 <h5 class="m-b5">Learning Outcomes</h5>
                 <ul class="list-checked primary">
-                  <li>{{$classroom_course_details->classroom_learning_outcomes}}</li>
+                  <li>{!!$classroom_course_details->classroom_learning_outcomes!!}</li>
 
                 </ul>
               </div>
@@ -280,6 +281,7 @@
 
 </div>
 <!-- Content END-->
+
 
 
 
