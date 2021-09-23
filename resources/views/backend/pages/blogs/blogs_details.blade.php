@@ -28,6 +28,7 @@
 
 
           <a class="float-right" href="{{route('manage-blogs')}}"><i class="fa fa-home fa-2x"></i></a>
+          <a class="float-right" href="/admin/home/blogs/details/view/{{$blogs->id}}"><i class="fa fa-eye fa-2x"></i></a>
 
 
 

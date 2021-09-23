@@ -18,7 +18,7 @@ class CreateAdminBlogsTable extends Migration
             $table->string('blogs_title')->nullable();
             $table->string('blogs_image')->nullable();
             $table->string('short_description')->nullable();
-            $table->string('blogs_details')->nullable();
+          
             $table->timestamps();
         });
     }

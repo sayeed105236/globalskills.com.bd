@@ -176,15 +176,11 @@ Route::get('/admin/home/deleteBlog/{id}',[AdminBlogController::class, 'deleteBlo
 middleware('is_admin');
 Route::get('/admin/home/blogs/details/{id}',[AdminBlogController::class, 'BlogDetails'])->
 middleware('is_admin');
-Route::get('/admin/home/blogs/details/blogs_subtitile_info/{id}',[AdminBlogController::class, 'BlogSubTitle'])->name('Blogs-subtitle')->
+
+Route::get('/admin/home/blogs/details/view/{id}',[AdminBlogController::class, 'BlogView'])->
 middleware('is_admin');
-Route::get('/admin/home/blogs/details/media/{id}',[AdminBlogController::class, 'BlogMedia'])->
-middleware('is_admin');
-Route::get('/admin/home/blogs/details/learning_outcomes/{id}',[AdminBlogController::class, 'LearningOutcomes'])->
-middleware('is_admin');
-Route::get('/admin/home/blogs/details/benifits/{id}',[AdminBlogController::class, 'Benifits'])->
-middleware('is_admin');
-Route::get('/admin/home/blogs/details/need/{id}',[AdminBlogController::class, 'Need'])->
+
+Route::post('/admin/home/blogs/details/store',[AdminBlogController::class, 'Store'])->name('store-blog-details')->
 middleware('is_admin');
 
 //admin add events

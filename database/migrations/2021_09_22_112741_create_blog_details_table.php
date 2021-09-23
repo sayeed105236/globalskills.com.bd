@@ -19,8 +19,8 @@ class CreateBlogDetailsTable extends Migration
             $table->string('blog_banner_image')->nullable();
             $table->string('sub_title')->nullable();
             $table->longText('sub_title_description')->nullable();
-            $table->string('blog_content_img1')->nulalble();
-            $table->string('youtube_url_1')->nulalble();
+            $table->string('blog_content_img1')->nullable();
+            $table->string('youtube_url_1')->nullable();
             $table->string('blog_content_img2')->nullable();
             $table->longText('blog_details_content')->nullable();
             $table->timestamps();

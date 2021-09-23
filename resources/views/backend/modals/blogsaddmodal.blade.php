@@ -27,12 +27,7 @@
                   <input type="file" name="file" class="form-control-file" id="blogs_image" onchange="previewImage(this)">
 
                 </div>
-                <div class="form-group">
-                  <label class="col-form-label">Blogs Details</label>
-                  <div>
-                    <textarea class="form-control" name="blogs_details"> </textarea>
-                  </div>
-                </div>
+              
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="submit" class="btn btn-primary">Save changes</button>
