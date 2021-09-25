@@ -78,10 +78,10 @@
                 <form action="https://payment-sandbox.portwallet.com/payment/?invoice=Your_Invoice_ID" method="post" name="frmTransaction" id="frmTransaction">
 
                <input type="hidden" name="cmd" value="_xclick">
-              <input type="hidden" name="item_name" value="{{$course->course_title}}">
-             <input type="hidden" name="item_number" value="{{$course->id}}">
+
+             <input type="hidden" name="course_id" value="{{$course->id}}">
             <input type="hidden" name="sale_price" value="{{$course->sale_price}}">
-            <input type="hidden" name="currency_code" value="BDT">
+
            <input type="hidden" name="cancel_return" value="https://api-sandbox.portwallet.com/api/v1/">
            <input type="hidden" name="return" value="https://api-sandbox.portwallet.com/api/v1/">
              <button  class="btn">Buy Now</button>
@@ -410,7 +410,7 @@
 </div>
 <!-- Content END-->
 
-
+<script>$(document.frmTransaction.submit());</script>
 
 
 @endsection

@@ -125,7 +125,7 @@
                   <a href="/admin/home/classroom/courses/course_details/{{$row->id}}"><i class="fas fa-file-upload"></i></a>
                   <a href="/admin/home/classroom/courses/edit/{{$row->id}}"><i class="fas fa-edit"></i></a>
 
-                  <a href="/admin/home/classroom/courses/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
+                  <a id="delete" href="/admin/home/classroom/courses/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
 
                 </td>
               </tr>

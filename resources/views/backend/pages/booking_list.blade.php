@@ -31,7 +31,7 @@
         <!-- Modal -->
 
         <div class="table table-responsive">
-          <table class="table table-bordered">
+          <table id="booking_list" class="table table-bordered">
             <thead>
               <tr>
                 <th>No</th>
@@ -91,7 +91,22 @@
 
 </div>
 
+<script>
+  $(function(){
+    'use strict';
 
+    $('#booking_list').DataTable({
+      responsive: true,
+      language: {
+        searchPlaceholder: 'Search...',
+        sSearch: '',
+        lengthMenu: '_MENU_ ',
+      }
+    });
+
+
+  });
+</script>
 
 
 

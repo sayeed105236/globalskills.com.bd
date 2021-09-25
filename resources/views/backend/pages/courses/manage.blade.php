@@ -201,7 +201,7 @@
                 <td>
                   <a href="/admin/home/courses/course_overviews/{{$row->id}}"><i class="fas fa-file-upload"></i></a>
                   <a href="/admin/home/courses/edit/{{$row->id}}"><i class="fas fa-edit"></i></a>
-                  <a href="/admin/home/courses/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
+                  <a id="delete" href="/admin/home/courses/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
 
                 </td>
               </tr>

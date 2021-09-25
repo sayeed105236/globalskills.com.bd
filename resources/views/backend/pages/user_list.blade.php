@@ -38,7 +38,7 @@
         <!-- Modal -->
 
         <div class="table table-responsive">
-          <table class="table table-bordered">
+          <table id="user_list" class="table table-bordered">
             <thead>
               <tr>
                 <th>Id</th>
@@ -84,7 +84,7 @@
                 <td><span class="badge badge-pill badge-light-primary mr-1"></span></td>
                 <td>
                   <a href=""><i class="fas fa-edit"></i></a>
-                  <a href="/admin/home/users/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
+                  <a id="delete" href="/admin/home/users/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
 
                 </td>
               </tr>
@@ -97,7 +97,22 @@
   </div>
 
 </div>
+<script>
+  $(function(){
+    'use strict';
 
+    $('#user_list').DataTable({
+      responsive: true,
+      language: {
+        searchPlaceholder: 'Search...',
+        sSearch: '',
+        lengthMenu: '_MENU_ ',
+      }
+    });
+
+
+  });
+</script>
 
 <script>
         function previewImage(input){

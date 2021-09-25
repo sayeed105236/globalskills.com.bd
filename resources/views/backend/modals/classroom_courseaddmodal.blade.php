@@ -28,6 +28,7 @@
                   <option value="{{$course_category->id}}">{{$course_category->mcategory_title}}</option>
 
                 <?php endforeach; ?>
+                
 
 
 
