@@ -25,6 +25,7 @@ use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminEventController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\TrainingCourseController;
+use App\Http\Controllers\PaymentController;
 
 
 
@@ -58,8 +59,14 @@ Route::get('/user_profile', [UserProfileController::class,'user_profile'])->name
 Route::get('/blogs', [BlogsController::class,'index'])->name('blogs');
 Route::get('/blogs_details', [BlogsController::class,'blogs_details'])->name('blogs_details');
 Route::get('/blogs_details/{id}', [BlogsController::class,'blogs_details_index']);
+Route::get('portwallet', [PortwalletController::class, 'portwallet']);
+Route::post('portwallet', [PortwalletController::class, 'PortwalletPost'])->name('portwallet.post');
 
-
+Route::get('payment-status', [PaymentController::class, 'paymentInfo']);
+Route::get('payemnt', [PaymentController::class, 'payment']);
+Route::get('payment-cancel', function () {
+   return 'Payment has been canceled';
+});
 
 //add to carts Routes
 Route::get('/carts', [CartController::class,'index'])->name('carts');
@@ -173,6 +180,14 @@ middleware('is_admin');
 Route::post('/admin/home/editBlog',[AdminBlogController::class, 'editBlog'])->name('edit-blogs')->
 middleware('is_admin');
 Route::get('/admin/home/deleteBlog/{id}',[AdminBlogController::class, 'deleteBlog'])->name('delete-blogs')->
+middleware('is_admin');
+Route::get('/admin/home/blogs/details/{id}',[AdminBlogController::class, 'BlogDetails'])->
+middleware('is_admin');
+
+Route::get('/admin/home/blogs/details/view/{id}',[AdminBlogController::class, 'BlogView'])->
+middleware('is_admin');
+
+Route::post('/admin/home/blogs/details/store',[AdminBlogController::class, 'Store'])->name('store-blog-details')->
 middleware('is_admin');
 
 //admin add events

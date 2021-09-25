@@ -70,11 +70,11 @@
                                             <ul>
                                                 <li class="price">
 
-                                                  <h5>{{$row->exam_fee}}৳</h5>
+                                                  <del>{{$row->training_fee}}৳</del>
                                                 </li>
                                                 <li class="price">
 
-                                                  <h5>{{$row->training_fee}}৳</h5>
+                                                  <h5>{{$row->exam_fee}}৳</h5>
                                                 </li>
                                             </ul>
                                         </div>
@@ -94,24 +94,30 @@
               <div class="cours-bx">
                 <div class="action-box">
                   <img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" alt="">
-                  @include('frontend.partials.cart_button')
+
                 </div>
                 <div class="info-bx text-center">
                   <h5><a href="/home/classroom/course_details/{{$row->id}}">{{$row->classroom_course_title}}</a></h5>
                   <span>{{$row->course_category->mcategory_title}}</span>
                 </div>
 
-                  <div class="cours-more-info">
-                    <div class="review">
-                      <span></span>
-                      <h7>Exam Fee</h7>
-                    <h5>{{$row->exam_fee}}৳</h5>
-                    </div>
-                    <div class="price">
-                        <h7>Training Fee</h7>
-                      <h5>{{$row->training_fee}}৳</h5>
-                    </div>
+                <div class="cours-more-info">
+                  <div class="review">
+                    <span>Review</span>
+                    <ul class="cours-star">
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li class="active"><i class="fa fa-star"></i></li>
+                      <li class="active"><i class="fa fa-star"></i></li>
+
+                    </ul>
                   </div>
+                  <div class="price">
+                    <del>{{$row->training_fee}}৳</del>
+                    <h5 style="color:#ca2128;">{{$row->exam_fee}}৳</h5>
+                  </div>
+                </div>
 
 
               </div>

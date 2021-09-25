@@ -28,7 +28,7 @@
             <p>{{$row->short_description}}</p>
             <div class="post-extra">
               <a href="#" class="btn-link">READ MORE</a>
-            
+
             </div>
           </div>
         </div>

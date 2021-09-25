@@ -74,6 +74,9 @@
           <li class="add-mega-menu"><a href="{{route('classroom-courses')}}">Classroom Courses</a>
 
           </li>
+          <li class="add-mega-menu"><a href="{{route('blogs_details')}}">Blogs</a>
+
+          </li>
 
 
         </ul>

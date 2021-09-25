@@ -122,7 +122,7 @@
                   </td>
                 <td>
                   <a href="/admin/home/course_category/edit/{{$row->id}}"><i class="fas fa-edit"></i></a>
-                  <a href="/admin/home/course_category/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
+                  <a id="delete" href="/admin/home/course_category/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
 
                 </td>
               </tr>
