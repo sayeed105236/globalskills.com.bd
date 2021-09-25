@@ -28,7 +28,7 @@
                   <option value="{{$course_category->id}}">{{$course_category->mcategory_title}}</option>
 
                 <?php endforeach; ?>
-                
+
 
 
 
@@ -52,12 +52,12 @@
             </div>
             <div class="form-group">
               <label for="training_fee">Regular Price</label>
-              <input type="number" class="form-control" name="training_fee" aria-describedby="training_fee" placeholder="Enter Training Fee">
+              <input type="number" class="form-control" name="training_fee" aria-describedby="training_fee" placeholder="Enter Regular Price">
 
             </div>
             <div class="form-group">
               <label for="sale_price">Sale Price</label>
-              <input type="number" class="form-control" name="exam_fee" aria-describedby="exam_fee" placeholder="Enter Exam Fee">
+              <input type="number" class="form-control" name="exam_fee" aria-describedby="exam_fee" placeholder="Enter Sale Price">
 
             </div>
 

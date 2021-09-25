@@ -108,8 +108,8 @@
                   <span class="font-weight-bold"> {{$row->course_category->mcategory_title}}</span>
                 </td>
 
-                <td>{{$row->exam_fee}}৳</td>
                 <td>{{$row->training_fee}}৳</td>
+                <td>{{$row->exam_fee}}৳</td>
 
 
                 </td>
