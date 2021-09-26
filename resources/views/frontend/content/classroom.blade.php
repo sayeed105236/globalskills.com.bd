@@ -26,7 +26,7 @@
       <div class="item" >
         <div class="cours-bx">
           <div class="action-box">
-            <img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" alt="">
+            <a href="/home/classroom/course_details/{{$row->id}}"><img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" alt=""></a>
             <!--<form class="hidden" action="{{route('add-carts')}}" method="post">
               @csrf
               <input type="hidden" name="classroom_course_id" value="{{$row->id}}">

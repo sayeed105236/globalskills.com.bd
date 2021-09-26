@@ -6,12 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\AdminBlog;
 use App\Models\BlogDetail;
 
+
 class BlogsController extends Controller
 {
   public function index()
   {
-
-    return view('frontend.pages.blogs');
+    $blogs= AdminBlog::all();
+    $lts_blogs =AdminBlog::latest()->limit(3)->get();
+    $data= AdminBlog::paginate(8);
+    return view('frontend.pages.all_blogs',compact('blogs','lts_blogs','data'));
 
   }
   public function blogs_details()

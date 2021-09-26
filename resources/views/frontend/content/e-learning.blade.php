@@ -23,8 +23,8 @@
       <div class="item">
         <div class="cours-bx">
           <div class="action-box">
-            <img src="{{asset("storage/courses/$row->course_image")}}" alt="" height="420"
-            width="700">
+          <a href="home/course_details/{{$row->id}}"><img src="{{asset("storage/courses/$row->course_image")}}" alt="" height="420"
+            width="700"></a>
 
             <form class="hidden" action="{{route('add-carts')}}" method="post">
               @csrf

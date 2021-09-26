@@ -128,13 +128,15 @@
             <div class="row">
 
               <div class="col-md-12 col-lg-8">
-                <h5 class="m-b5">Course Description</h5>
-                <p>{!!$classroom_course_details->classroom_course_description!!}</p>
-                <h5 class="m-b5">THe Certification can help:</h5>
-                <p>{{$classroom_course_details->classroom_certification}}</p>
-                <h5 class="m-b5">Learning Outcomes</h5>
+                <h4 class="m-b5">Course Description</h4>
+                {!!$classroom_course_details->classroom_course_description!!}
+                  <div class="ttr-divider bg-gray"><i class="icon-dot c-square"></i></div>
+                <h4 class="m-b5">THe Certification can help:</h4>
+                {{$classroom_course_details->classroom_certification}}
+                  <div class="ttr-divider bg-gray"><i class="icon-dot c-square"></i></div>
+                <h4 class="m-b5">Learning Outcomes</h4>
                 <ul class="list-checked primary">
-                  <li>{!!$classroom_course_details->classroom_learning_outcomes!!}</li>
+                  {!!$classroom_course_details->classroom_learning_outcomes!!}
 
                 </ul>
               </div>

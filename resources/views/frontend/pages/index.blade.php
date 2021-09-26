@@ -43,6 +43,7 @@
 
   <!-- Recent News -->
   @include('frontend.content.recent_news')
+  <br><br>
 
   <!-- Recent News End -->
 

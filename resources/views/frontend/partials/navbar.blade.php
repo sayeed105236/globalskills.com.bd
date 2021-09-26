@@ -52,12 +52,12 @@
               <li><a href="{{route('about')}}">About</a>
 
               </li>
-              <li><a href="javascript:;">Event<i class="fa fa-angle-right"></i></a>
+            <!--  <li><a href="javascript:;">Event<i class="fa fa-angle-right"></i></a>
                 <ul class="sub-menu">
                   <li><a href="{{route('event')}}">Event</a></li>
-                  <li><a href="{{route('event_details')}}">Events Details</a></li>
+                  <li><a href="#">Events Details</a></li>
                 </ul>
-              </li>
+              </li>-->
               <li><a href="{{route('faq')}}">FAQ's</a>
 
               </li>
@@ -74,7 +74,7 @@
           <li class="add-mega-menu"><a href="{{route('classroom-courses')}}">Classroom Courses</a>
 
           </li>
-          <li class="add-mega-menu"><a href="{{route('blogs_details')}}">Blogs</a>
+          <li class="add-mega-menu"><a href="{{route('all-blogs')}}">Blogs</a>
 
           </li>
 

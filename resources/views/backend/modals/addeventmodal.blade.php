@@ -23,17 +23,17 @@
               </div>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlFile1">Event Image</label>
+                <label for="exampleFormControlFile1">Event Image (700*300 pixels)</label>
                   <input type="file" name="file" class="form-control-file" id="event_image" onchange="previewImage(this)">
 
                 </div>
                 <div class="form-group">
-                  <label for="classroom_course_title">Month</label>
+                  <label for="classroom_course_title">Month (Start)</label>
                   <input type="text" class="form-control" name="month" aria-describedby="month" placeholder="Enter Month">
 
                 </div>
                 <div class="form-group">
-                  <label for="classroom_course_title">Date</label>
+                  <label for="classroom_course_title">Date (Start Date)</label>
                   <input type="number" class="form-control" name="date" aria-describedby="date" placeholder="Enter Date">
 
                 </div>
