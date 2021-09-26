@@ -108,6 +108,7 @@
 
 
                 <td>
+                  <a href="/admin/home/events/event-details/{{$row->id}}"><i class="fas fa-upload"></i></a>
 
                   <a href="#"><i class="fas fa-edit"></i></a>
 

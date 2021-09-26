@@ -27,7 +27,7 @@
             <h5 class="post-title"><a href="/blogs_details/{{$row->id}}">{{$row->blogs_title}}</h5>
             <p>{{$row->short_description}}</p>
             <div class="post-extra">
-              <a href="#" class="btn-link">READ MORE</a>
+              <a href="/blogs_details/{{$row->id}}" class="btn-link">READ MORE</a>
 
             </div>
           </div>
@@ -36,4 +36,7 @@
       @endforeach
     </div>
   </div>
+</div>
+<div class="text-center">
+  <a href="{{route('all-blogs')}}" class="btn">View All</a>
 </div>

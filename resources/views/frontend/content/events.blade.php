@@ -16,9 +16,10 @@
       <div class="item">
         <div class="event-bx">
           <div class="action-box">
+            <a href="/event_details/{{$row->id}}">
             <img src="{{asset('storage/events/' .$row->event_image)}}"  alt="image"
             height="700"
-            width="438">
+            width="438"></a>
           </div>
           <div class="info-bx d-flex">
             <div>
@@ -28,7 +29,7 @@
               </div>
             </div>
             <div class="event-info">
-              <h4 class="event-title"><a href="#">{{$row->event_title}}</a></h4>
+              <h4 class="event-title"><a href="/event_details/{{$row->id}}">{{$row->event_title}}</a></h4>
 
               <p>{{$row->description}}</p>
             </div>
@@ -40,7 +41,7 @@
     </div>
     </div>
     <div class="text-center">
-      <a href="#" class="btn">View All Event</a>
+      <a href="{{route('event')}}" class="btn">View All Event</a>
     </div>
   </div>
 </div>

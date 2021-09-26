@@ -48,7 +48,10 @@ Route::get('/contact_us', [ContactUsController::class,'contact'])->name('contact
 Route::post('/contact_us/store', [ContactUsController::class,'Store'])->name('store-contact');
 Route::get('/about_us', [AboutController::class,'index'])->name('about');
 Route::get('/events', [EventController::class,'index'])->name('event');
-Route::get('/event_details', [EventController::class,'event_details'])->name('event_details');
+Route::get('/event_details/{id}', [EventController::class,'event_details']);
+
+
+
 Route::get('/faqs', [FaqController::class,'index'])->name('faq');
 Route::get('/errors', [ErrorController::class,'index'])->name('error');
 Route::get('/courses', [FrontendController::class,'index'])->name('courses');
@@ -56,9 +59,14 @@ Route::get('/classroom_courses', [FrontendController::class,'index_classroom'])-
 Route::get('/course_details', [FrontendController::class,'course_details'])->name('course_details');
 //Route::get('/course_details/{id}', [FrontendController::class,'course_details'])->name('course_details');
 Route::get('/user_profile', [UserProfileController::class,'user_profile'])->name('user_profile');
-Route::get('/blogs', [BlogsController::class,'index'])->name('blogs');
+
+
+//blogs routes frontend
+Route::get('/all-blogs', [BlogsController::class,'index'])->name('all-blogs');
 Route::get('/blogs_details', [BlogsController::class,'blogs_details'])->name('blogs_details');
 Route::get('/blogs_details/{id}', [BlogsController::class,'blogs_details_index']);
+
+//payment routes
 Route::get('portwallet', [PortwalletController::class, 'portwallet']);
 Route::post('portwallet', [PortwalletController::class, 'PortwalletPost'])->name('portwallet.post');
 
@@ -72,6 +80,9 @@ Route::get('payment-cancel', function () {
 Route::get('/carts', [CartController::class,'index'])->name('carts');
 Route::post('/add_to_carts', [CartController::class,'add_cart'])->name('add-carts');
 Route::get('/carts/delete/{id}',[CartController::class,'deleteCart']);
+
+
+
 Route::get('/home/course/carts/payment',[PortwalletController::class,'index'])->name('payment');
 
 Route::post('/classroom_bookings', [BookingController::class,'StoreBooking'])->name('store-bookings')->middleware('is_admin');
@@ -197,6 +208,13 @@ Route::post('/admin/home/events/store', [AdminEventController::class, 'Store'])-
 middleware('is_admin');
 Route::get('/admin/home/events/delete/{id}', [AdminEventController::class, 'Delete'])->
 middleware('is_admin');
+Route::get('/admin/home/events/event-details/{id}', [AdminEventController::class, 'EventDetails'])->
+middleware('is_admin');
+Route::post('/admin/home/events/event-details/store', [AdminEventController::class, 'StoreDetails'])->name('store-event-details')->
+middleware('is_admin');
+Route::get('/admin/home/events/event-details/view/{id}', [AdminEventController::class, 'EventDetailView'])->
+middleware('is_admin');
+
 
 
 //admin add course without exam
