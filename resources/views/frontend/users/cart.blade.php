@@ -96,7 +96,7 @@
                 {{$loop->index+1}}
               </td>
               <td>
-              
+
                 <span class="font-weight-bold"><a href="home/course_details/{{$row->course->id}}">{{$row->course->course_title}}</a></span>
               </td>
               <td><img src="{{asset('storage/courses/' .$row->course->course_image)}}" alt="image"
@@ -219,7 +219,7 @@
 
       </div>
       <br>
-      <a class="text-center btn btn-primary float-right" href="{{route('payment')}}">Procceed To Payment</a>
+      <a class="text-center btn btn-primary float-right" href="#">Procceed To Payment</a>
     </div>
 
 

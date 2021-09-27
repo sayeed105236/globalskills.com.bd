@@ -67,14 +67,14 @@ Route::get('/blogs_details', [BlogsController::class,'blogs_details'])->name('bl
 Route::get('/blogs_details/{id}', [BlogsController::class,'blogs_details_index']);
 
 //payment routes
-Route::get('portwallet', [PortwalletController::class, 'portwallet']);
-Route::post('portwallet', [PortwalletController::class, 'PortwalletPost'])->name('portwallet.post');
+//Route::get('portwallet', [PortwalletController::class, 'portwallet']);
+//Route::post('portwallet', [PortwalletController::class, 'PortwalletPost'])->name('portwallet.post');
 
-Route::get('payment-status', [PaymentController::class, 'paymentInfo']);
-Route::get('payemnt', [PaymentController::class, 'payment']);
-Route::get('payment-cancel', function () {
-   return 'Payment has been canceled';
-});
+//Route::get('payment-status', [PaymentController::class, 'paymentInfo']);
+//Route::get('payemnt', [PaymentController::class, 'payment']);
+//Route::get('payment-cancel', function () {
+  // return 'Payment has been canceled';
+//});
 
 //add to carts Routes
 Route::get('/carts', [CartController::class,'index'])->name('carts');
