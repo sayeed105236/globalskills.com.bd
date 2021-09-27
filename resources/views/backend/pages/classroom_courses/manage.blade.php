@@ -51,7 +51,7 @@
         <!-- Modal -->
 
         <div class="table table-responsive">
-          <table class="table table-bordered" id="course_table">
+          <table class="table table-bordered" id="classroom_course_list">
             <thead>
               <tr>
                 <th>
@@ -143,4 +143,20 @@
   </div>
 
 </div>
+<script>
+  $(function(){
+    'use strict';
+
+    $('#classroom_course_list').DataTable({
+      responsive: true,
+      language: {
+        searchPlaceholder: 'Search...',
+        sSearch: '',
+        lengthMenu: '_MENU_ ',
+      }
+    });
+
+
+  });
+</script>
 @endsection

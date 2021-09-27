@@ -105,17 +105,17 @@
         </td>
 
         <td>
-          {{$course->course_details->short_description}}
+          {!!$course->course_details->short_description!!}
 
 
         </td>
         <td>
-            {{$course->course_details->course_description}}
+            {!!$course->course_details->course_description!!}
 
         </td>
         <td>
 
-              {{$course->course_details->learning_outcomes}}
+              {!!$course->course_details->learning_outcomes!!}
 
         </td>
         <td>
@@ -137,7 +137,7 @@
 
             {{$course->course_details->quiz}}
         </td>
-        
+
       </tr>
 
 

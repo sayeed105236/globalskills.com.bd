@@ -15,19 +15,19 @@
             <div class="form-group">
               <label class="col-form-label">Short Description</label>
               <div>
-                <textarea class="form-control" name="short_description"> </textarea>
+                <textarea class="form-control" name="short_description" id="short_description"> </textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="col-form-label">Course Description</label>
               <div>
-                <textarea class="form-control" name="course_description"> </textarea>
+                <textarea class="form-control" name="course_description" id="course_description"> </textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="col-form-label">Learning Outcomes</label>
               <div>
-                <textarea class="form-control" name="learning_outcomes"> </textarea>
+                <textarea class="form-control" name="learning_outcomes" id="learning_outcomes"> </textarea>
               </div>
             </div>
             <div class="form-group">
@@ -123,3 +123,23 @@
     </div>
   </div>
 </div>
+<script>
+$(document).ready(function() {
+  $('#short_description').summernote();
+});
+</script>
+<script>
+$(document).ready(function() {
+  $('#course_description').summernote();
+});
+</script>
+<script>
+$(document).ready(function() {
+  $('#learning_outcomes').summernote();
+});
+</script>
+<script>
+$(document).ready(function() {
+  $('#ceetification').summernote();
+});
+</script>

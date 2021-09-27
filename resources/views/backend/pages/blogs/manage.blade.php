@@ -29,7 +29,7 @@
 
         <!-- Modal -->
         <div class="table table-responsive">
-          <table class="table table-bordered" id="course_table">
+          <table class="table table-bordered" id="blog_list">
             <thead>
               <tr>
                 <th>
@@ -104,7 +104,7 @@
                   <a href="/admin/home/blogs/details/{{$row->id}}"><i class="fas fa-file-upload"></i></a>
                   <a href="#"><i class="fas fa-edit"></i></a>
 
-                  <a href="/admin/home/deleteBlog/{{$row->id}}"><i class="fas fa-trash"></i></a>
+                  <a id="delete" href="/admin/home/deleteBlog/{{$row->id}}"><i class="fas fa-trash"></i></a>
 
                 </td>
               </tr>
@@ -123,5 +123,21 @@
   </div>
 
 </div>
+<script>
+  $(function(){
+    'use strict';
+
+    $('#blog_list').DataTable({
+      responsive: true,
+      language: {
+        searchPlaceholder: 'Search...',
+        sSearch: '',
+        lengthMenu: '_MENU_ ',
+      }
+    });
+
+
+  });
+</script>
 
 @endsection
