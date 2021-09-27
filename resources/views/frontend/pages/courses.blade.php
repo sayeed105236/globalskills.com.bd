@@ -99,7 +99,7 @@
                   </form>
                 </div>
                 <div class="info-bx text-center">
-                  <h5><a href="home/course_details/{{$row->id}}">{{$row->course_title}}</a></h5>
+                  <h5><a href="home/course_details/{{$row->id}}">{{Str::limit($row->course_title,18)}}</a></h5>
                   <span>{{$row->course_category->mcategory_title}}</span>
                 </div>
                 <div class="cours-more-info">

@@ -26,6 +26,7 @@ use App\Http\Controllers\AdminEventController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\TrainingCourseController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\SearchController;
 
 
 
@@ -52,6 +53,10 @@ Route::get('/event_details/{id}', [EventController::class,'event_details']);
 
 
 
+Route::get('/searchajax', [SearchController::class,'SearchautoComplete'])->name('searchcourseajax');
+
+
+
 Route::get('/faqs', [FaqController::class,'index'])->name('faq');
 Route::get('/errors', [ErrorController::class,'index'])->name('error');
 Route::get('/courses', [FrontendController::class,'index'])->name('courses');
@@ -59,6 +64,7 @@ Route::get('/classroom_courses', [FrontendController::class,'index_classroom'])-
 Route::get('/course_details', [FrontendController::class,'course_details'])->name('course_details');
 //Route::get('/course_details/{id}', [FrontendController::class,'course_details'])->name('course_details');
 Route::get('/user_profile', [UserProfileController::class,'user_profile'])->name('user_profile');
+Route::get('/user_profile/{id}', [UserProfileController::class,'EditProfile'])->name('user-profile-edit');
 
 
 //blogs routes frontend
@@ -224,3 +230,8 @@ middleware('is_admin');
 Route::post('/admin/home/training_without_exam_courses/store', [TrainingCourseController::class, 'Store'])->name('store-training-course')->
 middleware('is_admin');
 Route::get('/admin/home/classroom_bookings', [BookingController::class,'BookingList'])->name('bookings-list')->middleware('is_admin');
+
+//password change route
+
+Route::post('change-password-store',[UserProfileController::class,'changePassStore'])->name('change-password-store');
+Route::get('/search-products', [SearchController::class,'searchProduct'])->name('search.product');

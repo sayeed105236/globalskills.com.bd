@@ -47,6 +47,7 @@
 	<!-- STYLESHEETS ============================================= -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}">
 	<link class="skin" rel="stylesheet" type="text/css" href="{{ asset('css/color/color-1.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('backend')}}/lib/toastr/toastr.css">
 
 </head>
 
@@ -149,6 +150,27 @@
 <script src="{{ asset('js/functions.js')}}"></script>
 <script src="{{ asset('js/contact.js')}}"></script>
 <script src="{{ asset('vendors/switcher/switcher.js')}}"></script>
+<script type="text/javascript" src="{{ asset('backend') }}/lib/toastr/toastr.min.js"></script>
+
+<script>
+  @if(Session::has('message'))
+	var type ="{{Session::get('alert-type','info')}}"
+	switch(type){
+		case 'info':
+			toastr.info(" {{Session::get('message')}} ");
+			break;
+		case 'success':
+			toastr.success(" {{Session::get('message')}} ");
+			break;
+		case 'warning':
+			toastr.warning(" {{Session::get('message')}} ");
+			break;
+		case 'error':
+			toastr.error(" {{Session::get('message')}} ");
+			break;
+	}
+@endif
+</script>
 </body>
 
 </html>

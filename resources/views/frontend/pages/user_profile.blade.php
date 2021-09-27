@@ -55,12 +55,14 @@
                 <li class="nav-item">
                   <a class="nav-link active" data-toggle="tab" href="#courses"><i class="ti-book"></i>Courses</a>
                 </li>
-                <li class="nav-item">
+              <!--  <li class="nav-item">
                   <a class="nav-link" data-toggle="tab" href="#quiz-results"><i class="ti-bookmark-alt"></i>Quiz Results </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#edit-profile"><i class="ti-pencil-alt"></i>Edit Profile</a>
-                </li>
+                </li>-->
+              <!--  <li class="nav-item">
+                  <a class="nav-link"  href="#edit-profile"><i class="ti-pencil-alt"></i>Edit Profile</a>
+                </li>-->
+                <li><a class="nav-link"  href="/user_profile/{{Auth::user()->id}}"> <i class="ti-pencil-alt"></i>Edit Profile</li></a>
+
                 <li class="nav-item">
                   <a class="nav-link" data-toggle="tab" href="#change-password"><i class="ti-lock"></i>Change Password</a>
                 </li>
@@ -93,7 +95,7 @@
                 </div>
                 <div class="courses-filter">
                   <div class="clearfix">
-                    <ul id="masonry" class="ttr-gallery-listing magnific-image row">
+                <!--    <ul id="masonry" class="ttr-gallery-listing magnific-image row">
                       <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 publish">
                         <div class="cours-bx">
                           <div class="action-box">
@@ -346,11 +348,11 @@
                           </div>
                         </div>
                       </li>
-                    </ul>
+                    </ul>-->
                   </div>
                 </div>
               </div>
-              <div class="tab-pane" id="quiz-results">
+            <!--<div class="tab-pane" id="quiz-results">
                 <div class="profile-head">
                   <h3>Quiz Results</h3>
                 </div>
@@ -380,7 +382,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>-->
               <div class="tab-pane" id="edit-profile">
                 <div class="profile-head">
                   <h3>Edit Profile</h3>
@@ -497,47 +499,7 @@
                   </div>
                 </form>
               </div>
-              <div class="tab-pane" id="change-password">
-                <div class="profile-head">
-                  <h3>Change Password</h3>
-                </div>
-                <form class="edit-profile">
-                  <div class="">
-                    <div class="form-group row">
-                      <div class="col-12 col-sm-8 col-md-8 col-lg-9 ml-auto">
-                        <h3>Password</h3>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-4 col-md-4 col-lg-3 col-form-label">Current Password</label>
-                      <div class="col-12 col-sm-8 col-md-8 col-lg-7">
-                        <input class="form-control" type="password" value="">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-4 col-md-4 col-lg-3 col-form-label">New Password</label>
-                      <div class="col-12 col-sm-8 col-md-8 col-lg-7">
-                        <input class="form-control" type="password" value="">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-4 col-md-4 col-lg-3 col-form-label">Re Type New Password</label>
-                      <div class="col-12 col-sm-8 col-md-8 col-lg-7">
-                        <input class="form-control" type="password" value="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12 col-sm-4 col-md-4 col-lg-3">
-                    </div>
-                    <div class="col-12 col-sm-8 col-md-8 col-lg-7">
-                      <button type="reset" class="btn">Save changes</button>
-                      <button type="reset" class="btn-secondry">Cancel</button>
-                    </div>
-                  </div>
-
-                </form>
-              </div>
+            @include('frontend.users.changepassword')
             </div>
           </div>
         </div>

@@ -126,11 +126,11 @@
             data-paddingleft="[0,0,0,0]"
             style="z-index: 7; text-transform:capitalize; white-space: unset; color:#fff; font-family:rubik; font-size:18px; line-height:28px; font-weight:400;">
             <div class="container" style="margin-top:30px;">
-            <form class="cours-search">
+            <form id="search-form" action="{{url('/searching')}}" class="cours-search">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="What do you want to learn today?	">
+                <input type="text" name="search_course" id="search_text" class="form-control" placeholder="What do you want to learn today?	">
                 <div class="input-group-append">
-                  <button class="btn" type="submit">Search</button>
+                  <button class="btn" name="search" type="submit">Search</button>
                 </div>
               </div>
             </form>
@@ -279,3 +279,43 @@
   </div>
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js">
+
+
+</script>
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+ <script>
+ $(document).ready(function()
+{
+
+	src ="{{route('searchcourseajax')}}";
+	$( "#search_text" ).autocomplete({
+       source: function(request, response){
+				 $.ajax({
+
+					 url: src,
+					 data: {
+						 term: request.term
+					 },
+					 dataType: "json",
+					 success:function(data){
+						 response(data);
+
+					 }
+
+
+
+
+				 });
+			 },
+			 minLength: 1,
+     });
+		 $(document).on('click','.cours-bx',function(){
+
+			 $('#searchform').submit();
+		 });
+});
+
+
+ </script>

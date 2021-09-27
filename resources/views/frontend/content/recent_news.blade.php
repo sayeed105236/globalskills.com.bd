@@ -24,8 +24,8 @@
               <li><a href="#"><i class="fa fa-calendar"></i>{{$row->created_at}}</a></li>
             <!--  <li><a href="#"><i class="fa fa-user"></i></a></li>-->
             </ul>
-            <h5 class="post-title"><a href="/blogs_details/{{$row->id}}">{{$row->blogs_title}}</h5>
-            <p>{{$row->short_description}}</p>
+            <h5 class="post-title"><a href="/blogs_details/{{$row->id}}">{{Str::limit($row->blogs_title,18)}}</h5>
+            <p>{{Str::limit($row->short_description,90)}}</p>
             <div class="post-extra">
               <a href="/blogs_details/{{$row->id}}" class="btn-link">READ MORE</a>
 
