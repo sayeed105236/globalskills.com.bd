@@ -30,7 +30,7 @@
           <li class="nav-item">
             <a class="nav-link" href="javascript:void(0);">Media</a>
           </li>
-            <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#ClassroomCourseDetailsAddModal"><i class="fas fa-plus-circle"></i></a>
+            <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#ClassroomCourseDetailsAddModal">Add Course Details<i class="fas fa-plus-circle"></i></a>
               @include('backend.modals.classroom_course_detailsaddmodal')
         </ul>
       </div>

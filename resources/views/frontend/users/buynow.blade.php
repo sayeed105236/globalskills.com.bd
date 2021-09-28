@@ -118,7 +118,7 @@
                 }
 
                  ?>
-              <a id="delete" href="/carts/delete/{{$row->id}}"><i class="fa fa-trash"></i></a>
+              <a id="delete" href="/buynow/delete/{{$row->id}}"><i class="fa fa-trash"></i></a>
               </td>
             </tr>
             @endforeach

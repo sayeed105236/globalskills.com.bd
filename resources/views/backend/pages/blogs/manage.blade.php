@@ -3,11 +3,6 @@
 
 @section('admin_dashboard_content')
 
-
-
-
-
-
 <div class="container-fluid">
   <div class="db-breadcrumb">
     <h4 class="breadcrumb-title">Blogs</h4>
@@ -40,7 +35,7 @@
 
                 <th>Blogs Images</th>
 
-                <th>Blog Details</th>
+
 
 
                 <th>Created At</th>
@@ -84,10 +79,7 @@
 
                   </div>
                   </td>
-                <td>
 
-                    {{$row->blogs_details}}
-                </td>
                 <td>
                     {{$row->created_at}}
 
@@ -102,9 +94,12 @@
 
                 <td>
                   <a href="/admin/home/blogs/details/{{$row->id}}"><i class="fas fa-file-upload"></i></a>
-                  <a href="#"><i class="fas fa-edit"></i></a>
+                  <a href="#" data-toggle="modal" data-target="#BlogsEditModal{{$row->id}}"><i class="fas fa-edit"></i></a>
+
+
 
                   <a id="delete" href="/admin/home/deleteBlog/{{$row->id}}"><i class="fas fa-trash"></i></a>
+                  @include('backend.modals.blogseditmodal')
 
                 </td>
               </tr>
@@ -139,5 +134,6 @@
 
   });
 </script>
+
 
 @endsection

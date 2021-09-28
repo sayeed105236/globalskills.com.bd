@@ -20,7 +20,7 @@ use App\Http\Controllers\ClassroomCourseController;
 use App\Http\Controllers\AccreditationController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\SystemController;
-use App\Http\Controllers\PortwalletController;
+
 use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminEventController;
 use App\Http\Controllers\BookingController;
@@ -54,7 +54,7 @@ Route::get('/event_details/{id}', [EventController::class,'event_details']);
 
 
 Route::get('/searchajax', [SearchController::class,'SearchautoComplete'])->name('searchcourseajax');
-
+Route::get('/submit',[PaymentController::class,'submit']);
 
 
 Route::get('/faqs', [FaqController::class,'index'])->name('faq');
@@ -85,11 +85,13 @@ Route::get('/blogs_details/{id}', [BlogsController::class,'blogs_details_index']
 //add to carts Routes
 Route::get('/carts', [CartController::class,'index'])->name('carts');
 Route::post('/add_to_carts', [CartController::class,'add_cart'])->name('add-carts');
+Route::post('/buynow', [CartController::class,'BuyNow'])->name('buy-now');
 Route::get('/carts/delete/{id}',[CartController::class,'deleteCart']);
+Route::get('/buynow/delete/{id}',[CartController::class,'deleteBuy']);
 
 
 
-Route::get('/home/course/carts/payment',[PortwalletController::class,'index'])->name('payment');
+//Route::get('/home/course/carts/payment',[PortwalletController::class,'index'])->name('payment');
 
 Route::post('/classroom_bookings', [BookingController::class,'StoreBooking'])->name('store-bookings')->middleware('is_admin');
 
@@ -129,7 +131,7 @@ Route::get('/admin/home/courses/manage', [CourseController::class, 'Manage'])->n
 middleware('is_admin');
 Route::post('/admin/home/courses/store', [CourseController::class, 'StoreCourse'])->name('store-course')->
 middleware('is_admin');
-Route::get('admin/home/courses/edit/{id}',[CourseController::class,'editCourse'])->middleware('is_admin');
+
 Route::post('admin/home/courses/update',[CourseController::class,'updateCourse'])->name('update-course')->middleware('is_admin');
 Route::get('admin/home/courses/delete/{id}',[CourseController::class,'deleteCourse'])->middleware('is_admin');
 
@@ -162,7 +164,7 @@ Route::get('/admin/home/classroom/courses/manage', [ClassroomCourseController::c
 middleware('is_admin');
 Route::post('/admin/home/classroom/courses/store', [ClassroomCourseController::class, 'StoreCourse'])->name('store-classroom-course')->
 middleware('is_admin');
-Route::get('admin/home/classroom/courses/edit/{id}',[ClassroomCourseController::class,'editCourse'])->middleware('is_admin');
+
 Route::post('admin/home/classroom/courses/update',[ClassroomCourseController::class,'updateCourse'])->name('update-classroom-course')->middleware('is_admin');
 Route::get('admin/home/classroom/courses/delete/{id}',[ClassroomCourseController::class,'deleteCourse'])->middleware('is_admin');
 
@@ -175,6 +177,7 @@ Route::get('/home/classroom/course_details/booking/{id}', [FrontendController::c
 Route::get('/admin/home/classroom/courses/course_details/{id}',[ClassroomCourseController::class,'CourseDetailsBackend'])->middleware('is_admin');
 Route::get('/admin/home/classroom/courses/course_details/course_info/{id}',[ClassroomCourseController::class,'ClassroomCourseInfo'])->middleware('is_admin');
 Route::post('admin/home/classroom/courses/course_details/store',[ClassroomCourseController::class,'StoreClassroomCourseDetails'])->name('store-classroom-course-details')->middleware('is_admin');
+Route::post('admin/home/classroom/courses/course_details/update',[ClassroomCourseController::class,'UpdateClassroomCourseDetails'])->name('update-classroom-course-details')->middleware('is_admin');
 
 //admin add accreditation images
 Route::get('/admin/home/accreditation/manage', [AccreditationController::class, 'Manage'])->name('accreditation')->
@@ -194,8 +197,9 @@ Route::get('/admin/home/blogs/manage', [AdminBlogController::class, 'index'])->n
 middleware('is_admin');
 Route::post('/admin/home/addBlog', [AdminBlogController::class, 'addBlog'])->name('add-blogs')->
 middleware('is_admin');
-Route::post('/admin/home/editBlog',[AdminBlogController::class, 'editBlog'])->name('edit-blogs')->
+Route::post('/admin/home/UpdateBlog', [AdminBlogController::class, 'updateBlog'])->name('update-blogs')->
 middleware('is_admin');
+
 Route::get('/admin/home/deleteBlog/{id}',[AdminBlogController::class, 'deleteBlog'])->name('delete-blogs')->
 middleware('is_admin');
 Route::get('/admin/home/blogs/details/{id}',[AdminBlogController::class, 'BlogDetails'])->
@@ -205,6 +209,8 @@ Route::get('/admin/home/blogs/details/view/{id}',[AdminBlogController::class, 'B
 middleware('is_admin');
 
 Route::post('/admin/home/blogs/details/store',[AdminBlogController::class, 'Store'])->name('store-blog-details')->
+middleware('is_admin');
+Route::post('/admin/home/UpdateBlogDetails', [AdminBlogController::class, 'updateBlogDetails'])->name('update-blog-details')->
 middleware('is_admin');
 
 //admin add events

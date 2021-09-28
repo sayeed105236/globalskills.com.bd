@@ -63,7 +63,11 @@ class CartController extends Controller
 
 
 
-          return back()->with('cart_added','Course has been added to cart successfully!');
+                      $notification=array(
+                          'message'=>'Course has been added to cart successfully!!!',
+                          'alert-type'=>'success'
+                      );
+                      return Redirect()->back()->with($notification);
 
         }
         public function deleteCart($id)
@@ -73,6 +77,62 @@ class CartController extends Controller
           $cart->delete();
           return back()->with('cart_deleted','Course has been deleted from cart successfully!');
         }
+        public function BuyNow(Request $request)
+        {
+
+
+              $course_id = $request->course_id;
+              $classroom_course_id=$request->classroom_course_id;
+              $user_id = $request->user_id;
+              $ip_address=$request->ip();
+
+
+                if (Auth::check()) {
+
+                            $cart= Cart::where('user_id',Auth::id())
+
+                                        ->where('course_id',$request->course_id)
+
+                                        ->first();
+                }else {
+                  $cart= Cart::where('ip_address',request()->ip())
+
+                              ->where('course_id',$request->course_id)
+
+                              ->first();
+                }
+                          if (!is_null($cart)) {
+                            //
+
+                          }else
+                          {
+                            $cart = new Cart();
+
+                            if (Auth::check()) {
+                              $cart->user_id= Auth::id();
+                            }
+                            $cart->course_id = $course_id;
+                            $cart->classroom_course_id= $classroom_course_id;
+                            $cart->ip_address= $ip_address;
+
+
+                            $cart->save();
+                          }
+                          
+
+
+
+              return view('frontend.users.buynow')->with('cart_added','Course has been added to cart successfully!');
+
+
+            }
+            public function deleteBuy($id)
+            {
+              $cart = Cart::find($id);
+
+              $cart->delete();
+              return view('frontend.users.buynow')->with('cart_deleted','Course has been deleted from cart successfully!');
+            }
 
 
 }

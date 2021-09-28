@@ -138,7 +138,16 @@
                   </td>
 
                   <td>{!!$row->blog_details_content!!}</td>
-                  <td></td>
+                  <td>
+                  
+
+
+
+
+
+
+
+                  </td>
 
 
 

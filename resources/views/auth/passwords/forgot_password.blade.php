@@ -12,11 +12,11 @@
 	<meta name="robots" content="" />
 
 	<!-- DESCRIPTION -->
-	<meta name="description" content="EduChamp : Education HTML Template" />
+	<meta name="description" content="Global Skills Development Agency" />
 
 	<!-- OG -->
-	<meta property="og:title" content="EduChamp : Education HTML Template" />
-	<meta property="og:description" content="EduChamp : Education HTML Template" />
+	<meta property="og:title" content="Global Skills Development Agency" />
+	<meta property="og:description" content="Global Skills Development Agency" />
 	<meta property="og:image" content="" />
 	<meta name="format-detection" content="telephone=no">
 
@@ -25,7 +25,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png')}}" />
 
 	<!-- PAGE TITLE HERE ============================================= -->
-	<title>EduChamp : Education HTML Template </title>
+	<title>Global Skills Development Agency </title>
 
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,7 +36,7 @@
 	<![endif]-->
 
 	<!-- All PLUGINS CSS ============================================= -->
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/assets.css')}}">
+
 
 	<!-- TYPOGRAPHY ============================================= -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/typography.css')}}">

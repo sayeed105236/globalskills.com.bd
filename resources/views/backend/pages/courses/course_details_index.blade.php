@@ -76,7 +76,7 @@
             <br>
               <div class="course-buy-now text-center">
 
-                <form class="hidden" action="{{route('add-carts')}}  " method="post">
+                <form class="hidden" action="{{route('buy-now')}}" method="post">
                   @csrf
                   <input type="hidden" name="course_id" value="{{$course->id}}">
 

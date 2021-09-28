@@ -69,18 +69,16 @@ class CourseController extends Controller
 
 
     $course->save();
-    return back()->with('course_added','Course record has been added successfully!');
+    $notification=array(
+        'message'=>'Course record has been added successfully!!!',
+        'alert-type'=>'success'
+    );
+    return Redirect()->back()->with($notification);
+
 
 
   }
-  public function editCourse($id)
-  {
 
-    $course_categories= CourseCategory::all();
-    $main_categories= MainCategory::all();
-    $course = Course::find($id);
-    return view('/backend/pages/courses.edit',compact('course','main_categories','course_categories'));
-  }
 
   public function updateCourse(Request $request)
   {
@@ -90,19 +88,38 @@ class CourseController extends Controller
     $course_title=$request->course_title;
     $regular_price= $request->regular_price;
     $sale_price= $request-> sale_price;
-    $course_image =$request->file('file');
+    $classroom_course_image =$request->file('file');
     $filename=null;
-    if ($course_image) {
-        $filename = time() . $course_image->getClientOriginalName();
+    $uploadedFile = $request->file('image');
+    $oldfilename = $course['course_image'] ?? 'demo.jpg';
+
+    $oldfileexists = Storage::disk('public')->exists('courses/' . $oldfilename);
+
+    if ($uploadedFile !== null) {
+
+        if ($oldfileexists && $oldfilename != $uploadedFile) {
+            //Delete old file
+            Storage::disk('public')->delete('courses/' . $oldfilename);
+        }
+        $filename_modified = str_replace(' ', '_', $uploadedFile->getClientOriginalName());
+        $filename = time() . '_' . $filename_modified;
 
         Storage::disk('public')->putFileAs(
             'courses/',
-            $course_image,
+            $uploadedFile,
             $filename
         );
 
+        $data['image'] = $filename;
+    } elseif (empty($oldfileexists)) {
+        throw new GeneralException('Course image not found!');
+        //return redirect()->back()->with(['flash_danger' => 'User image not found!']);
+        //file check in storage
 
     }
+
+
+
 
 
     $status = $request->status;
@@ -122,14 +139,26 @@ class CourseController extends Controller
 
 
     $course->save();
-    return back()->with('course_updated','Course record has been updated successfully!');
+    $notification=array(
+        'message'=>'Course record has been updated successfully!!!',
+        'alert-type'=>'success'
+    );
+    return Redirect()->back()->with($notification);
+
+
   }
   public function deleteCourse($id)
   {
     $course = Course::find($id);
 
     $course->delete();
-    return back()->with('course_deleted','Course record has been deleted successfully!');
+    $notification=array(
+        'message'=>'Course record has been deleted successfully!!!',
+        'alert-type'=>'error'
+    );
+    return Redirect()->back()->with($notification);
+
+
   }
   public function CourseDetails($id)
   {
@@ -200,9 +229,10 @@ class CourseController extends Controller
 
     $course_details->save();
     return back()->with('coursedetails_added','Course details record has been added successfully!');
-
-
   }
+
+
+      
   public function course_details_frontend($id)
   {
 
@@ -353,16 +383,7 @@ public function CourseInfo($id)
     public function CourseCurricullum($id)
 
     {
-          //dd($id);
-         // $course_categories= CourseCategory::all();
-         // $main_categories= MainCategory::all();
-          //$course = Course::find($id);
-         // $section= Section::where('course_id',$id)->first();
 
-          //$course_details= CourseOverview::where('course_id',$id)->get();
-          //$sections= Section::where('course_id',$id)->get();
-
-          //$lessons= Lesson::where('course_id',$id)->get();
 
         $course= Course::with(['sections.lessons'])->where('id',$id)->first();
 

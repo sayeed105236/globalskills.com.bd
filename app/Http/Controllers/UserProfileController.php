@@ -13,10 +13,15 @@ class UserProfileController extends Controller
   public function user_profile()
   {
 
-    $users = User::all();
+    if (Auth::check()) {
+      $users = User::all();
+        return view('frontend.pages.user_profile',compact('users'));
+
+    }else {
+      return Redirect('login');
+    }
 
 
-    return view('frontend.pages.user_profile',compact('users'));
   }
   public function EditProfile($id)
   {

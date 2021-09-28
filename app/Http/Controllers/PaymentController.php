@@ -10,30 +10,54 @@ use App\Models\User;
 class PaymentController extends Controller
 {
 
-    public function payment(Request $request){
-        $course=Course::find($request->id);
-        $user=User::find($request->id);
-   return view('backend.pages.courses.course_details_index',compact('course'));
- }
- public function paymentInfo(Request $request){
+    public function submit()
+    {
+      // STart CURL
 
-     if($request->tx){
-         if($payment=Payment::where('transaction_id',$request->tx)->first()){
-             $payment_id=$payment->id;
-         }else{
-             $payment=new Payment;
-             $payment->course_id=$request->course_id;
-             $payment->invoice_id=$request->invoice_id;
-             $payment->payment_method->$request->enrollement_id;
-             
+    // $ch = curl_init('https://api.portwallet.com/payment/v2/invoice');
 
-             $payment->save();
-             $payment_id=$payment->id;
-         }
+    $ch = curl_init();
+    curl_setopt($ch,CURLOPT_URL,'https://api-sandbox.portwallet.com/payment/v2/invoice');
 
-     return 'Pyament has been done and your payment id is : '.$payment_id;
-     }else{
-         return 'Payment has failed';
-     }
- }
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', $this->authorization));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
+
+    // execute!
+    $response = curl_exec($ch);
+
+    // close the connection, release resources used
+    curl_close($ch);
+    // END CURL;
+
+    $responseData = json_decode($response);
+    if ($responseData->result == "success") {
+      $this->session->set_userdata('portwallet_invoice_id', $responseData->data->invoice_id);
+      $this->session->set_userdata('portwallet_invoice_amount', $responseData->data->order->amount);
+
+
+      redirect($responseData->data->action->url);
+    } else {
+      if ($responseData->error->property == "billing.customer.phone") {
+        $this->session->set_flashdata('portwallet_error', 'Please save your valid phone number.');
+      } else {
+        $this->session->set_flashdata('portwallet_error', $responseData->error->explanation);
+      }
+
+      if ($from == 'shopping_cart') {
+
+        redirect(base_url('home/shopping_cart'));
+      } else {
+        // debug($responseData);
+        redirect(base_url('user/payment_history'));
+      }
+    }
+    // redirect($responseData->data->action->url);
+
+  }
+}
+
+
+    }
+
 }

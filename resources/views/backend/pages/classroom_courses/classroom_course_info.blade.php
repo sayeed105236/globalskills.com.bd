@@ -45,7 +45,8 @@
 <div class="card">
     <div class="card-header">
 
-<a href="#"><i class="fas fa-edit"></i></a>
+<a href="#"  data-toggle="modal" data-target="#ClassroomCourseDetailsEditModal"><i class="fas fa-edit"></i></a>
+@include('backend.modals.classroom_course_detailseditmodal')
 </div>
 <div class="table-responsive">
   <table class="table">
