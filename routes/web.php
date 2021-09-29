@@ -25,7 +25,7 @@ use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminEventController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\TrainingCourseController;
-use App\Http\Controllers\PaymentController;
+
 use App\Http\Controllers\SearchController;
 
 
@@ -54,9 +54,7 @@ Route::get('/event_details/{id}', [EventController::class,'event_details']);
 
 
 Route::get('/searchajax', [SearchController::class,'SearchautoComplete'])->name('searchcourseajax');
-Route::get('/submit',[PaymentController::class,'submit']);
-Route::post('/proccedtocheckout',[PaymentController::class,'StoreCheckout'])->name('checkout');
-Route::get('/proccedtocheckout{id}',[PaymentController::class,'ManageCheckout']);
+
 
 
 Route::get('/faqs', [FaqController::class,'index'])->name('faq');

@@ -219,7 +219,18 @@
 
       </div>
       <br>
-      <a class="text-center btn btn-primary float-right" href="#">Procceed To Payment</a>
+      <form class="hidden" action="#" method="post">
+      
+
+
+        <button  class="btn">Proceed to Checkout</button>
+      </form>
+
+
+
+
+
+
     </div>
 
 

@@ -219,7 +219,7 @@
 
       </div>
       <br>
-      <a class="btn btn-primary" href="/proccedtocheckout{{$total}}">Proceed To Checkout</a>
+      <a class="btn btn-primary" href="#">Proceed To Checkout</a>
 
     </div>
 

@@ -21,7 +21,8 @@ class CartController extends Controller
       $course_categories= CourseCategory::all();
       $main_categories= MainCategory::all();
 
-      $course = Course::find($id);
+      $course = Course::where('id')->get();
+       
 
       return view('frontend.users.cart',compact('course','course_categories','main_categories'));
     }
