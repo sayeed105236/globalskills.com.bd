@@ -219,7 +219,8 @@
 
       </div>
       <br>
-      <a class="text-center btn btn-primary float-right" href="#">Procceed To Payment</a>
+      <a class="btn btn-primary" href="/proccedtocheckout{{$total}}">Proceed To Checkout</a>
+
     </div>
 
 

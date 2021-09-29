@@ -18,12 +18,8 @@ class AdminEventController extends Controller
     public function Store(Request $request)
     {
 
-
-
         $event_title = $request->event_title;
         $description = $request->description;
-
-
         $month=$request->month;
         $date=$request->date;
         $event_image =$request->file('file');
@@ -50,8 +46,12 @@ class AdminEventController extends Controller
 
 
         $event->save();
+        $notification=array(
+            'message'=>'Event has been added successfully!!!',
+            'alert-type'=>'success'
+        );
+        return Redirect()->back()->with($notification);
 
-      return back()->with('event_added','Event has been added successfully!');
     }
 
 
@@ -62,8 +62,68 @@ class AdminEventController extends Controller
 
       $event->delete();
 
-    return back()->with('event_deleted','Event has been deleted successfully!');
+
+    $notification=array(
+        'message'=>'Event has been deleted successfully!!!',
+        'alert-type'=>'danger'
+    );
+    return Redirect()->back()->with($notification);
     }
+
+    public function Update(Request $request)
+    {
+
+      $event_title = $request->event_title;
+      $description = $request->description;
+      $month=$request->month;
+      $date=$request->date;
+      $filename=null;
+      $uploadedFile = $request->file('image');
+      $oldfilename = $event['event_image'] ?? 'demo.jpg';
+
+      $oldfileexists = Storage::disk('public')->exists('events/' . $oldfilename);
+
+      if ($uploadedFile !== null) {
+
+          if ($oldfileexists && $oldfilename != $uploadedFile) {
+              //Delete old file
+              Storage::disk('public')->delete('events/' . $oldfilename);
+          }
+          $filename_modified = str_replace(' ', '_', $uploadedFile->getClientOriginalName());
+          $filename = time() . '_' . $filename_modified;
+
+          Storage::disk('public')->putFileAs(
+              'events/',
+              $uploadedFile,
+              $filename
+          );
+
+          $data['image'] = $filename;
+      } elseif (empty($oldfileexists)) {
+          throw new GeneralException('Blogs image not found!');
+          //return redirect()->back()->with(['flash_danger' => 'User image not found!']);
+          //file check in storage
+
+      }
+      $event = AdminEvent::find($request->id);;
+      $event->event_title = $event_title;
+      $event->description =$description;
+
+      $event->date=$date;
+      $event->month=$month;
+      $event->event_image= $filename;
+
+
+      $event->save();
+      $notification=array(
+          'message'=>'Event has been updated successfully!!!',
+          'alert-type'=>'success'
+      );
+      return Redirect()->back()->with($notification);
+
+
+    }
+
 
     public function EventDetails($id)
     {

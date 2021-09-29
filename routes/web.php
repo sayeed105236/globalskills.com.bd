@@ -55,6 +55,8 @@ Route::get('/event_details/{id}', [EventController::class,'event_details']);
 
 Route::get('/searchajax', [SearchController::class,'SearchautoComplete'])->name('searchcourseajax');
 Route::get('/submit',[PaymentController::class,'submit']);
+Route::post('/proccedtocheckout',[PaymentController::class,'StoreCheckout'])->name('checkout');
+Route::get('/proccedtocheckout{id}',[PaymentController::class,'ManageCheckout']);
 
 
 Route::get('/faqs', [FaqController::class,'index'])->name('faq');
@@ -217,6 +219,8 @@ middleware('is_admin');
 Route::get('/admin/home/events/manage', [AdminEventController::class, 'index'])->name('manage-events')->
 middleware('is_admin');
 Route::post('/admin/home/events/store', [AdminEventController::class, 'Store'])->name('store-events')->
+middleware('is_admin');
+Route::post('/admin/home/events/update', [AdminEventController::class, 'Update'])->name('update-events')->
 middleware('is_admin');
 Route::get('/admin/home/events/delete/{id}', [AdminEventController::class, 'Delete'])->
 middleware('is_admin');

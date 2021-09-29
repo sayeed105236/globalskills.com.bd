@@ -7,6 +7,9 @@ use App\Models\Cart;
 use App\Models\Course;
 use App\Models\ClassroomCourse;
 use App\Models\System;
+use App\Models\CourseCategory;
+use App\Models\User;
+use App\Models\MainCategory;
 use Auth;
 
 class CartController extends Controller
@@ -15,9 +18,12 @@ class CartController extends Controller
 
 
     {
+      $course_categories= CourseCategory::all();
+      $main_categories= MainCategory::all();
 
+      $course = Course::find($id);
 
-      return view('frontend.users.cart');
+      return view('frontend.users.cart',compact('course','course_categories','main_categories'));
     }
     public function add_cart(Request $request)
     {
@@ -80,7 +86,6 @@ class CartController extends Controller
         public function BuyNow(Request $request)
         {
 
-
               $course_id = $request->course_id;
               $classroom_course_id=$request->classroom_course_id;
               $user_id = $request->user_id;
@@ -118,11 +123,20 @@ class CartController extends Controller
 
                             $cart->save();
                           }
-                          
 
 
 
-              return view('frontend.users.buynow')->with('cart_added','Course has been added to cart successfully!');
+                          $course_categories= CourseCategory::all();
+                          $main_categories= MainCategory::all();
+
+                          $course = Course::where('id',$request->course_id)->get();
+
+
+
+
+
+
+              return view('frontend.users.buynow',compact('course_categories','main_categories','course_categories'))->with('cart_added','Course has been added to cart successfully!');
 
 
             }
