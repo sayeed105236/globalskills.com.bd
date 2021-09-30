@@ -24,6 +24,8 @@
         <div class="card-header">
           <h4 class="card-title">Event Detail View</h4>
               <a class="float-right" href="{{route('manage-events')}}"><i class="fa fa-home fa-2x"></i></a>
+              <a class="float-right" href="#"  data-toggle="modal" data-target="#EventDetailsEditModal"><i class="fa fa-edit fa-2x"></i></a>
+                @include('backend.modals.event_detailseditmodal')
         </div>
         <div class="card-body">
 

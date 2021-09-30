@@ -27,6 +27,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\TrainingCourseController;
 
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\PaymentController;
 
 
 
@@ -50,10 +51,12 @@ Route::post('/contact_us/store', [ContactUsController::class,'Store'])->name('st
 Route::get('/about_us', [AboutController::class,'index'])->name('about');
 Route::get('/events', [EventController::class,'index'])->name('event');
 Route::get('/event_details/{id}', [EventController::class,'event_details']);
+Route::get('/submit', [PaymentController::class,'submit']);
 
 
 
-Route::get('/searchajax', [SearchController::class,'SearchautoComplete'])->name('searchcourseajax');
+Route::get('/search', [SearchController::class,'autoComplete'])->name('autocomplete');
+Route::post('/booking', [BookingController::class,'SendMail'])->name('sendmail');
 
 
 
@@ -143,6 +146,7 @@ Route::get('admin/home/courses/course_details/course_curricullum/{id}',[CourseCo
 Route::get('admin/home/courses/course_overviews/{id}',[CourseController::class,'CourseOverview'])->middleware('is_admin');
 
 Route::post('admin/home/courses/course_details/store',[CourseController::class,'StoreCourseDetails'])->name('store-course-details')->middleware('is_admin');
+Route::post('admin/home/courses/course_details/update',[CourseController::class,'UpdateCourseDetails'])->name('update-course-details')->middleware('is_admin');
 
 Route::get('home/course_details/{id}',[CourseController::class,'course_details_frontend']);
 Route::get('admin/home/course_details/sections/{id}',[CourseController::class,'Section'])->middleware('is_admin');
@@ -225,6 +229,8 @@ middleware('is_admin');
 Route::get('/admin/home/events/event-details/{id}', [AdminEventController::class, 'EventDetails'])->
 middleware('is_admin');
 Route::post('/admin/home/events/event-details/store', [AdminEventController::class, 'StoreDetails'])->name('store-event-details')->
+middleware('is_admin');
+Route::post('/admin/home/events/event-details/update', [AdminEventController::class, 'UpdateDetails'])->name('update-event-details')->
 middleware('is_admin');
 Route::get('/admin/home/events/event-details/view/{id}', [AdminEventController::class, 'EventDetailView'])->
 middleware('is_admin');

@@ -36,6 +36,8 @@
           <a class="float-right" href="#"  data-toggle="modal" data-target="#EventDetailsAddModal"><i class="fa fa-plus-square fa-2x"></i></a>
             @include('backend.modals.event_detailsaddmodal')
 
+          
+
 
             </div>
         </div>

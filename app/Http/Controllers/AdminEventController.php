@@ -129,8 +129,9 @@ class AdminEventController extends Controller
     {
       $event = EventDetail::where('admin_event_id',$id)->get();
       $events=AdminEvent::find($id);
+      $event_details= EventDetail::find($id);
 
-      return view('backend.pages.events.event_details',compact('events'));
+      return view('backend.pages.events.event_details',compact('events','event','event_details'));
     }
     public function StoreDetails(Request $request)
     {
@@ -159,13 +160,56 @@ class AdminEventController extends Controller
       return back()->with('blog_details_added','Blog details has been added successfully created!');
 
     }
+    public function UpdateDetails(Request $request)
+    {
+      $admin_event_id=$request->admin_event_id;
+      $event_schedule=$request->event_schedule;
+      $event_description=$request->event_description;
+      $filename=null;
+      $uploadedFile = $request->file('image');
+      $oldfilename = $event_details['event_banner_image'] ?? 'demo.jpg';
+
+      $oldfileexists = Storage::disk('public')->exists('Events Banner/' . $oldfilename);
+
+      if ($uploadedFile !== null) {
+
+          if ($oldfileexists && $oldfilename != $uploadedFile) {
+              //Delete old file
+              Storage::disk('public')->delete('Events Banner/' . $oldfilename);
+          }
+          $filename_modified = str_replace(' ', '_', $uploadedFile->getClientOriginalName());
+          $filename = time() . '_' . $filename_modified;
+
+          Storage::disk('public')->putFileAs(
+              'Events Banner/',
+              $uploadedFile,
+              $filename
+          );
+
+          $data['image'] = $filename;
+      } elseif (empty($oldfileexists)) {
+          throw new GeneralException('Blogs image not found!');
+          //return redirect()->back()->with(['flash_danger' => 'User image not found!']);
+          //file check in storage
+
+      }
+
+      $event_details =  EventDetail::find($request->id);
+      $event_details->admin_event_id=$admin_event_id;
+      $event_details->event_schedule=$event_schedule;
+      $event_details->event_description=$event_description;
+      $event_details->event_banner_image= $filename;
+      $event_details->save();
+      return back()->with('blog_details_added','Blog details has been added successfully created!');
+
+    }
     public function EventDetailView($id)
     {
 
       $events=AdminEvent::find($id);
       $event_details=EventDetail::where('admin_event_id',$id)->get();
-
-      return view('backend.pages.events.view',compact('events','event_details'));
+      $event_detail=EventDetail::where('admin_event_id',$id)->first();
+      return view('backend.pages.events.view',compact('events','event_details','event_detail'));
     }
 
 

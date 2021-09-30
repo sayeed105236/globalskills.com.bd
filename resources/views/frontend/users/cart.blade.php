@@ -220,7 +220,7 @@
       </div>
       <br>
       <form class="hidden" action="#" method="post">
-      
+
 
 
         <button  class="btn">Proceed to Checkout</button>
