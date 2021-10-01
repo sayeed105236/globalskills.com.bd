@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\Models\User;
+use App\Models\Course;
 
 class UserController extends Controller
 {
     public function List()
     {
+      $courses= Course::all();
       $users= User::all();
-      return view('backend.pages.user_list',compact('users'));
+      return view('backend.pages.user_list',compact('courses','users'));
     }
     public function deleteUser($id)
     {

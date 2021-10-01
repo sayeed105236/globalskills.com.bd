@@ -85,8 +85,10 @@
                 <td>
                   <a href=""><i class="fas fa-edit"></i></a>
                   <a id="delete" href="/admin/home/users/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
-
+                  <a href="#" data-toggle="modal" data-target="#EnrollCourseModal{{$row->id}}"><i class="fab fa-accessible-icon"></i></a>
+                    @include('backend.modals.enroll')
                 </td>
+
               </tr>
               @endforeach
             </tbody>
