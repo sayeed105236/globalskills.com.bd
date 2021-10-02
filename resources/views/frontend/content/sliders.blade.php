@@ -126,11 +126,11 @@
             data-paddingleft="[0,0,0,0]"
             style="z-index: 7; text-transform:capitalize; white-space: unset; color:#fff; font-family:rubik; font-size:18px; line-height:28px; font-weight:400;">
             <div class="container" style="margin-top:30px;">
-            <form class="cours-search">
+            <form id="sform" action="searchcourses" method="post" class="cours-search">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="What do you want to learn today?	">
+                <input type="text" name="q" id="q" class="form-control typeahead" placeholder="What do you want to learn today?	">
                 <div class="input-group-append">
-                  <button class="btn" type="submit">Search</button>
+                  <button class="btn" type="submit" name="submit" type="submit">Search</button>
                 </div>
               </div>
             </form>
@@ -279,3 +279,21 @@
   </div>
 </div>
 </div>
+
+@push('scripts')
+
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+var path = "{{route('autocomplete')}}"
+$('input.typeahead').typeahead({
+    source: function(query,process){
+      return $.get(path,{query:query},function(data){
+        return process(data);
+      });
+    }
+});
+
+</script>
+
+
+@endpush

@@ -15,3 +15,5 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('vendors/revolution/css/layers.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('vendors/revolution/css/settings.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('vendors/revolution/css/navigation.css')}}">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="{{asset('backend')}}/lib/toastr/toastr.css">

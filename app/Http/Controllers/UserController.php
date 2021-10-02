@@ -10,9 +10,11 @@ class UserController extends Controller
 {
     public function List()
     {
+      $courses= Course::all();
       $users= User::all();
-      $course_list =  Course::all();
-      return view('backend.pages.user_list',compact('course_list','users'));
+
+      return view('backend.pages.user_list',compact('courses','users'));
+
     }
     public function deleteUser($id)
     {

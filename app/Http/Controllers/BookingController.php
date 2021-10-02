@@ -14,11 +14,12 @@ class BookingController extends Controller
   public function StoreBooking(Request $request)
   {
 
-      //dd($request);
+
         $classroom_course_id = $request->classroom_course_id;
         $course_category_id=$request->course_category_id;
         $user_id = $request->user_id;
         $ip_address=$request->ip();
+        //dd($request);
 
 
 

@@ -46,7 +46,8 @@
 <div class="card">
     <div class="card-header">
 
-<a href="#"><i class="fas fa-edit"></i></a>
+<a href="#"data-toggle="modal" data-target="#CourseDetailsEditModal"><i class="fas fa-edit"></i></a>
+@include('backend.modals.course_details_editmodal')
 </div>
 <div class="table-responsive">
   <table class="table">
@@ -91,7 +92,7 @@
               data-original-title=""
             >
               <img
-                src="{{asset("storage/courses/banners/$course->course_details->banner_image")}}"
+                src="{{asset('storage/courses/banners/'.$course->course_details->banner_image)}}"
                 alt="image"
                 height="50"
                 width="50"
@@ -105,17 +106,17 @@
         </td>
 
         <td>
-          {{$course->course_details->short_description}}
+          {!!$course->course_details->short_description!!}
 
 
         </td>
         <td>
-            {{$course->course_details->course_description}}
+            {!!$course->course_details->course_description!!}
 
         </td>
         <td>
 
-              {{$course->course_details->learning_outcomes}}
+              {!!$course->course_details->learning_outcomes!!}
 
         </td>
         <td>
@@ -137,7 +138,7 @@
 
             {{$course->course_details->quiz}}
         </td>
-        
+
       </tr>
 
 

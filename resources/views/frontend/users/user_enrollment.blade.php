@@ -111,7 +111,7 @@
                                     <h2 class="post-title">{{$course->course_title}}</h2>
                                 </div>
                                 <div class="ttr-post-text">
-                                    <p>{{$course->course_details->short_description}}</p>
+                                    {!$course->course_details->short_description!}
                                 </div>
                             </div>
                         </div>
@@ -138,12 +138,12 @@
                                 </div>
                                 <div class="col-md-12 col-lg-8">
                                     <h5 class="m-b5">Course Description</h5>
-                                    <p>{{$course->course_details->course_description}}</p>
+                                    {!!$course->course_details->course_description!!}
                                     <h5 class="m-b5">Certification</h5>
                                     <p>{{$course->course_details->certification}}</p>
                                     <h5 class="m-b5">Learning Outcomes</h5>
                                     <ul class="list-checked primary">
-                                        <li>{{$course->course_details->learning_outcomes}}</li>
+                                        {!!$course->course_details->learning_outcomes!!}
 
                                     </ul>
 

@@ -38,9 +38,16 @@
         <div class="alert alert-danger" role="alert">
 
           <div class="alert-body">
-            {{Session::get('event_deleted')}}
+            {{Session::get('event_updated')}}
           </div>
         </div>
+        <div class="alert alert-success" role="alert">
+
+          <div class="alert-body">
+            {{Session::get('event_updated')}}
+          </div>
+        </div>
+
 
         @endif
 
@@ -110,9 +117,10 @@
                 <td>
                   <a href="/admin/home/events/event-details/{{$row->id}}"><i class="fas fa-upload"></i></a>
 
-                  <a href="#"><i class="fas fa-edit"></i></a>
+                  <a href="#" data-toggle="modal" data-target="#EventEditModal{{$row->id}}" ><i class="fas fa-edit"></i></a>
 
                   <a href="/admin/home/events/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
+                  @include('backend.modals.editeventmodal')
 
                 </td>
               </tr>

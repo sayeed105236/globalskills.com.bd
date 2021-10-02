@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Course;
 
 class SearchController extends Controller
 {
-    public function search(Request $request)
+
+    public function autoComplete(Request $request)
+
     {
-      return view('frontend.pages.search');
+    $data =Course::select('course_title')->where("course_title","LIKE"."%{$request->input('query')}%")->get();
+    return response()->json($data);
     }
+
 }

@@ -52,7 +52,7 @@ class FrontendController extends Controller
   {
 
     $classroom_course = ClassroomCourse::find($id);
-    dd($id);
+    //dd($id);
 
     return back();
   }

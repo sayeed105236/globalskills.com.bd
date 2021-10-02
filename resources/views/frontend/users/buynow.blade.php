@@ -118,7 +118,7 @@
                 }
 
                  ?>
-              <a id="delete" href="/carts/delete/{{$row->id}}"><i class="fa fa-trash"></i></a>
+              <a id="delete" href="/buynow/delete/{{$row->id}}"><i class="fa fa-trash"></i></a>
               </td>
             </tr>
             @endforeach
@@ -219,17 +219,7 @@
 
       </div>
       <br>
-      <form class="hidden" action="#" method="post">
-
-
-
-        <button  class="btn">Proceed to Checkout</button>
-      </form>
-
-
-
-
-
+      <a class="btn btn-primary" href="#">Proceed To Checkout</a>
 
     </div>
 

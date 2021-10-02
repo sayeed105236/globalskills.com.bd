@@ -25,19 +25,26 @@
           <h4 class="card-title">E-Learning Courses</h4>
           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#CourseAddModal">Add</a>
         </div>
-        @if(Session::has('category_added'))
+        @if(Session::has('course_added'))
         <div class="alert alert-success" role="alert">
 
           <div class="alert-body">
-            {{Session::get('category_added')}}
+            {{Session::get('course_added')}}
           </div>
         </div>
-        @endif
-        @if(Session::has('category_updated'))
+
+        @elseif(Session::has('course_updated'))
         <div class="alert alert-success" role="alert">
 
           <div class="alert-body">
-            {{Session::get('category_updated')}}
+            {{Session::get('course_updated')}}
+          </div>
+        </div>
+        @elseif(Session::has('course_deleted'))
+        <div class="alert alert-danger" role="alert">
+
+          <div class="alert-body">
+            {{Session::get('course_deleted')}}
           </div>
         </div>
         @endif
@@ -127,7 +134,7 @@
           </div>
         </div>
         <div class="table table-responsive">
-          <table class="table table-bordered" id="course_table">
+          <table class="table table-bordered" id="course_list">
             <thead>
               <tr>
                 <th>
@@ -200,8 +207,9 @@
                   </td>
                 <td>
                   <a href="/admin/home/courses/course_overviews/{{$row->id}}"><i class="fas fa-file-upload"></i></a>
-                  <a href="/admin/home/courses/edit/{{$row->id}}"><i class="fas fa-edit"></i></a>
+                  <a href="#" data-toggle="modal" data-target="#CourseEditModal{{$row->id}}"><i class="fas fa-edit"></i></a>
                   <a id="delete" href="/admin/home/courses/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
+                  @include('backend.modals.courseeditmodal')
 
                 </td>
               </tr>
@@ -216,7 +224,22 @@
 
 </div>
 
+<script>
+  $(function(){
+    'use strict';
 
+    $('#course_list').DataTable({
+      responsive: true,
+      language: {
+        searchPlaceholder: 'Search...',
+        sSearch: '',
+        lengthMenu: '_MENU_ ',
+      }
+    });
+
+
+  });
+</script>
 
 
 @endsection

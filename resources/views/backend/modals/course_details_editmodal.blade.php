@@ -1,43 +1,45 @@
-<div class="modal fade" id="CourseDetailsAddModal" tabindex="-1" role="dialog" aria-labelledby="CourseDetailsAddModal" aria-hidden="true">
+<div class="modal fade" id="CourseDetailsEditModal" tabindex="-1" role="dialog" aria-labelledby="CourseDetailsEditModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="CourseDetailsAddModal">Add Course</h5>
+        <h5 class="modal-title" id="CourseDetailsEditModal">Add Course</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="{{route('store-course-details')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('update-course-details')}}" method="POST" enctype="multipart/form-data">
           @csrf
-            <input type="hidden" name="course_id" value="{{$course->id}}">
+
+            <input type="hidden" name="id" value="{{$course_details->id}}">
+          <input type="hidden" name="course_id" value="{{$course->id}}">
 
             <div class="form-group">
               <label class="col-form-label">Short Description</label>
               <div>
-                <textarea class="form-control" name="short_description" id="short_description"> </textarea>
+                <textarea class="form-control" value="{{$course->course_details->short_description}}" name="short_description" id="short_description" required> </textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="col-form-label">Course Description</label>
               <div>
-                <textarea class="form-control" name="course_description" id="course_description"> </textarea>
+                <textarea class="form-control" name="course_description" id="course_description" required> </textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="col-form-label">Learning Outcomes</label>
               <div>
-                <textarea class="form-control" name="learning_outcomes" id="learning_outcomes"> </textarea>
+                <textarea class="form-control" name="learning_outcomes" id="learning_outcomes" required> </textarea>
               </div>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Course Banner Thumbnails</label>
-                  <input type="file" name="file" class="form-control-file" id="banner_image" onchange="previewImage(this)">
+                  <input type="file" name="image" class="form-control-file" id="banner_image" onchange="previewImage(this)" required>
             </div>
 
             <div class="form-group">
               <label for="custom select">Certification</label>
-              <select class="form-control" name="certification">
+              <select class="form-control" name="certification" required>
                 <option label="Choose"></option>
 
                   <option value="Yes">Yes</option>
@@ -54,12 +56,12 @@
 
             <div class="form-group">
               <label for="no_of_lessons">Instructor Id</label>
-              <input type="number" class="form-control" name="instructor_id" aria-describedby="instructor_id" placeholder="Instructor Id">
+              <input type="number" class="form-control" value="{{$course->course_details->instructor_id}}" name="instructor_id" aria-describedby="instructor_id" placeholder="Instructor Id">
 
             </div>
             <div class="form-group">
               <label for="custom select">Skill</label>
-              <select class="form-control" name="skill">
+              <select class="form-control" name="skill" required>
                 <option label="Choose"></option>
 
                   <option value="Beginner">Beginner</option>
@@ -75,7 +77,7 @@
             </div>
             <div class="form-group">
               <label for="custom select">Language</label>
-              <select class="form-control" name="language">
+              <select class="form-control" name="language" required>
                 <option label="Choose"></option>
 
                   <option value="Bangla">Bangla</option>
@@ -91,7 +93,7 @@
             </div>
             <div class="form-group">
               <label for="custom select">Quiz</label>
-              <select class="form-control" name="quiz">
+              <select class="form-control" name="quiz" required>
                 <option label="Choose"></option>
 
                   <option value="Yes">Yes</option>
@@ -104,14 +106,6 @@
 
               </select>
             </div>
-
-
-
-
-
-
-
-
 
 
       </div>

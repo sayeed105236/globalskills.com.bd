@@ -158,7 +158,7 @@ class PortwalletController extends Controller
         return redirect($paymentUrl);
        //dd($paymentUrl);
         //header("location: {$paymentUrl}");
-       header("location: {https://payment.portwallet.com/payment/?invoice=86150B80A7184126}");
+     //  header("location: {https://payment.portwallet.com/payment/?invoice=86150B80A7184126}");
    }
 
 }

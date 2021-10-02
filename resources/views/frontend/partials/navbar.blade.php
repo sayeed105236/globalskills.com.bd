@@ -32,10 +32,14 @@
       </div>
       <!-- Search Box ==== -->
                 <div class="nav-search-bar">
-                    <form action="#">
-                        <input name="search" value="" type="text" class="form-control" placeholder="Type to search">
-                        <span><i class="ti-search"></i></span>
-                    </form>
+                  <form class="cours-search" action="{{ route('search.product') }}" method="GET">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="What do you want to learn today?	" name="search">
+                  <div class="input-group-append">
+                    <button class="btn" type="submit">Search</button>
+                  </div>
+                </div>
+              </form>
         <span id="search-remove"><i class="ti-close"></i></span>
                 </div>
       <!-- Navigation Menu ==== -->
