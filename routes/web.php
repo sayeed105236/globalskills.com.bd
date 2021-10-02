@@ -95,7 +95,7 @@ Route::get('/buynow/delete/{id}',[CartController::class,'deleteBuy']);
 
 
 
-Route::get('/home/course/carts/payment',[PortwalletController::class,'index'])->name('payment');
+Route::post('/home/course/carts/payment',[PortwalletController::class,'index'])->name('payment');
 
 Route::post('/classroom_bookings', [BookingController::class,'StoreBooking'])->name('store-bookings')->middleware('is_admin');
 

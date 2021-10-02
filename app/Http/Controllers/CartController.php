@@ -21,10 +21,11 @@ class CartController extends Controller
       $course_categories= CourseCategory::all();
       $main_categories= MainCategory::all();
 
-      $course = Course::where('id')->get();
-       
 
-      return view('frontend.users.cart',compact('course','course_categories','main_categories'));
+
+
+
+      return view('frontend.users.cart',compact('course_categories','main_categories'));
     }
     public function add_cart(Request $request)
     {
@@ -148,6 +149,4 @@ class CartController extends Controller
               $cart->delete();
               return view('frontend.users.buynow')->with('cart_deleted','Course has been deleted from cart successfully!');
             }
-
-
 }

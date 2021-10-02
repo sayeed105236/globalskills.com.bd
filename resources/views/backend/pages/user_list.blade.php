@@ -31,7 +31,7 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Users</h4>
-       <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#">Add</a>
+       <a href="#" class="btn btn-success" data-toggle="modal" data-target="#"><i class="fas fa-plus"></i></a>
         </div>
 
 
@@ -69,7 +69,7 @@
                     {{$row->email}}
                 </td>
                 <td>
-                    {{$row->phone}}
+                    0{{$row->phone}}
                 </td>
                 <td>
                   @if($row->is_admin==1)
@@ -83,7 +83,7 @@
 
                 <td><span class="badge badge-pill badge-light-primary mr-1"></span></td>
                 <td>
-                  <a href=""><i class="fas fa-edit"></i></a>
+                  <a href="#"><i class="fas fa-edit"></i></a>
                   <a id="delete" href="/admin/home/users/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
                   <a href="#" data-toggle="modal" data-target="#EnrollCourseModal{{$row->id}}"><i class="fab fa-accessible-icon"></i></a>
                     @include('backend.modals.enroll')

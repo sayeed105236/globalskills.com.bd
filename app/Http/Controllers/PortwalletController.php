@@ -10,6 +10,7 @@ use Session;
 use PortWallet\PortWallet;
 use PortWallet\PortWalletClient;
 use PortWallet\Exceptions\PortWalletClientException;
+use Auth;
 
 class PortwalletController extends Controller
 {
@@ -66,17 +67,13 @@ class PortwalletController extends Controller
 
     }
 
-    public function index(){
-        //dd($this,PortWallet::getApiMode());
+    public function index(Request $request){
 
-        //$apiKey = "a3b4d161e2963d91fd081e1e9022e160";
-        //$apiSecret = "91591af022cef73f59abdbfe54ffe114";
-        //$apiKey = "fde409259497bab63ce09e133dbdf0d7";
-        //$apiSecret = "1bd2edd201a0f61832af2c15e4344724";
-        //$this->api_base_sandbox = 'https://api-sandbox.portwallet.com/payment/v2/';
+        if (!Auth::check())
+       {
 
-        //Portwallet::setApiKey(env('STRIPE_SECRET'));
-        //dd(PortWallet::getApiMode());
+			     return redirect('login');
+		     } else {
         if (PortWallet::getApiMode() == "sandbox") {
 
             $this->api_url = 'https://api-sandbox.portwallet.com/payment/v2/ ';
@@ -103,29 +100,31 @@ class PortwalletController extends Controller
        /**
         * Your data
         */
+
        $data = array(
            'order' => array(
-               'amount' => 100.0,
+             'amount' => 1,
+              // 'amount' => (int) $request->amount,
                'currency' => 'BDT',
-               'redirect_url' => 'http://www.yoursite.com/payment',
+               'redirect_url' => 'http://localhost:8000/carts',
                'ipn_url' => 'http://www.yoursite.com/ipn',
                'reference' => 'ABC123',
                'validity' => 900,
            ),
            'product' => array(
-               'name' => 'x Polo T-shirt',
-               'description' => 'x Polo T-shirt with shipping and handling',
+               'name' => $request->course_title,
+               'description' => 'Course Payment',
            ),
            'billing' => array(
                'customer' => array(
-                   'name' => 'Robbie Amell',
-                   'email' => 'test@example.com',
-                   'phone' => '801234567893',
+                   'name' => $request->name,
+                   'email' => $request->email,
+                   'phone' => $request->phone,
                    'address' => array(
-                       'street' => 'House 1, Road1, Gulshan 1',
+                       'street' => 'Hayat Rose Park, Level 5, House No 16 Main Road, Bashundhara Residential Area',
                        'city' => 'Dhaka',
                        'state' => 'Dhaka',
-                       'zipcode' => 1212,
+                       'zipcode' => 1229,
                        'country' => 'BGD',
                    ),
                ),
@@ -142,7 +141,7 @@ class PortwalletController extends Controller
                'tenures' => [],
            ]
        );
-
+      //dd( $data);
        try {
 
            $invoice = $portWallet->invoice->create($data);
@@ -161,4 +160,5 @@ class PortwalletController extends Controller
      //  header("location: {https://payment.portwallet.com/payment/?invoice=86150B80A7184126}");
    }
 
+}
 }
