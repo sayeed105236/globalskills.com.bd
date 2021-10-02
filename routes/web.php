@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PortwalletController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MasteringController;
 use App\Http\Controllers\ContactUsController;
@@ -94,7 +95,7 @@ Route::get('/buynow/delete/{id}',[CartController::class,'deleteBuy']);
 
 
 
-//Route::get('/home/course/carts/payment',[PortwalletController::class,'index'])->name('payment');
+Route::get('/home/course/carts/payment',[PortwalletController::class,'index'])->name('payment');
 
 Route::post('/classroom_bookings', [BookingController::class,'StoreBooking'])->name('store-bookings')->middleware('is_admin');
 

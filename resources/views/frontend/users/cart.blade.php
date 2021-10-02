@@ -82,9 +82,6 @@
             </tr>
           </thead>
           <tbody>
-
-
-
             <?php
               $price= 0;
              ?>
@@ -219,18 +216,7 @@
 
       </div>
       <br>
-      <form class="hidden" action="#" method="post">
-
-
-
-        <button  class="btn">Proceed to Checkout</button>
-      </form>
-
-
-
-
-
-
+      <a class="text-center btn btn-primary float-right" href="{{route('payment')}}">Procceed To Payment</a>
     </div>
 
 
