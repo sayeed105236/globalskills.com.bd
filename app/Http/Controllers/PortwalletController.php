@@ -64,16 +64,19 @@ class PortwalletController extends Controller
 
     public function __construct()
     {
-
+        session()->put('checkout', true);
+        $this->middleware('auth');
     }
 
     public function index(Request $request){
 
-        if (!Auth::check())
+
+       /* if (!Auth::check())
        {
 
-			     return redirect('login');
-		     } else {
+			    // return redirect('login');
+          return redirect('login?next=cart&from=');
+		     } else {*/
         if (PortWallet::getApiMode() == "sandbox") {
 
             $this->api_url = 'https://api-sandbox.portwallet.com/payment/v2/ ';
@@ -103,10 +106,10 @@ class PortwalletController extends Controller
 
        $data = array(
            'order' => array(
-             'amount' => 1,
-              // 'amount' => (int) $request->amount,
+             //'amount' => 1,
+              'amount' => (int) $request->amount,
                'currency' => 'BDT',
-               'redirect_url' => 'http://localhost:8000/carts',
+               'redirect_url' => 'http://localhost:8000/portwallet/portwallet_verify_transaction/',
                'ipn_url' => 'http://www.yoursite.com/ipn',
                'reference' => 'ABC123',
                'validity' => 900,
@@ -141,24 +144,20 @@ class PortwalletController extends Controller
                'tenures' => [],
            ]
        );
-      //dd( $data);
+
        try {
 
            $invoice = $portWallet->invoice->create($data);
-           //dd($invoice);
+
            $paymentUrl = $invoice->getPaymentUrl();
-           //dd($paymentUrl,'k');
+
        } catch (InvalidArgumentException $ex) {
            echo $ex->getMessage();
        }catch (PortWalletException $ex) {
            echo $ex->getMessage();
        }
-//dd($paymentUrl);
+
         return redirect($paymentUrl);
-       //dd($paymentUrl);
-        //header("location: {$paymentUrl}");
-     //  header("location: {https://payment.portwallet.com/payment/?invoice=86150B80A7184126}");
    }
 
-}
 }

@@ -250,3 +250,5 @@ Route::get('/admin/home/classroom_bookings', [BookingController::class,'BookingL
 
 Route::post('change-password-store',[UserProfileController::class,'changePassStore'])->name('change-password-store');
 Route::get('/search-products', [SearchController::class,'searchProduct'])->name('search.product');
+Route::get('/get-product-price', [UserController::class,'getProductPrice'])->name('get.product-price');
+Route::post('/enroll-course', [UserController::class,'storeEnrollCourse'])->name('enroll-course.store');
