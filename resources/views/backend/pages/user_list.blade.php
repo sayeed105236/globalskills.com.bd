@@ -1,12 +1,5 @@
 @extends('admin.admin_master')
-
-
 @section('admin_dashboard_content')
-
-
-
-
-
 
 <div class="container-fluid">
   <div class="db-breadcrumb">
@@ -85,7 +78,7 @@
                 <td>
                   <a href="#"><i class="fas fa-edit"></i></a>
                   <a id="delete" href="/admin/home/users/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
-                  <a href="#" data-toggle="modal" data-target="#EnrollCourseModal{{$row->id}}"><i class="fab fa-accessible-icon"></i></a>
+                  <a data-toggle="modal" data-target="#EnrollCourseModal{{$row->id}}"><i class="fab fa-accessible-icon"></i></a>
                     @include('backend.modals.enroll')
                 </td>
 
@@ -99,6 +92,12 @@
   </div>
 
 </div>
+<style>
+    .btn:active, .btn:hover, .btn:focus, .active > .btn {
+        background-color: #d8a409;
+         color: #000000;
+    }
+</style>
 <script>
   $(function(){
     'use strict';
@@ -111,8 +110,77 @@
         lengthMenu: '_MENU_ ',
       }
     });
+  })
+  function coursePrice(){
+      var course_id = $('#course_id').val();
+      if ((course_id == null || course_id == 0)) return;
+
+      $.ajax({
+          type: "GET",
+          url: '{{route('get.product-price')}}',
+          //dataType: 'json',
+          data: {
+              "_token": "{{ csrf_token() }}",'course_id':course_id
+          },
+
+          success: function (response) {
+              var obj = jQuery.parseJSON(response);
+              console.log(obj)
+              $('#regular_price').val(obj.regular_price);
+
+          },
+          error: function () {
+          }
+      });
+  }
+  $('#course_enroll').on('submit', function(event){
+      event.preventDefault();
+      //var course_id = $('#asset_id').val();
+      //var po_no = $('#po_no').val();
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+
+      $.ajax({
+          type    : "post",
+          url: '{{ route("enroll-course.store") }}',
+          data: $('#course_enroll').serialize(),
+          success : function (response) {
+
+              $('#categoryChangeEdit').modal('hide');
+
+              $("#myToast").showToast({
+                  message: 'Updated successfully!',
+                  duration: 2500,
+                  mode: 'success'
+              });
+
+              $('#assetization-list-new-table').dataTable().fnDestroy();
+              $('#assetization-list-assetized-table').dataTable().fnDestroy();
+              $('#wip-new-table').dataTable().fnDestroy();
+
+              AssetizationListNew(asset_id, po_no);
+              AssetizationListAssetized(asset_id, po_no);
+              newWip(asset_id, po_no);
 
 
+          },
+          error : function (error_response) {
+
+              $('form').find('.help-block').remove();
+              $('form').find('.form-group').removeClass('has-error');
+
+              $.each(error_response.responseJSON, function(key,value) {
+
+                  $('#error_span').append('<li>'+value+'</li>').addClass('alert alert-danger');
+                  $('#' + key ).parent().parent().append('<div class="col-sm-7 help-block">' + value + '</div>').closest('.form-group').removeClass('has-error').addClass('has-error');
+
+              });
+
+          }
+      });
   });
 </script>
 

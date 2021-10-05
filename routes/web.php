@@ -251,10 +251,5 @@ Route::get('/admin/home/classroom_bookings', [BookingController::class,'BookingL
 
 Route::post('change-password-store',[UserProfileController::class,'changePassStore'])->name('change-password-store');
 Route::get('/search-products', [SearchController::class,'searchProduct'])->name('search.product');
-
-//currency Route
-Route::get('/admin/currency', [CurrencyController::class, 'index'])->name('admin.currency')->middleware('is_admin');
-
-Route::post('/admin/currency', [CurrencyController::class, 'store'])->name('admin.currency.store')->middleware('is_admin');
-Route::post('/admin/update', [CurrencyController::class, 'update'])->name('admin.currency.update')->middleware('is_admin');
-Route::get('/admin/currency/delete{id}', [CurrencyController::class, 'delete'])->middleware('is_admin');
+Route::get('/get-product-price', [UserController::class,'getProductPrice'])->name('get.product-price');
+Route::post('/enroll-course', [UserController::class,'storeEnrollCourse'])->name('enroll-course.store');

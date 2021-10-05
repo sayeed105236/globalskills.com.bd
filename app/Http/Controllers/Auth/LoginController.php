@@ -49,6 +49,13 @@ class LoginController extends Controller
       ]);
       if (Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
         {
+            if (session()->has('checkout'))
+            {
+
+                session()->forget('checkout');
+
+                return redirect()->route('carts');
+            }
           if(auth()->user()->is_admin==1)
           {
              return redirect()->route('admin.home');

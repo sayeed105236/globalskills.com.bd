@@ -35,6 +35,24 @@ class Course extends Model
      return $this->hasMany(Lesson::class,'course_id','id');
     }
 
+    public static function getAllCoursesArray()
+    {
 
+        try {
+
+            $allCourses = Course::all();
+            $data = [];
+
+            if (count($allCourses) > 0) {
+
+                foreach ($allCourses as $course) {
+                    $data[$course->id] = $course->course_title;
+                }
+            }
+            return $data;
+        } catch (\Throwable $e) {
+            return false;
+        }
+    }
 
 }
