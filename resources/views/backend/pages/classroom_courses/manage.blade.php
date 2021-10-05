@@ -159,7 +159,7 @@
 
     $('#classroom_course_list').DataTable({
       responsive: true,
-      language: {
+      language: { 
         searchPlaceholder: 'Search...',
         sSearch: '',
         lengthMenu: '_MENU_ ',

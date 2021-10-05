@@ -29,6 +29,7 @@ use App\Http\Controllers\TrainingCourseController;
 
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CurrencyController;
 
 
 
@@ -97,7 +98,7 @@ Route::get('/buynow/delete/{id}',[CartController::class,'deleteBuy']);
 
 Route::post('/home/course/carts/payment',[PortwalletController::class,'index'])->name('payment');
 
-Route::post('/classroom_bookings', [BookingController::class,'StoreBooking'])->name('store-bookings')->middleware('is_admin');
+Route::post('/classroom_bookings', [BookingController::class,'StoreBooking'])->name('store-bookings');
 
 Auth::routes();
 
@@ -250,3 +251,10 @@ Route::get('/admin/home/classroom_bookings', [BookingController::class,'BookingL
 
 Route::post('change-password-store',[UserProfileController::class,'changePassStore'])->name('change-password-store');
 Route::get('/search-products', [SearchController::class,'searchProduct'])->name('search.product');
+
+//currency Route
+Route::get('/admin/currency', [CurrencyController::class, 'index'])->name('admin.currency')->middleware('is_admin');
+
+Route::post('/admin/currency', [CurrencyController::class, 'store'])->name('admin.currency.store')->middleware('is_admin');
+Route::post('/admin/update', [CurrencyController::class, 'update'])->name('admin.currency.update')->middleware('is_admin');
+Route::get('/admin/currency/delete{id}', [CurrencyController::class, 'delete'])->middleware('is_admin');
