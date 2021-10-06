@@ -111,7 +111,7 @@
                                     <h2 class="post-title">{{$course->course_title}}</h2>
                                 </div>
                                 <div class="ttr-post-text">
-                                    {!$course->course_details->short_description!}
+                                    {!!$course->course_details->short_description!!}
                                 </div>
                             </div>
                         </div>
@@ -299,6 +299,7 @@
         var iframe = document.querySelector('iframe');
         //var a = $(this).attr('data-src');
         var video_ids = <?php echo $vimeo_ids ?>;
+        //console.log(vimeo_ids);
         $('#iframe').attr("src", 'https://player.vimeo.com/video/'+video_ids[0])
         var embedOptions = {
             autoplay: true,

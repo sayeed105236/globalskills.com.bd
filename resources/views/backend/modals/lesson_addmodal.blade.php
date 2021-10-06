@@ -34,6 +34,12 @@
 
                     </div>
                     <div class="form-group">
+                        <label for="vimeo_id">Youtube Url</label>
+                        <input type="text" class="form-control" name="youtube_url" aria-describedby="youtube_url"
+                               placeholder="Youtube Url">
+
+                    </div>
+                    <div class="form-group">
                         <label for="lesson_title">Lesson Title</label>
                         <input type="text" class="form-control" name="lesson_title" aria-describedby="lesson_title"
                                placeholder="Enter Lesson name">

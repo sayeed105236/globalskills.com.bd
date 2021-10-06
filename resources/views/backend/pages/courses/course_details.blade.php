@@ -98,6 +98,7 @@
 
                                 <th>Video Type</th>
                                 <th>Vimeo ID</th>
+                                <th>Youtube Url</th>
                                 <th>Lesson Title</th>
                                 <th>Duration</th>
                                 <th>Preview</th>
@@ -137,6 +138,7 @@
                                 <td>
                                   {{$lesson->vimeo_id}}
                                 </td>
+                                <td>{{$lesson->youtube_url}}</td>
                                 <td>
 
                                   {{$lesson->lesson_title}}

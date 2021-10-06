@@ -98,6 +98,7 @@
          color: #000000;
     }
 </style>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
   $(function(){
     'use strict';
@@ -124,6 +125,7 @@
           },
 
           success: function (response) {
+            console.log(response)
               var obj = jQuery.parseJSON(response);
               console.log(obj)
               $('#regular_price').val(obj.regular_price);

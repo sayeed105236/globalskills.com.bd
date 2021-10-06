@@ -142,8 +142,8 @@
             <div class="col-lg-12">
               <h6>Sign Up with Social media</h6>
               <div class="d-flex">
-                <a class="btn flex-fill m-r5 facebook" href="#"><i class="fa fa-facebook"></i>Facebook</a>
-                <a class="btn flex-fill m-l5 google-plus" href="#"><i class="fa fa-google-plus"></i>Google Plus</a>
+								<a class="btn flex-fill m-r5 facebook" href="{{ route('login.facebook') }}"><i class="fa fa-facebook"></i>Facebook</a>
+								<a class="btn flex-fill m-l5 google-plus" href="{{ route('login.google') }}"><i class="fa fa-google-plus"></i>Google</a>
               </div>
             </div>
           </div>

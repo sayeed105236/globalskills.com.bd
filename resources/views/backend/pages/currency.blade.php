@@ -46,8 +46,8 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Currency</h4>
-       <a href="{{route('add-currency')}}" class="btn btn-success"><i class="fas fa-plus"></i></a>
-
+       <a href="#"  data-toggle="modal" data-target="#CurrencyAddModal" class="btn btn-success"><i class="fas fa-plus"></i></a>
+        @include('backend.modals.currencyaddmodal')
         </div>
 
 
@@ -87,7 +87,7 @@
 
                 <td>
                   <a href="#" data-toggle="modal" data-target="#CurrencyEditModal{{$row->id}}"><i class="fas fa-edit"></i></a>
-                  <a href="/admin/currency/delete{{$row->id}}"><i class="fas fa-trash"></i></a>
+                  <a href="/admin/home/currency/delete{{$row->id}}"><i class="fas fa-trash"></i></a>
                     @include('backend.modals.currencyeditmodal')
                 </td>
 

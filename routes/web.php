@@ -30,6 +30,7 @@ use App\Http\Controllers\TrainingCourseController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\Auth\LoginController;
 
 
 
@@ -99,6 +100,7 @@ Route::get('/buynow/delete/{id}',[CartController::class,'deleteBuy']);
 Route::post('/home/course/carts/payment',[PortwalletController::class,'index'])->name('payment');
 
 Route::post('/classroom_bookings', [BookingController::class,'StoreBooking'])->name('store-bookings');
+Route::post('/booking', [BookingController::class,'SendMail'])->name('sendmail');
 
 Auth::routes();
 
@@ -251,5 +253,25 @@ Route::get('/admin/home/classroom_bookings', [BookingController::class,'BookingL
 
 Route::post('change-password-store',[UserProfileController::class,'changePassStore'])->name('change-password-store');
 Route::get('/search-products', [SearchController::class,'searchProduct'])->name('search.product');
-Route::get('/get-product-price', [UserController::class,'getProductPrice'])->name('get.product-price');
-Route::post('/enroll-course', [UserController::class,'storeEnrollCourse'])->name('enroll-course.store');
+Route::get('/get-product-price', [UserController::class,'getProductPrice'])->name('get.product-price')->middleware('is_admin');
+Route::post('/enroll-course', [UserController::class,'storeEnrollCourse'])->name('enroll-course.store')->middleware('is_admin');
+
+//currency route
+Route::get('/admin/home/manage', [CurrencyController::class, 'index'])->name('admin.currency')->
+middleware('is_admin');
+Route::get('/admin/home/manage', [CurrencyController::class, 'index'])->name('admin.currency')->
+middleware('is_admin');
+Route::post('/admin/home/store', [CurrencyController::class, 'store'])->name('admin.currency.store')->
+middleware('is_admin');
+Route::post('/admin/home/update', [CurrencyController::class, 'store'])->name('admin.currency.update')->
+middleware('is_admin');
+Route::get('/admin/home/delete/{id}', [CurrencyController::class, 'delete'])->
+middleware('is_admin');
+
+
+//socialite login Routes
+Route::get('login/google', [LoginController::class,'redirectToGoogle'])->name('login.google');
+Route::get('login/google/callback', [LoginController::class,'handleGoogleCallback']);
+
+Route::get('login/facebook', [LoginController::class,'redirectToFacebook'])->name('login.facebook');
+Route::get('login/facebook/callback', [LoginController::class,'handleFacebookCallback']);

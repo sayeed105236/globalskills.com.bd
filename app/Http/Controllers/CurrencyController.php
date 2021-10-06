@@ -44,7 +44,7 @@ class CurrencyController extends Controller
         return back()->with('currency_updated','Currency updated successfully!');
     }
 
-
+ 
     public function delete($id){
 
       $currency = Currency::find($id);

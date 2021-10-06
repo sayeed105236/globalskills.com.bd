@@ -109,7 +109,7 @@ class PortwalletController extends Controller
              //'amount' => 1,
               'amount' => (int) $request->amount,
                'currency' => 'BDT',
-               'redirect_url' => 'http://localhost:8000/portwallet/portwallet_verify_transaction/',
+               'redirect_url' => 'http://localhost:8000/',
                'ipn_url' => 'http://www.yoursite.com/ipn',
                'reference' => 'ABC123',
                'validity' => 900,
@@ -157,7 +157,12 @@ class PortwalletController extends Controller
            echo $ex->getMessage();
        }
 
-        return redirect($paymentUrl);
+        //return redirect($paymentUrl);
+        $notification=array(
+            'message'=>'Congratulations Course has been successfully Enrolled!!!',
+            'alert-type'=>'success'
+        );
+        return redirect($paymentUrl)->with($notification);
    }
 
 }

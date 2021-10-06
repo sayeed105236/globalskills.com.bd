@@ -34,8 +34,8 @@
                     </div>
                     <div class="form-group">
                         <label for="access">Access</label>
-                        <input type="number" class="form-control" name="access" aria-describedby="regular_price"
-                               placeholder="Enter Regular Price">
+                        <input type="number" class="form-control" name="access" aria-describedby="access"
+                               placeholder="Enter Access">
 
                     </div>
 

@@ -381,6 +381,7 @@ class CourseController extends Controller
 
     $video_type = $request->video_type;
     $vimeo_id = $request->vimeo_id;
+    $youtube_url = $request->youtube_url;
     $lesson_title = $request->lesson_title;
     $preview =$request->preview;
     $files =$request->file('file');
@@ -401,6 +402,7 @@ class CourseController extends Controller
     $lessons->course_id = $course_id;
     $lessons->section_id =$section_id;
     $lessons->vimeo_id =$vimeo_id;
+    $lessons->youtube_url =$youtube_url;
     $lessons->video_type=$video_type;
     $lessons->lesson_title=$lesson_title;
     $lessons->preview=$preview;
