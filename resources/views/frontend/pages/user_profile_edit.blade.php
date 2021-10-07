@@ -9,7 +9,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-                <h1 class="text-white">User Profile Edit</h1>
+              
      </div>
         </div>
     </div>

@@ -6,7 +6,7 @@
         <div class="container">
             <div class="page-banner-entry">
                 <br/><br/>
-                <h1 class="text-white">{{$course->course_title}}</h1>
+              
             </div>
         </div>
     </div>

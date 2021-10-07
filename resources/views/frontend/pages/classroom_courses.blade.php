@@ -14,7 +14,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-                <h1 class="text-white">Our Classroom Courses</h1>
+              
      </div>
         </div>
     </div>

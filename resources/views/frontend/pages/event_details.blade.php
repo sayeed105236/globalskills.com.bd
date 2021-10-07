@@ -14,7 +14,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-                <h1 class="text-white">Event Details</h1>
+              
      </div>
         </div>
     </div>
@@ -114,7 +114,7 @@
 
 
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.1664037741634!2d90.42673481498255!3d23.812681084558736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c782948ffbf9%3A0xe43c376a71bfb570!2zR2xvYmFsIFNraWxscyBEZXZlbG9wbWVudCBBZ2VuY3kg4KaX4KeN4Kay4KeL4Kas4Ka-4KayIOCmuOCnjeCmleCmv-CmsuCmuCDgpqHgp4fgpq3gp4fgprLgpqrgpq7gp4fgpqjgp43gpp8g4KaP4Kac4KeH4Kao4KeN4Ka44Ka_!5e0!3m2!1sbn!2sbd!4v1632647227179!5m2!1sbn!2sbd" width="350" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            
+
         </div>
       </div>
     </div>

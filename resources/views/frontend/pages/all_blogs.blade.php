@@ -8,7 +8,7 @@
         <div class="page-banner-entry">
           <br/>
           <br/>
-            <h1 class="text-white">All Blogs</h1>
+            
  </div>
     </div>
 </div>

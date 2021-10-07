@@ -12,7 +12,7 @@
 
 
 
-            <h1 class="text-white">Cart</h1>
+          
 
  </div>
     </div>

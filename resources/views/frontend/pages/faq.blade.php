@@ -13,7 +13,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-                <h1 class="text-white">Frequently Asked Questions</h1>
+              
      </div>
         </div>
     </div>

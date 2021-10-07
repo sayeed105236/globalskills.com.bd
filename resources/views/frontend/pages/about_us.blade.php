@@ -14,7 +14,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-                <h1 class="text-white">About Us</h1>
+                
      </div>
         </div>
     </div>
