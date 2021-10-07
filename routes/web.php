@@ -252,7 +252,7 @@ Route::get('/admin/home/classroom_bookings', [BookingController::class,'BookingL
 //password change route
 
 Route::post('change-password-store',[UserProfileController::class,'changePassStore'])->name('change-password-store');
-Route::get('/search-products', [SearchController::class,'searchProduct'])->name('search.product');
+
 Route::get('/get-product-price', [UserController::class,'getProductPrice'])->name('get.product-price')->middleware('is_admin');
 Route::post('/enroll-course', [UserController::class,'storeEnrollCourse'])->name('enroll-course.store')->middleware('is_admin');
 
@@ -267,6 +267,11 @@ Route::post('/admin/home/update', [CurrencyController::class, 'store'])->name('a
 middleware('is_admin');
 Route::get('/admin/home/delete/{id}', [CurrencyController::class, 'delete'])->
 middleware('is_admin');
+
+
+//search routes
+ Route::get("search", [SearchController::class,'searchProduct']);
+ Route::post('/find-products', [SearchController::class,'findProduct']);
 
 
 //socialite login Routes
