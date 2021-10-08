@@ -10,6 +10,8 @@ use App\Models\Course;
 use App\Models\CourseOverview;
 use App\Models\Section;
 use App\Models\Lesson;
+use App\Models\UserEnrollment;
+use Auth;
 
 
 class CourseController extends Controller
@@ -312,9 +314,9 @@ class CourseController extends Controller
     $course= Course::with(['sections.lessons'])->where('id',$id)->first();
 
 
+    $enrolled= UserEnrollment::where('user_id',Auth::id())->where('course_id',$id)->first();
 
-
-    return view('/backend/pages/courses.course_details_index',compact('course_details','main_categories','course_categories','course'));
+    return view('/backend/pages/courses.course_details_index',compact('course_details','main_categories','course_categories','course','enrolled'));
   }
 
   public function StoreSection(Request $request)

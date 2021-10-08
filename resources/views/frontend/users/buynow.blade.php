@@ -12,7 +12,7 @@
 
 
 
-          
+
 
  </div>
     </div>
@@ -69,7 +69,7 @@
       </div>
 
       <div class="table table-responsive">
-        <table class="table table-hover-animation">
+        <table id="tableContent" class="table table-hover-animation">
           <thead>
             <tr>
               <th>#</th>
@@ -219,7 +219,19 @@
 
       </div>
       <br>
-      <a class="btn btn-primary" href="#">Proceed To Checkout</a>
+      <form id="paymentform" class="hidden" action="{{route('payment')}}" method="post">
+        @csrf
+        <input type="hidden" name="amount" value="{{isset($total)?$total:''}}">
+        <input type="hidden" name="email" value="{{isset(Auth::user()->email)?Auth::user()->email:''}}">
+        <input type="hidden" name="name" value="{{isset(Auth::user()->name)?Auth::user()->name:''}}">
+        <input type="hidden" name="phone" value="{{isset(Auth::user()->phone)?Auth::user()->phone:''}}">
+
+
+
+
+
+      <button type="submit" class="text-center btn btn-primary float-right">Procceed To Payment</button>
+    </form>
 
     </div>
 
@@ -229,6 +241,30 @@
 
 <br>
 <br>
+@push('scripts')
+<script type="text/javascript">
+//$('#tableContent td:nth-child(2)').each(function(index, tr) {
+  //$(tr).find('td').each (function (index, td) {
+  //  console.log(index, tr)
+  //});
+//});
+$(function() {
+    //use the :nth-child selector to get second element
+    //iterate with .each()
+    var name=[];
+    $('#tableContent  td:nth-child(2)').each(function(index, element) {
+        //var name = $(element).text();
+        var arr2 = $.trim($(element).text());
+         name.push(arr2);
+
+
+    });
+      $('#paymentform').append('<input type="hidden" name="course_title" value='+name+'>');
+
+});
+
+</script>
+@endpush
 
 
 

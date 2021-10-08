@@ -14,7 +14,8 @@ class UserProfileController extends Controller
   {
 
     if (Auth::check()) {
-      $users = User::all();
+      $users= User::with('user_enrollments')->where('id',Auth::id())->first();
+      //dd($users);
         return view('frontend.pages.user_profile',compact('users'));
 
     }else {

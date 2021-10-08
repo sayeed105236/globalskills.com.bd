@@ -12,6 +12,11 @@ use App\Models\Lesson;
 
 class UserEnrollmentController extends Controller
 {
+  public function __construct()
+  {
+      //session()->put('checkout', true);
+      $this->middleware('auth');
+  }
     public function index($id)
 
     {
@@ -27,9 +32,11 @@ class UserEnrollmentController extends Controller
         $vimeo_ids= Course::
         leftJoin('lessons', 'courses.id', '=', 'lessons.course_id')
             ->where('courses.id',$id)
-            ->get()->pluck('vimeo_id');
-
-        return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons','vimeo_ids'));
+            ->get();
+          $vimeo=$vimeo_ids->pluck('vimeo_id');
+          $youtube=$vimeo_ids->pluck('youtube_url');
+          //  dd($video,$video2);
+        return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons','vimeo','youtube'));
     }
 
     public function getVimeoId(Request $request){

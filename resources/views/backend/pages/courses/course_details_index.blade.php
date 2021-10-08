@@ -14,7 +14,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-              
+
      </div>
         </div>
     </div>
@@ -59,18 +59,21 @@
        <div class="row d-flex flex-row-reverse">
         <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
           <div class="course-detail-bx">
+
+
+            @if(!$enrolled)
+              <div class="course-price">
+              <a href="#" class="btn">Already Enrolled</a>
+            </div>
+            @else
+
             <div class="course-price">
               <del>{{$course->regular_price}}৳</del>
               <h4 class="price">{{$course->sale_price}}৳</h4>
             </div>
             <div class="course-buy-now text-center">
 
-
-
-
-              <a href="/home/course_details/view/{{$course->id}}" class="btn radius-xl text-uppercase">Enroll this Course</a>
-
-
+      <a href="/home/course_details/view/{{$course->id}}" class="btn radius-xl text-uppercase">Enroll this Course</a>
 
             </div>
             <br>
@@ -95,6 +98,7 @@
               <button  class="btn">Add to Cart</button>
             </form>
           </div>
+          @endif
             <div class="teacher-bx">
               <div class="teacher-info">
               <!--  <div class="teacher-thumb">

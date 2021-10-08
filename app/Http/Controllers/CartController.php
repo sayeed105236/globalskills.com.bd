@@ -20,11 +20,6 @@ class CartController extends Controller
     {
       $course_categories= CourseCategory::all();
       $main_categories= MainCategory::all();
-
-
-
-
-
       return view('frontend.users.cart',compact('course_categories','main_categories'));
     }
     public function add_cart(Request $request)
@@ -132,10 +127,6 @@ class CartController extends Controller
                           $main_categories= MainCategory::all();
 
                           $course = Course::where('id',$request->course_id)->get();
-
-
-
-
 
 
               return view('frontend.users.buynow',compact('course_categories','main_categories','course_categories'))->with('cart_added','Course has been added to cart successfully!');

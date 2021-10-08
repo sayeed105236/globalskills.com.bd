@@ -6,7 +6,7 @@
         <div class="container">
             <div class="page-banner-entry">
                 <br/><br/>
-              
+
             </div>
         </div>
     </div>
@@ -298,7 +298,7 @@
     <script>
         var iframe = document.querySelector('iframe');
         //var a = $(this).attr('data-src');
-        var video_ids = <?php echo $vimeo_ids ?>;
+        var video_ids = <?php echo $vimeo ?>;
         //console.log(vimeo_ids);
         $('#iframe').attr("src", 'https://player.vimeo.com/video/'+video_ids[0])
         var embedOptions = {

@@ -51,8 +51,8 @@
               </ul>
             </div>
             <div class="price">
-              <del>{{$row->exam_fee}}৳</del>
-              <h5 style="color:#ca2128;">{{$row->training_fee}}৳</h5>
+              <del>{{$row->training_fee}}৳</del>
+              <h5 style="color:#ca2128;">{{$row->exam_fee}}৳</h5>
             </div>
           </div>
         </div>
