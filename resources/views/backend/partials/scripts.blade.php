@@ -23,7 +23,7 @@
 <script src="{{ asset('admin/vendors/calendar/fullcalendar.js')}}"></script>
 
 <script src="{{ asset('admin/js/fontawesome.js')}}"></script>
-<script src="{{asset('admin/summernote/bootstrap.min.css')}}"></script>
+{{--<script src="{{asset('admin/summernote/bootstrap.min.css')}}"></script>--}}
 <script src="{{asset('admin/summernote/js/popper.min.js')}}" ></script>
 <script src="{{asset('admin/summernote/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('admin/summernote/js/summernote.min.js')}}"></script>

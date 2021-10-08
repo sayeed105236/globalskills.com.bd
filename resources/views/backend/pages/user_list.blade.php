@@ -18,7 +18,6 @@
   </div>
   @endif
   <!-- Card -->
-
   <div class="row" id="basic-table">
     <div class="col-12">
       <div class="card">
@@ -26,9 +25,6 @@
           <h4 class="card-title">Users</h4>
        <a href="#" class="btn btn-success" data-toggle="modal" data-target="#"><i class="fas fa-plus"></i></a>
         </div>
-
-
-        <!-- Modal -->
 
         <div class="table table-responsive">
           <table id="user_list" class="table table-bordered">
@@ -45,15 +41,11 @@
               </tr>
             </thead>
             <tbody>
-              <?php
-              $users = App\Models\User::all();
-
-               ?>
               @foreach ($users as $row)
 
               <tr>
                 <td>{{$row->id}}</td>
-                <td>
+                <td class="user_name">
                     {{$row->name}}
 
                 </td>
@@ -74,12 +66,18 @@
 
                 </td>
 
-                <td><span class="badge badge-pill badge-light-primary mr-1"></span></td>
+                <td>
+                    @if(count($row->user_enrollments) > 0)
+                        @foreach($row->user_enrollments as $enroll)
+                            <span class="badge bg-warning text-dark">{{$enroll->course->course_title}}</span>
+                        @endforeach
+                    @endif
+                </td>
                 <td>
                   <a href="#"><i class="fas fa-edit"></i></a>
                   <a id="delete" href="/admin/home/users/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
-                  <a data-toggle="modal" data-target="#EnrollCourseModal{{$row->id}}"><i class="fab fa-accessible-icon"></i></a>
-                    @include('backend.modals.enroll')
+                  <a type="button" id="{{$row->id}}" class="addCourse"><i class="fab fa-accessible-icon"></i></a>
+
                 </td>
 
               </tr>
@@ -91,14 +89,17 @@
     </div>
   </div>
 
+    <!-- Modal -->
+    @include('backend.modals.enroll')
 </div>
+
 <style>
     .btn:active, .btn:hover, .btn:focus, .active > .btn {
         background-color: #d8a409;
          color: #000000;
     }
 </style>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+@push('scripts')
 <script>
   $(function(){
     'use strict';
@@ -112,6 +113,18 @@
       }
     });
   })
+
+  $(document).off('click','.addCourse').on('click', '.addCourse', function () {
+
+      var user_id = $(this).attr('id');
+      var $row = $(this).closest("tr");    // Find the row
+      var $text = $row.find(".user_name").text(); // Find the text
+
+      $('#modalTitle').html('Enroll a Course to '+$text);
+      $('#addCourseModal').modal('show');
+      $('#user_id').val(user_id)
+  })
+
   function coursePrice(){
       var course_id = $('#course_id').val();
       if ((course_id == null || course_id == 0)) return;
@@ -127,7 +140,9 @@
           success: function (response) {
             console.log(response)
               var obj = jQuery.parseJSON(response);
-              console.log(obj)
+              console.log(obj);
+              console.log(obj.regular_price);
+
               $('#regular_price').val(obj.regular_price);
 
           },
@@ -135,10 +150,15 @@
           }
       });
   }
+  //clear modal form data
+  $('#addCourseModal').on('hidden.bs.modal', function () {
+      $(this).find('form').trigger('reset');
+      $('#course_id').val('');
+  })
+
   $('#course_enroll').on('submit', function(event){
       event.preventDefault();
-      //var course_id = $('#asset_id').val();
-      //var po_no = $('#po_no').val();
+
       $.ajaxSetup({
           headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -151,22 +171,16 @@
           data: $('#course_enroll').serialize(),
           success : function (response) {
 
-              $('#categoryChangeEdit').modal('hide');
+              //$('#addCourseModal').modal('hide');
 
-              $("#myToast").showToast({
-                  message: 'Updated successfully!',
-                  duration: 2500,
-                  mode: 'success'
-              });
-
-              $('#assetization-list-new-table').dataTable().fnDestroy();
+             /* $('#assetization-list-new-table').dataTable().fnDestroy();
               $('#assetization-list-assetized-table').dataTable().fnDestroy();
               $('#wip-new-table').dataTable().fnDestroy();
 
               AssetizationListNew(asset_id, po_no);
               AssetizationListAssetized(asset_id, po_no);
-              newWip(asset_id, po_no);
-
+              newWip(asset_id, po_no);*/
+              location.reload();
 
           },
           error : function (error_response) {
@@ -202,6 +216,6 @@
 
 </script>
 
-
+@endpush
 
 @endsection
