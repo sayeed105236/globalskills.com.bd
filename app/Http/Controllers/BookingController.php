@@ -52,7 +52,7 @@ class BookingController extends Controller
                           'greeting'=>'Booking',
                           'body'=>'You have booked the course successfully! You will get an email or phone after confirmation. For any queries call at +8801766343434',
                           'actiontext'=>'Booking',
-                          'actionurl'=>'http://localhost:8000/',
+                          'actionurl'=>'https://www.globalskills.com.bd/',
                           'lastline'=>'Thankyou',
                         ];
                         Notification::send($user,new SendEmail($details));
