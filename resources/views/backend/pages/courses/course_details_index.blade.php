@@ -61,9 +61,9 @@
           <div class="course-detail-bx">
 
 
-            @if(!$enrolled)
+            @if($enrolled)
               <div class="course-price">
-              <a href="#" class="btn">Already Enrolled</a>
+              <a href="/home/course_details/view/{{$course->id}}" class="btn">Already Enrolled</a>
             </div>
             @else
 

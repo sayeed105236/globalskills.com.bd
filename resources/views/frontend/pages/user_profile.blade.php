@@ -90,15 +90,15 @@
                           <div class="action-box">
                             <img src="{{asset('storage/courses/'.$row->course->course_image)}}" alt="" height="420"
                               width="700" alt="">
-                            <a href="#" class="btn"><i class="fa fa-play-circle"></i></a>
+                            <a href="/home/course_details/view/{{$row->course->id}}" class="btn"><i class="fa fa-play-circle"></i></a>
                           </div>
                           <div class="info-bx text-center">
-                            <h5><a href="#">{{$row->course->course_title}}</a></h5>
+                            <h5><a href="#">{{Str::limit($row->course->course_title,18)}}</a></h5>
                             <span>{{$row->course->course_category->mcategory_title}}</span>
                           </div>
                           <div class="cours-more-info d-flex justify-content-center">
 
-                            <a class="btn btn-primary" href="#"><i class="fa fa-play-circle"></i></a>
+                            <a class="btn btn-primary" href="/home/course_details/view/{{$row->course->id}}"><i class="fa fa-play-circle"></i></a>
                           </div>
                         </div>
                       </li>
