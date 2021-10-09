@@ -98,6 +98,7 @@ Route::get('/buynow/delete/{id}',[CartController::class,'deleteBuy']);
 
 
 Route::post('/home/course/carts/payment',[PortwalletController::class,'index'])->name('payment');
+Route::get('/portwallet/portwallet_verify_transaction/shopping_cart',[PortwalletController::class,'portwalletVerifyTransaction']);
 
 Route::post('/classroom_bookings', [BookingController::class,'StoreBooking'])->name('store-bookings');
 Route::post('/booking', [BookingController::class,'SendMail'])->name('sendmail');
