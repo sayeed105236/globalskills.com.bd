@@ -27,7 +27,7 @@
         data-param9="" data-param10=""
         data-description="Science says that Women are generally happier">
           <!-- MAIN IMAGE -->
-          <img src="{{ asset('images/slider/slide4.png')}}" alt=""
+          <img src="{{ asset('images/slider/banner.jpg')}}" alt=""
             data-bgposition="center center"
             data-bgfit="cover"
             data-bgrepeat="no-repeat"
@@ -53,7 +53,7 @@
             data-paddingright="[0,0,0,0]"
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
-            style="z-index: 5;background-color:rgba(2, 0, 11, 0.80);border-color:rgba(0, 0, 0, 0);border-width:0px;"> </div>
+            style="z-index: 5;background-color:rgba(2, 0, 11, 0.60);border-color:rgba(0, 0, 0, 0);border-width:0px;"> </div>
           <!-- LAYER NR. 2 -->
           <div class="tp-caption Newspaper-Title   tp-resizeme"
             id="slide-100-layer-2"
@@ -181,7 +181,7 @@
             data-paddingright="[0,0,0,0]"
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
-            style="z-index: 5;background-color:rgba(2, 0, 11, 0.80);border-color:rgba(0, 0, 0, 0);border-width:0px;">
+            style="z-index: 5;background-color:rgba(2, 0, 11, 0.60);border-color:rgba(0, 0, 0, 0);border-width:0px;">
           </div>
 
           <!-- LAYER NR. 2 -->

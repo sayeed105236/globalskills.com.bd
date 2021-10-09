@@ -109,7 +109,7 @@ class PortwalletController extends Controller
              //'amount' => 1,
               'amount' => (int) $request->amount,
                'currency' => 'BDT',
-               'redirect_url' => 'http://localhost:8000/',
+               'redirect_url' => 'https://globalskills.com.bd/',
                'ipn_url' => 'http://www.yoursite.com/ipn',
                'reference' => 'ABC123',
                'validity' => 900,
