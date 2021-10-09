@@ -141,7 +141,9 @@
         <div class="col-lg-9 col-md-8 col-sm-12">
           <div class="courses-post">
             <div class="ttr-post-media media-effect">
-              <a href="#"><img src="{{ asset('images/blog/default/thum1.jpg')}}" alt=""></a>
+              <a href="#"><img src="{{asset('storage/courses/banners/'.$course->course_details->banner_image)}}"   alt="image"
+                height="600"
+                width="1000"></a>
             </div>
             <div class="ttr-post-info">
               <div class="ttr-post-title ">
