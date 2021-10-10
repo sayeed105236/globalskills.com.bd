@@ -117,8 +117,8 @@ class PortwalletController extends Controller
 
        $data = array(
            'order' => array(
-             'amount' => 1,
-              //'amount' => (int) $request->amount,
+             //'amount' => 1,
+              'amount' => (int) $request->amount,
                'currency' => 'BDT',
               // 'redirect_url' => 'https://globalskills.com.bd/portwallet/portwallet_verify_transaction/shopping_cart',
                'redirect_url' => URL::to('/portwallet/portwallet_verify_transaction/shopping_cart'),
