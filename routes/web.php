@@ -9,7 +9,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\UserprofileController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainCategoryController;

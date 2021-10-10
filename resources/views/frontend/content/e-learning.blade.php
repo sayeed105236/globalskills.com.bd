@@ -25,13 +25,21 @@
           <div class="action-box">
           <a href="home/course_details/{{$row->id}}"><img src="{{asset("storage/courses/$row->course_image")}}" alt="" height="420"
             width="700"></a>
+              <?php
+              $enrolled= App\Models\UserEnrollment::where('user_id',Auth::id())->where('course_id',$row->id)->first();
 
+               ?>
+            @if(!$enrolled)
             <form class="hidden" action="{{route('add-carts')}}" method="post">
               @csrf
               <input type="hidden" name="course_id" value="{{$row->id}}">
 
               <button  class="btn"><i class="fa fa-shopping-cart"></i></button>
             </form>
+            @else
+              <a href="/home/course_details/view/{{$row->id}}" class="btn"><i class="fa fa-eye"></i></a>
+            @endif
+
           </div>
           <div class="info-bx text-center">
             <h5><a href="home/course_details/{{$row->id}}">{{Str::limit($row->course_title,18)}}</a></h5>
@@ -53,7 +61,7 @@
                 @for ($i =1 ; $i <= 5 ; $i++)
                 <span style="color: red" class="fa fa-star{{ ($i <= $avgRating) ? '' : '-empty' }}"></span>
               @endfor
-            
+
               @else
               <span class="text-danger">No Review</span>
               @endif

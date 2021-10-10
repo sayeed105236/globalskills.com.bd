@@ -75,6 +75,7 @@ class PortwalletController extends Controller
 
     public function index(Request $request){
 
+
         /*$validator = Validator::make($request->all(), [
             'amount'    => 'required',
             'email'     => 'required',
@@ -114,14 +115,14 @@ class PortwalletController extends Controller
        /**
         * Your data
         */
-
+      //  dd($request->amount);
        $data = array(
            'order' => array(
              //'amount' => 1,
-              'amount' => (int) $request->amount,
+              'amount' => floatval($request->amount),
                'currency' => 'BDT',
               // 'redirect_url' => 'https://globalskills.com.bd/portwallet/portwallet_verify_transaction/shopping_cart',
-               'redirect_url' => URL::to('/portwallet/portwallet_verify_transaction/shopping_car'),
+               'redirect_url' => URL::to('/portwallet/portwallet_verify_transaction/shopping_cart'),
                'ipn_url' => 'http://www.yoursite.com/ipn',
                'reference' => 'ABC123',
                'validity' => 900,
@@ -179,13 +180,17 @@ class PortwalletController extends Controller
 
     public function portwalletVerifyTransaction() {
 
+
         if ($_GET['status'] == 'ACCEPTED') {
-            foreach (session()->get('cart') as $cart){
+            $cart_data= Cart::all();
+          //  dd(session()->get('cart');
+            foreach ($cart_data as $cart){
+
 
                 $data = new UserEnrollment();
-                $data->user_id          = Auth::id();
+                $data->user_id          = $cart['user_id'];
                 $data->course_id        = $cart['course_id'];
-                $data->regular_price    = 1;
+                $data->regular_price    = $_GET['amount'];
                 $data->access           = 100;
                 $data->created_by       = Auth::id();
                 $data->save();
@@ -194,9 +199,9 @@ class PortwalletController extends Controller
                 'message'=>'Congratulations Course has been successfully Enrolled!!!',
                 'alert-type'=>'success'
             );
-            session()->forget('cart');
+            //session()->forget('cart');
             Cart::truncate();
-            return redirect('/')->with($notification);
+            return redirect('/carts')->with($notification);
 
         }
 
