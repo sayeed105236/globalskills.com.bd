@@ -117,12 +117,12 @@
                   </ul>
               </li>
 
-        <li>
-          <a href="review.html" class="ttr-material-button">
-            <span class="ttr-icon"><i class="ti-comments"></i></span>
-                    <span class="ttr-label">Review</span>
-                  </a>
-              </li>
+              <li>
+                <a href="{{ route('customer.review') }}" class="ttr-material-button" @yield('review')>
+                  <span class="ttr-icon"><i class="ti-comments"></i></span>
+                          <span class="ttr-label">Review</span>
+                        </a>
+                    </li>
 
       </ul>
       <!-- sidebar menu end -->

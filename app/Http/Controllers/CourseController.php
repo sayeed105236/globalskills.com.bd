@@ -12,6 +12,7 @@ use App\Models\Section;
 use App\Models\Lesson;
 use App\Models\UserEnrollment;
 use Auth;
+use App\Models\CourseReview;
 
 
 class CourseController extends Controller
@@ -315,8 +316,13 @@ class CourseController extends Controller
 
 
     $enrolled= UserEnrollment::where('user_id',Auth::id())->where('course_id',$id)->first();
+    $courseReview=CourseReview::with('user')->where('course_id',$id)->where('status','approve')->latest()->get();
+    $rating = CourseReview::where('course_id',$id)->where('status','approve')->avg('rating');
+    $avgRating = number_format($rating,1);
 
-    return view('/backend/pages/courses.course_details_index',compact('course_details','main_categories','course_categories','course','enrolled'));
+
+
+    return view('/backend/pages/courses.course_details_index',compact('course_details','main_categories','course_categories','course','enrolled','courseReview','avgRating'));
   }
 
   public function StoreSection(Request $request)

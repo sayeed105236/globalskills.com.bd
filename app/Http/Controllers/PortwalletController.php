@@ -121,7 +121,7 @@ class PortwalletController extends Controller
               'amount' => (int) $request->amount,
                'currency' => 'BDT',
               // 'redirect_url' => 'https://globalskills.com.bd/portwallet/portwallet_verify_transaction/shopping_cart',
-               'redirect_url' => URL::to('/portwallet/portwallet_verify_transaction/shopping_cart'),
+               'redirect_url' => URL::to('/portwallet/portwallet_verify_transaction/shopping_car'),
                'ipn_url' => 'http://www.yoursite.com/ipn',
                'reference' => 'ABC123',
                'validity' => 900,

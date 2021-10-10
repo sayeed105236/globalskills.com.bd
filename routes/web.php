@@ -31,6 +31,8 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CourseReviewController;
+use App\Http\Controllers\ReviewFromAdminController;
 
 
 
@@ -281,3 +283,9 @@ Route::get('login/google/callback', [LoginController::class,'handleGoogleCallbac
 
 Route::get('login/facebook', [LoginController::class,'redirectToFacebook'])->name('login.facebook');
 Route::get('login/facebook/callback', [LoginController::class,'handleFacebookCallback']);
+//review sysytem
+Route::post('store/review', [CourseReviewController::class,'store'])->name('store.review');
+//review control from admin
+Route::get('review/create', [ReviewFromAdminController::class,'create'])->name('customer.review');
+Route::get('/admin/review-delete/{review_id}', [ReviewFromAdminController::class,'destroy'])->middleware('is_admin');
+Route::get('/admin/review-approve/{review_id}', [ReviewFromAdminController::class,'approve'])->middleware('is_admin');

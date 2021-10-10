@@ -35,8 +35,8 @@ class ComposerStaticInit22c0c1f2eb33be4cd07df250bc07c78a
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -613,6 +613,7 @@ class ComposerStaticInit22c0c1f2eb33be4cd07df250bc07c78a
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CourseCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CourseCategoryController.php',
         'App\\Http\\Controllers\\CourseController' => __DIR__ . '/../..' . '/app/Http/Controllers/CourseController.php',
+        'App\\Http\\Controllers\\CourseReviewController' => __DIR__ . '/../..' . '/app/Http/Controllers/CourseReviewController.php',
         'App\\Http\\Controllers\\CurrencyController' => __DIR__ . '/../..' . '/app/Http/Controllers/CurrencyController.php',
         'App\\Http\\Controllers\\ErrorController' => __DIR__ . '/../..' . '/app/Http/Controllers/ErrorController.php',
         'App\\Http\\Controllers\\EventController' => __DIR__ . '/../..' . '/app/Http/Controllers/EventController.php',
@@ -623,6 +624,7 @@ class ComposerStaticInit22c0c1f2eb33be4cd07df250bc07c78a
         'App\\Http\\Controllers\\MasteringController' => __DIR__ . '/../..' . '/app/Http/Controllers/MasteringController.php',
         'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentController.php',
         'App\\Http\\Controllers\\PortwalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/PortwalletController.php',
+        'App\\Http\\Controllers\\ReviewFromAdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReviewFromAdminController.php',
         'App\\Http\\Controllers\\SearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/SearchController.php',
         'App\\Http\\Controllers\\SystemController' => __DIR__ . '/../..' . '/app/Http/Controllers/SystemController.php',
         'App\\Http\\Controllers\\TrainingCourseController' => __DIR__ . '/../..' . '/app/Http/Controllers/TrainingCourseController.php',
@@ -651,6 +653,7 @@ class ComposerStaticInit22c0c1f2eb33be4cd07df250bc07c78a
         'App\\Models\\Course' => __DIR__ . '/../..' . '/app/Models/Course.php',
         'App\\Models\\CourseCategory' => __DIR__ . '/../..' . '/app/Models/CourseCategory.php',
         'App\\Models\\CourseOverview' => __DIR__ . '/../..' . '/app/Models/CourseOverview.php',
+        'App\\Models\\CourseReview' => __DIR__ . '/../..' . '/app/Models/CourseReview.php',
         'App\\Models\\Currency' => __DIR__ . '/../..' . '/app/Models/Currency.php',
         'App\\Models\\EventDetail' => __DIR__ . '/../..' . '/app/Models/EventDetail.php',
         'App\\Models\\Lesson' => __DIR__ . '/../..' . '/app/Models/Lesson.php',
