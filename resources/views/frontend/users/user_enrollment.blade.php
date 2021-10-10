@@ -70,7 +70,8 @@
                                                                                     @if(count($section->lessons) > 0)
                                                                                         @foreach($section->lessons as $lesson)
                                                                                             <ul>
-                                                                                                <a href="#" class="font-weight-bold" id="{{$lesson->vimeo_id}}" >
+
+                                                                                                <a href="#"  onclick="return play('{{(strtolower($lesson->video_type)  == 'youtube')?$lesson->youtube_url : $lesson->vimeo_id}}','{{$lesson->video_type}}');" class="font-weight-bold" id="" >
                                                                                                 {{$loop->index+1}}.    {{$lesson->lesson_title}} <br> <span></span></a>
                                                                                             </ul>
 
@@ -296,93 +297,104 @@
     <script src="https://player.vimeo.com/api/player.js"></script>
 
     <script>
-        var iframe = document.querySelector('iframe');
+        var player;
+        var youtubeplayer;
         //var a = $(this).attr('data-src');
         var video_ids = <?php echo $vimeo ?>;
-        //console.log(vimeo_ids);
-        $('#iframe').attr("src", 'https://player.vimeo.com/video/'+video_ids[0])
-        var embedOptions = {
-            autoplay: true,
-            muted: true
-        };
-        // iframe.allow = "autoplay";
-        // iframe.autoplay = "";
-        var player = new Vimeo.Player(iframe, embedOptions);
-        iframe.style.zIndex = 0;
+        var video_type = <?php echo $type ?>;
+        var youtube = <?php echo $youtube ?>;
+
+        if (video_type[0].toLowerCase() === 'youtube'){
+            var video = document.getElementsByTagName('iframe')[0];
+            video.src = youtube[0].toString()+'?autoplay=1';
+
+            function onYouTubeIframeAPIReady() {
+                youtubeplayer = new YT.Player('player', {
+                    height: '390',
+                    width: '640',
+                    videoId: 'M7lc1UVf-VE',
+                    playerVars: {
+                        'playsinline': 1
+                    },
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+            }
+
+            // 4. The API will call this function when the video player is ready.
+            function onPlayerReady(event) {
+                event.target.playVideo();
+            }
+
+            // 5. The API calls this function when the player's state changes.
+            //    The function indicates that when playing a video (state=1),
+            //    the player should play for six seconds and then stop.
+            var done = false;
+            function onPlayerStateChange(event) {
+                if (event.data == YT.PlayerState.PLAYING && !done) {
+                    setTimeout(stopVideo, 6000);
+                    done = true;
+                }
+            }
+            function stopVideo() {
+                youtubeplayer.stopVideo();
+            }
+
+        }else{
+            var iframe = document.querySelector('iframe');
+            $('#iframe').attr("src", 'https://player.vimeo.com/video/'+video_ids[0])
+            var embedOptions = {
+                autoplay: true,
+                muted: true
+            };
+            // iframe.allow = "autoplay";
+            // iframe.autoplay = "";
+            player = new Vimeo.Player(iframe, embedOptions);
+            iframe.style.zIndex = 0;
 
 
-        //console.log(video_ids[0])
-        var index = 0;
-        var playNext = function () {
-           alert('next video');
+            //console.log(video_ids[0])
+            var index = 0;
+            var playNext = function () {
+                alert('next video');
+                player.pause();
+                if (index <= video_ids.length)
+                    player.loadVideo(video_ids[index++])
+            }
             player.pause();
-            if (index <= video_ids.length)
-                player.loadVideo(video_ids[index++])
+            player.loadVideo(video_ids[index++]);
+            player.on('loaded', function () {
+                player.play();
+            });
+
+            player.on('ended', playNext);
+            video_ids.forEach(function(item) {
+                console.log(item, $('#'+item +'span'),'asd');
+
+                player.loadVideo(item).then(() => {
+                    player.ready().then(() => {
+                        player.getDuration().then(function (data) {
+
+                            var totalSec = data;
+                            var hours = parseInt(totalSec / 3600) % 24;
+                            var minutes = parseInt(totalSec / 60) % 60;
+                            var seconds = totalSec % 60;
+
+                            var result = (hours < 1 ? "" : hours + ":") + (minutes < 1 ? "0" : minutes+' min') + " " + (seconds < 10 ? "0" + seconds : seconds+' seconds')
+                            $('#'+item +' span').text(result)
+                            console.log(result)
+                        });
+                    }).catch((err) => console.log(err));
+                })
+
+                // do something with `item`
+            });
         }
-        player.pause();
-        player.loadVideo(video_ids[index++]);
-        player.on('loaded', function () {
-            player.play();
-        });
-
-        player.on('ended', playNext);
-        video_ids.forEach(function(item) {
-            console.log(item, $('#'+item +'span'),'asd');
-
-            player.loadVideo(item).then(() => {
-                player.ready().then(() => {
-                    player.getDuration().then(function (data) {
-
-                        var totalSec = data;
-                        var hours = parseInt(totalSec / 3600) % 24;
-                        var minutes = parseInt(totalSec / 60) % 60;
-                        var seconds = totalSec % 60;
-
-                        var result = (hours < 1 ? "" : hours + ":") + (minutes < 1 ? "0" : minutes+' min') + " " + (seconds < 10 ? "0" + seconds : seconds+' seconds')
-                        $('#'+item +' span').text(result)
-                        console.log(result)
-                    });
-                }).catch((err) => console.log(err));
-            })
-
-            // do something with `item`
-        });
-
-
-       /* var course_id = '';
-        console.log(course_id)
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: '',
-            type: 'post',
-            data: {'course_id': course_id },
-            //dataType: "html",
-            success: function (response) {
-                console.log(response)
-
-
-
-            }
-        });*/
-
-
-        /*var iframe = document.querySelector('iframe');
-        var player = new Vimeo.Player(iframe);
-
-        player.on('play', function() {
-            console.log('played the video!');
-        });
-
-        player.getVideoTitle().then(function(title) {
-            console.log('title:', title);
-        });*/
 
        // Switch to the video when a thumbnail is clicked
-       $('#thumbs a').click(function (event) {
+       /*$('#thumbskk a').click(function (event) {
            event.preventDefault();
            var vimeoid = $(this).attr('id');
            //console.log(vimeoid)
@@ -394,7 +406,25 @@
 
            player.on('ended', playNext);
 
-       });
+       });*/
+
+        function play(clip,type) {
+            console.log(type.toLowerCase(),clip);
+            if (type.toLowerCase() === 'youtube'){
+                var video = document.getElementsByTagName('iframe')[0];
+                video.src = clip+'?autoplay=1';
+                return false;
+            }else{
+                player.loadVideo(clip)
+
+                player.on('loaded', function () {
+                    player.play();
+                });
+
+                player.on('ended', playNext);
+            }
+
+        }
 
     </script>
 

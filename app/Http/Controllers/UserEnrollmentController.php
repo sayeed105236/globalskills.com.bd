@@ -33,10 +33,17 @@ class UserEnrollmentController extends Controller
         leftJoin('lessons', 'courses.id', '=', 'lessons.course_id')
             ->where('courses.id',$id)
             ->get();
+            /*foreach ($vimeo_ids as $value){
+                $data[] = ($value->video_type == 'Youtube') ? $value->youtube_url : $value->vimeo_id;
+            }*/
+
           $vimeo=$vimeo_ids->pluck('vimeo_id');
           $youtube=$vimeo_ids->pluck('youtube_url');
-          //  dd($video,$video2);
-        return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons','vimeo','youtube'));
+          $type=$vimeo_ids->pluck('video_type');
+
+
+           //dd($data);
+        return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons','vimeo','youtube','type'));
     }
 
     public function getVimeoId(Request $request){

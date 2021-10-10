@@ -31,6 +31,16 @@ class CartController extends Controller
           $user_id = $request->user_id;
           $ip_address=$request->ip();
 
+        //session()->put('course_id', $course_id);
+        $cart = Session()->get('cart');
+        $cart[] = array(
+            "course_id" => $course_id,
+            "classroom_course_id" => $classroom_course_id,
+            "user_id" => $user_id,
+            "qty" => 1,
+        );
+
+        Session()->put('cart', $cart);
 
             if (Auth::check()) {
 

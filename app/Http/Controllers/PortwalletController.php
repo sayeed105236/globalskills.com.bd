@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\UserEnrollment;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Validator;
 use PortWallet\Exceptions\PortWalletException;
 use Session;
 
 use PortWallet\PortWallet;
 use PortWallet\PortWalletClient;
 use PortWallet\Exceptions\PortWalletClientException;
-use Auth;
+
 
 class PortwalletController extends Controller
 {
@@ -70,13 +75,19 @@ class PortwalletController extends Controller
 
     public function index(Request $request){
 
-
-       /* if (!Auth::check())
-       {
-
-			    // return redirect('login');
-          return redirect('login?next=cart&from=');
-		     } else {*/
+        /*$validator = Validator::make($request->all(), [
+            'amount'    => 'required',
+            'email'     => 'required',
+            'name'      => 'required',
+            'phone'     => 'required',
+        ],
+            [
+                //'course_id.unique' => ' Program name is already exist',
+            ]);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+            //return back()->withInput()->withErrors($validator->errors());
+        }*/
         if (PortWallet::getApiMode() == "sandbox") {
 
             $this->api_url = 'https://api-sandbox.portwallet.com/payment/v2/ ';
@@ -106,10 +117,11 @@ class PortwalletController extends Controller
 
        $data = array(
            'order' => array(
-             //'amount' => 1,
-              'amount' => (int) $request->amount,
+             'amount' => 1,
+              //'amount' => (int) $request->amount,
                'currency' => 'BDT',
-               'redirect_url' => 'https://globalskills.com.bd/',
+              // 'redirect_url' => 'https://globalskills.com.bd/portwallet/portwallet_verify_transaction/shopping_cart',
+               'redirect_url' => URL::to('/portwallet/portwallet_verify_transaction/shopping_cart'),
                'ipn_url' => 'http://www.yoursite.com/ipn',
                'reference' => 'ABC123',
                'validity' => 900,
@@ -164,5 +176,33 @@ class PortwalletController extends Controller
         );
         return redirect($paymentUrl)->with($notification);
    }
+
+    public function portwalletVerifyTransaction() {
+
+        if ($_GET['status'] == 'ACCEPTED') {
+            foreach (session()->get('cart') as $cart){
+
+                $data = new UserEnrollment();
+                $data->user_id          = Auth::id();
+                $data->course_id        = $cart['course_id'];
+                $data->regular_price    = 1;
+                $data->access           = 100;
+                $data->created_by       = Auth::id();
+                $data->save();
+            }
+            $notification=array(
+                'message'=>'Congratulations Course has been successfully Enrolled!!!',
+                'alert-type'=>'success'
+            );
+            session()->forget('cart');
+            Cart::truncate();
+            return redirect('/')->with($notification);
+
+        }
+
+
+
+    }
+
 
 }
