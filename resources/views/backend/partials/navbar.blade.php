@@ -9,7 +9,7 @@
     <!--logo start -->
     <div class="ttr-logo-box">
       <div>
-        <a href="index.html" class="ttr-logo">
+        <a href="/" class="ttr-logo">
           <img class="ttr-logo-mobile" alt="" src="{{ asset('images/only logo.png')}}" width="30" height="30">
           <img class="ttr-logo-desktop" alt="" src="{{ asset('images/gsda logo.png')}}" width="160" height="27">
         </a>
