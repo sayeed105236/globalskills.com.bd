@@ -3,11 +3,11 @@
 #public/data
 #public/fonts
 #public/images
-public/storage
+#public/storage
 #public/js
 #public/css
 #public/vendors
-storage/*.key
+#storage/*.key
 #.env
 .env.backup
 .phpunit.result.cache
