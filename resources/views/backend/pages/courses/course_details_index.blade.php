@@ -284,7 +284,7 @@
           </div>
 
 
-          {{-- <div class="" id="instructor">
+          <!-- <div class="" id="instructor">
             <h4>Instructor</h4>
             <div class="instructor-bx">
               <div class="instructor-author">
@@ -318,7 +318,7 @@
                 <p class="m-b0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
               </div>
             </div>
-          </div> --}}
+          </div>-->
 
           <div class="" id="reviews">
             <h4>Reviews</h4>
@@ -334,13 +334,23 @@
                       <input type="hidden" name="course_id" value="{{$course->id}}">
                       <thead>
                         <tr>
-                          <th class="cell-label">&nbsp;</th>
-                          <th>1 star</th>
-                          <th>2 stars</th>
-                          <th>3 stars</th>
-                          <th>4 stars</th>
-                          <th>5 stars</th>
-                        </tr>
+                         <th class="cell-label">&nbsp;</th>
+                         <th><i class="fa fa-star" style="color: red"></i></th>
+                         <th><i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star"  style="color: red"></i></th>
+                         <th><i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i></th>
+                         <th><i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i></th>
+                         <th><i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i></th>
+                       </tr>
                       </thead>
                       <tbody>
                         <tr>

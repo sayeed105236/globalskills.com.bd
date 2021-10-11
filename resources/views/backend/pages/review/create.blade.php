@@ -16,7 +16,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Users</h4>
+          <h4 class="card-title">Reviews</h4>
        <a href="#" class="btn btn-success" data-toggle="modal" data-target="#"><i class="fas fa-plus"></i></a>
         </div>
 
