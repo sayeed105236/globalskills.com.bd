@@ -24,6 +24,8 @@
         <div class="card-header">
           <h4 class="card-title">Blog Details View</h4>
               <a class="float-right" href="{{route('manage-blogs')}}"><i class="fa fa-home fa-2x"></i></a>
+                <a class="float-right" href="#" data-toggle="modal" data-target="#BlogDetailsEditModal"><i class="fa fa-edit fa-2x"></i></a>
+              
         </div>
         <div class="card-body">
 
@@ -139,7 +141,7 @@
 
                   <td>{!!$row->blog_details_content!!}</td>
                   <td>
-                  
+
 
 
 

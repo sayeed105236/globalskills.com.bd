@@ -10,15 +10,15 @@
       <div class="modal-body">
         <form action="{{route('update-blog-details')}}" method="POST" enctype="multipart/form-data">
           @csrf
-            <input type="hidden" name="id" value="{{$row->id}}">
-            <input type="hidden" name="admin_blog_id" value="{{$row->admin_blog->id}}">
+            <input type="hidden" name="id" value="{{$blog_details->id}}">
+            <input type="hidden" name="admin_blog_id" value="{{$blog_details->admin_blog->id}}">
             <div class="form-group">
                 <label for="exampleFormControlFile1">Blog Banner Thumbnails</label>
                   <input type="file" name="file1" class="form-control-file" id="blog_banner_image">
             </div>
             <div class="form-group">
               <label for="no_of_lessons">Blogs Sub Tille</label>
-              <input type="text" class="form-control" name="sub_title" aria-describedby="sub_title" placeholder="Enter Title">
+              <input type="text" class="form-control" value="{{$blog_details->sub_title}}" name="sub_title" aria-describedby="sub_title" placeholder="Enter Title">
 
             </div>
 
