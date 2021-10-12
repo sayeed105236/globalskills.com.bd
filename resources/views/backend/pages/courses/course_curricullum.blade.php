@@ -111,7 +111,7 @@
 
                                                             <tr>
                                                                 <td>
-                                                                    {{$lesson->lesson_title}}
+                                                                    {{$lesson->course->course_title}}
                                                                 </td>
                                                                 <td>
 

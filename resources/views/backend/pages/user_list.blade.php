@@ -30,14 +30,15 @@
           <table id="user_list" class="table table-bordered">
             <thead>
               <tr>
-                <th>Id</th>
-                <th>User Name</th>
+                <th class="wd-10p">Id</th>
+                <th class="wd-10p">User Name</th>
 
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Role</th>
-                <th>Enrollment</th>
-                <th>Actions</th>
+                <th class="wd-10p">Email</th>
+                <th class="wd-10p">Phone Number</th>
+                <th class="wd-10p">Role</th>
+                <th class="wd-5p">Enrollment</th>
+                <th class="wd-5p">Created At</th>
+                <th class="wd-10p">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -73,6 +74,8 @@
                         @endforeach
                     @endif
                 </td>
+                <td>{{$row->created_at}}</td>
+
                 <td>
                   <a href="#"><i class="fas fa-edit"></i></a>
                   <a id="delete" href="/admin/home/users/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
@@ -105,7 +108,7 @@
     'use strict';
 
     $('#user_list').DataTable({
-      responsive: true,
+      responsive: false,
       language: {
         searchPlaceholder: 'Search...',
         sSearch: '',
