@@ -143,11 +143,7 @@
             </tbody>
           </table>
         </div>
-        <div class="col-lg-12 m-b20">
-
-            {{$classroom_courses->links('frontend.partials.pagination')}}
-
-        </div>
+      
       </div>
     </div>
   </div>
@@ -159,7 +155,7 @@
 
     $('#classroom_course_list').DataTable({
       responsive: true,
-      language: { 
+      language: {
         searchPlaceholder: 'Search...',
         sSearch: '',
         lengthMenu: '_MENU_ ',

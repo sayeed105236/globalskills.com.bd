@@ -144,7 +144,7 @@ class ClassroomCourseController extends Controller
       );
       return Redirect()->back()->with($notification);
 
-    
+
     }
 
     public function CourseDetailsBackend($id)
@@ -300,6 +300,16 @@ class ClassroomCourseController extends Controller
           );
           return Redirect()->back()->with($notification);
 
+        }
+        public function subcategoryWiseClassroomCourseShow($subcat_id)
+        {
+          $course= ClassroomCourse::where('course_category_id',$subcat_id)->orderBy('id','DESC')->latest()->limit(2)->paginate(9);
+
+          $course_categories= CourseCategory::all();
+          $main_categories= MainCategory::all();
+          $lts_c_c =ClassroomCourse::where('status',1)->latest()->limit(2)->get();
+
+          return view ('frontend.pages.categorywiseclassroomcourseshow',compact('course_categories','main_categories','course','lts_c_c'));
         }
 
   }

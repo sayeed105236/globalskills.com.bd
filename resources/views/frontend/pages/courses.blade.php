@@ -46,12 +46,12 @@
           <div class="widget widget_archive">
                             <h5 class="widget-title style-1">All Courses Categories</h5>
                             <ul>
-                                <li class="active"><a href="#">General</a></li>
+                                  <li class="active"><a href="{{route('courses')}}">All Courses</a></li>
 
-                                @foreach($course_categories as $row)
-                                <li><a href="#">{{$row->mcategory_title}}</a></li>
-                                @endforeach
-                            </ul>
+                                  @foreach($course_categories as $row)
+                                  <a href="{{ url('/home/courses/'.$row->id) }}"><li>{{$row->mcategory_title}}</li></a>
+                                  @endforeach
+                              </ul>
                         </div>
           <div class="widget">
             <a href="#"><img src="{{ asset('images/adv/adv.jpg')}}" alt=""/></a>
@@ -64,16 +64,19 @@
                                     <div class="ttr-post-media"> <img src="{{asset("storage/courses/$row->course_image")}}" width="200" height="143" alt=""> </div>
                                     <div class="ttr-post-info">
                                         <div class="ttr-post-header">
-                                            <h6 class="post-title"><a href="home/course_details/{{$row->id}}">{{$row->course_title}}</a></h6>
+                                            <h6 class="post-title"><a href="home/course_details/{{$row->id}}">{{Str::limit($row->course_title,18)}}</a></h6>
                                         </div>
                                         <div class="ttr-post-meta">
-                                            <ul>
-                                                <li class="price">
-                                                  <del>{{$row->regular_price}}৳</del>
-                                                  <h5>{{$row->sale_price}}৳</h5>
-                                                </li>
-                                                <li class="review">03 Review</li>
-                                            </ul>
+                                          <ul>
+                                              <li class="price">
+
+                                                <del>{{$row->regular_price}}৳</del>
+                                              </li>
+                                              <li class="price">
+
+                                                <h5>{{$row->sale_price}}৳</h5>
+                                              </li>
+                                          </ul>
                                         </div>
                                     </div>
                                 </div>

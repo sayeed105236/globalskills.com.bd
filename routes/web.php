@@ -74,21 +74,17 @@ Route::get('/course_details', [FrontendController::class,'course_details'])->nam
 Route::get('/user_profile', [UserProfileController::class,'user_profile'])->name('user_profile');
 Route::get('/user_profile/{id}', [UserProfileController::class,'EditProfile'])->name('user-profile-edit');
 
+//category wise course show
+
+Route::get('/home/courses/{subcat_id}', [CourseController::class,'subcategoryWiseCourseShow']);
+Route::get('/home/classroom_courses/{subcat_id}', [ClassroomCourseController::class,'subcategoryWiseClassroomCourseShow']);
+
 
 //blogs routes frontend
 Route::get('/all-blogs', [BlogsController::class,'index'])->name('all-blogs');
 Route::get('/blogs_details', [BlogsController::class,'blogs_details'])->name('blogs_details');
 Route::get('/blogs_details/{id}', [BlogsController::class,'blogs_details_index']);
 
-//payment routes
-//Route::get('portwallet', [PortwalletController::class, 'portwallet']);
-//Route::post('portwallet', [PortwalletController::class, 'PortwalletPost'])->name('portwallet.post');
-
-//Route::get('payment-status', [PaymentController::class, 'paymentInfo']);
-//Route::get('payemnt', [PaymentController::class, 'payment']);
-//Route::get('payment-cancel', function () {
-  // return 'Payment has been canceled';
-//});
 
 //add to carts Routes
 Route::get('/carts', [CartController::class,'index'])->name('carts');
@@ -289,3 +285,5 @@ Route::post('store/review', [CourseReviewController::class,'store'])->name('stor
 Route::get('review/create', [ReviewFromAdminController::class,'create'])->name('customer.review');
 Route::get('/admin/review-delete/{review_id}', [ReviewFromAdminController::class,'destroy'])->middleware('is_admin');
 Route::get('/admin/review-approve/{review_id}', [ReviewFromAdminController::class,'approve'])->middleware('is_admin');
+
+//

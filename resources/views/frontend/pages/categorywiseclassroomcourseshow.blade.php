@@ -46,12 +46,12 @@
           <div class="widget widget_archive">
                             <h5 class="widget-title style-1">All Courses Categories</h5>
                             <ul>
-                                 <li class=""><a href="{{route('classroom-courses')}}">All Courses</a></li>
+                                <li class=""><a href="{{route('classroom-courses')}}">All Courses</a></li>
 
-                                 @foreach($course_categories as $row)
-                                 <li><a href="{{ url('/home/classroom_courses/'.$row->id) }}">{{$row->mcategory_title}}</a></li>
-                                 @endforeach
-                             </ul>
+                                @foreach($course_categories as $row)
+                                <li><a href="{{ url('/home/classroom_courses/'.$row->id) }}">{{$row->mcategory_title}}</a></li>
+                                @endforeach
+                            </ul>
                         </div>
           <div class="widget">
             <a href="#"><img src="{{ asset('images/adv/adv.jpg')}}" alt=""/></a>
@@ -87,7 +87,7 @@
         </div>
         <div class="col-lg-9 col-md-8 col-sm-12">
           <div class="row">
-            @foreach($classroom_courses as $row)
+            @foreach($course as $row)
             @if($row->status==1)
             @if($row->main_category->id==5)
             <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
@@ -137,7 +137,7 @@
             @endforeach
             <div class="col-lg-12 m-b20">
 
-                {{$classroom_courses->links('frontend.partials.pagination')}}
+                {{$course->links('frontend.partials.pagination')}}
 
             </div>
           </div>
