@@ -33,6 +33,7 @@ use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CourseReviewController;
 use App\Http\Controllers\ReviewFromAdminController;
+use App\Http\Controllers\TrainerController;
 
 
 
@@ -286,4 +287,10 @@ Route::get('review/create', [ReviewFromAdminController::class,'create'])->name('
 Route::get('/admin/review-delete/{review_id}', [ReviewFromAdminController::class,'destroy'])->middleware('is_admin');
 Route::get('/admin/review-approve/{review_id}', [ReviewFromAdminController::class,'approve'])->middleware('is_admin');
 
-//
+//trainer add
+Route::get('/admin/home/trainer-list', [TrainerController::class,'create'])->name('trainer')->middleware('is_admin');
+Route::post('/admin/home/addTrainer', [TrainerController::class, 'addTrainer'])->name('add-trainer')->
+middleware('is_admin');
+Route::post('/admin/home/updateTrainer', [TrainerController::class, 'updateTrainer'])->name('update-trainer')->
+middleware('is_admin');
+Route::get('/admin/trainer-delete/{id}', [TrainerController::class,'deleteTrainer'])->middleware('is_admin');

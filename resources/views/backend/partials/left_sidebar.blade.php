@@ -94,10 +94,16 @@
                                       </li>
                                       <li>
                                       <a href="{{route('admin.currency')}}" class="ttr-material-button">
-                                        <span class="ttr-icon"><i class="fas fa-money"></i></span>
+                                        <span class="ttr-icon"><i class="fas fa-money-bill-wave-alt"></i></span>
                                                 <span class="ttr-label">Currency</span>
                                               </a>
                                           </li>
+                                          <li>
+                      <a href="{{ route('trainer') }}" class="ttr-material-button" @yield('trainer')>
+                        <span class="ttr-icon"><i class="fas fa-users"></i></span>
+                                <span class="ttr-label">Trainer List</span>
+                              </a>
+                          </li>
                     <li>
           <a href="#" class="ttr-material-button">
             <span class="ttr-icon"><i class="ti-email"></i></span>
