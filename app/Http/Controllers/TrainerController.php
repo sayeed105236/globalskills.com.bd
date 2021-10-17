@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Trainer;
+use App\Models\Course;
 use Validator;
 use Response;
 
@@ -17,6 +18,8 @@ class TrainerController extends Controller
 
         $name = $request->name;
         $designation = $request->designation;
+        $course_id=$request->course_id;
+
         $facebook_profile = $request->facebook_profile;
         $linkdin_profile = $request->linkdin_profile;
         $biography = $request->biography;
@@ -35,6 +38,7 @@ class TrainerController extends Controller
         $trainer = new Trainer();
         $trainer->name = $name;
         $trainer->designation =$designation;
+        $trainer->course_id=$course_id;
         $trainer->facebook_profile = $facebook_profile;
         $trainer->linkdin_profile =$linkdin_profile;
         $trainer->biography = $biography;
@@ -50,11 +54,13 @@ class TrainerController extends Controller
     public function create()
     {
         $trainer= Trainer::all();
-        return view('backend.pages.trainer.create',compact('trainer'));
+        $course=Course::all();
+        return view('backend.pages.trainer.create',compact('trainer','course'));
     }
     public function updateTrainer(Request $request)
     {
         $name = $request->name;
+        $course_id=$request->course_id;
         $designation = $request->designation;
         $facebook_profile = $request->facebook_profile;
         $linkdin_profile = $request->linkdin_profile;
@@ -82,7 +88,7 @@ class TrainerController extends Controller
 
             $trainer['image'] = $filename;
         } elseif (empty($oldfileexists)) {
-            throw new GeneralException('Trainer image not found!');
+            //throw new GeneralException('Trainer image not found!');
             //return redirect()->back()->with(['flash_danger' => 'User image not found!']);
             //file check in storage
 
@@ -92,6 +98,7 @@ class TrainerController extends Controller
 
         $trainer = Trainer::find($request->id);
         $trainer->name = $name;
+        $trainer->course_id=$course_id;
         $trainer->designation =$designation;
         $trainer->facebook_profile = $facebook_profile;
         $trainer->linkdin_profile =$linkdin_profile;
@@ -115,8 +122,9 @@ class TrainerController extends Controller
 
         $notification=array(
             'message'=>'Trainer Deleted successfully!!!',
-            'alert-type'=>'error'
+            'alert-type'=>'success'
         );
         return Redirect()->back()->with($notification);
   }
+
 }

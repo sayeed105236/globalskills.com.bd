@@ -15,7 +15,7 @@
     <div class="breadcrumb-row">
         <div class="container">
             <ul class="list-inline">
-                <li><a href="{{route('course_details')}}">Home</a></li>
+                <li><a href="{{route('home')}}">Home</a></li>
                 <li><a href="#">Courses</a></li>
                 <li>{{$course->course_title}}</li>
             </ul>
@@ -152,141 +152,131 @@
                             </div>
                         </div>
 
-                      <!--  <div class="" id="instructor">
-                            <h4>Instructor</h4>
-                            <div class="instructor-bx">
-                                <div class="instructor-author">
-                                    <img src="{{ asset('images/testimonials/pic1.jpg')}}" alt="">
-                                </div>
+                        <div class="" id="instructor">
+                        <h4>Instructor</h4>
 
-                                <div class="instructor-info">
-                                    <h6>{{$course->course_details->instructor_id}}</h6>
-                                    <span>Professor</span>
-                                    <ul class="list-inline m-tb10">
-                                        <li><a href="#" class="btn sharp-sm facebook"><i class="fa fa-facebook"></i></a>
-                                        </li>
-                                        <li><a href="#" class="btn sharp-sm twitter"><i class="fa fa-twitter"></i></a>
-                                        </li>
-                                        <li><a href="#" class="btn sharp-sm linkedin"><i class="fa fa-linkedin"></i></a>
-                                        </li>
-                                        <li><a href="#" class="btn sharp-sm google-plus"><i
-                                                    class="fa fa-google-plus"></i></a></li>
-                                    </ul>
-                                    <p class="m-b0">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                        industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-                                        1500s, when an unknown printer took a galley of type and scrambled it to make a
-                                        type specimen book. It has survived not only five centuries</p>
-                                </div>
-                            </div>
-                            <div class="instructor-bx">
-                                <div class="instructor-author">
-                                    <img src="{{ asset('images/testimonials/pic2.jpg')}}" alt="">
-                                </div>
-                                <div class="instructor-info">
-                                    <h6>Keny White </h6>
-                                    <span>Professor</span>
-                                    <ul class="list-inline m-tb10">
-                                        <li><a href="#" class="btn sharp-sm facebook"><i class="fa fa-facebook"></i></a>
-                                        </li>
-                                        <li><a href="#" class="btn sharp-sm twitter"><i class="fa fa-twitter"></i></a>
-                                        </li>
-                                        <li><a href="#" class="btn sharp-sm linkedin"><i class="fa fa-linkedin"></i></a>
-                                        </li>
-                                        <li><a href="#" class="btn sharp-sm google-plus"><i
-                                                    class="fa fa-google-plus"></i></a></li>
-                                    </ul>
-                                    <p class="m-b0">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                        industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-                                        1500s, when an unknown printer took a galley of type and scrambled it to make a
-                                        type specimen book. It has survived not only five centuries</p>
-                                </div>
-                            </div>
+                        @foreach ($trainer as $item)
+
+                        <div class="instructor-bx">
+                          <div class="instructor-author">
+                            <img src="{{asset('storage/trainer/'.$item->image)}}" alt="">
+                          </div>
+                          <div class="instructor-info">
+                            <h6>{{$item->name}}</h6>
+                            <span>{{ $item->designation }}</span>
+                            <ul class="list-inline m-tb10">
+                              <li><a href="{{ $item->facebook_profile }}" class="btn sharp-sm facebook"><i class="fa fa-facebook"></i></a></li>
+                              <li><a href="{{ $item->linkdin_profile }}" class="btn sharp-sm linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                            <p class="m-b0">{!! $item->biography !!}</p>
+                          </div>
                         </div>
-                        <div class="" id="reviews">
-                            <h4>Reviews</h4>
+                        @endforeach
 
-                            <div class="review-bx">
-                                <div class="all-review">
-                                    <h2 class="rating-type">3</h2>
-                                    <ul class="cours-star">
-                                        <li class="active"><i class="fa fa-star"></i></li>
-                                        <li class="active"><i class="fa fa-star"></i></li>
-                                        <li class="active"><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <span>3 Rating</span>
-                                </div>
-                                <div class="review-bar">
-                                    <div class="bar-bx">
-                                        <div class="side">
-                                            <div>5 star</div>
-                                        </div>
-                                        <div class="middle">
-                                            <div class="bar-container">
-                                                <div class="bar-5" style="width:90%;"></div>
-                                            </div>
-                                        </div>
-                                        <div class="side right">
-                                            <div>150</div>
-                                        </div>
-                                    </div>
-                                    <div class="bar-bx">
-                                        <div class="side">
-                                            <div>4 star</div>
-                                        </div>
-                                        <div class="middle">
-                                            <div class="bar-container">
-                                                <div class="bar-5" style="width:70%;"></div>
-                                            </div>
-                                        </div>
-                                        <div class="side right">
-                                            <div>140</div>
-                                        </div>
-                                    </div>
-                                    <div class="bar-bx">
-                                        <div class="side">
-                                            <div>3 star</div>
-                                        </div>
-                                        <div class="middle">
-                                            <div class="bar-container">
-                                                <div class="bar-5" style="width:50%;"></div>
-                                            </div>
-                                        </div>
-                                        <div class="side right">
-                                            <div>120</div>
-                                        </div>
-                                    </div>
-                                    <div class="bar-bx">
-                                        <div class="side">
-                                            <div>2 star</div>
-                                        </div>
-                                        <div class="middle">
-                                            <div class="bar-container">
-                                                <div class="bar-5" style="width:40%;"></div>
-                                            </div>
-                                        </div>
-                                        <div class="side right">
-                                            <div>110</div>
-                                        </div>
-                                    </div>
-                                    <div class="bar-bx">
-                                        <div class="side">
-                                            <div>1 star</div>
-                                        </div>
-                                        <div class="middle">
-                                            <div class="bar-container">
-                                                <div class="bar-5" style="width:20%;"></div>
-                                            </div>
-                                        </div>
-                                        <div class="side right">
-                                            <div>80</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+                      </div>
 
+
+                      <div class="" id="reviews">
+                        <h4>Reviews</h4>
+
+                        <div class="review-bx">
+                          <div class="product-add-review">
+                            <h4 class="title">Write your own review</h4>
+                            <div class="review-table">
+                              <div class="table-responsive">
+                                <form role="form" class="cnt-form" action="{{ route('store.review') }}" method="post">
+                                <table class="table" >
+                                  @csrf
+                                  <input type="hidden" name="course_id" value="{{$course->id}}">
+                                  <thead>
+                                    <tr>
+                                     <th class="cell-label">&nbsp;</th>
+                                     <th><i class="fa fa-star" style="color: red"></i></th>
+                                     <th><i class="fa fa-star" style="color: red"></i>
+                                       <i class="fa fa-star"  style="color: red"></i></th>
+                                     <th><i class="fa fa-star" style="color: red"></i>
+                                       <i class="fa fa-star" style="color: red"></i>
+                                       <i class="fa fa-star" style="color: red"></i></th>
+                                     <th><i class="fa fa-star" style="color: red"></i>
+                                       <i class="fa fa-star" style="color: red"></i>
+                                       <i class="fa fa-star" style="color: red"></i>
+                                       <i class="fa fa-star" style="color: red"></i></th>
+                                     <th><i class="fa fa-star" style="color: red"></i>
+                                       <i class="fa fa-star" style="color: red"></i>
+                                       <i class="fa fa-star" style="color: red"></i>
+                                       <i class="fa fa-star" style="color: red"></i>
+                                       <i class="fa fa-star" style="color: red"></i></th>
+                                   </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td class="cell-label">Rating</td>
+                                      <td><input type="radio" name="rating" class="radio" value="1"></td>
+                                      <td><input type="radio" name="rating" class="radio" value="2"></td>
+                                      <td><input type="radio" name="rating" class="radio" value="3"></td>
+                                      <td><input type="radio" name="rating" class="radio" value="4"></td>
+                                      <td><input type="radio" name="rating" class="radio" value="5"></td>
+                                    </tr>
+                                    @error('rating')
+                                        <span class="text text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                  </tbody>
+                                </table><!-- /.table .table-bordered -->
+                              </div><!-- /.table-responsive -->
+                            </div><!-- /.review-table -->
+
+                            <div class="review-form">
+                              <div class="form-container">
+
+
+                                  <div class="row">
+
+                                    <div class="col-md-12">
+                                      <div class="form-group">
+                                        <label for="exampleInputReview">Review <span class="astk">*</span></label>
+                                        <textarea class="form-control txt txt-review" id="exampleInputReview" name="comment" rows="4" placeholder=""></textarea>
+                                        @error('comment')
+                                        <span class="text text-danger">{{ $message }}</span>
+                                        @enderror
+                                      </div><!-- /.form-group -->
+                                    </div>
+                                  </div><!-- /.row -->
+
+                                  <div class="action text-right">
+                                    <button class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
+                                  </div><!-- /.action -->
+
+                                </form><!-- /.cnt-form -->
+                                @foreach ($courseReview as $review)
+
+
+                                <div class="product-reviews">
+                                  <h5 class="title">{{ $review->user->name }}</h5>
+
+                                  <div class="reviews">
+                                    <div class="review">
+                                      <div class="review-title">
+                                          <span class="summary">
+                                        @for ($i =1 ; $i <= 5 ; $i++)
+                                         <span style="color: red" class="fa fa-star{{ ($i <= $review->rating) ? '' : '-empty' }}"></span>
+                                       @endfor
+                                          </span>
+                                       <span class="date"><i class="fa fa-calendar"></i><span> {{ $review->created_at->diffForHumans() }}</span></span></div>
+                                      <div class="text">"{{ $review->comment }}" </div>
+                                    </div>
+                                  </div><!-- /.reviews -->
+                                </div><!-- /.product-reviews -->
+                                @endforeach
+                              </div><!-- /.form-container -->
+                            </div><!-- /.review-form -->
+
+                          </div><!-- /.product-add-review -->
+
+
+                        </div>
+
+                      </div>
                     </div>
 
                 </div>

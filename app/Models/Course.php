@@ -54,5 +54,9 @@ class Course extends Model
             return false;
         }
     }
+    public function trainer(){
+
+      return $this->belongsTo(Trainer::class,'trainer_id');
+     }
 
 }

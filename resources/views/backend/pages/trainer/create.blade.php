@@ -22,7 +22,7 @@
             <h4 class="card-title">Trainer</h4>
             <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#TrainerAdd"><i class="fas fa-plus-circle"></i></a>
             @include('backend.modals.traineraddmodal')
-          </div
+          </div>
 
 
 
@@ -32,6 +32,7 @@
               <tr>
                 <th class="wd-10">Id</th>
                 <th>Name</th>
+                <th>Course</th>
                 <th class="wd-10">Designation</th>
                 <th>Fb Link</th>
                 <th>Lindin Link</th>
@@ -48,6 +49,9 @@
                 <td class="user_name">
                     {{$row->name}}
 
+                </td>
+                <td>
+                  {{ $row->course->course_title }}
                 </td>
 
                 <td>
@@ -89,12 +93,15 @@
                     <a href="#" data-toggle="modal" data-target="#TrainerEdit{{$row->id}}"><i class="fas fa-edit"></i></a>
 
                   <a  href="/admin/trainer-delete/{{$row->id}}" id="delete"><i class="fas fa-trash"></i></a>
+                      @include('backend.modals.trainereditmodal')
 
                 </td>
-                @include('backend.modals.trainereditmodal')
+
+
 
 
               </tr>
+
               @endforeach
             </tbody>
           </table>

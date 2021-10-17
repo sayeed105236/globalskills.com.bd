@@ -11,6 +11,8 @@ use App\Models\Section;
 use App\Models\Lesson;
 use App\Models\UserEnrollment;
 use Auth;
+use App\Models\CourseReview;
+use App\Models\Trainer;
 
 class UserEnrollmentController extends Controller
 {
@@ -44,10 +46,14 @@ class UserEnrollmentController extends Controller
             $vimeo=$vimeo_ids->pluck('vimeo_id');
             $youtube=$vimeo_ids->pluck('youtube_url');
             $type=$vimeo_ids->pluck('video_type');
+            $courseReview=CourseReview::with('user')->where('course_id',$id)->where('status','approve')->latest()->get();
+            $rating = CourseReview::where('course_id',$id)->where('status','approve')->avg('rating');
+            $avgRating = number_format($rating,1);
+            $trainer= Trainer::where('course_id',$id)->get();
 
 
              //dd($data);
-          return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons','vimeo','youtube','type'));
+          return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons','vimeo','youtube','type','courseReview','rating','avgRating','trainer'));
 
         } else{
           $notification=array(

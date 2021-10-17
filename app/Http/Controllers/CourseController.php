@@ -13,6 +13,7 @@ use App\Models\Lesson;
 use App\Models\UserEnrollment;
 use Auth;
 use App\Models\CourseReview;
+use App\Models\Trainer;
 
 
 class CourseController extends Controller
@@ -20,6 +21,7 @@ class CourseController extends Controller
 
   public function Manage()
   {
+    $trainer= Trainer::all();
     $course_details= CourseOverview::all();
     $courses= Course::all();
     $course_categories= CourseCategory::all();
@@ -28,7 +30,7 @@ class CourseController extends Controller
     $lessons= Lesson::all();
 
 
-    return view('backend.pages.courses.manage',compact('course_categories','main_categories','courses','course_details','section','lessons'));
+    return view('backend.pages.courses.manage',compact('course_categories','main_categories','courses','course_details','section','lessons','trainer'));
   }
 
   public function StoreCourse(Request $request)
@@ -78,10 +80,7 @@ class CourseController extends Controller
     );
     return Redirect()->back()->with($notification);
 
-
-
   }
-
 
   public function updateCourse(Request $request)
   {
@@ -121,25 +120,18 @@ class CourseController extends Controller
 
     }
 
-
-
-
-
     $status = $request->status;
-
     $course_categories= CourseCategory::all();
     $main_categories= MainCategory::all();
     $course = Course::find($request->id);
     $course->main_category_id = $main_category_id;
     $course->course_category_id= $course_category_id;
-
     $course->course_title= $course_title;
     $course->regular_price= $regular_price;
     $course-> sale_price= $sale_price;
     $course->course_image= $filename;
 
     $course->status= $status;
-
 
     $course->save();
     $notification=array(
@@ -319,10 +311,11 @@ class CourseController extends Controller
     $courseReview=CourseReview::with('user')->where('course_id',$id)->where('status','approve')->latest()->get();
     $rating = CourseReview::where('course_id',$id)->where('status','approve')->avg('rating');
     $avgRating = number_format($rating,1);
+    $trainer= Trainer::where('course_id',$id)->get();
 
 
 
-    return view('/backend/pages/courses.course_details_index',compact('course_details','main_categories','course_categories','course','enrolled','courseReview','avgRating'));
+    return view('/backend/pages/courses.course_details_index',compact('course_details','main_categories','course_categories','course','enrolled','courseReview','avgRating','trainer'));
   }
 
   public function StoreSection(Request $request)
