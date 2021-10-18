@@ -17,3 +17,4 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('vendors/revolution/css/navigation.css')}}">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="{{asset('backend')}}/lib/toastr/toastr.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/css/datepicker.min.css">

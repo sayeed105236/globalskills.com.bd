@@ -93,6 +93,12 @@
                                           </a>
                                       </li>
                                       <li>
+                                      <a href="{{route('manage-evolution')}}" class="ttr-material-button">
+                                        <span class="ttr-icon"><i class="far fa-star"></i></span>
+                                                <span class="ttr-label">Evolution Lists</span>
+                                              </a>
+                                          </li>
+                                      <li>
                                       <a href="{{route('admin.currency')}}" class="ttr-material-button">
                                         <span class="ttr-icon"><i class="fas fa-money-bill-wave-alt"></i></span>
                                                 <span class="ttr-label">Currency</span>

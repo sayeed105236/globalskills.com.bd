@@ -8,6 +8,7 @@ use App\Models\Division\Division;
 use App\Models\UserEnrollment;
 use Illuminate\Http\Request;
 Use App\Models\User;
+use App\Models\Evolution;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -82,5 +83,10 @@ class UserController extends Controller
         }
 
 
+    }
+    public function ManageEvolution()
+    {
+      $evolutions=Evolution::all();
+      return view('backend.pages.manage_evolution',compact('evolutions'));
     }
 }

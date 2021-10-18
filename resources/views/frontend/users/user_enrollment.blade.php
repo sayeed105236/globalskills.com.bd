@@ -87,6 +87,9 @@
                                                         @endif
                                                     </div>
                                                 </div>
+                                                <br>
+                                                <a class="btn btn-success align-center" data-toggle="modal" data-target="#SubmitEvolution" href="#">Submit To Download Certificate</a>
+                                                @include('frontend.modals.submitevolutionmodal')
                                             </div>
                                         </div>
                                     </div>
@@ -417,6 +420,7 @@
         }
 
     </script>
+
 
     @endpush
 @endsection

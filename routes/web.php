@@ -74,6 +74,7 @@ Route::get('/course_details', [FrontendController::class,'course_details'])->nam
 //Route::get('/course_details/{id}', [FrontendController::class,'course_details'])->name('course_details');
 Route::get('/user_profile', [UserProfileController::class,'user_profile'])->name('user_profile');
 Route::get('/user_profile/{id}', [UserProfileController::class,'EditProfile'])->name('user-profile-edit');
+Route::post('/home/course_details/view/evolution/store', [UserEnrollmentController::class,'StoreEvolution'])->name('store-evolution');
 
 //category wise course show
 
@@ -255,6 +256,10 @@ Route::post('change-password-store',[UserProfileController::class,'changePassSto
 
 Route::get('/get-product-price', [UserController::class,'getProductPrice'])->name('get.product-price')->middleware('is_admin');
 Route::post('/enroll-course', [UserController::class,'storeEnrollCourse'])->name('enroll-course.store')->middleware('is_admin');
+
+//evolution see from admin routes
+Route::get('/admin/home/evolution/manage', [UserController::class, 'ManageEvolution'])->name('manage-evolution')->
+middleware('is_admin');
 
 //currency route
 Route::get('/admin/home/manage', [CurrencyController::class, 'index'])->name('admin.currency')->

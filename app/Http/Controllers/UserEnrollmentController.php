@@ -13,6 +13,7 @@ use App\Models\UserEnrollment;
 use Auth;
 use App\Models\CourseReview;
 use App\Models\Trainer;
+use App\Models\Evolution;
 
 class UserEnrollmentController extends Controller
 {
@@ -24,7 +25,9 @@ class UserEnrollmentController extends Controller
     public function index($id)
 
     {
+
         $user_enrollment= UserEnrollment::where('course_id',$id)->where('user_id',Auth::id())->get();
+          //dd($user_enrollment);
         //dd(count($user_enrollment));
         if(count($user_enrollment) > 0 ){
           $course_categories= CourseCategory::all();
@@ -50,10 +53,12 @@ class UserEnrollmentController extends Controller
             $rating = CourseReview::where('course_id',$id)->where('status','approve')->avg('rating');
             $avgRating = number_format($rating,1);
             $trainer= Trainer::where('course_id',$id)->get();
+            $enrolled= UserEnrollment::where('course_id',$id)->where('user_id',Auth::id())->first();
+            //dd($enrolled);
 
 
              //dd($data);
-          return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons','vimeo','youtube','type','courseReview','rating','avgRating','trainer'));
+          return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons','vimeo','youtube','type','courseReview','rating','avgRating','trainer','enrolled'));
 
         } else{
           $notification=array(
@@ -75,6 +80,56 @@ class UserEnrollmentController extends Controller
             ->where('courses.id',$request->course_id)
             ->get()->pluck('vimeo_id');
         //dd($course);
+    }
+    public function StoreEvolution(Request $request)
+    {
+      //dd($request);
+      $request->validate([
+          'trainers_competence'=>'required',
+          'experience'=>'required',
+          'presentation'=>'required',
+          'material'=>'required',
+          'usefullness'=>'required',
+          'satisfaction'=>'required',
+      ]);
+      $user_id = $request->user_id;
+      $course_id = $request->course_id;
+      //$name=$request->name;
+      $company_name=$request->company_name;
+      $start_date=$request->start_date;
+      $end_date=$request->end_date;
+      $reason=$request->reason;
+      $trainers_competence=$request->trainers_competence;
+      $experience=$request->experience;
+      $presentation=$request->presentation;
+      $material=$request->material;
+      $usefullness=$request->usefullness;
+      $satisfaction=$request->satisfaction;
+
+      $evolution = new Evolution();
+      $evolution->user_id = $user_id;
+      $evolution->course_id= $course_id;
+      //evolution->name= $name;
+      $evolution->company_name = $company_name;
+      $evolution->start_date = $start_date;
+      $evolution->end_date = $end_date;
+      $evolution->reason = $reason;
+
+      $evolution->trainers_competence = $trainers_competence;
+      $evolution->experience = $experience;
+
+      $evolution->presentation = $presentation;
+      $evolution->material = $material;
+      $evolution->usefullness = $usefullness;
+      $evolution->satisfaction = $satisfaction;
+
+      $evolution->save();
+      $notification=array(
+          'message'=>'Evolution submitted successfully!!!',
+          'alert-type'=>'success'
+      );
+      return Redirect()->back()->with($notification);
+
     }
 
 
