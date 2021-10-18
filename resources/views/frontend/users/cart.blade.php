@@ -88,7 +88,7 @@
                                         <?php
                                         if ($row->course->sale_price > 0) {
                                             $price += $row->course->sale_price;
-                                        } else {
+                                         } else {
                                             $price += $row->course->regular_price;
                                         }
 

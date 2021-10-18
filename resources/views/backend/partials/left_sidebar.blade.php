@@ -99,11 +99,20 @@
                                               </a>
                                           </li>
                                           <li>
-                      <a href="{{ route('trainer') }}" class="ttr-material-button" @yield('trainer')>
-                        <span class="ttr-icon"><i class="fas fa-users"></i></span>
-                                <span class="ttr-label">Trainer List</span>
-                              </a>
-                          </li>
+                            <a href="#" class="ttr-material-button">
+                              <span class="ttr-icon"><i class="fas fa-users"></i></span>
+                                      <span class="ttr-label">Trainer List</span>
+                                      <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+                                    </a>
+                                    <ul>
+                                      <li>
+                                        <a href="{{ route('trainer') }}" class="ttr-material-button"><span class="ttr-label">E-Learning</span></a>
+                                      </li>
+                                      <li>
+                                        <a href="{{ route('trainer-classroom') }}" class="ttr-material-button"><span class="ttr-label">Classroom</span></a>
+                                      </li>
+                                    </ul>
+                                </li>
                     <li>
           <a href="#" class="ttr-material-button">
             <span class="ttr-icon"><i class="ti-email"></i></span>
