@@ -14,7 +14,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-              
+
      </div>
         </div>
     </div>
@@ -104,9 +104,9 @@
             </div>
             <h5 class="m-t0 m-b20">Follow Us</h5>
             <ul class="list-inline contact-social-bx">
-              <li><a href="https://www.facebook.com/globalskillsbd" class="btn outline radius-xl"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="https://twitter.com/gsdabd?lang=en" class="btn outline radius-xl"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="https://www.linkedin.com/company/globalskillsbd" class="btn outline radius-xl"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="https://www.facebook.com/globalskillsbd" class="btn outline radius-xl"><i class="fab fa-facebook"></i></a></li>
+              <li><a href="https://twitter.com/gsdabd?lang=en" class="btn outline radius-xl"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="https://www.linkedin.com/company/globalskillsbd" class="btn outline radius-xl"><i class="fab fa-linkedin"></i></a></li>
 
             </ul>
           </div>

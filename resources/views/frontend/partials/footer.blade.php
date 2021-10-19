@@ -8,9 +8,9 @@
         </div>
         <div class="pt-social-link">
           <ul class="list-inline m-a0">
-            <li><a href="https://www.facebook.com/globalskillsbd" class="btn-link"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="https://twitter.com/gsdabd?lang=en" class="btn-link"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://www.linkedin.com/company/globalskillsbd" class="btn-link"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://www.facebook.com/globalskillsbd" class="btn-link"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://twitter.com/gsdabd?lang=en" class="btn-link"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/globalskillsbd" class="btn-link"><i class="fab fa-linkedin"></i></a></li>
 
           </ul>
         </div>

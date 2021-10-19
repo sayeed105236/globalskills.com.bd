@@ -2,7 +2,29 @@
 
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+  .img i {
+  top: 15%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+  .img:hover {
+  opacity: 1;
+}
+.fa-youtube:hover {
+  color:red;
+}
+.fa-youtube {
+  color:#CA2128;
 
+}
+.fa-play-circle {
+  color:red;
+
+}
+</style>
 
 
 <!-- Content -->
@@ -39,18 +61,7 @@
     $course_categories= App\Models\CourseCategory::all();
     $main_categories= App\Models\MainCategory::all();
 
-
-
-
-
-
-
-
      ?>
-
-
-
-
 
 <div class="content-block">
         <!-- About Us -->
@@ -60,6 +71,36 @@
         <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
           <div class="course-detail-bx">
 
+
+        @if($course->video_type=="0")
+            <div class="preview-video-box">
+              <a class="video-play" data-video-url="{{ $course->preview_id }}" data-channel="url">
+
+                  <img src="{{asset("storage/courses/$course->course_image")}}" alt="" class="img-fluid">
+                  <div class="img">
+                    <i class="fab fa-youtube fa-4x"></i>
+                  </div>
+
+
+              </a>
+          </div>
+          @else
+          <div class="preview-video-box">
+            <a class="video-play" data-video-id="{{ $course->preview_id }}" data-channel="vimeo">
+
+                <img src="{{asset("storage/courses/$course->course_image")}}" alt="" class="img-fluid">
+                <div class="img">
+                  <i class="fab fa-youtube fa-4x"></i>
+                </div>
+
+            </a>
+        </div>
+        @endif
+
+
+
+          {{-- <button class="video-play" data-video-id="o-Mh4UB7Kgc">Youtube Video</button>
+          <button class="video-play" data-video-id="595181733" data-channel="vimeo">Vimeo Video</button> --}}
 
             @if($enrolled)
               <div class="course-price">

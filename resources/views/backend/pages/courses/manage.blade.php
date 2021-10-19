@@ -111,6 +111,20 @@
                       <input type="number" class="form-control" name="sale_price" aria-describedby="sale_price" placeholder="Enter Sale Price">
 
                     </div>
+                    <div class="form-group">
+                      <label for="sale_price">Preview Video ID</label>
+                      <input type="text" class="form-control" name="preview_id" aria-describedby="sale_price" placeholder="Enter Preview ID">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="custom select">Preview Video Type</label>
+                      <select class="form-control" name="video_type">
+
+                        <option value="1">Vimeo</option>
+                        <option value="0">Youtube</option>
+
+                      </select>
+                    </div>
 
                     <div class="form-group">
                       <label for="custom select">Status</label>
@@ -147,6 +161,7 @@
                 <th>Course Category</th>
                 <th>Regular Price</th>
                 <th>Sale price</th>
+                <th>Preview ID</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
@@ -194,6 +209,7 @@
                 </td>
                 <td>{{$row->regular_price}}৳</td>
                 <td>{{$row->sale_price}}৳</td>
+                <td>{{ $row->preview_id }}</td>
 
 
                 </td>

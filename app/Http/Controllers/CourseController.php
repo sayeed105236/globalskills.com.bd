@@ -44,6 +44,8 @@ class CourseController extends Controller
     $sale_price=$request->sale_price;
 
     $status = $request->status;
+    $preview_id=$request->preview_id;
+    $video_type=$request->video_type;
 
 
     $course_image =$request->file('file');
@@ -69,6 +71,8 @@ class CourseController extends Controller
     $course->sale_price=$sale_price;
 
     $course->status= $status;
+    $course->preview_id=$preview_id;
+    $course->video_type=$video_type;
 
     $course->course_image= $filename;
 
