@@ -55,6 +55,7 @@ class UserEnrollmentController extends Controller
             $trainer= Trainer::where('course_id',$id)->get();
             $enrolled= UserEnrollment::where('course_id',$id)->where('user_id',Auth::id())->first();
             //dd($enrolled);
+            //$tr= Trainer::find($id);
 
 
              //dd($data);
@@ -94,6 +95,7 @@ class UserEnrollmentController extends Controller
       ]);
       $user_id = $request->user_id;
       $course_id = $request->course_id;
+      //$trainer_id= $request->trainer_id;
       //$name=$request->name;
       $company_name=$request->company_name;
       $start_date=$request->start_date;
@@ -108,6 +110,7 @@ class UserEnrollmentController extends Controller
 
       $evolution = new Evolution();
       $evolution->user_id = $user_id;
+      //$evolution->trainer_id = $trainer_id;
       $evolution->course_id= $course_id;
       //evolution->name= $name;
       $evolution->company_name = $company_name;
@@ -128,7 +131,7 @@ class UserEnrollmentController extends Controller
           'message'=>'Evolution submitted successfully!!!',
           'alert-type'=>'success'
       );
-      return Redirect()->back()->with($notification);
+      return view('frontend.pages.certificate',compact('evolution'))->with($notification);
 
     }
 

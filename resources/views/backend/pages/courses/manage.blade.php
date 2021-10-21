@@ -245,7 +245,7 @@
     'use strict';
 
     $('#course_list').DataTable({
-      responsive: true,
+      responsive: false,
       language: {
         searchPlaceholder: 'Search...',
         sSearch: '',

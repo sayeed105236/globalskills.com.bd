@@ -74,7 +74,7 @@ Route::get('/course_details', [FrontendController::class,'course_details'])->nam
 //Route::get('/course_details/{id}', [FrontendController::class,'course_details'])->name('course_details');
 Route::get('/user_profile', [UserProfileController::class,'user_profile'])->name('user_profile');
 Route::get('/user_profile/{id}', [UserProfileController::class,'EditProfile'])->name('user-profile-edit');
-Route::post('/home/course_details/view/evolution/store', [UserEnrollmentController::class,'StoreEvolution'])->name('store-evolution');
+Route::post('/home/course_details/view/evolution/ceetificate_preview', [UserEnrollmentController::class,'StoreEvolution'])->name('store-evolution');
 
 //category wise course show
 

@@ -17,6 +17,7 @@ class CreateTrainersTable extends Migration
           $table->increments('id');
           $table->integer('course_id')->nullable();
           $table->integer('classroom_course_id')->nullable();
+          $table->integer('trainer_id')->nullable();
           $table->string('image')->nullable();
           $table->string('name');
           $table->string('designation')->nullable();

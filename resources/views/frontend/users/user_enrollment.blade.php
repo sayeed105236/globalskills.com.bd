@@ -72,7 +72,7 @@
                                                                                             <ul>
 
                                                                                                 <a href="#"  onclick="return play('{{(strtolower($lesson->video_type)  == 'youtube')?$lesson->youtube_url : $lesson->vimeo_id}}','{{$lesson->video_type}}');" class="font-weight-bold" id="" >
-                                                                                                {{$loop->index+1}}.    {{$lesson->lesson_title}} <br> <span></span></a>
+                                                                                                <i class="fas fa-play-circle"></i>    {{$lesson->lesson_title}} <br> <span></span></a>
                                                                                             </ul>
 
                                                                                         @endforeach

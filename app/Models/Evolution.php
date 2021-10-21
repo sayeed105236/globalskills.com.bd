@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Course;
 use App\Models\User;
+use App\Models\Trainer;
 
 class Evolution extends Model
 {
@@ -19,4 +20,8 @@ class Evolution extends Model
 
        return $this->belongsTo(User::class,'user_id');
       }
+      public function trainer(){
+
+        return $this->belongsTo(Trainer::class,'trainer_id');
+       }
 }

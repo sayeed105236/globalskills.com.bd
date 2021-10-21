@@ -28,6 +28,7 @@
                     @csrf
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <input type="hidden" name="course_id" value="{{$course->id}}">
+                      
                       <div class="row">
                           <div class="col-md-6 col-12">
                               <div class="form-group">

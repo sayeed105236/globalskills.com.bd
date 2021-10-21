@@ -93,7 +93,7 @@
                             <a href="/home/course_details/view/{{$row->course->id}}" class="btn"><i class="fa fa-play-circle"></i></a>
                           </div>
                           <div class="info-bx text-center">
-                            <h5><a href="#">{{Str::limit($row->course->course_title,18)}}</a></h5>
+                            <h5><a href="/home/course_details/view/{{$row->course->id}}">{{Str::limit($row->course->course_title,18)}}</a></h5>
                             <span>{{$row->course->course_category->mcategory_title}}</span>
                           </div>
                           <div class="cours-more-info d-flex justify-content-center">

@@ -24,6 +24,10 @@
   color:red;
 
 }
+.icn{
+  margin-left:-7%;
+  color:green;
+}
 </style>
 
 
@@ -227,88 +231,106 @@
             </div>
           </div>
           <div class="m-b30" id="curriculum">
-            <h4>Curriculum</h4>
+             <h4>Curriculum</h4>
 
-              <section id="accordion-hover">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="card collapse-icon">
+               <section id="accordion-hover">
+                 <div class="row">
+                   <div class="col-sm-12">
+                     <div class="card collapse-icon">
 
-                      <div class="card-body">
-                        @if(count($course->sections) > 0)
-                        @foreach($course->sections as $section)
-                        <div class="accordion" id="accordionExample{{$section->id}}" data-toggle-hover="true">
-                          <div class="collapse-default">
+                       <div class="card-body">
+                         @if(count($course->sections) > 0)
+                         @foreach($course->sections as $section)
+                         <div class="accordion" id="accordionExample{{$section->id}}" data-toggle-hover="true">
+                           <div class="collapse-default">
 
-                            <div class="card">
-                              <div
-                                class="card-header"
-                                id="heading{{$section->id}}"
-                                data-toggle="collapse"
-                                role="button"
-                                data-target="#collapse{{$section->id}}"
-                                aria-expanded="true"
-                                aria-controls="collapse{{$section->id}}"
-                              >
-                                <h6 class="curriculum-list" style="color:#ca2128; text-transform:uppercase;" >{{$section->section_name}}</h6>
-                              </div>
+                             <div class="card">
+                               <div
+                                 class="card-header"
+                                 id="heading{{$section->id}}"
+                                 data-toggle="collapse"
+                                 role="button"
+                                 data-target="#collapse{{$section->id}}"
+                                 aria-expanded="true"
+                                 aria-controls="collapse{{$section->id}}"
+                               >
+                                 <h6 class="curriculum-list" style="color:#ca2128; text-transform:uppercase;" >{{$section->section_name}}</h6>
+                               </div>
 
-                              <div
-                                id="collapse{{$section->id}}"
-                                class="collapse show"
-                                aria-labelledby="heading{{$section->id}}"
-                                data-parent="#accordionExample{{$section->id}}"
-                              >
-                                <div class="card-body">
-                                  <ul>
-                                    @if(count($section->lessons) > 0)
-                                    @foreach($section->lessons as $lesson)
-
-
-
-
-                                      <div class="curriculum-list-box">
-                                        <div class="row">
-
-                                      <div class="col">
-
-
-                                         <strong>{{$loop->index+1}}. {{$lesson->lesson_title}}</strong>
-                                        </div>
-                                    <div class="col">
-
-
-                                      <span><strong></strong></span>
-                                    </div>
-                                        </div>
-                                        </div>
-
-                                    @endforeach
-                                      @endif
+                               <div
+                                 id="collapse{{$section->id}}"
+                                 class="collapse show"
+                                 aria-labelledby="heading{{$section->id}}"
+                                 data-parent="#accordionExample{{$section->id}}"
+                               >
+                                 <div class="card-body">
+                                   <ul>
+                                     @if(count($section->lessons) > 0)
+                                     @foreach($section->lessons as $lesson)
 
 
 
-                                  </ul>
+
+                                       <div class="curriculum-list-box">
+                                         <div class="row">
+
+                                       <div class="col-sm-10">
 
 
-                                </div>
-                              </div>
-                            </div>
+                                          <strong><i class="fas fa-play-circle"></i> {{$lesson->lesson_title}}</strong>
 
 
-                          </div>
-                        </div>
-                        @endforeach
-                        @endif
+                                         </div>
+                                         <div class="col-sm-2">
+                                           @if($lesson->preview==1)
+                                           @if($lesson->video_type=="Youtube")
 
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
+                                           <a class="video-play1" data-video-url="{{ $lesson->youtube_url }}" data-channel="url">
+                                             <strong><i  class="fas fa-play-circle fa-2x icn" title="Play"></i></strong>
+                                             </a>
+                                            @else
+                                            <a class="video-play1" data-video-id="{{ $lesson->vimeo_id }}" data-channel="vimeo">
+                                             <strong><i class="fas fa-play-circle fa-2x icn"  title="Play"></i></strong>
+                                           </a>
+                                             @endif
+                                             @else
+                                           <i class="fas fa-lock" title="Lock"></i>
+                                           @endif
+                                         </div>
+                                     <div class="col">
 
 
-          </div>
+                                       <span><strong></strong></span>
+                                     </div>
+                                         </div>
+                                         </div>
+
+                                     @endforeach
+                                       @endif
+
+
+
+                                   </ul>
+
+
+                                 </div>
+                               </div>
+                             </div>
+
+
+                           </div>
+                         </div>
+                         @endforeach
+                         @endif
+
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </section>
+
+
+           </div>
           <div class="" id="instructor">
           <h4>Instructor</h4>
 
@@ -322,8 +344,8 @@
               <h6>{{$item->name}}</h6>
               <span>{{ $item->designation }}</span>
               <ul class="list-inline m-tb10">
-                <li><a href="{{ $item->facebook_profile }}" class="btn sharp-sm facebook"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="{{ $item->linkdin_profile }}" class="btn sharp-sm linkedin"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="{{ $item->facebook_profile }}" class="btn sharp-sm facebook"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="{{ $item->linkdin_profile }}" class="btn sharp-sm linkedin"><i class="fab fa-linkedin"></i></a></li>
               </ul>
               <p class="m-b0">{!! $item->biography !!}</p>
             </div>
