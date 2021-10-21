@@ -12,4 +12,8 @@ class AboutController extends Controller
     return view('frontend.pages.about_us');
 
   }
+  public function certificate()
+  {
+    return view('certificate');
+  }
 }

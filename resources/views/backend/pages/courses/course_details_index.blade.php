@@ -2,6 +2,9 @@
 
 
 @section('content')
+
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
   .img i {
@@ -29,7 +32,6 @@
   color:green;
 }
 </style>
-
 
 <!-- Content -->
 
@@ -65,7 +67,18 @@
     $course_categories= App\Models\CourseCategory::all();
     $main_categories= App\Models\MainCategory::all();
 
+
+
+
+
+
+
+
      ?>
+
+
+
+
 
 <div class="content-block">
         <!-- About Us -->
@@ -76,18 +89,31 @@
           <div class="course-detail-bx">
 
 
-        @if($course->video_type=="0")
-            <div class="preview-video-box">
-              <a class="video-play" data-video-url="{{ $course->preview_id }}" data-channel="url">
+        @if($course->video_type==0)
+        <div class="preview-video-box">
 
-                  <img src="{{asset("storage/courses/$course->course_image")}}" alt="" class="img-fluid">
-                  <div class="img">
-                    <i class="fab fa-youtube fa-4x"></i>
-                  </div>
-
-
+              <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{ $course->preview_id }}" data-gall="myGallery">
+                <img src="{{asset("storage/courses/$course->course_image")}}" alt="" class="img-fluid">
+                <div class="img">
+                  <i class="fab fa-youtube fa-4x"></i>
+                </div>
               </a>
-          </div>
+              @if(count($course->sections) > 0)
+              @foreach($course->sections as $section)
+              @if(count($section->lessons) > 0)
+              @foreach($section->lessons as $lesson)
+              @if($lesson->preview==1)
+              <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{ $lesson->youtube_url }}" data-gall="myGallery"></a>
+              @endif
+              @endforeach
+              @endif
+              @endforeach
+              @endif
+
+
+
+
+      </div>
           @else
           <div class="preview-video-box">
             <a class="video-play" data-video-id="{{ $course->preview_id }}" data-channel="vimeo">
@@ -231,106 +257,105 @@
             </div>
           </div>
           <div class="m-b30" id="curriculum">
-             <h4>Curriculum</h4>
+            <h4>Curriculum</h4>
 
-               <section id="accordion-hover">
-                 <div class="row">
-                   <div class="col-sm-12">
-                     <div class="card collapse-icon">
+              <section id="accordion-hover">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="card collapse-icon">
 
-                       <div class="card-body">
-                         @if(count($course->sections) > 0)
-                         @foreach($course->sections as $section)
-                         <div class="accordion" id="accordionExample{{$section->id}}" data-toggle-hover="true">
-                           <div class="collapse-default">
+                      <div class="card-body">
+                        @if(count($course->sections) > 0)
+                        @foreach($course->sections as $section)
+                        <div class="accordion" id="accordionExample{{$section->id}}" data-toggle-hover="true">
+                          <div class="collapse-default">
 
-                             <div class="card">
-                               <div
-                                 class="card-header"
-                                 id="heading{{$section->id}}"
-                                 data-toggle="collapse"
-                                 role="button"
-                                 data-target="#collapse{{$section->id}}"
-                                 aria-expanded="true"
-                                 aria-controls="collapse{{$section->id}}"
-                               >
-                                 <h6 class="curriculum-list" style="color:#ca2128; text-transform:uppercase;" >{{$section->section_name}}</h6>
-                               </div>
+                            <div class="card">
+                              <div
+                                class="card-header"
+                                id="heading{{$section->id}}"
+                                data-toggle="collapse"
+                                role="button"
+                                data-target="#collapse{{$section->id}}"
+                                aria-expanded="true"
+                                aria-controls="collapse{{$section->id}}"
+                              >
+                                <h6 class="curriculum-list" style="color:#ca2128; text-transform:uppercase;" >{{$section->section_name}}</h6>
+                              </div>
 
-                               <div
-                                 id="collapse{{$section->id}}"
-                                 class="collapse show"
-                                 aria-labelledby="heading{{$section->id}}"
-                                 data-parent="#accordionExample{{$section->id}}"
-                               >
-                                 <div class="card-body">
-                                   <ul>
-                                     @if(count($section->lessons) > 0)
-                                     @foreach($section->lessons as $lesson)
-
-
+                              <div
+                                id="collapse{{$section->id}}"
+                                class="collapse show"
+                                aria-labelledby="heading{{$section->id}}"
+                                data-parent="#accordionExample{{$section->id}}"
+                              >
+                                <div class="card-body">
+                                  <ul>
+                                    @if(count($section->lessons) > 0)
+                                    @foreach($section->lessons as $lesson)
 
 
-                                       <div class="curriculum-list-box">
-                                         <div class="row">
-
-                                       <div class="col-sm-10">
 
 
-                                          <strong><i class="fas fa-play-circle"></i> {{$lesson->lesson_title}}</strong>
+                                      <div class="curriculum-list-box">
+                                        <div class="row">
+
+                                      <div class="col-sm-10">
 
 
-                                         </div>
-                                         <div class="col-sm-2">
-                                           @if($lesson->preview==1)
-                                           @if($lesson->video_type=="Youtube")
+                                         <strong><i class="fas fa-play-circle"></i> {{$lesson->lesson_title}}</strong>
 
-                                           <a class="video-play1" data-video-url="{{ $lesson->youtube_url }}" data-channel="url">
-                                             <strong><i  class="fas fa-play-circle fa-2x icn" title="Play"></i></strong>
-                                             </a>
+
+                                        </div>
+                                        <div class="col-sm-2">
+                                          @if($lesson->preview==1)
+                                          @if($lesson->video_type=="Youtube")
+                                          <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{ $lesson->youtube_url }}" data-gall="myGallery">
+                                            <strong><i  class="fas fa-play-circle fa-2x icn" title="Play"></i></strong>
+                                            </a>
+                                           @else
+                                           <a class="video-play1" data-video-id="{{ $lesson->vimeo_id }}" data-channel="vimeo">
+                                            <strong><i class="fas fa-play-circle fa-2x icn"  title="Play"></i></strong>
+                                          </a>
+                                            @endif
                                             @else
-                                            <a class="video-play1" data-video-id="{{ $lesson->vimeo_id }}" data-channel="vimeo">
-                                             <strong><i class="fas fa-play-circle fa-2x icn"  title="Play"></i></strong>
-                                           </a>
-                                             @endif
-                                             @else
-                                           <i class="fas fa-lock" title="Lock"></i>
-                                           @endif
-                                         </div>
-                                     <div class="col">
+                                          <i class="fas fa-lock" title="Lock"></i>
+                                          @endif
+                                        </div>
+                                    <div class="col">
 
 
-                                       <span><strong></strong></span>
-                                     </div>
-                                         </div>
-                                         </div>
+                                      <span><strong></strong></span>
+                                    </div>
+                                        </div>
+                                        </div>
 
-                                     @endforeach
-                                       @endif
+                                    @endforeach
+                                      @endif
 
 
 
-                                   </ul>
+                                  </ul>
 
 
-                                 </div>
-                               </div>
-                             </div>
+                                </div>
+                              </div>
+                            </div>
 
 
-                           </div>
-                         </div>
-                         @endforeach
-                         @endif
+                          </div>
+                        </div>
+                        @endforeach
+                        @endif
 
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-               </section>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
 
 
-           </div>
+          </div>
           <div class="" id="instructor">
           <h4>Instructor</h4>
 

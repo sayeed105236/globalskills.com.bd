@@ -28,7 +28,8 @@
                     @csrf
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <input type="hidden" name="course_id" value="{{$course->id}}">
-                      
+
+
                       <div class="row">
                           <div class="col-md-6 col-12">
                               <div class="form-group">
@@ -88,11 +89,11 @@
                             <tbody>
                               <tr>
                                 <td class="cell-label">Please rate trainer’s competence</td>
-                                <td><input type="radio" name="trainers_competence" class="radio" value="Very Happy"></td>
-                                <td><input type="radio" name="trainers_competence" class="radio" value="Happy"></td>
-                                <td><input type="radio" name="trainers_competence" class="radio" value="Good"></td>
-                                <td><input type="radio" name="trainers_competence" class="radio" value="Need Improvement"></td>
-                                <td><input type="radio" name="trainers_competence" class="radio" value="Extremely Unhappy"></td>
+                                <td><input type="radio" name="trainers_competence" class="radio" value="Very Happy" required></td>
+                                <td><input type="radio" name="trainers_competence" class="radio" value="Happy" required></td>
+                                <td><input type="radio" name="trainers_competence" class="radio" value="Good" required></td>
+                                <td><input type="radio" name="trainers_competence" class="radio" value="Need Improvement" required></td>
+                                <td><input type="radio" name="trainers_competence" class="radio" value="Extremely Unhappy" required></td>
                               </tr>
                               @error('rating')
                                   <span class="text text-danger">{{ $message }}</span>
@@ -119,11 +120,11 @@
                             <tbody>
                               <tr>
                                 <td class="cell-label">Your experience about training and exam booking</td>
-                                <td><input type="radio" name="experience" class="radio" value="Very Happy"></td>
-                                <td><input type="radio" name="experience" class="radio" value="Happy"></td>
-                                <td><input type="radio" name="experience" class="radio" value="Good"></td>
-                                <td><input type="radio" name="experience" class="radio" value="Need Improvement"></td>
-                                <td><input type="radio" name="experience" class="radio" value="Extremely Unhappy"></td>
+                                <td><input type="radio" name="experience" class="radio" value="Very Happy" required></td>
+                                <td><input type="radio" name="experience" class="radio" value="Happy" required></td>
+                                <td><input type="radio" name="experience" class="radio" value="Good" required></td>
+                                <td><input type="radio" name="experience" class="radio" value="Need Improvement" required></td>
+                                <td><input type="radio" name="experience" class="radio" value="Extremely Unhappy" required></td>
                               </tr>
                               @error('rating')
                                   <span class="text text-danger">{{ $message }}</span>
@@ -150,11 +151,11 @@
                             <tbody>
                               <tr>
                                 <td class="cell-label">Please rate training presentation material</td>
-                                <td><input type="radio" name="presentation" class="radio" value="Very Happy"></td>
-                                <td><input type="radio" name="presentation" class="radio" value="Happy"></td>
-                                <td><input type="radio" name="presentation" class="radio" value="Good"></td>
-                                <td><input type="radio" name="presentation" class="radio" value="Need Improvement"></td>
-                                <td><input type="radio" name="presentation" class="radio" value="Extremely Unhappy"></td>
+                                <td><input type="radio" name="presentation" class="radio" value="Very Happy" required></td>
+                                <td><input type="radio" name="presentation" class="radio" value="Happy" required></td>
+                                <td><input type="radio" name="presentation" class="radio" value="Good" required></td>
+                                <td><input type="radio" name="presentation" class="radio" value="Need Improvement" required></td>
+                                <td><input type="radio" name="presentation" class="radio" value="Extremely Unhappy" required></td>
                               </tr>
                               @error('rating')
                                   <span class="text text-danger">{{ $message }}</span>
@@ -181,11 +182,11 @@
                             <tbody>
                               <tr>
                                 <td class="cell-label">Please rate Course material (Printed book or e-book)</td>
-                                <td><input type="radio" name="material" class="radio" value="Very Happy"></td>
-                                <td><input type="radio" name="material" class="radio" value="Happy"></td>
-                                <td><input type="radio" name="material" class="radio" value="Good"></td>
-                                <td><input type="radio" name="material" class="radio" value="Need Improvement"></td>
-                                <td><input type="radio" name="material" class="radio" value="Extremely Unhappy"></td>
+                                <td><input type="radio" name="material" class="radio" value="Very Happy" required></td>
+                                <td><input type="radio" name="material" class="radio" value="Happy" required></td>
+                                <td><input type="radio" name="material" class="radio" value="Good" required></td>
+                                <td><input type="radio" name="material" class="radio" value="Need Improvement" required></td>
+                                <td><input type="radio" name="material" class="radio" value="Extremely Unhappy" required></td>
                               </tr>
                               @error('rating')
                                   <span class="text text-danger">{{ $message }}</span>
@@ -211,11 +212,11 @@
                             <tbody>
                               <tr>
                                 <td class="cell-label">Usefulness of the training</td>
-                                <td><input type="radio" name="usefullness" class="radio" value="Very Happy"></td>
-                                <td><input type="radio" name="usefullness" class="radio" value="Happy"></td>
-                                <td><input type="radio" name="usefullness" class="radio" value="Good"></td>
-                                <td><input type="radio" name="usefullness" class="radio" value="Need Improvement"></td>
-                                <td><input type="radio" name="usefullness" class="radio" value="Extremely Unhappy"></td>
+                                <td><input type="radio" name="usefullness" class="radio" value="Very Happy" required></td>
+                                <td><input type="radio" name="usefullness" class="radio" value="Happy" required></td>
+                                <td><input type="radio" name="usefullness" class="radio" value="Good" required></td>
+                                <td><input type="radio" name="usefullness" class="radio" value="Need Improvement" required></td>
+                                <td><input type="radio" name="usefullness" class="radio" value="Extremely Unhappy" required></td>
                               </tr>
                               @error('rating')
                                   <span class="text text-danger">{{ $message }}</span>
@@ -241,11 +242,11 @@
                             <tbody>
                               <tr>
                                 <td class="cell-label">Your overall satisfaction in this training </td>
-                                <td><input type="radio" name="satisfaction" class="radio" value="Very Happy"></td>
-                                <td><input type="radio" name="satisfaction" class="radio" value="Happy"></td>
-                                <td><input type="radio" name="satisfaction" class="radio" value="Good"></td>
-                                <td><input type="radio" name="satisfaction" class="radio" value="Need Improvement"></td>
-                                <td><input type="radio" name="satisfaction" class="radio" value="Extremely Unhappy"></td>
+                                <td><input type="radio" name="satisfaction" class="radio" value="Very Happy" required></td>
+                                <td><input type="radio" name="satisfaction" class="radio" value="Happy" required></td>
+                                <td><input type="radio" name="satisfaction" class="radio" value="Good" required></td>
+                                <td><input type="radio" name="satisfaction" class="radio" value="Need Improvement" required></td>
+                                <td><input type="radio" name="satisfaction" class="radio" value="Extremely Unhappy" required></td>
                               </tr>
                               @error('rating')
                                   <span class="text text-danger">{{ $message }}</span>

@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
+use PDF;
+use App\Models\Evolution;
 
 class UserProfileController extends Controller
 {
@@ -71,4 +73,13 @@ class UserProfileController extends Controller
   return Redirect()->back()->with($notification);
  }
 }
+public function DownloadPdf($id)
+{
+  dd($id);
+  $evolution= Evolution::find($id);
+
+  $pdf= PDF::loadview('certificate',compact('evolution'));
+  return $pdf->download('certificate.pdf');
+}
+
 }

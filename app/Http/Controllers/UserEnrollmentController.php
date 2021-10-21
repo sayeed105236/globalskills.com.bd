@@ -14,6 +14,7 @@ use Auth;
 use App\Models\CourseReview;
 use App\Models\Trainer;
 use App\Models\Evolution;
+use \PDF;
 
 class UserEnrollmentController extends Controller
 {
@@ -95,7 +96,7 @@ class UserEnrollmentController extends Controller
       ]);
       $user_id = $request->user_id;
       $course_id = $request->course_id;
-      //$trainer_id= $request->trainer_id;
+      $trainer_id= $request->trainer_id;
       //$name=$request->name;
       $company_name=$request->company_name;
       $start_date=$request->start_date;
@@ -110,7 +111,7 @@ class UserEnrollmentController extends Controller
 
       $evolution = new Evolution();
       $evolution->user_id = $user_id;
-      //$evolution->trainer_id = $trainer_id;
+      $evolution->trainer_id = $trainer_id;
       $evolution->course_id= $course_id;
       //evolution->name= $name;
       $evolution->company_name = $company_name;
@@ -127,11 +128,17 @@ class UserEnrollmentController extends Controller
       $evolution->satisfaction = $satisfaction;
 
       $evolution->save();
+      $pdf= PDF::loadview('certificate',compact('evolution'));
+
+
       $notification=array(
           'message'=>'Evolution submitted successfully!!!',
           'alert-type'=>'success'
       );
-      return view('frontend.pages.certificate',compact('evolution'))->with($notification);
+    return $pdf->download('certificate.pdf');
+
+
+      //return view('frontend.pages.certificate',compact('evolution','evolutions'))->with($notification);
 
     }
 

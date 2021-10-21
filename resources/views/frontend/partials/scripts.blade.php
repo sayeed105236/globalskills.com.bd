@@ -39,6 +39,19 @@
 	$(".video-play").modalVideo();
 	$(".video-play1").modalVideo();
 </script>
+<script type="text/javascript" src="{{ asset('venobox') }}/venobox/venobox.min.js"></script>
+
+<script>
+	$(document).ready(function(){
+		$('.venobox').venobox({
+			closeColor: '#f4f4f4',
+			spinColor: '#f4f4f4',
+			arrowsColor: '#f4f4f4',
+			closeBackground: '#17191D',
+			overlayColor: 'rgba(23,25,29,0.8)'
+		});
+	});
+</script>
 <script type="text/javascript" src="{{ asset('backend') }}/lib/toastr/toastr.min.js"></script>
 
 <script>

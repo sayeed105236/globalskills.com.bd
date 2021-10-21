@@ -55,6 +55,9 @@ Route::get('/', [MasteringController::class,'index'])->name('home');
 Route::get('/contact_us', [ContactUsController::class,'contact'])->name('contact');
 Route::post('/contact_us/store', [ContactUsController::class,'Store'])->name('store-contact');
 Route::get('/about_us', [AboutController::class,'index'])->name('about');
+
+
+//Route::get('/certificate', [AboutController::class,'certificate'])->name('about');
 Route::get('/events', [EventController::class,'index'])->name('event');
 Route::get('/event_details/{id}', [EventController::class,'event_details']);
 Route::get('/submit', [PaymentController::class,'submit']);
@@ -74,7 +77,7 @@ Route::get('/course_details', [FrontendController::class,'course_details'])->nam
 //Route::get('/course_details/{id}', [FrontendController::class,'course_details'])->name('course_details');
 Route::get('/user_profile', [UserProfileController::class,'user_profile'])->name('user_profile');
 Route::get('/user_profile/{id}', [UserProfileController::class,'EditProfile'])->name('user-profile-edit');
-Route::post('/home/course_details/view/evolution/ceetificate_preview', [UserEnrollmentController::class,'StoreEvolution'])->name('store-evolution');
+Route::post('/home/course_details/view/evolution/certificate_preview', [UserEnrollmentController::class,'StoreEvolution'])->name('store-evolution');
 
 //category wise course show
 
@@ -308,3 +311,4 @@ middleware('is_admin');
 Route::post('/admin/home/classroom-updateTrainer', [TrainerController::class, 'updateTrainer1'])->name('update-trainer1')->
 middleware('is_admin');
 Route::get('/admin/classroom-trainer-delete/{id}', [TrainerController::class,'deleteTrainer1'])->middleware('is_admin');
+Route::get('/home/download-pdf/{id}', [UserProfileController::class,'DownloadPdf']);
