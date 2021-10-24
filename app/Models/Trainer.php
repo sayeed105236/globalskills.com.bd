@@ -11,7 +11,7 @@ use App\Models\Evolution;
 class Trainer extends Model
 {
     use HasFactory;
-      protected $table ="trainers";
+      protected $guarded =[];
 
       public function course(){
 

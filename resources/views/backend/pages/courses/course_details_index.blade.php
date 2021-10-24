@@ -310,7 +310,7 @@
                                         <div class="col-sm-2">
                                           @if($lesson->preview==1)
                                           @if($lesson->video_type=="Youtube")
-                                          <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{ $lesson->youtube_url }}" data-gall="myGallery">
+                                          <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{ $lesson->youtube_url }}" data-gall="Gallery23">
                                             <strong><i  class="fas fa-play-circle fa-2x icn" title="Play"></i></strong>
                                             </a>
                                            @else
@@ -363,7 +363,7 @@
 
           <div class="instructor-bx">
             <div class="instructor-author">
-              <img src="{{asset('storage/trainer/'.$item->image)}}" alt="">
+              <img src="{{asset($item->image)}}" alt="">
             </div>
             <div class="instructor-info">
               <h6>{{$item->name}}</h6>

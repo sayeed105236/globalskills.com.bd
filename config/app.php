@@ -163,7 +163,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Vimeo\Laravel\VimeoServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-
+        //Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -232,6 +233,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Vimeo' => Vimeo\Laravel\Facades\Vimeo::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

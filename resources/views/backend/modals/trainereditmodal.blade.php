@@ -11,6 +11,9 @@
           <form action="{{route('update-trainer')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id" value="{{$row->id}}">
+            <input type="hidden" name="old_image" value="{{ $row->image }}">
+            <input type="hidden" name="old_image1" value="{{ $row->signature }}">
+
               <div class="form-group">
                 <label for="classroom_course_title" >Name</label>
                 <input data-validation="required" value="{{ $row->name }}" type="text" class="form-control" name="name" aria-describedby="name" placeholder="Enter Name">
@@ -56,7 +59,11 @@
               </div>
               <div class="form-group">
                   <label for="exampleFormControlFile1">Image</label>
-                    <input  type="file" name="image" class="form-control-file" id="image" onchange="previewImage(this)">
+                    <input  type="file" name="image" class="form-control-file" id="image" >
+                  </div>
+                   <div class="form-group">
+                    <label class="form-control-label">Signature: <span class="tx-danger">*</span></label>
+                    <input class="form-control" type="file" name="signature" >
                   </div>
 
                   <div class="modal-footer">
@@ -73,4 +80,5 @@
       $('#bio').summernote();
     });
     </script>
+
   @endpush

@@ -128,14 +128,25 @@ class UserEnrollmentController extends Controller
       $evolution->satisfaction = $satisfaction;
 
       $evolution->save();
-      $pdf= PDF::loadview('certificate',compact('evolution'));
+      if($evolution->course->accredation_name)
+      {
+        $pdf= PDF::loadview('certificate',compact('evolution'));
+        return $pdf->download('certificate.pdf');
+      }
+
+      else{
 
 
+      $pdf= PDF::loadview('test',compact('evolution'));
+       $pdf->setPaper('A4', 'landscape');
+      return $pdf->download('test.pdf');
+        }
       $notification=array(
           'message'=>'Evolution submitted successfully!!!',
           'alert-type'=>'success'
       );
-    return $pdf->download('certificate.pdf');
+
+    //return Redirect()->back()->with($notification);
 
 
       //return view('frontend.pages.certificate',compact('evolution','evolutions'))->with($notification);

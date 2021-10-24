@@ -46,6 +46,7 @@ class CourseController extends Controller
     $status = $request->status;
     $preview_id=$request->preview_id;
     $video_type=$request->video_type;
+    $accredation_name=$request->accredation_name;
 
 
     $course_image =$request->file('file');
@@ -73,6 +74,7 @@ class CourseController extends Controller
     $course->status= $status;
     $course->preview_id=$preview_id;
     $course->video_type=$video_type;
+    $course->accredation_name=$accredation_name;
 
     $course->course_image= $filename;
 
@@ -94,7 +96,8 @@ class CourseController extends Controller
     $course_title=$request->course_title;
     $regular_price= $request->regular_price;
     $sale_price= $request-> sale_price;
-    $classroom_course_image =$request->file('file');
+    $accredation_name=$request->accredation_name;
+    $course_image =$request->file('file');
     $filename=null;
     $uploadedFile = $request->file('image');
     $oldfilename = $course['course_image'] ?? 'demo.jpg';
@@ -134,6 +137,7 @@ class CourseController extends Controller
     $course->regular_price= $regular_price;
     $course-> sale_price= $sale_price;
     $course->course_image= $filename;
+    $course->accredation_name=$accredation_name;
 
     $course->status= $status;
 

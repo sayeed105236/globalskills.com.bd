@@ -93,7 +93,7 @@
             <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
               <div class="cours-bx">
                 <div class="action-box">
-                  <img src="{{asset("storage/courses/$row->course_image")}}" alt="">
+                  <a href="home/course_details/{{$row->id}}"><img src="{{asset("storage/courses/$row->course_image")}}" alt=""></a>
                   <?php
                   $enrolled= App\Models\UserEnrollment::where('user_id',Auth::id())->where('course_id',$row->id)->first();
 

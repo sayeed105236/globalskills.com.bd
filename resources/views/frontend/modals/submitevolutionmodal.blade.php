@@ -278,4 +278,5 @@ $(document).ready(function() {
   $('#reason').summernote();
 });
 </script>
+
 @endpush

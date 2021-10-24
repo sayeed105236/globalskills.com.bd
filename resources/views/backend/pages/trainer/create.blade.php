@@ -77,7 +77,7 @@
                         data-original-title=""
                       >
                         <img
-                          src="{{asset('storage/trainer/' .$row->image)}}"
+                          src="{{asset($row->image)}}"
                           alt="image"
                           height="50"
                           width="50"
@@ -106,7 +106,7 @@
             </tbody>
           </table>
         </div>
-        
+
       </div>
     </div>
   </div>

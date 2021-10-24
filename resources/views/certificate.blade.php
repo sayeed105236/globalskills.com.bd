@@ -50,14 +50,13 @@
     <h4>20/10/2021</h4>
   </div>
   <div class="container" >
-    <h2 class="text-center" style="color:red; margin-left:150px;">LETTER OF COURSE ATTENDANCE</h2>
+    <h2 class="text-center" style="color:red; margin-left:150px; marin-top:80px;">LETTER OF COURSE ATTENDANCE</h2>
   </div>
   <div class="container" >
-    <p style="margin-left:80px;">This letter is to verify that Mr./Mrs./Miss <strong>{{Auth::user()->name}}</strong> has attended
+    <p style="margin-left:80px;margin-top:50px;">This letter is to verify that Mr./Mrs./Miss <strong>{{Auth::user()->name}}</strong> has attended
       </p>
       <p style="margin-left:80px;"><strong>{{$evolution->course->course_title}}</strong> course, which  took  place  form 16/08/2021  until 21/08/2021
-        </p>
-        <p style="margin-left:80px;"> from  online  self study  platform  of  Global  Skills  Development Agency,
+       from  online  self study  platform  of  Global  Skills  Development Agency,
          Dhaka Bangladesh.</p>
 
   </div>
@@ -71,23 +70,22 @@
   <div class="container" style="margin-left:80px; margin-top:100px;">
     <p>Course Trainer</p>
 
-    <h3>Shahriar</h3>
+    <h3>{{$evolution->course->course_category->mcategory_title}}</h3>
   </div>
-  <div class="container" style="margin-left:80px; margin-top:200px;">
-    <p>PRINCE2®  is a registered trademark of AXELOS Limited,
+  <div class="container" style="margin-left:80px; margin-top:180px;">
+    <p>{{$evolution->course->accredation_name}}  is a registered trademark of AXELOS Limited,
       used under permission of <p>
       <p style="margin-left:170px;">AXELOS Limited. All rights reserved. </p>
   </div>
 
-  <div class="container"  style="margin-left:40px;">
+  <div class="container"  style="margin-left:40px; margin-top:80px;">
 
       <p  style="margin-left:20px;">
-        Hayat Rose Park Level 5, House No 16 Main Road, Bashundhara Residential Area Dhaka 1229</p>
+        Hayat Rose Park Level 5, House No 16 Main Road, Bashundhara Residential Area Dhaka 1229
+           Phone: +8801766343434; Email: info@globalskills.com.bd </p>
 
   </div>
-  <div class="container"  style="margin-left:60px;">
-    <p style="margin-left:120px;">  Phone: +8801766343434; Email: info@globalskills.com.bd </p>
-  </div>
+
 
 </body>
 </html>

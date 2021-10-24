@@ -88,9 +88,13 @@
                                                     </div>
                                                 </div>
                                                 <br>
+                                                @if($course->accredation_name)
                                                 <a class="btn btn-success align-center" data-toggle="modal" data-target="#SubmitEvolution" href="#">Submit To Download Certificate</a>
                                                 @include('frontend.modals.submitevolutionmodal')
-
+                                                @else
+                                                <a class="btn btn-success align-center" data-toggle="modal" data-target="#SubmitEvolution" href="#">Submit To Download Certificate</a>
+                                                  @include('frontend.modals.submitevolutionmodal')
+                                                @endif
 
                                             </div>
                                         </div>
@@ -164,7 +168,7 @@
 
                         <div class="instructor-bx">
                           <div class="instructor-author">
-                            <img src="{{asset('storage/trainer/'.$item->image)}}" alt="">
+                            <img src="{{asset($item->image)}}" alt="">
                           </div>
                           <div class="instructor-info">
                             <h6>{{$item->name}}</h6>
