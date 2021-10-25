@@ -54,6 +54,7 @@ class UserEnrollmentController extends Controller
             $rating = CourseReview::where('course_id',$id)->where('status','approve')->avg('rating');
             $avgRating = number_format($rating,1);
             $trainer= Trainer::where('course_id',$id)->get();
+          
             $enrolled= UserEnrollment::where('course_id',$id)->where('user_id',Auth::id())->first();
             //dd($enrolled);
             //$tr= Trainer::find($id);
@@ -132,14 +133,15 @@ class UserEnrollmentController extends Controller
       {
         $pdf= PDF::loadview('certificate',compact('evolution'));
         return $pdf->download('certificate.pdf');
+
       }
 
       else{
 
 
-      $pdf= PDF::loadview('test',compact('evolution'));
+      $pdf= PDF::loadview('certificate_e-learning',compact('evolution'));
        $pdf->setPaper('A4', 'landscape');
-      return $pdf->download('test.pdf');
+      return $pdf->download('certificate.pdf');
         }
       $notification=array(
           'message'=>'Evolution submitted successfully!!!',

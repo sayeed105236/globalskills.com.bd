@@ -98,6 +98,12 @@
                                                 <span class="ttr-label">Evolution Lists</span>
                                               </a>
                                           </li>
+                                          <li>
+                                          <a href="{{route('certificate-request-check')}}" class="ttr-material-button">
+                                            <span class="ttr-icon"><i class="fas fa-certificate"></i></span>
+                                                    <span class="ttr-label">Certificate Request Lists</span>
+                                                  </a>
+                                              </li>
                                       <li>
                                       <a href="{{route('admin.currency')}}" class="ttr-material-button">
                                         <span class="ttr-icon"><i class="fas fa-money-bill-wave-alt"></i></span>

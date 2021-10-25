@@ -20,8 +20,8 @@ class Evolution extends Model
 
        return $this->belongsTo(User::class,'user_id');
       }
-      public function trainer(){
-
-        return $this->belongsTo(Trainer::class,'trainer_id');
-       }
+      public function trainer()
+      {
+         return $this->belongsTo(Trainer::class,'trainer_id');
+      }
 }

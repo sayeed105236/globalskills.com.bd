@@ -34,6 +34,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CourseReviewController;
 use App\Http\Controllers\ReviewFromAdminController;
 use App\Http\Controllers\TrainerController;
+use App\Http\Controllers\UserRequestCertificateController;
 
 
 
@@ -55,6 +56,12 @@ Route::get('/', [MasteringController::class,'index'])->name('home');
 Route::get('/contact_us', [ContactUsController::class,'contact'])->name('contact');
 Route::post('/contact_us/store', [ContactUsController::class,'Store'])->name('store-contact');
 Route::get('/about_us', [AboutController::class,'index'])->name('about');
+
+//request for certificate routes
+Route::get('/certificate-request', [UserRequestCertificateController::class,'index'])->name('certificate-request');
+Route::post('/certificate-request/store', [UserRequestCertificateController::class,'store'])->name('certificate-request-store');
+Route::get('/certificate-request/check', [UserRequestCertificateController::class,'check'])->name('certificate-request-check')->middleware('is_admin');
+Route::get('/admin/certificate-request-approve/{id}', [UserRequestCertificateController::class,'approve'])->middleware('is_admin');
 
 
 //Route::get('/certificate', [AboutController::class,'certificate'])->name('about');

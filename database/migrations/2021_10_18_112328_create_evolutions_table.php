@@ -17,7 +17,8 @@ class CreateEvolutionsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('course_id');
-            
+            $table->integer('trainer_id');
+
             $table->string('company_name');
             $table->string('start_date');
             $table->string('end_date');

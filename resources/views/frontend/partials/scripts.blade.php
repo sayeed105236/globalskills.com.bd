@@ -28,6 +28,13 @@
 <script src="{{ asset('vendors/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
 <script src="{{ asset('vendors/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
 <script src="{{asset('js/components-collapse.js')}}"></script>
+<script type="text/javascript" src="{{ asset('common' )}}/jquery.form-validaton-min.js"></script>
+<script>
+    $.validate({
+        lang:'en'
+    });
+</script>
+
 
 
 

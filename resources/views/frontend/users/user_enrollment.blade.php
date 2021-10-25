@@ -2,6 +2,7 @@
 
 
 @section('content')
+
     <div class="page-banner ovbl-dark" style="background-image:url({{ asset('images/banner/banner2.jpg')}});">
         <div class="container">
             <div class="page-banner-entry">
@@ -163,7 +164,7 @@
 
                         <div class="" id="instructor">
                         <h4>Instructor</h4>
-
+                      
                         @foreach ($trainer as $item)
 
                         <div class="instructor-bx">
@@ -392,20 +393,7 @@
             });
         }
 
-       // Switch to the video when a thumbnail is clicked
-       /*$('#thumbskk a').click(function (event) {
-           event.preventDefault();
-           var vimeoid = $(this).attr('id');
-           //console.log(vimeoid)
-           player.loadVideo(vimeoid)
 
-           player.on('loaded', function () {
-               player.play();
-           });
-
-           player.on('ended', playNext);
-
-       });*/
 
         function play(clip,type) {
             console.log(type.toLowerCase(),clip);
@@ -426,6 +414,9 @@
         }
 
     </script>
+
+
+
 
 
     @endpush

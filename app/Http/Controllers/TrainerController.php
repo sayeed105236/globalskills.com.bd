@@ -23,7 +23,7 @@ class TrainerController extends Controller
         $signature = $request->file('signature');
         $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         $name_gen1=hexdec(uniqid()).'.'.$signature->getClientOriginalExtension();
-        Image::make($image)->resize(166,110)->save('uploads/trainer/'.$name_gen);
+        Image::make($image)->save('uploads/trainer/'.$name_gen);
         Image::make($signature)->resize(166,110)->save('uploads/trainer/'.$name_gen1);
         $save_url = 'uploads/trainer/'.$name_gen;
         $save_url1 = 'uploads/trainer/'.$name_gen1;

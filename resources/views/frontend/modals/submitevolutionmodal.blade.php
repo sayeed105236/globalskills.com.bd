@@ -28,6 +28,15 @@
                     @csrf
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <input type="hidden" name="course_id" value="{{$course->id}}">
+                    <?php
+                      $trainers= App\Models\Trainer::where('course_id',$course->id)->first();
+
+                     ?>
+
+
+                  <input type="hidden" name="trainer_id" value="{{($trainers->id)}}">
+
+
 
 
                       <div class="row">
@@ -44,6 +53,7 @@
                                   <input type="text" name="company_name" class="form-control" placeholder="Company Name" name="lname-column" required/>
                               </div>
                           </div>
+
 
 
 

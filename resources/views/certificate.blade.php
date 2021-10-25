@@ -47,7 +47,7 @@
       <img src="{{public_path("gsda logo.png")}}" alt="">
   </div>
   <div class="container" >
-    <h4>20/10/2021</h4>
+    <h4>{{$evolution->created_at->format('d-m-Y')}}</h4>
   </div>
   <div class="container" >
     <h2 class="text-center" style="color:red; margin-left:150px; marin-top:80px;">LETTER OF COURSE ATTENDANCE</h2>
@@ -70,7 +70,7 @@
   <div class="container" style="margin-left:80px; margin-top:100px;">
     <p>Course Trainer</p>
 
-    <h3>{{$evolution->course->course_category->mcategory_title}}</h3>
+    <h3>{{($evolution->trainer->name)}}</h3>
   </div>
   <div class="container" style="margin-left:80px; margin-top:180px;">
     <p>{{$evolution->course->accredation_name}}  is a registered trademark of AXELOS Limited,
