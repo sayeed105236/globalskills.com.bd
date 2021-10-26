@@ -138,7 +138,7 @@ class PortwalletController extends Controller
                    'phone' => $request->phone,
                    'address' => array(
                        'street' => 'Hayat Rose Park, Level 5, House No 16 Main Road, Bashundhara Residential Area',
-                       'city' => 'Dhaka',
+                        'city' => 'Dhaka',
                        'state' => 'Dhaka',
                        'zipcode' => 1229,
                        'country' => 'BGD',

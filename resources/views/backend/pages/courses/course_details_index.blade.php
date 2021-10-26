@@ -67,18 +67,7 @@
     $course_categories= App\Models\CourseCategory::all();
     $main_categories= App\Models\MainCategory::all();
 
-
-
-
-
-
-
-
      ?>
-
-
-
-
 
 <div class="content-block">
         <!-- About Us -->

@@ -75,7 +75,7 @@ class UserProfileController extends Controller
 }
 public function DownloadPdf($id)
 {
-  dd($id);
+  //dd($id);
   $evolution= Evolution::find($id);
 
   $pdf= PDF::loadview('certificate',compact('evolution'));

@@ -48,7 +48,7 @@
                 <li><a href="{{route('about')}}">About</a></li>
                 <li><a href="{{route('faq')}}">FAQs</a></li>
                 <li><a href="{{route('contact')}}">Contact</a></li>
-                <li><a href="{{route('certificate-request')}}">Request for Certificate</a></li>
+
               </ul>
             </div>
           </div>
@@ -58,6 +58,7 @@
               <ul>
 
                 <li><a href="{{route('all-blogs')}}">Blog</a></li>
+                  <li><a href="{{route('certificate-request')}}">Request for Certificate</a></li>
 
 
             </div>

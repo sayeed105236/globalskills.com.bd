@@ -42,8 +42,16 @@
                 <th>Phone Number</th>
                 <th>Course Name</th>
                 <th>Course Type</th>
+                <th>Total hours</th>
                 <th>Start Date</th>
                 <th>End Date</th>
+                <th>Reason for participation:</th>
+                <th>Trainer’s competence Review</th>
+                <th>Training presentation material Review</th>
+                <th>Course material Review</th>
+                <th>Usefulness of the training</th>
+                <th>Experience about training and exam booking</th>
+                <th>Overall satisfaction in this training </th>
                 <th>Status</th>
                 <th>Action</th>
 
@@ -70,6 +78,7 @@
                 <td>
                     {{$row->classroom_course->main_category->mcategory_title}}
                 </td>
+                <td>{{$row->total_hours}}</td>
                 <td>
                 {{$row->start_date}}
 
@@ -77,6 +86,15 @@
                 </td>
 
                 <td>{{$row->end_date}}</td>
+                <td>
+                  {{$row->reason}}
+                </td>
+                <td>{{$row->trainers_competence}}</td>
+                <td>{{$row->presentation}}</td>
+                <td>{{$row->material}}</td>
+                <td>{{$row->usefullness}}</td>
+                <td>{{$row->experience}}</td>
+                <td>{{$row->satisfaction}}</td>
                 <td>
 
                 <span class="badge badge-pill badge-success">{{ $row->status }}</span>
@@ -86,7 +104,7 @@
                 </td>
                 <td>
                   <a  href="#"><i class="fas fa-envelope-open-text"></i></a>
-                    <a  href="#"><i class="fas fa-file-pdf"></i></a>
+                    <a  href="/admin/home/download-pdf/{{$row->id}}"><i class="fas fa-file-pdf"></i></a>
                 </td>
               </tr>
               @endforeach

@@ -38,6 +38,7 @@
                 <th>Lindin Link</th>
                 <th>Biography</th>
                 <th>Image</th>
+                <th>Signature</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -67,26 +68,10 @@
                     <textarea name="" id="" cols="30" disabled rows="2">{{ $row->biography }}</textarea>
                 </td>
                 <td>
-                    <div class="avatar-group">
-                      <div
-                        data-toggle="tooltip"
-                        data-popup="tooltip-custom"
-                        data-placement="top"
-                        title=""
-                        class="avatar pull-up my-0"
-                        data-original-title=""
-                      >
-                        <img
-                          src="{{asset('storage/trainer/' .$row->image)}}"
-                          alt="image"
-                          height="50"
-                          width="50"
-
-                        />
-                      </div>
-
-
-                    </div>
+                    <img src="{{asset($row->image)}}" alt="">
+                </td>
+                <td>
+                    <img src="{{asset($row->signature)}}" alt="">
                 </td>
 
                 <td>

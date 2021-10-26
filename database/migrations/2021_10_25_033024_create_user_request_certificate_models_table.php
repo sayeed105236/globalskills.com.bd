@@ -20,8 +20,17 @@ class CreateUserRequestCertificateModelsTable extends Migration
             $table->integer('phone');
             $table->integer('classroom_course_id');
             $table->integer('trainer_id')->nullable();
+            $table->string('company_name')->nullable();
+            $table->integer('total_hours');
             $table->string('start_date');
             $table->string('end_date');
+            $table->string('reason')->nullable();
+            $table->string('trainers_competence');
+            $table->string('experience');
+            $table->string('presentation');
+            $table->string('material');
+            $table->string('usefullness');
+            $table->string('satisfaction');
             $table->enum('status',['pending','approve'])->default('pending');
             $table->timestamps();
         });

@@ -53,8 +53,11 @@ use App\Http\Controllers\UserRequestCertificateController;
 Route::get('/', [MasteringController::class,'index'])->name('home');
 
 //Contact us Route
+//Contact us Route
 Route::get('/contact_us', [ContactUsController::class,'contact'])->name('contact');
-Route::post('/contact_us/store', [ContactUsController::class,'Store'])->name('store-contact');
+Route::post('/contact/store', [ContactUsController::class,'storeContact']);
+Route::get('read/contact', [ContactUsController::class,'contactRead'])->name('contact-us')->middleware('is_admin');
+Route::get('/admin/delete/{contactus_id}', [ContactUsController::class,'delete'])->middleware('is_admin');
 Route::get('/about_us', [AboutController::class,'index'])->name('about');
 
 //request for certificate routes
@@ -319,3 +322,4 @@ Route::post('/admin/home/classroom-updateTrainer', [TrainerController::class, 'u
 middleware('is_admin');
 Route::get('/admin/classroom-trainer-delete/{id}', [TrainerController::class,'deleteTrainer1'])->middleware('is_admin');
 Route::get('/home/download-pdf/{id}', [UserProfileController::class,'DownloadPdf']);
+Route::get('/admin/home/download-pdf/{id}', [UserRequestCertificateController::class,'DownloadPdf']);
