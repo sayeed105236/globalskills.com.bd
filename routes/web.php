@@ -323,3 +323,8 @@ middleware('is_admin');
 Route::get('/admin/classroom-trainer-delete/{id}', [TrainerController::class,'deleteTrainer1'])->middleware('is_admin');
 Route::get('/home/download-pdf/{id}', [UserProfileController::class,'DownloadPdf']);
 Route::get('/admin/home/download-pdf/{id}', [UserRequestCertificateController::class,'DownloadPdf']);
+
+//faqs admin
+Route::get('/admin/faqs', [FaqController::class,'create'])->name('faqs')->middleware('is_admin');
+Route::post('/admin/faqs/store', [FaqController::class,'store'])->name('store')->middleware('is_admin');
+Route::get('/admin/delete-faq/{faq_id}', [FaqController::class,'deleteFaq'])->middleware('is_admin');

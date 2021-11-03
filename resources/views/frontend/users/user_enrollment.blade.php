@@ -74,6 +74,10 @@
 
                                                                                                 <a href="#"  onclick="return play('{{(strtolower($lesson->video_type)  == 'youtube')?$lesson->youtube_url : $lesson->vimeo_id}}','{{$lesson->video_type}}');" class="font-weight-bold" id="" >
                                                                                                 <i class="fas fa-play-circle"></i>    {{$lesson->lesson_title}} <br> <span></span></a>
+                                                                                                @if($lesson->files)
+                                                                                                <i class="fas fa-file-pdf" style="color: red"> </i> <a href="{{asset("storage/courses/admin/courses/files/$lesson->files")}}" target="_blank" title="{{$lesson->lesson_title}} File">{{$lesson->lesson_title}} File</a>
+                                                                                                @else
+                                                                                                @endif
                                                                                             </ul>
 
                                                                                         @endforeach
@@ -164,7 +168,7 @@
 
                         <div class="" id="instructor">
                         <h4>Instructor</h4>
-                      
+
                         @foreach ($trainer as $item)
 
                         <div class="instructor-bx">

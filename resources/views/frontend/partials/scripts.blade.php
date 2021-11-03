@@ -4,7 +4,7 @@
 <script src="{{ asset('vendors/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('vendors/bootstrap-select/bootstrap-select.min.js')}}"></script>
 <script src="{{ asset('vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js')}}"></script>
-<script src="{{ asset('vendors/magnific-popup/magnific-popup.js')}}"></script>
+<!--<script src="{{ asset('vendors/magnific-popup/magnific-popup.js')}}"></script>-->
 <script src="{{ asset('vendors/counter/waypoints-min.js')}}"></script>
 <script src="{{ asset('vendors/counter/counterup.min.js')}}"></script>
 <script src="{{ asset('vendors/imagesloaded/imagesloaded.js')}}"></script>

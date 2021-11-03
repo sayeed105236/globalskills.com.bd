@@ -53,9 +53,10 @@
                                  @endforeach
                              </ul>
                         </div>
-          <div class="widget">
+                        <!-- <h1>Sidebar Images </h1> -->
+        <!--  <div class="widget">
             <a href="#"><img src="{{ asset('images/adv/adv.jpg')}}" alt=""/></a>
-          </div>
+          </div> -->
           <div class="widget recent-posts-entry widget-courses">
                             <h5 class="widget-title style-1">Recent Courses</h5>
                             <div class="widget-post-bx">
