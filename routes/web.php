@@ -173,6 +173,17 @@ Route::get('admin/home/course_details/sections/edit/{id}',[CourseController::cla
 Route::post('admin/home/course_details/sections/update',[CourseController::class,'updateSection'])->name('update-section')->middleware('is_admin');
 Route::get('admin/home/course_details/sections/delete/{id}',[CourseController::class,'deleteSection'])->middleware('is_admin');
 Route::post('admin/home/courses/course_details/sections/lessons/store',[CourseController::class,'StoreLesson'])->name('store-lesson')->middleware('is_admin');
+
+//edit $ delete section
+Route::post('/home/section/update', [CourseController::class,'sectionEditStore'])->name('secton-update')->middleware('is_admin');
+Route::get('/home/section/delete/{section_id}', [CourseController::class,'sectionDelete'])->middleware('is_admin');
+
+//edit & delete lesson
+Route::post('/home/lesson/update', [CourseController::class,'lessonEditStore'])->name('lesson-update')->middleware('is_admin');
+Route::get('/home/lesson/delete/{lesson_id}', [CourseController::class,'lessonDelete'])->middleware('is_admin');
+
+
+
 // user enroolment route
 Route::get('home/course_details/view/{id}',[UserEnrollmentController::class,'index']);
 Route::post('home/get-all-vimeo-id',[UserEnrollmentController::class,'getVimeoId'])->name('get-all-vimeo-id');

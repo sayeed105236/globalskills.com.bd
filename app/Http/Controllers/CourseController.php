@@ -349,39 +349,40 @@ class CourseController extends Controller
 
 
   }
-  public function editSection($id)
-  {
-    //$course = Course::find($id);
+  public function sectionEditStore(Request $request)
+       {
+         $section_id = $request->section_id;
 
-    $sections= Section::find($id);
-    return view('/backend/pages/courses.course_details',compact('sections'));
-  }
+         Section::findOrFail($section_id)->Update([
+             'order' => $request->order,
+             'course_id'=>$request->course_id,
+             'section_name' => $request->section_name,
+            ]);
+            $notification=array(
+             'message'=>'Section Update Success',
+             'alert-type'=>'success'
+         );
+         return Redirect()->back()->with($notification);
+       }
 
-  public function updateSection(Request $request)
-  {
-    $course_id = $request->course_id;
-
-    $order = $request->order;
-    $section_name = $request->section_name;
-
-
-    $section = Section::find($request->id);
-    $section->course_id = $course_id;
-
-    $section->order= $order;
-    $section->section_name =$section_name;
+       public function sectionDelete($section_id)
+       {
+         Section::findOrFail($section_id)->delete();
+         $notification=array(
+         'message'=>'Delete Success',
+         'alert-type'=>'success'
+     );
+     return Redirect()->back()->with($notification);
+       }
 
 
-    $section->save();
-      return back()->with('section_updated','Section record has been updated successfully!');
-  }
-  public function deleteSection($id)
-  {
-    $section = Section::find($id);
 
-    $section->delete();
-    return back()->with('section_deleted','Section record has been deleted successfully!');
-  }
+
+
+
+
+
+
   public function StoreLesson(Request $request)
   {
     //dd($request->all());
@@ -422,25 +423,96 @@ class CourseController extends Controller
     $lessons->save();
     return back()->with('lesson_added','Lesson has been added successfully!');
   }
-  public function CourseOverview($id){
+  public function lessonEditStore(Request $request)
+       {
+         $course_id = $request->course_id;
+         $section_id = $request->section_id;
 
-  $course_categories= CourseCategory::all();
-  $main_categories= MainCategory::all();
-  $course = Course::find($id);
-  $section= Section::where('course_id',$id)->first();
-
-  $course_details= CourseOverview::where('course_id',$id)->get();
-  $sections= Section::where('course_id',$id)->get();
-
-  $lessons= Lesson::where('course_id',$id)->get();
+         $video_type = $request->video_type;
+         $vimeo_id = $request->vimeo_id;
+         $youtube_url = $request->youtube_url;
+         $lesson_title = $request->lesson_title;
+         $preview =$request->preview;
+         $files =$request->file('file');
 
 
+                   $filename=null;
+                   $uploadedFile = $request->file('lesson_file');
+                   $oldfilename = $lessons['files'] ?? 'demo.jpg|png|jpeg|pdf|doc|docx';
 
-  return view('/backend/pages/courses.course_overviews',compact('course','main_categories','course_categories','course_details', 'sections','lessons','section'));
-}
-public function CourseInfo($id)
+                   $oldfileexists = Storage::disk('public')->exists('courses/admin/courses/files/' . $oldfilename);
 
-{
+                   if ($uploadedFile !== null) {
+
+                       if ($oldfileexists && $oldfilename != $uploadedFile) {
+                           //Delete old file
+                           Storage::disk('public')->delete('courses/admin/courses/files/' . $oldfilename);
+                       }
+                       $filename_modified = str_replace(' ', '_', $uploadedFile->getClientOriginalName());
+                       $filename = time() . '_' . $filename_modified;
+
+                       Storage::disk('public')->putFileAs(
+                           'courses/admin/courses/files/',
+                           $uploadedFile,
+                           $filename
+                       );
+
+                       $data['lesson_file'] = $filename;
+                   } elseif (empty($oldfileexists)) {
+                       throw new GeneralException('Classroom Course banner image not found!');
+                       //return redirect()->back()->with(['flash_danger' => 'User image not found!']);
+                       //file check in storage
+
+                   }
+
+                   $lessons = Lesson::find($request->id);
+                   $lessons->course_id = $course_id;
+                   $lessons->section_id =$section_id;
+                   $lessons->vimeo_id =$vimeo_id;
+                   $lessons->youtube_url =$youtube_url;
+                   $lessons->video_type=$video_type;
+                   $lessons->lesson_title=$lesson_title;
+                   $lessons->preview=$preview;
+
+                   $lessons->files= $filename;
+
+                   //dd($lessons);
+                   $lessons->save();
+                   $notification=array(
+                       'message'=>'Lesson has been updated successfully!!!',
+                       'alert-type'=>'success'
+                   );
+                   return Redirect()->back()->with($notification);
+
+ }
+               public function lessonDelete($lesson_id)
+               {
+                 Lesson::findOrFail($lesson_id)->delete();
+                 $notification=array(
+                 'message'=>'Delete Success',
+                 'alert-type'=>'success'
+              );
+                return Redirect()->back()->with($notification);
+                 }
+                  public function CourseOverview($id){
+
+        $course_categories= CourseCategory::all();
+        $main_categories= MainCategory::all();
+        $course = Course::find($id);
+        $section= Section::where('course_id',$id)->first();
+
+        $course_details= CourseOverview::where('course_id',$id)->get();
+        $sections= Section::where('course_id',$id)->get();
+
+        $lessons= Lesson::where('course_id',$id)->get();
+
+
+
+        return view('/backend/pages/courses.course_overviews',compact('course','main_categories','course_categories','course_details', 'sections','lessons','section'));
+      }
+      public function CourseInfo($id)
+
+      {
 
       //$classroom_course_details= ClassroomInfo::where('classroom_course_id',$id)->first();
       //$classroom_course = ClassroomCourse::find($id);
@@ -456,12 +528,12 @@ public function CourseInfo($id)
 
 
 
-      return view('/backend/pages/courses.course_info',compact('course','main_categories','course_categories','course_details', 'sections','lessons','section'));
-    }
+          return view('/backend/pages/courses.course_info',compact('course','main_categories','course_categories','course_details', 'sections','lessons','section'));
+        }
 
-    public function CourseCurricullum($id)
+        public function CourseCurricullum($id)
 
-    {
+        {
 
 
         $course= Course::with(['sections.lessons'])->where('id',$id)->first();

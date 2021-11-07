@@ -20,7 +20,7 @@
             <div class="form-group">
               <label class="col-form-label">Short Description</label>
               <div>
-                <textarea data-validation="required" class="form-control" name="short_description" > </textarea>
+                <textarea data-validation="required" class="form-control" name="short_description" >{{$row->short_description}} </textarea>
               </div>
             </div>
             <div class="form-group">

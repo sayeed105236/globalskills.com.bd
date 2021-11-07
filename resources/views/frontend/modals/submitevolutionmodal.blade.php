@@ -34,7 +34,7 @@
                      ?>
 
 
-                  <input type="hidden" name="trainer_id" value="{{($trainers->id)}}">
+                  <input type="hidden" name="trainer_id" value="{{(isset($trainers->id))}}">
 
 
 

@@ -16,25 +16,25 @@
             <div class="form-group">
               <label class="col-form-label">Short Description</label>
               <div>
-                <textarea id="short_description" class="form-control" value="{{$classroom_course_details->classroom_short_description}}" name="classroom_short_description"> </textarea>
+                <textarea id="short_description" class="form-control" name="classroom_short_description"> {{$classroom_course_details->classroom_short_description}}</textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="col-form-label">Course Description</label>
               <div>
-                <textarea id="course_description" class="form-control" name="classroom_course_description"> </textarea>
+                <textarea id="course_description" class="form-control" name="classroom_course_description">{{$classroom_course_details->classroom_course_description}} </textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="col-form-label">Certification</label>
               <div>
-                <textarea class="form-control" name="classroom_certification"> </textarea>
+                <textarea class="form-control" name="classroom_certification">{{$classroom_course_details->classroom_certification}} </textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="col-form-label">Learning Outcomes</label>
               <div>
-                <textarea id="learning_outcomes" class="form-control" name="classroom_learning_outcomes"> </textarea>
+                <textarea id="learning_outcomes" class="form-control" name="classroom_learning_outcomes">{{$classroom_course_details->classroom_learning_outcomes}} </textarea>
               </div>
             </div>
             <div class="form-group">

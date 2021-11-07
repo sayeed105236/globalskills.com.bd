@@ -17,7 +17,7 @@ class ClassroomCourseController extends Controller
       $classroom_courses= ClassroomCourse::all();
       $course_categories= CourseCategory::all();
       $main_categories= MainCategory::all();
-      $classroom_courses= ClassroomCourse::paginate(10);
+    
 
 
 

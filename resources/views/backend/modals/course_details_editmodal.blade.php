@@ -17,19 +17,19 @@
             <div class="form-group">
               <label class="col-form-label">Short Description</label>
               <div>
-                <textarea class="form-control" value="{{$course->course_details->short_description}}" name="short_description" id="short_description" required> </textarea>
+                <textarea class="form-control"  name="short_description" id="short_description" required> {{$course->course_details->short_description}}</textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="col-form-label">Course Description</label>
               <div>
-                <textarea class="form-control" name="course_description" id="course_description" required> </textarea>
+                <textarea class="form-control" name="course_description" id="course_description" required>{{$course->course_details->course_description}} </textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="col-form-label">Learning Outcomes</label>
               <div>
-                <textarea class="form-control" name="learning_outcomes" id="learning_outcomes" required> </textarea>
+                <textarea class="form-control" name="learning_outcomes" id="learning_outcomes" required> {{$course->course_details->learning_outcomes}}</textarea>
               </div>
             </div>
             <div class="form-group">
