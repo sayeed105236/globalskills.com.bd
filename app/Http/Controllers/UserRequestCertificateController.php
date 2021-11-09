@@ -85,7 +85,7 @@ class UserRequestCertificateController extends Controller
          UserRequestCertificateModel::findOrFail($id)->update([
             'status'=>'approve'
         ]);
-        
+
         $notification=array(
             'message'=>'Approved!!!',
             'alert-type'=>'success'
