@@ -334,7 +334,8 @@
             </div>
         </div>
     </div>
-@push('scripts')
+
+
     <!--<script src="https://player.vimeo.com/api/player.js"></script>
 
     <script>
@@ -456,6 +457,7 @@
 
     </script>-->
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
         $('#ulActive a').click(function(){
@@ -467,5 +469,5 @@
 
 
 
-    @endpush
+    
 @endsection

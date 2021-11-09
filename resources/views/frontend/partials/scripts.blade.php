@@ -1,4 +1,5 @@
 <!-- External JavaScripts -->
+
 <script src="{{ asset('js/jquery.min.js')}}"></script>
 <script src="{{ asset('vendors/bootstrap/js/popper.min.js')}}"></script>
 <script src="{{ asset('vendors/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -48,6 +49,7 @@
 </script>
 <script type="text/javascript" src="{{ asset('venobox') }}/venobox/venobox.min.js"></script>
 
+
 <script>
 	$(document).ready(function(){
 		$('.venobox').venobox({
@@ -59,6 +61,7 @@
 		});
 	});
 </script>
+
 <script type="text/javascript" src="{{ asset('backend') }}/lib/toastr/toastr.min.js"></script>
 
 <script>
@@ -177,4 +180,5 @@ jQuery(document).ready(function() {
 	}
 });
 </script>
+
 @stack('scripts')
