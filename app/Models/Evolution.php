@@ -12,6 +12,7 @@ class Evolution extends Model
 {
     use HasFactory;
     protected $table ="evolutions";
+      protected $guarded =[];
     public function course(){
 
       return $this->belongsTo(Course::class,'course_id');

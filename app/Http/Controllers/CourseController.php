@@ -320,10 +320,11 @@ class CourseController extends Controller
     $rating = CourseReview::where('course_id',$id)->where('status','approve')->avg('rating');
     $avgRating = number_format($rating,1);
     $trainer= Trainer::where('course_id',$id)->get();
+    $data=Lesson::where('course_id',$id)->sum('duration');
 
 
 
-    return view('/backend/pages/courses.course_details_index',compact('course_details','main_categories','course_categories','course','enrolled','courseReview','avgRating','trainer'));
+    return view('/backend/pages/courses.course_details_index',compact('course_details','main_categories','course_categories','course','enrolled','courseReview','avgRating','trainer','data'));
   }
 
   public function StoreSection(Request $request)
@@ -386,105 +387,145 @@ class CourseController extends Controller
   public function StoreLesson(Request $request)
   {
     //dd($request->all());
-    $course_id = $request->course_id;
-    $section_id = $request->section_id;
+    function ISO8601ToSeconds($ISO8601){
+       $interval = new \DateInterval($ISO8601);
 
-    $video_type = $request->video_type;
-    $vimeo_id = $request->vimeo_id;
-    $youtube_url = $request->youtube_url;
-    $lesson_title = $request->lesson_title;
-    $preview =$request->preview;
-    $files =$request->file('file');
-    $filename=null;
-    if ($files) {
-        $filename = time() . $files->getClientOriginalName();
+       return ($interval->d * 24 * 60 * 60) +
+           ($interval->i * 60) +
+           $interval->s;
+       }
+     //dd($request->all());
+     $course_id = $request->course_id;
+     $section_id = $request->section_id;
 
-        Storage::disk('public')->putFileAs(
-            'courses/admin/courses/files',
-            $files,
-            $filename
-        );
+     $video_type = $request->video_type;
+     $vimeo_id = $request->vimeo_id;
+     $youtube_url = $request->youtube_url;
+     $lesson_title = $request->lesson_title;
+     $preview =$request->preview;
+     $files =$request->file('file');
+     $filename=null;
+     if ($files) {
+         $filename = time() . $files->getClientOriginalName();
 
-
-    }
-
-    $lessons = new Lesson();
-    $lessons->course_id = $course_id;
-    $lessons->section_id =$section_id;
-    $lessons->vimeo_id =$vimeo_id;
-    $lessons->youtube_url =$youtube_url;
-    $lessons->video_type=$video_type;
-    $lessons->lesson_title=$lesson_title;
-    $lessons->preview=$preview;
-
-    $lessons->files= $filename;
+         Storage::disk('public')->putFileAs(
+             'courses/admin/courses/files',
+             $files,
+             $filename
+         );
+     }
 
 
-    $lessons->save();
-    return back()->with('lesson_added','Lesson has been added successfully!');
+     $video_url=$request->youtube_url;
+     $api_key='AIzaSyCTmNKu-BRSEPoU_4lpG6NYnLo_MS5vc2w';
+     preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $video_url, $match);
+      $video_url = $match[1];
+     $api_url='https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id='.$video_url.'&key='.$api_key;
+     $data=json_decode(file_get_contents($api_url));
+     $time=$data->items[0]->contentDetails->duration;
+      $x=ISO8601ToSeconds($time);
+
+
+
+     $lessons = new Lesson();
+     $lessons->course_id = $course_id;
+     $lessons->section_id =$section_id;
+     $lessons->vimeo_id =$vimeo_id;
+     $lessons->youtube_url =$youtube_url;
+     $lessons->video_type=$video_type;
+     $lessons->lesson_title=$lesson_title;
+     $lessons->preview=$preview;
+     $lessons->duration=$x;
+
+     $lessons->files= $filename;
+
+
+     $lessons->save();
+     return back()->with('lesson_added','Lesson has been added successfully!');
   }
   public function lessonEditStore(Request $request)
-       {
-         $course_id = $request->course_id;
-         $section_id = $request->section_id;
+         {
 
-         $video_type = $request->video_type;
-         $vimeo_id = $request->vimeo_id;
-         $youtube_url = $request->youtube_url;
-         $lesson_title = $request->lesson_title;
-         $preview =$request->preview;
-         $files =$request->file('file');
+           function ISO8601ToSeconds($ISO8601){
+             $interval = new \DateInterval($ISO8601);
+
+             return ($interval->d * 24 * 60 * 60) +
+                 ($interval->h * 60 * 60) +
+                 ($interval->i * 60) +
+                 $interval->s;
+             }
 
 
-                   $filename=null;
-                   $uploadedFile = $request->file('lesson_file');
-                   $oldfilename = $lessons['files'] ?? 'demo.jpg|png|jpeg|pdf|doc|docx';
+                     $course_id = $request->course_id;
+                     $section_id = $request->section_id;
 
-                   $oldfileexists = Storage::disk('public')->exists('courses/admin/courses/files/' . $oldfilename);
+                     $video_type = $request->video_type;
+                     $vimeo_id = $request->vimeo_id;
+                     $youtube_url = $request->youtube_url;
+                     $lesson_title = $request->lesson_title;
+                     $preview =$request->preview;
+                     $files =$request->file('file');
 
-                   if ($uploadedFile !== null) {
 
-                       if ($oldfileexists && $oldfilename != $uploadedFile) {
-                           //Delete old file
-                           Storage::disk('public')->delete('courses/admin/courses/files/' . $oldfilename);
-                       }
-                       $filename_modified = str_replace(' ', '_', $uploadedFile->getClientOriginalName());
-                       $filename = time() . '_' . $filename_modified;
+                     $filename=null;
+                     $uploadedFile = $request->file('lesson_file');
+                     $oldfilename = $lessons['files'] ?? 'demo.jpg|png|jpeg|pdf|doc|docx';
 
-                       Storage::disk('public')->putFileAs(
-                           'courses/admin/courses/files/',
-                           $uploadedFile,
-                           $filename
-                       );
+                     $oldfileexists = Storage::disk('public')->exists('courses/admin/courses/files/' . $oldfilename);
 
-                       $data['lesson_file'] = $filename;
-                   } elseif (empty($oldfileexists)) {
-                       throw new GeneralException('Classroom Course banner image not found!');
-                       //return redirect()->back()->with(['flash_danger' => 'User image not found!']);
-                       //file check in storage
+                     if ($uploadedFile !== null) {
 
-                   }
+                         if ($oldfileexists && $oldfilename != $uploadedFile) {
+                             //Delete old file
+                             Storage::disk('public')->delete('courses/admin/courses/files/' . $oldfilename);
+                         }
+                         $filename_modified = str_replace(' ', '_', $uploadedFile->getClientOriginalName());
+                         $filename = time() . '_' . $filename_modified;
 
-                   $lessons = Lesson::find($request->id);
-                   $lessons->course_id = $course_id;
-                   $lessons->section_id =$section_id;
-                   $lessons->vimeo_id =$vimeo_id;
-                   $lessons->youtube_url =$youtube_url;
-                   $lessons->video_type=$video_type;
-                   $lessons->lesson_title=$lesson_title;
-                   $lessons->preview=$preview;
+                         Storage::disk('public')->putFileAs(
+                             'courses/admin/courses/files/',
+                             $uploadedFile,
+                             $filename
+                         );
 
-                   $lessons->files= $filename;
+                         $data['lesson_file'] = $filename;
+                     } elseif (empty($oldfileexists)) {
+                         //throw new GeneralException('Classroom Course banner image not found!');
+                         //return redirect()->back()->with(['flash_danger' => 'User image not found!']);
+                         //file check in storage
 
-                   //dd($lessons);
-                   $lessons->save();
-                   $notification=array(
-                       'message'=>'Lesson has been updated successfully!!!',
-                       'alert-type'=>'success'
-                   );
-                   return Redirect()->back()->with($notification);
+                     }
 
- }
+                     $video_url=$request->youtube_url;
+                     $api_key='AIzaSyCTmNKu-BRSEPoU_4lpG6NYnLo_MS5vc2w';
+                     preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $video_url, $match);
+                      $video_url = $match[1];
+                     $api_url='https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id='.$video_url.'&key='.$api_key;
+                     $data=json_decode(file_get_contents($api_url));
+                     $time=$data->items[0]->contentDetails->duration;
+                      $x=ISO8601ToSeconds($time);
+
+                     $lessons = Lesson::find($request->id);
+                     $lessons->course_id = $course_id;
+                     $lessons->section_id =$section_id;
+                     $lessons->vimeo_id =$vimeo_id;
+                     $lessons->youtube_url =$youtube_url;
+                     $lessons->video_type=$video_type;
+                     $lessons->lesson_title=$lesson_title;
+                     $lessons->preview=$preview;
+                     $lessons->duration=$x;
+
+                     $lessons->files= $filename;
+
+                     //dd($lessons);
+                     $lessons->save();
+                     $notification=array(
+                         'message'=>'Lesson has been updated successfully!!!',
+                         'alert-type'=>'success'
+                     );
+                     return Redirect()->back()->with($notification);
+
+   }
                public function lessonDelete($lesson_id)
                {
                  Lesson::findOrFail($lesson_id)->delete();
@@ -551,6 +592,10 @@ class CourseController extends Controller
 
              return view ('frontend.pages.categorywisecourseshow',compact('course_categories','main_categories','course','lts_c'));
            }
+           public function paymentSuccess()
+         {
+           return view ('paymentsuccess');
+         }
 
 
 

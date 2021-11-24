@@ -72,6 +72,8 @@ Route::get('/events', [EventController::class,'index'])->name('event');
 Route::get('/event_details/{id}', [EventController::class,'event_details']);
 Route::get('/submit', [PaymentController::class,'submit']);
 
+Route::get('/paymentsuccess', [CourseController::class,'paymentSuccess']);
+
 
 
 Route::get('/search', [SearchController::class,'autoComplete'])->name('autocomplete');

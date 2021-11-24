@@ -54,14 +54,15 @@ class UserEnrollmentController extends Controller
             $rating = CourseReview::where('course_id',$id)->where('status','approve')->avg('rating');
             $avgRating = number_format($rating,1);
             $trainer= Trainer::where('course_id',$id)->get();
-          
+
             $enrolled= UserEnrollment::where('course_id',$id)->where('user_id',Auth::id())->first();
             //dd($enrolled);
             //$tr= Trainer::find($id);
+            $data=Lesson::where('course_id',$id)->sum('duration');
 
 
              //dd($data);
-          return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons','vimeo','youtube','type','courseReview','rating','avgRating','trainer','enrolled'));
+          return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons','vimeo','youtube','type','courseReview','rating','avgRating','trainer','enrolled','data'));
 
         } else{
           $notification=array(

@@ -92,13 +92,17 @@ class PortwalletController extends Controller
         if (PortWallet::getApiMode() == "sandbox") {
 
             $this->api_url = 'https://api-sandbox.portwallet.com/payment/v2/ ';
-            $this->app_key = 'fde409259497bab63ce09e133dbdf0d7';
-            $this->secret_key = '1bd2edd201a0f61832af2c15e4344724';
+          //  $this->app_key = 'b0367cce4ca6fae035cec157c85c9d9e';
+            //$this->secret_key = '9cb4aea573d1336165311690cebb8875';
+            $this->app_key = '3ee2ab77858866db816aae7cff9c3e29';
+            $this->secret_key = '55ba34e33ec387bc61a8d17da221f115';
 
         } else {
             $this->api_url = 'https://api.portwallet.com/payment/v2/invoice';
-            $this->app_key = '23b844c80146b36df469b0cf63d5080e';
-            $this->secret_key = 'a017c8cadeb13d7a9a72ec902573c287';
+            $this->app_key = 'b0367cce4ca6fae035cec157c85c9d9e';
+            $this->secret_key = '9cb4aea573d1336165311690cebb8875';
+            //$this->app_key = '23b844c80146b36df469b0cf63d5080e';
+            //$this->secret_key = 'a017c8cadeb13d7a9a72ec902573c287';
 
         }
 
@@ -108,8 +112,9 @@ class PortwalletController extends Controller
         /**
          * initiate the PortWallet client
          */
-        //dd($this->app_key);
+        //dd($this->app_key,$this->secret_key);
         $portWallet = new PortWalletClient($this->app_key, $this->secret_key);
+        //dd($portWallet);
         //$authorization = “Bearer “. base64_encode(APPKEY.”:”.md5(SECRETKEY.time()));
 //dd($portWallet);
        /**

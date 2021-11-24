@@ -40,77 +40,135 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-md-4 col-sm-12 m-b30">
                                         <div class="card collapse-icon">
-                                            <div class="card-header">
-                                                <h4 class="card-title">Curriculum</h4>
-                                            </div>
+                                          <div class="card-header">
+                              <h4 class="card-title">Curriculum</h4>
+                              <i class="ti-time"></i> <span class="label">Total Duration</span> <span class="value">
+                                  <strong class="pull-right">
+                                   @php
+                                   $total_duration = $data;
+                                   $H = floor($total_duration / 3600);
+                                   $i = ($total_duration / 60) % 60;
+                                   $s = $total_duration % 60;
+                                 if($H==NULL)
+                                 {
+                                 echo sprintf("%02d:%02d Hours", $i, $s);
+                                 }
+                                 else
+                                 {
+                                 echo sprintf("%02d:%02d:%02d Hours", $H, $i, $s);
+                                 }
+                                 @endphp
+                                </strong>
+                                 </span>
+                          </div>
                                             <div class="card-body">
-
                                               <div class="accordion" id="accordionExample{{$section->id}}"
-                           data-toggle-hover="true">
-                       <div class="collapse-default">
-                           @if(count($course->sections) > 0)
-                               @foreach($course->sections as $section)
+                               data-toggle-hover="true">
+                           <div class="collapse-default">
+                               @if(count($course->sections) > 0)
+                                   @foreach($course->sections as $section)
 
-                                   <div class="card">
-                                       <div
-                                           class="card-header"
-                                           id="heading{{$section->id}}"
-                                           data-toggle="collapse"
-                                           role="button"
-                                           data-target="#collapse{{$section->id}}"
-                                           aria-expanded="true"
-                                           aria-controls="collapse{{$section->id}}"
-                                       >
-                                           <h6 class="curriculum-list"
-                                               style="color:#ca2128;">{{$loop->index+1}}. {{$section->section_name}} </h6>
-                                       </div>
+                                       <div class="card">
+                                           <div
+                                               class="card-header"
+                                               id="heading{{$section->id}}"
+                                               data-toggle="collapse"
+                                               role="button"
+                                               data-target="#collapse{{$section->id}}"
+                                               aria-expanded="true"
+                                               aria-controls="collapse{{$section->id}}"
+                                           >
+                                               <h6 class="curriculum-list"
+                                                   style="color:#ca2128;">{{$loop->index+1}}. {{$section->section_name}}
+                                                   <p class="pull-right"><i class="ti-time"></i>
+                                                       <span class="value">
+                                                        @php
+                                                           $section_sum=App\Models\Lesson::where('section_id',$section->id)->sum('duration');
+                                                           $total_ = $section_sum;
+                                                           $Hours = floor($total_ / 3600);
+                                                           $Minuites = ($total_ / 60) % 60;
+                                                           $Seconds = $total_ % 60;
+                                                           echo sprintf("%02d:%02d:%02d Hours", $Hours, $Minuites, $Seconds);
+                                                        @endphp
+                                                       </span>
+                                                     </p>
+                                               </h6>
+                                           </div>
 
-                                       <div
-                                           id="collapse{{$section->id}}"
-                                           class="collapse show"
-                                           aria-labelledby="heading{{$section->id}}"
-                                           data-parent="#accordionExample{{$section->id}}"
-                                            >
-                               <div class="card-body">
-                                   <div id="thumbs">
-                                       <ul>
-                   @if(count($section->lessons) > 0)
-                       @foreach($section->lessons as $lesson)
-                           <ul>
-                               @if($lesson->video_type=="Youtube")
-                               <ul id="ulActive">
-                               <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{ $lesson->youtube_url }}" data-gall="enrollGallery">
-                                   <strong><i  class="fas fa-play-circle" title="Play"></i></strong> <strong>{{$lesson->lesson_title}}</strong>
-                                 </a>
+                                           <div
+                                               id="collapse{{$section->id}}"
+                                               class="collapse show"
+                                               aria-labelledby="heading{{$section->id}}"
+                                               data-parent="#accordionExample{{$section->id}}"
+                                                >
+                                   <div class="card-body">
+                                       <div id="thumbs">
+                                           <ul>
+                       @if(count($section->lessons) > 0)
+                           @foreach($section->lessons as $lesson)
+                           @if($lesson->youtube_url)
+                           <?php
+                           $video_url=$lesson->youtube_url;
+                            $api_key='AIzaSyCTmNKu-BRSEPoU_4lpG6NYnLo_MS5vc2w';
+                            preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $video_url, $match);
+                               $video_url = $match[1];
+                               $api_url='https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id='.$video_url.'&key='.$api_key;
+                               $data=json_decode(file_get_contents($api_url));
+                               $time=$data->items[0]->contentDetails->duration;
+                           ?>
+                           @endif
+                               <ul>
+
+                                   @if($lesson->video_type=="Youtube")
+                                   <ul id="ulActive">
+                                   <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{ $lesson->youtube_url }}" data-gall="enrollGallery">
+                                       <strong><i  class="fas fa-play-circle" title="Play"></i></strong> <strong>{{$lesson->lesson_title}}</strong>
+                                     </a>
+                                   </ul>
+                                     @else
+                                     <ul id="ulActive">
+                                     <a class="video-play1" data-video-id="{{ $lesson->vimeo_id }}" data-channel="vimeo" href="#">
+                                       <strong><i  class="fas fa-play-circle" title="Play"></i></strong> {{$lesson->lesson_title}}</strong>
+                                   </a>
+                                     </ul>
+
+                                     @endif
+                                     @if($lesson->youtube_url)
+                                     <i class="far fa-clock"></i>
+                                     @php
+                                     $timeFormat = new DateTime('1970-01-01');
+                                    $timeFormat->add(new DateInterval($time));
+                                    if (strlen($time)>8)
+                                    {
+                                        echo $timeFormat->format('H:i:s');
+                                }   else {
+                                    echo $timeFormat->format('H:i:s');
+                                }
+                                @endphp
+                                @endif
+                                     @if($lesson->files)
+                                     <br>
+                                     <i class="fas fa-file-pdf" style="color: red"></i> <a href="{{asset("storage/courses/admin/courses/files/$lesson->files")}}" target="_blank" title="{{$lesson->lesson_title}} File">{{$lesson->lesson_title}} File</a>
+                                     @else
+                                     @endif
+                                     <br>
+
                                </ul>
-                                 @else
-                                 <ul id="ulActive">
-                                 <a class="video-play1" data-video-id="{{ $lesson->vimeo_id }}" data-channel="vimeo" href="#">
-                                   <strong><i  class="fas fa-play-circle" title="Play"></i></strong> {{$lesson->lesson_title}}</strong>
-                               </a>
-                                 </ul>
+                           @endforeach
+                       @endif
+                   </ul>
+               </div>
 
-                                 @endif
-                                 @if($lesson->files)
-                                 <i class="fas fa-file-pdf" style="color: red"></i> <a href="{{asset("storage/courses/admin/courses/files/$lesson->files")}}" target="_blank" title="{{$lesson->lesson_title}} File">{{$lesson->lesson_title}} File</a>
-                                 @else
-                                 @endif
-                                 <br>
-
-                           </ul>
-                       @endforeach
-                   @endif
-               </ul>
            </div>
-
        </div>
    </div>
-</div>
 
-@endforeach
-                           @endif
+   @endforeach
+                               @endif
+                           </div>
                        </div>
-                   </div>
+
+
                                                 <br>
                                                 @if($course->accredation_name)
                                                 <a class="btn btn-success align-center" data-toggle="modal" data-target="#SubmitEvolution" href="#">Submit To Download Certificate</a>
@@ -469,5 +527,5 @@
 
 
 
-    
+
 @endsection

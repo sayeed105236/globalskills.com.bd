@@ -30,6 +30,7 @@
                     <input type="hidden" name="course_id" value="{{$course->id}}">
                     <?php
                       $trainers= App\Models\Trainer::where('course_id',$course->id)->first();
+                      //dd($trainers);
 
                      ?>
 

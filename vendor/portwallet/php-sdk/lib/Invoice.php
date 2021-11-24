@@ -145,6 +145,7 @@ class Invoice extends BaseObject
     public function getPaymentUrl(): string
     {
         $url = $this->paymentUrl[PortWallet::getApiMode()];
+        //dd($url);
         return "{$url}{$this->invoice_id}";
     }
 }

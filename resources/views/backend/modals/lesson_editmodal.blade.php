@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="LessonEditModal">Edit Lesson</h5>
+          <h5 class="modal-title" id="LessonEditModal">Edit Section</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -18,9 +18,9 @@
               <div class="form-group">
                   <label for="custom select">Video Type</label>
                   <select class="form-control" name="video_type" value={{ $lesson->video_type }}>
-                      <option label="Choose"></option>
+                    <option value="Youtube">Youtube</option>
                       <option value="Vimeo">Vimeo</option>
-                      <option value="Youtube">Youtube</option>
+
                   </select>
               </div>
 
@@ -47,10 +47,10 @@
               <div class="form-group">
            <label for="custom select">Preview</label>
            <select class="form-control" name="preview" value={{ $lesson->preview }}>
-               <option label="Choose"></option>
+            <option value="0">Not Preview</option>
 
                <option value="1">Preview</option>
-               <option value="0">Not Preview</option>
+
            </select>
        </div>
               <div class="form-group">
@@ -68,3 +68,4 @@
       </div>
     </div>
   </div>
+  
