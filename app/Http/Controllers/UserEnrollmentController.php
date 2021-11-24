@@ -132,15 +132,16 @@ class UserEnrollmentController extends Controller
       $evolution->save();
       if($evolution->course->accredation_name)
       {
-        $pdf= PDF::loadview('certificate',compact('evolution'));
+        $trainer=Trainer::where('course_id',$evolution->course_id)->first();
+        $pdf= PDF::loadview('certificate',compact('evolution','trainer'));
         return $pdf->download('certificate.pdf');
 
       }
 
       else{
 
-
-      $pdf= PDF::loadview('certificate_e-learning',compact('evolution'));
+      $trainer=Trainer::where('course_id',$evolution->course_id)->first();
+      $pdf= PDF::loadview('certificate_e-learning',compact('evolution','trainer'));
        $pdf->setPaper('A4', 'landscape');
       return $pdf->download('certificate.pdf');
         }

@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -70,7 +71,7 @@
   <div class="container" style="margin-left:80px; margin-top:100px;">
     <p>Course Trainer</p>
 
-    <h3>{{(isset($evolution->trainer->name))}}</h3>
+    <h3>{{(($trainer->name))}}</h3>
   </div>
   <div class="container" style="margin-left:80px; margin-top:180px;">
     <p>{{$evolution->course->accredation_name}}  is a registered trademark of AXELOS Limited,

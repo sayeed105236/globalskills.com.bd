@@ -9,12 +9,12 @@
          @font-face {
              font-family: myFirstFont;
 
-             src: url('localhost:8000/font/ACaslonPro-Italic.otf') format('truetype');;
+             src: url('https://globalskills.com.bd/font/ACaslonPro-Italic.otf') format('truetype');;
          }
          @font-face {
              font-family: mySecondFont;
              /*src: url("public/font/MonotypeCorsiva_Regular.ttf");*/
-             src: url('localhost:8000/font/MonotypeCorsiva_Regular.ttf') format('truetype');;
+             src: url('https://globalskills.com.bd/font/MonotypeCorsiva_Regular.ttf') format('truetype');;
          }
 
 

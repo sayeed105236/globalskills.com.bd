@@ -1,20 +1,20 @@
+
  <html>
  <head>
      <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
 
      <style type="text/css">
 
-         @font-face {
-             font-family: myFirstFont;
+     @font-face {
+         font-family: myFirstFont;
 
-             src: url('https://globalskills.com.bd/font/ACaslonPro-Italic.otf') format('truetype');;
-         }
-         @font-face {
-             font-family: mySecondFont;
-             /*src: url("public/font/MonotypeCorsiva_Regular.ttf");*/
-             src: url('https://globalskills.com.bd/font/MonotypeCorsiva_Regular.ttf') format('truetype');;
-         }
-
+         src: url('https://globalskills.com.bd/font/ACaslonPro-Italic.otf') format('truetype');;
+     }
+     @font-face {
+         font-family: mySecondFont;
+         /*src: url("public/font/MonotypeCorsiva_Regular.ttf");*/
+         src: url('https://globalskills.com.bd/font/MonotypeCorsiva_Regular.ttf') format('truetype');;
+     }
 
         span.cls_003{font-family:Arial,serif;font-size:20.9px;color:rgb(214,35,38);font-weight:normal;font-style:normal;text-decoration: none}
         div.cls_003{font-family:Arial,serif;font-size:20.9px;color:rgb(214,35,38);font-weight:normal;font-style:normal;text-decoration: none}
@@ -62,10 +62,10 @@
  <div style="position:relative;top:218.62px; text-align: center;" class="cls_007"><span class="cls_007 text-uppercase"> {{$evolution->course->course_title}}</span></div>
  <div style="position:relative;text-align:center;top:230.79px" class="cls_008"><span class="cls_008">which completed in E-learning Platform on  <strong>{{date('d-m-Y', strtotime($evolution->end_date))}}</strong> </span></div>
  <!--<div style="position:relative;top: 238.15px; text-align:center;" class="cls_008"><span class="cls_008">Total training / contact hours: 30 hours</span></div>-->
- <div style="position:relative;top: 245.38px; text-align:center;" class="cls_008"><span class="cls_008 text-uppercase">Trainer: <span style="font-weight: bold;">{{isset($evolution->trainer->name)}} </span></span></div>
+ <div style="position:relative;top: 245.38px; text-align:center;" class="cls_008"><span class="cls_008 text-uppercase">Trainer: <span style="font-weight: bold;">{{$trainer->name}} </span></span></div>
 
  <div style="position:absolute;left:284.50px;top:420.96px;" class="cls_010">
-      <span class="cls_010"><img width="90" src="{{ public_path(isset($evolution->trainer->signature)) }}" alt="Ibrahim Hossain"></span>
+      <span class="cls_010"><img width="90" src="{{ public_path($trainer->signature) }}" alt="Ibrahim Hossain"></span>
   </div>
 
  <div style="position:absolute;left:269.50px;top:490.96px;border-top: 2px dotted;" class="cls_009">
