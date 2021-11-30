@@ -17,7 +17,7 @@ class ClassroomCourseController extends Controller
       $classroom_courses= ClassroomCourse::all();
       $course_categories= CourseCategory::all();
       $main_categories= MainCategory::all();
-    
+
 
 
 
@@ -30,6 +30,7 @@ class ClassroomCourseController extends Controller
 
 
       $classroom_course_title=$request->classroom_course_title;
+      $classroom_slug = strtolower(str_replace(' ','-',$request->classroom_course_title));
       $training_fee=$request->training_fee;
       $exam_fee=$request->exam_fee;
 
@@ -55,6 +56,7 @@ class ClassroomCourseController extends Controller
       $classroom_course->course_category_id =$course_category_id;
 
       $classroom_course->classroom_course_title=$classroom_course_title;
+      $classroom_course->classroom_slug=$classroom_slug;
       $classroom_course->training_fee=$training_fee;
       $classroom_course->exam_fee=$exam_fee;
 

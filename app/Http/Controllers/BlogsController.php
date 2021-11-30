@@ -24,7 +24,7 @@ class BlogsController extends Controller
 
   }
 
-  public function blogs_details_index($id)
+  public function blogs_details_index($id,$slug)
   {
     $blog_details=BlogDetail::where('admin_blog_id',$id)->first();
     $blogs= AdminBlog::find($id);

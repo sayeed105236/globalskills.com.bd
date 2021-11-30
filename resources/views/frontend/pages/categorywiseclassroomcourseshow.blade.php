@@ -49,13 +49,13 @@
                                 <li class=""><a href="{{route('classroom-courses')}}">All Courses</a></li>
 
                                 @foreach($course_categories as $row)
-                                <li><a href="{{ url('/home/classroom_courses/'.$row->id) }}">{{$row->mcategory_title}}</a></li>
+                                <li><a href=""{{ url('home/classroom/course_details/'.$row->id.'/'.$row->classroom_slug) }}"">{{$row->mcategory_title}}</a></li>
                                 @endforeach
                             </ul>
                         </div>
-          <div class="widget">
+          <!--<div class="widget">
             <a href="#"><img src="{{ asset('images/adv/adv.jpg')}}" alt=""/></a>
-          </div>
+          </div>-->
           <div class="widget recent-posts-entry widget-courses">
                             <h5 class="widget-title style-1">Recent Courses</h5>
                             <div class="widget-post-bx">
@@ -64,7 +64,7 @@
                                     <div class="ttr-post-media"> <img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" width="200" height="143" alt=""> </div>
                                     <div class="ttr-post-info">
                                         <div class="ttr-post-header">
-                                            <h6 class="post-title"><a href="/home/classroom/course_details/{{$row->id}}">{{Str::limit($row->classroom_course_title,18)}}</a></h6>
+                                            <h6 class="post-title"><a href=""{{ url('home/classroom/course_details/'.$row->id.'/'.$row->classroom_slug) }}"">{{Str::limit($row->classroom_course_title,18)}}</a></h6>
                                         </div>
                                         <div class="ttr-post-meta">
                                             <ul>
@@ -97,7 +97,7 @@
 
                 </div>
                 <div class="info-bx text-center">
-                  <h5><a href="/home/classroom/course_details/{{$row->id}}">{{Str::limit($row->classroom_course_title,18)}}</a></h5>
+                  <h5><a href=""{{ url('home/classroom/course_details/'.$row->id.'/'.$row->classroom_slug) }}">{{Str::limit($row->classroom_course_title,18)}}</a></h5>
                   <span>{{$row->course_category->mcategory_title}}</span>
                 </div>
 

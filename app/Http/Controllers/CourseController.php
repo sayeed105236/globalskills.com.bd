@@ -40,6 +40,7 @@ class CourseController extends Controller
 
 
     $course_title=$request->course_title;
+    $elearning_slug = strtolower(str_replace(' ','-',$request->course_title));
     $regular_price=$request->regular_price;
     $sale_price=$request->sale_price;
 
@@ -68,6 +69,7 @@ class CourseController extends Controller
     $course->course_category_id =$course_category_id;
 
     $course->course_title=$course_title;
+    $course->elearning_slug=$elearning_slug
     $course->regular_price=$regular_price;
     $course->sale_price=$sale_price;
 
@@ -94,6 +96,7 @@ class CourseController extends Controller
     $course_category_id= $request->course_category_id;
 
     $course_title=$request->course_title;
+    $elearning_slug = strtolower(str_replace(' ','-',$request->course_title));
     $regular_price= $request->regular_price;
     $sale_price= $request-> sale_price;
     $accredation_name=$request->accredation_name;
@@ -134,6 +137,7 @@ class CourseController extends Controller
     $course->main_category_id = $main_category_id;
     $course->course_category_id= $course_category_id;
     $course->course_title= $course_title;
+    $course->elearning_slug=$elearning_slug
     $course->regular_price= $regular_price;
     $course-> sale_price= $sale_price;
     $course->course_image= $filename;
@@ -302,7 +306,7 @@ class CourseController extends Controller
 
 
 
-  public function course_details_frontend($id)
+  public function course_details_frontend($id,$slug)
   {
 
     $course_categories= CourseCategory::all();
@@ -417,7 +421,7 @@ class CourseController extends Controller
 
 
      $video_url=$request->youtube_url;
-     $api_key='AIzaSyCTmNKu-BRSEPoU_4lpG6NYnLo_MS5vc2w';
+     $api_key='AIzaSyDthwUfyzKUC2Nd_JEvPkLJjG-_ufy_w-E';
      preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $video_url, $match);
       $video_url = $match[1];
      $api_url='https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id='.$video_url.'&key='.$api_key;
@@ -497,7 +501,7 @@ class CourseController extends Controller
                      }
 
                      $video_url=$request->youtube_url;
-                     $api_key='AIzaSyCTmNKu-BRSEPoU_4lpG6NYnLo_MS5vc2w';
+                     $api_key='AIzaSyDthwUfyzKUC2Nd_JEvPkLJjG-_ufy_w-E';
                      preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $video_url, $match);
                       $video_url = $match[1];
                      $api_url='https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id='.$video_url.'&key='.$api_key;

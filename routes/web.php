@@ -35,6 +35,9 @@ use App\Http\Controllers\CourseReviewController;
 use App\Http\Controllers\ReviewFromAdminController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\UserRequestCertificateController;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
+use App\Models\Course;
 
 
 
@@ -51,6 +54,7 @@ use App\Http\Controllers\UserRequestCertificateController;
 
 
 Route::get('/', [MasteringController::class,'index'])->name('home');
+//Route::get('/congrats', [MasteringController::class,'congrats'])->name('home');
 
 //Contact us Route
 //Contact us Route
@@ -100,7 +104,7 @@ Route::get('/home/classroom_courses/{subcat_id}', [ClassroomCourseController::cl
 //blogs routes frontend
 Route::get('/all-blogs', [BlogsController::class,'index'])->name('all-blogs');
 Route::get('/blogs_details', [BlogsController::class,'blogs_details'])->name('blogs_details');
-Route::get('/blogs_details/{id}', [BlogsController::class,'blogs_details_index']);
+Route::get('/blogs_details/{id}/{slug}', [BlogsController::class,'blogs_details_index']);
 
 
 //add to carts Routes
@@ -168,7 +172,7 @@ Route::get('admin/home/courses/course_overviews/{id}',[CourseController::class,'
 Route::post('admin/home/courses/course_details/store',[CourseController::class,'StoreCourseDetails'])->name('store-course-details')->middleware('is_admin');
 Route::post('admin/home/courses/course_details/update',[CourseController::class,'UpdateCourseDetails'])->name('update-course-details')->middleware('is_admin');
 
-Route::get('home/course_details/{id}',[CourseController::class,'course_details_frontend']);
+Route::get('home/course_details/{id}/{slug}',[CourseController::class,'course_details_frontend']);
 Route::get('admin/home/course_details/sections/{id}',[CourseController::class,'Section'])->middleware('is_admin');
 Route::post('admin/home/courses/course_details/sections/store',[CourseController::class,'StoreSection'])->name('store-section')->middleware('is_admin');
 Route::get('admin/home/course_details/sections/edit/{id}',[CourseController::class,'editSection'])->middleware('is_admin');
@@ -205,7 +209,7 @@ Route::get('admin/home/classroom/courses/delete/{id}',[ClassroomCourseController
 
 
 // Frontend routes for classroom
-Route::get('/home/classroom/course_details/{classroom_course_title}', [FrontendController::class,'course_details_frontend'])->name('classroom-course-details');
+Route::get('/home/classroom/course_details/{classroom_course_title}/{slug}', [FrontendController::class,'course_details_frontend'])->name('classroom-course-details');
 Route::get('/home/classroom/course_details/booking/{id}', [FrontendController::class,'classroom_course_booking']);
 
 //admin add classroom course details
@@ -341,3 +345,34 @@ Route::get('/admin/home/download-pdf/{id}', [UserRequestCertificateController::c
 Route::get('/admin/faqs', [FaqController::class,'create'])->name('faqs')->middleware('is_admin');
 Route::post('/admin/faqs/store', [FaqController::class,'store'])->name('store')->middleware('is_admin');
 Route::get('/admin/delete-faq/{faq_id}', [FaqController::class,'deleteFaq'])->middleware('is_admin');
+
+//sitemap route
+
+Route::get('generate-sitemap', function(){
+
+    // create new sitemap object
+    $sitemap = App::make("sitemap");
+
+    // add items to the sitemap (url, date, priority, freq)
+    $sitemap->add(URL::to('home'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
+    $sitemap->add(URL::to('page'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
+
+    // get all posts from db
+    $courses = Course::all();
+
+    // add every post to the sitemap
+    foreach ($courses as $course)
+    {
+        $sitemap->add(URL::to('home/course_details/'.$course->id.'/'.$course->elearning_slug),  $course->updated_at, '1.0', 'daily');
+
+    }
+
+    // generate your sitemap (format, filename)
+    $sitemap->store('xml', 'sitemap');
+    // this will generate file mysitemap.xml to your public folder
+
+    return redirect(url('sitemap.xml'));
+
+});
+
+//sitemap end

@@ -21,6 +21,7 @@ class CreateClassroomCoursesTable extends Migration
             $table->string('classroom_course_title');
             $table->integer('exam_fee');
             $table->integer('training_fee');
+             $table->string('classroom_slug')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

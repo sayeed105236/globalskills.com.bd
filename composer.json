@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "laravelcollective/html": "^6.2",
+        "laravelium/sitemap": "^8.0",
         "portwallet/php-sdk": "^1.0",
         "vimeo/laravel": "^5.6"
     },

@@ -40,7 +40,7 @@ class FrontendController extends Controller
     return view('frontend.pages.classroom_courses',compact('main_categories','course_categories','classroom_courses','lts_c_c'));
 
   }
-  public function course_details_frontend($id)
+  public function course_details_frontend($id,$slug)
   {
 
 

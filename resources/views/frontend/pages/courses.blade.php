@@ -64,7 +64,7 @@
                                     <div class="ttr-post-media"> <img src="{{asset("storage/courses/$row->course_image")}}" width="200" height="143" alt=""> </div>
                                     <div class="ttr-post-info">
                                         <div class="ttr-post-header">
-                                            <h6 class="post-title"><a href="home/course_details/{{$row->id}}">{{Str::limit($row->course_title,18)}}</a></h6>
+                                            <h6 class="post-title"><a href="{{ url('home/course_details/'.$row->id.'/'.$row->elearning_slug) }}">{{Str::limit($row->course_title,18)}}</a></h6>
                                         </div>
                                         <div class="ttr-post-meta">
                                           <ul>
@@ -93,7 +93,7 @@
             <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
               <div class="cours-bx">
                 <div class="action-box">
-                  <a href="home/course_details/{{$row->id}}"><img src="{{asset("storage/courses/$row->course_image")}}" alt=""></a>
+                  <a href="{{ url('home/course_details/'.$row->id.'/'.$row->elearning_slug) }}"><img src="{{asset("storage/courses/$row->course_image")}}" alt=""></a>
                   <?php
                   $enrolled= App\Models\UserEnrollment::where('user_id',Auth::id())->where('course_id',$row->id)->first();
 
@@ -110,7 +110,7 @@
                 @endif
                 </div>
                 <div class="info-bx text-center">
-                  <h5><a href="home/course_details/{{$row->id}}">{{Str::limit($row->course_title,18)}}</a></h5>
+                  <h5><a href="{{ url('home/course_details/'.$row->id.'/'.$row->elearning_slug) }}">{{Str::limit($row->course_title,18)}}</a></h5>
                   <span>{{$row->course_category->mcategory_title}}</span>
                 </div>
                 <div class="cours-more-info">

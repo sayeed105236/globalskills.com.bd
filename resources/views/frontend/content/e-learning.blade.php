@@ -23,7 +23,7 @@
       <div class="item">
         <div class="cours-bx">
           <div class="action-box">
-          <a href="home/course_details/{{$row->id}}"><img src="{{asset("storage/courses/$row->course_image")}}" alt="" height="420"
+          <a href="{{ url('home/course_details/'.$row->id.'/'.$row->elearning_slug) }}"><img src="{{asset("storage/courses/$row->course_image")}}" alt="" height="420"
             width="700"></a>
               <?php
               $enrolled= App\Models\UserEnrollment::where('user_id',Auth::id())->where('course_id',$row->id)->first();
@@ -42,7 +42,7 @@
 
           </div>
           <div class="info-bx text-center">
-            <h5><a href="home/course_details/{{$row->id}}">{{Str::limit($row->course_title,18)}}</a></h5>
+            <h5><a href="{{ url('home/course_details/'.$row->id.'/'.$row->elearning_slug) }}">{{Str::limit($row->course_title,18)}}</a></h5>
 
             <span>{{$row->course_category->mcategory_title}}</span>
           </div>

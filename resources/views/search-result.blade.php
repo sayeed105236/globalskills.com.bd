@@ -64,7 +64,7 @@
                                     <div class="ttr-post-media"> <img src="{{asset("storage/courses/$row->course_image")}}" width="200" height="143" alt=""> </div>
                                     <div class="ttr-post-info">
                                         <div class="ttr-post-header">
-                                            <h6 class="post-title"><a href="/home/course_details/{{$row->id}}">{{$row->course_title}}</a></h6>
+                                            <h6 class="post-title"><a href="{{ url('home/course_details/'.$row->id.'/'.$row->elearning_slug) }}">{{$row->course_title}}</a></h6>
                                         </div>
                                         <div class="ttr-post-meta">
                                             <ul>
@@ -88,7 +88,7 @@
                 <br>
                 @forelse ($course as $item)
                     <div class="searched-item">
-                        <a href="home/course_details/{{$item->id}}">
+                        <a href="{{ url('home/course_details/'.$row->id.'/'.$row->elearning_slug) }}">
                             <div class="design-li">
                                 <h5>{{$item->main_category->mcategory_title}}</h5>
                                 <img src="{{asset("storage/courses/$item->course_image")}}" alt="" height="80px;" width="80px;">
@@ -105,7 +105,7 @@
 
                 @forelse ($course1 as $item)
                 <div class="searched-item">
-                    <a href="/home/classroom/course_details/{{$item->id}}">
+                    <a href="{{ url('home/classroom/course_details/'.$row->id.'/'.$row->classroom_slug) }}">
                         <div class="design-li">
                             <h5>{{$item->main_category->mcategory_title}}</h5>
                             <img src="{{asset("storage/Classroom courses/$item->classroom_course_image")}}" alt="" height="80px;" width="80px;">

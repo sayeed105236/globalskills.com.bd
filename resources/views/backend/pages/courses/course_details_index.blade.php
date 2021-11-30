@@ -316,7 +316,7 @@
                                     @if($lesson->youtube_url)
                                     <?php
                                     $video_url=$lesson->youtube_url;
-                                     $api_key='AIzaSyCTmNKu-BRSEPoU_4lpG6NYnLo_MS5vc2w';
+                                     $api_key='AIzaSyDthwUfyzKUC2Nd_JEvPkLJjG-_ufy_w-E';
                                      preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $video_url, $match);
                                         $video_url = $match[1];
                                         $api_url='https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id='.$video_url.'&key='.$api_key;

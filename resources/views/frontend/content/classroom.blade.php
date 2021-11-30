@@ -26,7 +26,7 @@
       <div class="item" >
         <div class="cours-bx">
           <div class="action-box">
-            <a href="/home/classroom/course_details/{{$row->id}}"><img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" alt=""></a>
+            <a href="{{ url('home/classroom/course_details/'.$row->id.'/'.$row->classroom_slug) }}"><img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" alt=""></a>
             <!--<form class="hidden" action="{{route('add-carts')}}" method="post">
               @csrf
               <input type="hidden" name="classroom_course_id" value="{{$row->id}}">
@@ -35,7 +35,7 @@
             </form>-->
           </div>
           <div class="info-bx text-center">
-            <h5><a href="/home/classroom/course_details/{{$row->id}}">{{Str::limit($row->classroom_course_title,18)}}</a></h5>
+            <h5><a href="{{ url('home/classroom/course_details/'.$row->id.'/'.$row->classroom_slug) }}">{{Str::limit($row->classroom_course_title,18)}}</a></h5>
             <span>{{$row->course_category->mcategory_title}}</span>
           </div>
           <div class="cours-more-info">

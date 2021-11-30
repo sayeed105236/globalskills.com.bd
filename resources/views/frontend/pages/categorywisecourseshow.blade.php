@@ -53,9 +53,9 @@
                                 @endforeach
                             </ul>
                         </div>
-          <div class="widget">
+        <!--  <div class="widget">
             <a href="#"><img src="{{ asset('images/adv/adv.jpg')}}" alt=""/></a>
-          </div>
+          </div>-->
           <div class="widget recent-posts-entry widget-courses">
                             <h5 class="widget-title style-1">Recent Courses</h5>
                             <div class="widget-post-bx">
@@ -64,7 +64,7 @@
                                     <div class="ttr-post-media"> <img src="{{asset("storage/courses/$row->course_image")}}" width="200" height="143" alt=""> </div>
                                     <div class="ttr-post-info">
                                         <div class="ttr-post-header">
-                                            <h6 class="post-title"><a href="home/course_details/{{$row->id}}">{{Str::limit($row->course_title,18)}}</a></h6>
+                                            <h6 class="post-title"><a href="{{ url('home/course_details/'.$row->id.'/'.$row->elearning_slug) }}">{{Str::limit($row->course_title,18)}}</a></h6>
                                         </div>
                                         <div class="ttr-post-meta">
                                           <ul>
@@ -104,7 +104,7 @@
                 </div>
 
                 <div class="info-bx text-center">
-                  <h5><a href="{{ url('home/course_details/'.$row->id) }}">{{Str::limit($row->course_title,18)}}</a></h5>
+                  <h5><a href="{{ url('home/course_details/'.$row->id.'/'.$row->elearning_slug) }}">{{Str::limit($row->course_title,18)}}</a></h5>
                   <span>{{$row->course_category->mcategory_title}}</span>
                 </div>
                 <div class="cours-more-info">

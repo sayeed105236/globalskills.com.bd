@@ -622,6 +622,13 @@ class ComposerStaticInit22c0c1f2eb33be4cd07df250bc07c78a
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
         ),
+        'L' => 
+        array (
+            'Laravelium\\Sitemap' => 
+            array (
+                0 => __DIR__ . '/..' . '/laravelium/sitemap/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
@@ -664,6 +671,7 @@ class ComposerStaticInit22c0c1f2eb33be4cd07df250bc07c78a
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Controllers\\UserEnrollmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserEnrollmentController.php',
         'App\\Http\\Controllers\\UserProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserProfileController.php',
+        'App\\Http\\Controllers\\UserRequestCertificateController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserRequestCertificateController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -684,6 +692,7 @@ class ComposerStaticInit22c0c1f2eb33be4cd07df250bc07c78a
         'App\\Models\\ClassroomCourse' => __DIR__ . '/../..' . '/app/Models/ClassroomCourse.php',
         'App\\Models\\ClassroomInfo' => __DIR__ . '/../..' . '/app/Models/ClassroomInfo.php',
         'App\\Models\\ClassroomTrainer' => __DIR__ . '/../..' . '/app/Models/ClassroomTrainer.php',
+        'App\\Models\\Contactus' => __DIR__ . '/../..' . '/app/Models/Contactus.php',
         'App\\Models\\Course' => __DIR__ . '/../..' . '/app/Models/Course.php',
         'App\\Models\\CourseCategory' => __DIR__ . '/../..' . '/app/Models/CourseCategory.php',
         'App\\Models\\CourseOverview' => __DIR__ . '/../..' . '/app/Models/CourseOverview.php',
@@ -691,6 +700,7 @@ class ComposerStaticInit22c0c1f2eb33be4cd07df250bc07c78a
         'App\\Models\\Currency' => __DIR__ . '/../..' . '/app/Models/Currency.php',
         'App\\Models\\EventDetail' => __DIR__ . '/../..' . '/app/Models/EventDetail.php',
         'App\\Models\\Evolution' => __DIR__ . '/../..' . '/app/Models/Evolution.php',
+        'App\\Models\\Faq' => __DIR__ . '/../..' . '/app/Models/Faq.php',
         'App\\Models\\Lesson' => __DIR__ . '/../..' . '/app/Models/Lesson.php',
         'App\\Models\\MainCategory' => __DIR__ . '/../..' . '/app/Models/MainCategory.php',
         'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',
@@ -702,6 +712,7 @@ class ComposerStaticInit22c0c1f2eb33be4cd07df250bc07c78a
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\UserEnrollment' => __DIR__ . '/../..' . '/app/Models/UserEnrollment.php',
         'App\\Models\\UserProfile' => __DIR__ . '/../..' . '/app/Models/UserProfile.php',
+        'App\\Models\\UserRequestCertificateModel' => __DIR__ . '/../..' . '/app/Models/UserRequestCertificateModel.php',
         'App\\Notifications\\SendEmail' => __DIR__ . '/../..' . '/app/Notifications/SendEmail.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -3174,6 +3185,9 @@ class ComposerStaticInit22c0c1f2eb33be4cd07df250bc07c78a
         'Laravel\\Ui\\Presets\\Vue' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Vue.php',
         'Laravel\\Ui\\UiCommand' => __DIR__ . '/..' . '/laravel/ui/src/UiCommand.php',
         'Laravel\\Ui\\UiServiceProvider' => __DIR__ . '/..' . '/laravel/ui/src/UiServiceProvider.php',
+        'Laravelium\\Sitemap\\Model' => __DIR__ . '/..' . '/laravelium/sitemap/src/Laravelium/Sitemap/Model.php',
+        'Laravelium\\Sitemap\\Sitemap' => __DIR__ . '/..' . '/laravelium/sitemap/src/Laravelium/Sitemap/Sitemap.php',
+        'Laravelium\\Sitemap\\SitemapServiceProvider' => __DIR__ . '/..' . '/laravelium/sitemap/src/Laravelium/Sitemap/SitemapServiceProvider.php',
         'League\\CommonMark\\CommonMarkConverter' => __DIR__ . '/..' . '/league/commonmark/src/CommonMarkConverter.php',
         'League\\CommonMark\\Delimiter\\Delimiter' => __DIR__ . '/..' . '/league/commonmark/src/Delimiter/Delimiter.php',
         'League\\CommonMark\\Delimiter\\DelimiterInterface' => __DIR__ . '/..' . '/league/commonmark/src/Delimiter/DelimiterInterface.php',

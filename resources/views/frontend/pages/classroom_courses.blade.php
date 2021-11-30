@@ -65,7 +65,7 @@
                                     <div class="ttr-post-media"> <img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" width="200" height="143" alt=""> </div>
                                     <div class="ttr-post-info">
                                         <div class="ttr-post-header">
-                                            <h6 class="post-title"><a href="/home/classroom/course_details/{{$row->id}}">{{Str::limit($row->classroom_course_title,18)}}</a></h6>
+                                            <h6 class="post-title"><a href="{{ url('home/classroom/course_details/'.$row->id.'/'.$row->classroom_slug) }}">{{Str::limit($row->classroom_course_title,18)}}</a></h6>
                                         </div>
                                         <div class="ttr-post-meta">
                                             <ul>
@@ -98,7 +98,7 @@
 
                 </div>
                 <div class="info-bx text-center">
-                  <h5><a href="/home/classroom/course_details/{{$row->id}}">{{Str::limit($row->classroom_course_title,18)}}</a></h5>
+                  <h5><a href="{{ url('home/classroom/course_details/'.$row->id.'/'.$row->classroom_slug) }}">{{Str::limit($row->classroom_course_title,18)}}</a></h5>
                   <span>{{$row->course_category->mcategory_title}}</span>
                 </div>
 

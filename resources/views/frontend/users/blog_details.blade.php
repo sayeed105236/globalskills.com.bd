@@ -13,7 +13,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-              
+
     </div>
         </div>
     </div>
@@ -147,7 +147,7 @@
                   <div class="ttr-post-media"> <img src="{{asset('storage/blogs/' .$row->blogs_image)}}" width="200" height="143" alt=""> </div>
                   <div class="ttr-post-info">
                     <div class="ttr-post-header">
-                      <h6 class="post-title"><a href="/blogs_details/{{$row->id}}">{{$row->blogs_title}}</a></h6>
+                      <h6 class="post-title"><a href="{{ url('blogs_details/'.$row->id.'/'.$row->blogs_slug)}}">{{$row->blogs_title}}</a></h6>
                     </div>
                     <ul class="media-post">
                       <li><a href="#"><i class="fa fa-calendar"></i>{{$row->created_at}}</a></li>

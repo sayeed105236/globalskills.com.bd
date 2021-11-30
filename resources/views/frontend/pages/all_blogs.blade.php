@@ -8,7 +8,7 @@
         <div class="page-banner-entry">
           <br/>
           <br/>
-            
+
  </div>
     </div>
 </div>
@@ -36,13 +36,13 @@
        </div>
        <div class="ttr-post-info">
          <ul class="media-post">
-           <li><a href="/blogs_details/{{$row->id}}"><i class="fa fa-calendar"></i>{{$row->created_at}}</a></li>
+           <li><a href="{{ url('blogs_details/'.$row->id.'/'.$row->blogs_slug) }}"><i class="fa fa-calendar"></i>{{$row->created_at}}</a></li>
            <!--<li><a href="#"><i class="fa fa-user"></i>By William</a></li>-->
          </ul>
-         <h5 class="post-title"><a href="/blogs_details/{{$row->id}}">{{$row->blogs_title}}</h5>
+         <h5 class="post-title"><a href="{{ url('blogs_details/'.$row->id.'/'.$row->blogs_slug)}}">{{$row->blogs_title}}</h5>
          <p>{{$row->short_description}}</p>
          <div class="post-extra">
-           <a href="/blogs_details/{{$row->id}}" class="btn-link">READ MORE</a>
+           <a href="{{ url('blogs_details/'.$row->id.'/'.$row->blogs_slug) }}" class="btn-link">READ MORE</a>
           <!-- <a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>05 Comment</a>-->
          </div>
        </div>
@@ -81,7 +81,7 @@
              <div class="ttr-post-media"> <img src="{{asset('storage/blogs/' .$row->blogs_image)}}" width="200" height="143" alt=""> </div>
              <div class="ttr-post-info">
                <div class="ttr-post-header">
-                 <h6 class="post-title"><a href="/blogs_details/{{$row->id}}">{{$row->blogs_title}}</a></h6>
+                 <h6 class="post-title"><a href="{{ url('blogs_details/'.$row->id.'/'.$row->blogs_slug) }}">{{$row->blogs_title}}</a></h6>
                </div>
                <ul class="media-post">
                  <li><a href="#"><i class="fa fa-calendar"></i>{{$row->created_at}}</a></li>
