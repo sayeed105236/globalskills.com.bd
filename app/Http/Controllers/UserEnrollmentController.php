@@ -23,7 +23,7 @@ class UserEnrollmentController extends Controller
       //session()->put('checkout', true);
       $this->middleware('auth');
   }
-    public function index($id)
+    public function index($id,$slug)
 
     {
 

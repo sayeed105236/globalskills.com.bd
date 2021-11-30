@@ -106,7 +106,7 @@
                   <button  class="btn"><i class="fa fa-shopping-cart"></i></button>
                 </form>
                 @else
-                  <a href="/home/course_details/view/{{$row->id}}" class="btn"><i class="fa fa-eye"></i></a>
+                  <a href="/home/course_details/view/{{$row->id}}/{{$row->elearning_slug}}" class="btn"><i class="fa fa-eye"></i></a>
                 @endif
                 </div>
                 <div class="info-bx text-center">

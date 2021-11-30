@@ -122,7 +122,7 @@
 
             @if($enrolled)
               <div class="course-price">
-              <a href="/home/course_details/view/{{$course->id}}" class="btn">Already Enrolled</a>
+              <a href="/home/course_details/view/{{$course->id}}/{{$course->elearning_slug}}" class="btn">Already Enrolled</a>
             </div>
             @else
 
