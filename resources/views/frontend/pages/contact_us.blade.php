@@ -14,7 +14,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-                <h1 class="text-white">Contact Us</h1>
+
      </div>
         </div>
     </div>
@@ -50,15 +50,15 @@
           </div>
           <h5 class="m-t0 m-b20">Follow Us</h5>
           <ul class="list-inline contact-social-bx">
-            <li><a href="#" class="btn outline radius-xl"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#" class="btn outline radius-xl"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#" class="btn outline radius-xl"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="#" class="btn outline radius-xl"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#" class="btn outline radius-xl"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="#" class="btn outline radius-xl"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#" class="btn outline radius-xl"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="#" class="btn outline radius-xl"><i class="fab fa-google-plus"></i></a></li>
           </ul>
         </div>
       </div>
       <div class="col-lg-7 col-md-7">
-        <form id="contact-frm" class="contact-bx ajax-form" action="{{ route('store-contact') }}" >
+        <div  class="contact-bx ajax-form"  >
           <input type="hidden" id="token" value="{{ @csrf_token() }}">
 
           <div id="res" ></div>
@@ -72,7 +72,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <label>Your Name</label>
-                  <input name="name" type="text" class="form-control valid-character">
+                  <input name="name" id="name" type="text" class="form-control valid-character">
                 </div>
               </div>
             </div>
@@ -80,7 +80,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <label>Your Email Address</label>
-                  <input name="email" type="email" class="form-control" >
+                  <input name="email" id="email" type="email" class="form-control" data-validation="required">
                 </div>
               </div>
             </div>
@@ -88,7 +88,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <label>Your Phone</label>
-                  <input name="phone" type="text"  class="form-control int-value">
+                  <input name="phone" id="phone" type="text"  class="form-control int-value" data-validation="required">
                 </div>
               </div>
             </div>
@@ -97,16 +97,16 @@
               <div class="form-group">
                 <div class="input-group">
                   <label>Type Message</label>
-                  <textarea name="msg" rows="4" class="form-control" ></textarea>
+                  <textarea name="message" id="message" rows="4" class="form-control" ></textarea>
                 </div>
               </div>
             </div>
 
             <div class="col-lg-12">
-              <button name="submit" type="submit" value="Submit" class="btn button-md"> Send Message</button>
+              <button name="submit" type="submit" value="Submit" class="btn button-md" onclick="addData()"> Send Message</button>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
         </div>
@@ -115,39 +115,64 @@
 </div>
 <!-- Content END-->
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+  $.ajaxSetup({
+      'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')
+  })
+  //product view modal
+  function clearData()
+  {
+    var name=$('#name').val('');
+    var email=$('#email').val('');
+    var phone=$('#phone').val('');
+    var message=$('#message').val('');
+  }
+  function addData()
+  {
+    var name=$('#name').val();
+    var email=$('#email').val();
+    var phone=$('#phone').val();
+    var message=$('#message').val();
 
-<script>
-       $(document).ready(function(){
-           $("#contact-frm").submit(function(e){
-               e.preventDefault();
-               let url = $(this).attr('action');
-               $("#btn").attr('disabled', true);
-               $.post(url,
-               {
-                   '_token': $("#token").val(),
-                   email: $("#email").val(),
-                   name: $("#name").val(),
-                   phone: $("#phone").val(),
-                   message: $("#msg").val()
-               },
-               function (response) {
-                   if(response.code == 400){
-                       $("#btn").attr('disabled', false);
-                       let error = '<span class="alert alert-danger">'+response.msg+'</span>';
-                       $("#res").html(error);
-                   }else if(response.code == 200){
-                       $("#btn").attr('disabled', false);
-                       let success = '<span class="alert alert-success">'+response.msg+'</span>';
-                       $("#res").html(success);
-                   }
-               });
+    $.ajax({
+      type:"POST",
+      dataType:"json",
+      data:{name:name,email:email,phone:phone,message:message},
+      url:"/contact/store",
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      success:function(data)
+      {
+        clearData();
+        let timerInterval
+            Swal.fire({
+              title: 'Message Sent!',
+              html: 'I will close in <b></b> milliseconds.',
+              timer: 2000,
+              timerProgressBar: true,
+              didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                  b.textContent = Swal.getTimerLeft()
+                }, 100)
+              },
+              willClose: () => {
+                clearInterval(timerInterval)
+              }
+            }).then((result) => {
+              / Read more about handling dismissals below /
+              if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+              }
+            })
+             console.log('successfully data added');
+      }
+    })
+  }
+  //add to cart
 
-
-           })
-       })
-   </script>
+</script>
 
 
 @endpush

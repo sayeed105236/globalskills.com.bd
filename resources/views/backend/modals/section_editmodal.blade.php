@@ -1,4 +1,4 @@
-<div class="modal fade" id="SectionEditModal" tabindex="-1" role="dialog" aria-labelledby="SectionEditModal" aria-hidden="true">
+<div class="modal fade" id="SectionEditModal{{ $section->id }}" tabindex="-1" role="dialog" aria-labelledby="SectionEditModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,36 +8,20 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('secton-update') }}" method="POST">
           @csrf
+            <input type="hidden" name="section_id" value="{{$section->id}}">
             <input type="hidden" name="course_id" value="{{$course->id}}">
-
-
-
-
-
-
-
-
-
-
-
-
-
             <div class="form-group">
               <label for="order">Order No</label>
-              <input type="number" class="form-control" value="" name="order" aria-describedby="order" placeholder="Section No">
+              <input type="number" class="form-control" value="{{ $section->order }}" name="order" aria-describedby="order" placeholder="Section No">
 
             </div>
 
             <div class="form-group">
               <label for="section_name">Section Title</label>
-              <input type="text" class="form-control" name="section_name" value="" aria-describedby="section_name" placeholder="Enter section name">
-
+              <input type="text" class="form-control" name="section_name" value="{{ $section->section_name }}" aria-describedby="section_name" placeholder="Enter section name">
             </div>
-
-
-
 
       </div>
       <div class="modal-footer">

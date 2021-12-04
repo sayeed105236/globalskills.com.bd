@@ -14,7 +14,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-                <h1 class="text-white">Courses Details</h1>
+
      </div>
         </div>
     </div>
@@ -22,8 +22,8 @@
 <div class="breadcrumb-row">
   <div class="container">
     <ul class="list-inline">
-      <li><a href="#">Home</a></li>
-      <li>Courses Details</li>
+      <li><a href="/">Home</a></li>
+      <li>Event Details</li>
     </ul>
   </div>
 </div>
@@ -37,18 +37,24 @@
         <div class="col-lg-8 col-md-7 col-sm-12">
           <div class="courses-post">
             <div class="ttr-post-media media-effect">
-              <a href="#"><img src="{{ asset('images/blog/default/thum1.jpg')}}" alt=""></a>
+              <img src="{{asset("storage/Events Banner/$event_details->event_banner_image")}}" alt="">
             </div>
             <div class="ttr-post-info">
               <div class="ttr-post-title ">
-                <h2 class="post-title">Good Intentions or Good Results?</h2>
+                <h2 class="post-title">{{$event_details->admin_event->event_title}}</h2>
               </div>
               <div class="ttr-post-text">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+              <p>{{$event_details->admin_event->description}}</p>
+              </div>
+              <div class="ttr-post-text">
+              {!!$event_details->event_schedule!!}
+              </div>
+              <div class="ttr-post-text">
+              {!!$event_details->event_description!!}
               </div>
             </div>
           </div>
-          <div class="courese-overview" id="overview">
+        <!--  <div class="courese-overview" id="overview">
             <div class="row">
               <div class="col-md-12 col-lg-5">
                 <ul class="course-features">
@@ -79,7 +85,7 @@
                 </ul>
               </div>
             </div>
-          </div>
+          </div>-->
         </div>
         <div class="col-lg-4 col-md-5 col-sm-12 m-b30">
           <div class="bg-primary text-white contact-info-bx m-b30">
@@ -98,13 +104,17 @@
             </div>
             <h5 class="m-t0 m-b20">Follow Us</h5>
             <ul class="list-inline contact-social-bx">
-              <li><a href="#" class="btn outline radius-xl"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#" class="btn outline radius-xl"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#" class="btn outline radius-xl"><i class="fa fa-linkedin"></i></a></li>
-              <li><a href="#" class="btn outline radius-xl"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="https://www.facebook.com/globalskillsbd" class="btn outline radius-xl"><i class="fab fa-facebook"></i></a></li>
+              <li><a href="https://twitter.com/gsdabd?lang=en" class="btn outline radius-xl"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="https://www.linkedin.com/company/globalskillsbd" class="btn outline radius-xl"><i class="fab fa-linkedin"></i></a></li>
+
             </ul>
           </div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3448.1298878182047!2d-81.38369578541523!3d30.204840081824198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e437ac927a996b%3A0x799695b1a2b970ab!2sNona+Blue+Modern+Tavern!5e0!3m2!1sen!2sin!4v1548177305546" class="align-self-stretch d-flex" style="width:100%; min-width:100%; min-height:400px;" allowfullscreen></iframe>
+
+
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.1664037741634!2d90.42673481498255!3d23.812681084558736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c782948ffbf9%3A0xe43c376a71bfb570!2zR2xvYmFsIFNraWxscyBEZXZlbG9wbWVudCBBZ2VuY3kg4KaX4KeN4Kay4KeL4Kas4Ka-4KayIOCmuOCnjeCmleCmv-CmsuCmuCDgpqHgp4fgpq3gp4fgprLgpqrgpq7gp4fgpqjgp43gpp8g4KaP4Kac4KeH4Kao4KeN4Ka44Ka_!5e0!3m2!1sbn!2sbd!4v1632647227179!5m2!1sbn!2sbd" width="350" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
         </div>
       </div>
     </div>

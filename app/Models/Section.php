@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Section extends Model
 {
     use HasFactory;
+    protected $guarded=[];
 
     protected $table ="sections";
     public function course(){

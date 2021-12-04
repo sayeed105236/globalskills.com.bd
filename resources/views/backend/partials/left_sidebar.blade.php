@@ -86,11 +86,45 @@
                                         <span class="ttr-label">Events</span>
                                       </a>
                                   </li>
+                                  <li>
                                   <a href="{{route('bookings-list')}}" class="ttr-material-button">
                                     <span class="ttr-icon"><i class="fas fa-folder-open"></i></span>
                                             <span class="ttr-label">Classroom Course Booking</span>
                                           </a>
                                       </li>
+                                      <li>
+                                      <a href="{{route('manage-evolution')}}" class="ttr-material-button">
+                                        <span class="ttr-icon"><i class="far fa-star"></i></span>
+                                                <span class="ttr-label">Evolution Lists</span>
+                                              </a>
+                                          </li>
+                                          <li>
+                                          <a href="{{route('certificate-request-check')}}" class="ttr-material-button">
+                                            <span class="ttr-icon"><i class="fas fa-certificate"></i></span>
+                                                    <span class="ttr-label">Certificate Request Lists</span>
+                                                  </a>
+                                              </li>
+                                      <li>
+                                      <a href="{{route('admin.currency')}}" class="ttr-material-button">
+                                        <span class="ttr-icon"><i class="fas fa-money-bill-wave-alt"></i></span>
+                                                <span class="ttr-label">Currency</span>
+                                              </a>
+                                          </li>
+                                          <li>
+                            <a href="#" class="ttr-material-button">
+                              <span class="ttr-icon"><i class="fas fa-users"></i></span>
+                                      <span class="ttr-label">Trainer List</span>
+                                      <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+                                    </a>
+                                    <ul>
+                                      <li>
+                                        <a href="{{ route('trainer') }}" class="ttr-material-button"><span class="ttr-label">E-Learning</span></a>
+                                      </li>
+                                      <li>
+                                        <a href="{{ route('trainer-classroom') }}" class="ttr-material-button"><span class="ttr-label">Classroom</span></a>
+                                      </li>
+                                    </ul>
+                                </li>
                     <li>
           <a href="#" class="ttr-material-button">
             <span class="ttr-icon"><i class="ti-email"></i></span>
@@ -109,55 +143,26 @@
                     </li>
                   </ul>
               </li>
-        <li>
-          <a href="#" class="ttr-material-button">
-            <span class="ttr-icon"><i class="ti-calendar"></i></span>
-                    <span class="ttr-label">Calendar</span>
-                    <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
-                  </a>
-                  <ul>
-                    <li>
-                      <a href="basic-calendar.html" class="ttr-material-button"><span class="ttr-label">Basic Calendar</span></a>
+
+              <li>
+                <a href="{{ route('customer.review') }}" class="ttr-material-button" @yield('review')>
+                  <span class="ttr-icon"><i class="ti-comments"></i></span>
+                          <span class="ttr-label">Review</span>
+                        </a>
                     </li>
                     <li>
-                      <a href="list-view-calendar.html" class="ttr-material-button"><span class="ttr-label">List View</span></a>
-                    </li>
-                  </ul>
-              </li>
-        <li>
-          <a href="bookmark.html" class="ttr-material-button">
-            <span class="ttr-icon"><i class="ti-bookmark-alt"></i></span>
-                    <span class="ttr-label">Bookmarks</span>
-                  </a>
-              </li>
-        <li>
-          <a href="review.html" class="ttr-material-button">
-            <span class="ttr-icon"><i class="ti-comments"></i></span>
-                    <span class="ttr-label">Review</span>
-                  </a>
-              </li>
-        <li>
-          <a href="add-listing.html" class="ttr-material-button">
-            <span class="ttr-icon"><i class="ti-layout-accordion-list"></i></span>
-                    <span class="ttr-label">Add listing</span>
-                  </a>
-              </li>
-        <li>
-          <a href="#" class="ttr-material-button">
-            <span class="ttr-icon"><i class="ti-user"></i></span>
-                    <span class="ttr-label">My Profile</span>
-                    <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
-                  </a>
-                  <ul>
-                    <li>
-                      <a href="user-profile.html" class="ttr-material-button"><span class="ttr-label">User Profile</span></a>
-                    </li>
-                    <li>
-                      <a href="teacher-profile.html" class="ttr-material-button"><span class="ttr-label">Teacher Profile</span></a>
-                    </li>
-                  </ul>
-              </li>
-              <li class="ttr-seperate"></li>
+                  <a href="{{ route('contact-us') }}" class="ttr-material-button" @yield('review')>
+                    <span class="ttr-icon"><i class="ti-comments"></i></span>
+                            <span class="ttr-label">Contact Us</span>
+                          </a>
+                      </li>
+                      <li>
+                       <a href="{{ route('faqs') }}" class="ttr-material-button" @yield('faq')>
+                         <span class="ttr-icon"><i class="ti-comments"></i></span>
+                                 <span class="ttr-label">FaQs</span>
+                               </a>
+                           </li>
+
       </ul>
       <!-- sidebar menu end -->
     </nav>

@@ -14,7 +14,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-                <h1 class="text-white">Courses Details</h1>
+
      </div>
         </div>
     </div>
@@ -54,8 +54,8 @@
         <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
           <div class="course-detail-bx">
             <div class="course-price">
-              <del>{{$classroom_course->exam_fee}}৳</del>
-              <h4 class="price" style="color:#ca2128;">{{$classroom_course->training_fee}}৳</h4>
+              <del>{{$classroom_course->training_fee}}৳</del>
+              <h4 class="price" style="color:#ca2128;">{{$classroom_course->exam_fee}}৳</h4>
             </div>
             <div class="course-buy-now text-center">
               <form class="hidden" action="{{route('store-bookings')}}" method="post">
@@ -80,13 +80,13 @@
             </div>
             <div class="cours-more-info">
               <div class="review">
-                <span>5 Review</span>
+                <span>Review</span>
                 <ul class="cours-star">
-                  <li class="active"><i class="fa fa-star"></i></li>
-                  <li class="active"><i class="fa fa-star"></i></li>
-                  <li class="active"><i class="fa fa-star"></i></li>
-                  <li class="active"><i class="fa fa-star"></i></li>
-                  <li class="active"><i class="fa fa-star"></i></li>
+                  @for ($i =1 ; $i <= 5 ; $i++)
+                  <span style="color: red" class="fa fa-star{{ ($i <= $avgRating) ? '' : '-empty' }}"></span>
+                @endfor
+                <span>({{ count($courseReview) }})</span>
+                <h4>5/{{ $avgRating }}</h4>
 
                 </ul>
               </div>
@@ -99,8 +99,8 @@
               <ul class="navbar">
                 <li><a class="nav-link" href="#overview"><i class="ti-zip"></i>Course Description</a></li>
                 <li><a class="nav-link" href="#curriculum"><i class="ti-bookmark-alt"></i>Exam Format</a></li>
-              <!--  <li><a class="nav-link" href="#instructor"><i class="ti-user"></i>Instructor</a></li>
-                <li><a class="nav-link" href="#reviews"><i class="ti-comments"></i>Reviews</a></li> -->
+              <li><a class="nav-link" href="#instructor"><i class="ti-user"></i>Instructor</a></li>
+                <li><a class="nav-link" href="#reviews"><i class="ti-comments"></i>Reviews</a></li>
               </ul>
             </div>
           </div>
@@ -118,7 +118,8 @@
                 <h2 class="post-title">{{$classroom_course->classroom_course_title}}</h2>
               </div>
               <div class="ttr-post-text">
-                <p>{{$classroom_course_details->classroom_short_description}}</p>
+
+                {!!$classroom_course_details->classroom_short_description!!}
               </div>
             </div>
           </div>
@@ -127,13 +128,15 @@
             <div class="row">
 
               <div class="col-md-12 col-lg-8">
-                <h5 class="m-b5">Course Description</h5>
-                <p>{{$classroom_course_details->classroom_course_description}}</p>
-                <h5 class="m-b5">THe Certification can help:</h5>
-                <p>{{$classroom_course_details->classroom_certification}}</p>
-                <h5 class="m-b5">Learning Outcomes</h5>
+                <h4 class="m-b5">Course Description</h4>
+                {!!$classroom_course_details->classroom_course_description!!}
+                  <div class="ttr-divider bg-gray"><i class="icon-dot c-square"></i></div>
+                <h4 class="m-b5">THe Certification can help:</h4>
+                {{$classroom_course_details->classroom_certification}}
+                  <div class="ttr-divider bg-gray"><i class="icon-dot c-square"></i></div>
+                <h4 class="m-b5">Learning Outcomes</h4>
                 <ul class="list-checked primary">
-                  <li>{{$classroom_course_details->classroom_learning_outcomes}}</li>
+                  {!!$classroom_course_details->classroom_learning_outcomes!!}
 
                 </ul>
               </div>
@@ -150,125 +153,129 @@
 
             </ul>
           </div>
-        <!--  <div class="" id="instructor">
-            <h4>Instructor</h4>
-            <div class="instructor-bx">
-              <div class="instructor-author">
-                <img src="{{ asset('images/testimonials/pic1.jpg')}}" alt="">
-              </div>
-              <div class="instructor-info">
-                <h6>Keny White </h6>
-                <span>Professor</span>
-                <ul class="list-inline m-tb10">
-                  <li><a href="#" class="btn sharp-sm facebook"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#" class="btn sharp-sm twitter"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#" class="btn sharp-sm linkedin"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#" class="btn sharp-sm google-plus"><i class="fa fa-google-plus"></i></a></li>
-                </ul>
-                <p class="m-b0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-              </div>
-            </div>
-            <div class="instructor-bx">
-              <div class="instructor-author">
-                <img src="{{ asset('images/testimonials/pic2.jpg')}}" alt="">
-              </div>
-              <div class="instructor-info">
-                <h6>Keny White </h6>
-                <span>Professor</span>
-                <ul class="list-inline m-tb10">
-                  <li><a href="#" class="btn sharp-sm facebook"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#" class="btn sharp-sm twitter"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#" class="btn sharp-sm linkedin"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#" class="btn sharp-sm google-plus"><i class="fa fa-google-plus"></i></a></li>
-                </ul>
-                <p class="m-b0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-              </div>
-            </div>
-          </div>
-          <div class="" id="reviews">
-            <h4>Reviews</h4>
+          <div class="" id="instructor">
+                <h4>Instructor</h4>
 
-            <div class="review-bx">
-              <div class="all-review">
-                <h2 class="rating-type">3</h2>
-                <ul class="cours-star">
-                  <li class="active"><i class="fa fa-star"></i></li>
-                  <li class="active"><i class="fa fa-star"></i></li>
-                  <li class="active"><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                </ul>
-                <span>3 Rating</span>
+                @foreach ($trainer as $item)
+
+                <div class="instructor-bx">
+                  <div class="instructor-author">
+                    <img src="{{asset($item->image)}}" alt="">
+                  </div>
+                  <div class="instructor-info">
+                    <h6>{{$item->name}}</h6>
+                    <span>{{ $item->designation }}</span>
+                    <ul class="list-inline m-tb10">
+                      <li><a href="{{ $item->facebook_profile }}" class="btn sharp-sm facebook"><i class="fab fa-facebook"></i></a></li>
+                      <li><a href="{{ $item->linkdin_profile }}" class="btn sharp-sm linkedin"><i class="fab fa-linkedin"></i></a></li>
+                    </ul>
+                    <p class="m-b0">{!! $item->biography !!}</p>
+                  </div>
+                </div>
+                @endforeach
+
               </div>
-              <div class="review-bar">
-                <div class="bar-bx">
-                  <div class="side">
-                    <div>5 star</div>
-                  </div>
-                  <div class="middle">
-                    <div class="bar-container">
-                      <div class="bar-5" style="width:90%;"></div>
-                    </div>
-                  </div>
-                  <div class="side right">
-                    <div>150</div>
-                  </div>
-                </div>
-                <div class="bar-bx">
-                  <div class="side">
-                    <div>4 star</div>
-                  </div>
-                  <div class="middle">
-                    <div class="bar-container">
-                      <div class="bar-5" style="width:70%;"></div>
-                    </div>
-                  </div>
-                  <div class="side right">
-                    <div>140</div>
-                  </div>
-                </div>
-                <div class="bar-bx">
-                  <div class="side">
-                    <div>3 star</div>
-                  </div>
-                  <div class="middle">
-                    <div class="bar-container">
-                      <div class="bar-5" style="width:50%;"></div>
-                    </div>
-                  </div>
-                  <div class="side right">
-                    <div>120</div>
-                  </div>
-                </div>
-                <div class="bar-bx">
-                  <div class="side">
-                    <div>2 star</div>
-                  </div>
-                  <div class="middle">
-                    <div class="bar-container">
-                      <div class="bar-5" style="width:40%;"></div>
-                    </div>
-                  </div>
-                  <div class="side right">
-                    <div>110</div>
-                  </div>
-                </div>
-                <div class="bar-bx">
-                  <div class="side">
-                    <div>1 star</div>
-                  </div>
-                  <div class="middle">
-                    <div class="bar-container">
-                      <div class="bar-5" style="width:20%;"></div>
-                    </div>
-                  </div>
-                  <div class="side right">
-                    <div>80</div>
-                  </div>
-                </div>
+          <div class="" id="reviews">
+              <h4>Reviews</h4>
+
+              <div class="review-bx">
+                <div class="product-add-review">
+                  <h4 class="title">Write your own review</h4>
+                  <div class="review-table">
+                    <div class="table-responsive">
+                      <form role="form" class="cnt-form" action="{{ route('store.review') }}" method="post">
+                      <table class="table" >
+                        @csrf
+                        <input type="hidden" name="classroomcourse_id" value="{{$classroom_course->id}}">
+                        <thead>
+                          <tr>
+                         <th class="cell-label">&nbsp;</th>
+                         <th><i class="fa fa-star" style="color: red"></i></th>
+                         <th><i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star"  style="color: red"></i></th>
+                         <th><i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i></th>
+                         <th><i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i></th>
+                         <th><i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i>
+                           <i class="fa fa-star" style="color: red"></i></th>
+                       </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="cell-label">Rating</td>
+                            <td><input type="radio" name="rating" class="radio" value="1"></td>
+                            <td><input type="radio" name="rating" class="radio" value="2"></td>
+                            <td><input type="radio" name="rating" class="radio" value="3"></td>
+                            <td><input type="radio" name="rating" class="radio" value="4"></td>
+                            <td><input type="radio" name="rating" class="radio" value="5"></td>
+                          </tr>
+                          @error('rating')
+                              <span class="text text-danger">{{ $message }}</span>
+                          @enderror
+
+                        </tbody>
+                      </table><!-- /.table .table-bordered -->
+                    </div><!-- /.table-responsive -->
+                  </div><!-- /.review-table -->
+
+                  <div class="review-form">
+                    <div class="form-container">
+
+
+                        <div class="row">
+
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="exampleInputReview">Review <span class="astk">*</span></label>
+                              <textarea class="form-control txt txt-review" id="exampleInputReview" name="comment" rows="4" placeholder=""></textarea>
+                              @error('comment')
+                              <span class="text text-danger">{{ $message }}</span>
+                              @enderror
+                            </div><!-- /.form-group -->
+                          </div>
+                        </div><!-- /.row -->
+
+                        <div class="action text-right">
+                          <button class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
+                        </div><!-- /.action -->
+
+                      </form><!-- /.cnt-form -->
+                      @foreach ($courseReview as $review)
+
+
+                      <div class="product-reviews">
+  											<h5 class="title">{{ $review->user->name }}</h5>
+
+                        <div class="reviews">
+  												<div class="review">
+  													<div class="review-title">
+                                <span class="summary">
+                              @for ($i =1 ; $i <= 5 ; $i++)
+                               <span style="color: red" class="fa fa-star{{ ($i <= $review->rating) ? '' : '-empty' }}"></span>
+                             @endfor
+                                </span>
+                             <span class="date"><i class="fa fa-calendar"></i><span> {{ $review->created_at->diffForHumans() }}</span></span></div>
+  													<div class="text">"{{ $review->comment }}" </div>
+                          </div>
+  											</div><!-- /.reviews -->
+  										</div><!-- /.product-reviews -->
+                      @endforeach
+                    </div><!-- /.form-container -->
+                  </div><!-- /.review-form -->
+
+                </div><!-- /.product-add-review -->
+
+
               </div>
+
             </div>
-          </div>-->
 
         </div>
 
@@ -280,6 +287,7 @@
 
 </div>
 <!-- Content END-->
+
 
 
 

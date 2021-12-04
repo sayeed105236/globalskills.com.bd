@@ -9,6 +9,8 @@ use App\Models\Course;
 use App\Models\ClassroomCourse;
 use App\Models\ClassroomInfo;
 use App\Models\User;
+use App\Models\CourseReview;
+use App\Models\ClassroomTrainer;
 
 class FrontendController extends Controller
 {
@@ -38,7 +40,7 @@ class FrontendController extends Controller
     return view('frontend.pages.classroom_courses',compact('main_categories','course_categories','classroom_courses','lts_c_c'));
 
   }
-  public function course_details_frontend($id)
+  public function course_details_frontend($id,$slug)
   {
 
 
@@ -46,13 +48,19 @@ class FrontendController extends Controller
     $main_categories= MainCategory::all();
     $classroom_course_details= ClassroomInfo::where('classroom_course_id',$id)->first();
     $classroom_course = ClassroomCourse::find($id);
-    return view('frontend.pages.classroom_course_details',compact('course_categories','main_categories','classroom_course_details','classroom_course'));
+
+    $courseReview=CourseReview::with('user')->where('classroomcourse_id',$id)->where('status','approve')->latest()->get();
+    $rating = CourseReview::where('classroomcourse_id',$id)->where('status','approve')->avg('rating');
+    $avgRating = number_format($rating,1);
+    $trainer=ClassroomTrainer::where('classroom_course_id',$id)->get();
+
+    return view('frontend.pages.classroom_course_details',compact('course_categories','main_categories','classroom_course_details','classroom_course','courseReview','avgRating','trainer'));
   }
   public function classroom_course_booking($id)
   {
 
     $classroom_course = ClassroomCourse::find($id);
-    dd($id);
+    //dd($id);
 
     return back();
   }

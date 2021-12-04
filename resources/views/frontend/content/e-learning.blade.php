@@ -23,30 +23,48 @@
       <div class="item">
         <div class="cours-bx">
           <div class="action-box">
-            <img src="{{asset("storage/courses/$row->course_image")}}" alt="" height="420"
-            width="700">
+          <a href="{{ url('home/course_details/'.$row->id.'/'.$row->elearning_slug) }}"><img src="{{asset("storage/courses/$row->course_image")}}" alt="" height="420"
+            width="700"></a>
+              <?php
+              $enrolled= App\Models\UserEnrollment::where('user_id',Auth::id())->where('course_id',$row->id)->first();
 
+               ?>
+            @if(!$enrolled)
             <form class="hidden" action="{{route('add-carts')}}" method="post">
               @csrf
               <input type="hidden" name="course_id" value="{{$row->id}}">
 
               <button  class="btn"><i class="fa fa-shopping-cart"></i></button>
             </form>
+            @else
+              <a href="/home/course_details/view/{{$row->id}}/{{$row->elearning_slug}}" class="btn"><i class="fa fa-eye"></i></a>
+            @endif
+
           </div>
           <div class="info-bx text-center">
-            <h5><a href="home/course_details/{{$row->id}}">{{$row->course_title}}</a></h5>
+            <h5><a href="{{ url('home/course_details/'.$row->id.'/'.$row->elearning_slug) }}">{{Str::limit($row->course_title,18)}}</a></h5>
+
             <span>{{$row->course_category->mcategory_title}}</span>
           </div>
           <div class="cours-more-info">
             <div class="review">
               <span>Review</span>
               <ul class="cours-star">
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
+                @if (App\Models\CourseReview::where('course_id',$row->id)->first())
 
+
+                @php
+                   $courseReview=App\Models\CourseReview::where('course_id',$row->id)->where('status','approve')->latest()->get();
+                  $rating = App\Models\CourseReview::where('course_id',$row->id)->where('status','approve')->avg('rating');
+                  $avgRating = number_format($rating,1);
+                @endphp
+                @for ($i =1 ; $i <= 5 ; $i++)
+                <span style="color: red" class="fa fa-star{{ ($i <= $avgRating) ? '' : '-empty' }}"></span>
+              @endfor
+
+              @else
+              <span class="text-danger">No Review</span>
+              @endif
               </ul>
             </div>
             <div class="price">

@@ -27,7 +27,7 @@
         data-param9="" data-param10=""
         data-description="Science says that Women are generally happier">
           <!-- MAIN IMAGE -->
-          <img src="{{ asset('images/slider/slide4.png')}}" alt=""
+          <img src="{{ asset('images/slider/banner.jpg')}}" alt=""
             data-bgposition="center center"
             data-bgfit="cover"
             data-bgrepeat="no-repeat"
@@ -53,7 +53,7 @@
             data-paddingright="[0,0,0,0]"
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
-            style="z-index: 5;background-color:rgba(2, 0, 11, 0.80);border-color:rgba(0, 0, 0, 0);border-width:0px;"> </div>
+            style="z-index: 5;background-color:rgba(2, 0, 11, 0.60);border-color:rgba(0, 0, 0, 0);border-width:0px;"> </div>
           <!-- LAYER NR. 2 -->
           <div class="tp-caption Newspaper-Title   tp-resizeme"
             id="slide-100-layer-2"
@@ -62,7 +62,7 @@
             data-y="['top','top','top','top']"
             data-voffset="['250','250','250','240']"
             data-fontsize="['20','20','20','20']"
-            data-lineheight="['70','70','70','70']"
+            data-lineheight="['250','250','250','250']"
             data-width="full"
             data-height="none"
             data-whitespace="normal"
@@ -92,7 +92,7 @@
             data-width="none"
             data-height="none"
             data-whitespace="nowrap"
-              data-lineheight="['70','70','70','70']"
+              data-lineheight="['250','250','250','250']"
             data-type="text"
             data-responsive_offset="on"
             data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
@@ -126,14 +126,8 @@
             data-paddingleft="[0,0,0,0]"
             style="z-index: 7; text-transform:capitalize; white-space: unset; color:#fff; font-family:rubik; font-size:18px; line-height:28px; font-weight:400;">
             <div class="container" style="margin-top:30px;">
-            <form class="cours-search">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="What do you want to learn today?	">
-                <div class="input-group-append">
-                  <button class="btn" type="submit">Search</button>
-                </div>
-              </div>
-            </form>
+
+            <div id="suggestProduct"></div>
             <div>
           </div>
           <!-- LAYER NR. 4 -->
@@ -187,7 +181,7 @@
             data-paddingright="[0,0,0,0]"
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
-            style="z-index: 5;background-color:rgba(2, 0, 11, 0.80);border-color:rgba(0, 0, 0, 0);border-width:0px;">
+            style="z-index: 5;background-color:rgba(2, 0, 11, 0.60);border-color:rgba(0, 0, 0, 0);border-width:0px;">
           </div>
 
           <!-- LAYER NR. 2 -->
@@ -198,7 +192,7 @@
             data-y="['top','top','top','top']"
             data-voffset="['250','250','250','240']"
             data-fontsize="['20','20','20','20']"
-            data-lineheight="['70','70','70','70']"
+            data-lineheight="['250','250','250','250']"
             data-width="full"
             data-height="none"
             data-whitespace="normal"
@@ -223,7 +217,7 @@
             data-voffset="['210','210','210','210']"
             data-width="none"
             data-height="none"
-            data-lineheight="['70','70','70','70']"
+            data-lineheight="['250','250','250','250']"
             data-whitespace="nowrap"
             data-type="text"
             data-responsive_offset="on"
@@ -259,14 +253,6 @@
             <div class="container" style="margin-top:30px;">
 
 
-            <form class="cours-search" >
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="What do you want to learn today?	">
-                <div class="input-group-append">
-                  <button class="btn" type="submit">Search</button>
-                </div>
-              </div>
-            </form>
             </div>
           </div>
 

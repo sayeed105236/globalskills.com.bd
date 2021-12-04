@@ -2,264 +2,217 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\UserEnrollment;
 use Illuminate\Http\Request;
-use PortWallet\Exceptions\PortWalletClientException;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Validator;
+use PortWallet\Exceptions\PortWalletException;
+use Session;
+
 use PortWallet\PortWallet;
 use PortWallet\PortWalletClient;
+use PortWallet\Exceptions\PortWalletClientException;
+
 
 class PortwalletController extends Controller
 {
-  private $api_url = '';
-  private $app_key = '';
-  private $secret_key = '';
-  private $authorization = '';
-  private $courses = '';
-  const $environment;
+    /**
+     * success response method.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    /*public function portwallet()
+    {
+        return view('portwallet');
+    }*/
+
+    /**
+     * success response method.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    /*public function PortwalletPost(Request $request)
+    {
+        Portwallet::setApiKey(env('STRIPE_SECRET'));
+        PortWalletClient::create ([
+                "amount" => 100 * 100,
+                "currency" => "bdt",
+                "source" => $request->stripeToken,
+                "description" => "Test payment from globalskills.com.bd"
+        ]);
+
+        Session::flash('success', 'Payment successful!');
+
+        return back();
+    }*/
+
+
+
+    /**
+     *
+     * $appKey: application key you have to
+     * generate form our sandbox panel
+     *
+     * $apiSecret: application secret key
+     * you have to generate form
+     * our sandbox panel
+     *
+     */
+
+
+    /**
+     * mode switching default "sandbox"
+     */
 
     public function __construct()
     {
-
-      if ($environment == "DEV") {
-			$this->api_url = 'https://api-sandbox.portwallet.com/payment/v2/ ';
-			$this->app_key = '23b844c80146b36df469b0cf63d5080e';
-			$this->secret_key = 'a017c8cadeb13d7a9a72ec902573c287';
-		} else {
-			$this->api_url = 'https://api.portwallet.com/payment/v2/invoice';
-			$this->app_key = 'fde409259497bab63ce09e133dbdf0d7';
-			$this->secret_key = '1bd2edd201a0f61832af2c15e4344724';
-		}
-
-		$this->authorization = "Authorization: Bearer " . base64_encode($this->app_key . ":" . md5($this->secret_key . time()));
-    }
-    public function checkout($from) {
-  if ($this->session->userdata('user_type') !== "USER" && $this->session->userdata('user_type') !== "ADMIN" && $this->session->userdata('user_type') !== "SUPER_ADMIN") {
-    redirect('/home/login');
-  } else {
-
-    $courses_in_string = '';
-    if(isset($this->session->userdata('checkout_info')['courses'])){
-      for ($i = 0; $i < count($this->session->userdata('checkout_info')['courses']); $i++) {
-        /* USD Currecny convertion code*/
-        if(get_user_country() == 'bd' || get_user_country() == 'BD'){
-          $amount_to_pay_now = $this->session->userdata('checkout_info')['courses'][$i]['amount_to_pay_now'];
-
-        }else{
-          $amount_to_pay_now = get_bdt_price($this->session->userdata('checkout_info')['courses'][$i]['amount_to_pay_now']);
-        }
-
-        // $courses_in_string .= $this->session->userdata('checkout_info')['courses'][$i]['title'] . ' ( ' . $this->session->userdata('checkout_info')['courses'][$i]['amount_to_pay_now'] . ' BDT )';
-        $courses_in_string .= $this->session->userdata('checkout_info')['courses'][$i]['title'] . ' ( ' . $amount_to_pay_now . ' BDT )';
-
-        if (($i + 1) < count($this->session->userdata('checkout_info')['courses'])) {
-          $courses_in_string .= ' , ';
-        }
-
-      }
+        session()->put('checkout', true);
+        $this->middleware('auth');
     }
 
-
-    $user= User::find($id);
-
-    /* Currency conversiion code*/
-
-      $total_amount_to_pay = ((float) $this->session->userdata('checkout_info')['total_amount_to_pay']);
+    public function index(Request $request){
 
 
-    // debug($total_amount_to_pay);
-    // exit;
-    $post = [
-      'order' => [
-        // 'amount' => (float) $this->session->userdata('checkout_info')['total_amount_to_pay'],
-        'amount' => $total_amount_to_pay,
-        'currency' => 'BDT',
-        'redirect_url' => site_url('portwallet/portwallet_verify_transaction/' . $from),
-      ],
-      'product' => [
-        'name' => "Course payment",
-        'description' => "Course payment for " . $courses_in_string,
-      ],
-      'billing' => [
-        'customer' => [
-          'name' => $this->session->userdata('name'),
-          'email' => $this->session->userdata('email'),
-          'phone' => (($user->phone == '') || (strlen($user->phone) <= 8)) ? '01766343434' : $user->phone,
-          'address' => [
-            'street' => 'Hayat Rose Park, Level 5, House No 16 Main Road, Bashundhara Residential Area',
-            'city' => 'Dhaka',
-            'state' => 'Dhaka',
-            'zipcode' => '1229',
-            'country' => 'BD',
-          ],
+        /*$validator = Validator::make($request->all(), [
+            'amount'    => 'required',
+            'email'     => 'required',
+            'name'      => 'required',
+            'phone'     => 'required',
         ],
-      ],
-    ];
+            [
+                //'course_id.unique' => ' Program name is already exist',
+            ]);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+            //return back()->withInput()->withErrors($validator->errors());
+        }*/
+        if (PortWallet::getApiMode() == "sandbox") {
 
-    // STart CURL
+            $this->api_url = 'https://api-sandbox.portwallet.com/payment/v2/ ';
+          //  $this->app_key = 'b0367cce4ca6fae035cec157c85c9d9e';
+            //$this->secret_key = '9cb4aea573d1336165311690cebb8875';
+            $this->app_key = '3ee2ab77858866db816aae7cff9c3e29';
+            $this->secret_key = '55ba34e33ec387bc61a8d17da221f115';
 
-    // $ch = curl_init('https://api.portwallet.com/payment/v2/invoice');
-
-    $ch = curl_init($this->api_url);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', $this->authorization));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
-
-    // execute!
-    $response = curl_exec($ch);
-
-    // close the connection, release resources used
-    curl_close($ch);
-    // END CURL;
-
-    $responseData = json_decode($response);
-    if ($responseData->result == "success") {
-      $this->session->set_userdata('portwallet_invoice_id', $responseData->data->invoice_id);
-      $this->session->set_userdata('portwallet_invoice_amount', $responseData->data->order->amount);
-
-
-      redirect($responseData->data->action->url);
-    } else {
-      if ($responseData->error->property == "billing.customer.phone") {
-        $this->session->set_flashdata('portwallet_error', 'Please save your valid phone number.');
-      } else {
-        $this->session->set_flashdata('portwallet_error', $responseData->error->explanation);
-      }
-
-      if ($from == 'shopping_cart') {
-
-        redirect(base_url('home/shopping_cart'));
-      } else {
-        // debug($responseData);
-        redirect(base_url('user/payment_history'));
-      }
-    }
-    // redirect($responseData->data->action->url);
-
-  }
-}
-
-public function portwallet_verify_transaction($from) {
-
-  if ($this->session->userdata('portwallet_invoice_id') === null) {
-    redirect(base_url('home/page_not_found'));
-  }
-
-  // echo $this->api_url . '/ipn/' . $this->session->userdata('portwallet_invoice_id') . '/' . $this->session->userdata('portwallet_invoice_amount'). "<br />";
-  // exit;
-  $ch = curl_init($this->api_url . '/ipn/' . $this->session->userdata('portwallet_invoice_id') . '/' . $this->session->userdata('portwallet_invoice_amount'));
-  curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', $this->authorization));
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  $response = curl_exec($ch);
-  curl_close($ch);
-
-  $responseData = json_decode($response);
-
-  if ($responseData->result === 'success') {
-    $current_time = date("Y-m-d H:i:s");
-    if ($responseData->data->transactions[0]->status === 'ACCEPTED') {
-      // debug($this->session->userdata('checkout_info')['courses']);
-
-      $transaction_table_data = array(
-        'invoice_id' => $responseData->data->invoice_id,
-        'amount' => $responseData->data->order->amount,
-        'status' => "ACCEPTED",
-        'created_at' => $current_time,
-      );
-
-      $transaction_insert_response = $this->crud_model->insert_into_transaction($transaction_table_data);
-
-      if ($transaction_insert_response["success"]) {
-
-        foreach ($this->session->userdata('checkout_info')['courses'] as $course) {
-
-          $enrollment_id = is_an_user_already_enrolled_in_a_course($this->session->userdata('user_id'), $course['id']);
-
-           /* Currency conversiion code*/
-           if(get_user_country() == 'bd' || get_user_country() == 'BD'){
-            $amount_to_pay = ($course['amount_to_pay']);
-           }else{
-            $amount_to_pay = get_bdt_price($course['amount_to_pay']);
-
-           }
-
-
-          if (!$enrollment_id) {
-            if (isset($course['coupon_id'])) {
-              $enrollment_response = $this->crud_model->enroll_an_user_in_a_course($this->session->userdata('user_id'), $course['id'], $course['coupon_id'], $amount_to_pay);
-
-            } else {
-              $enrollment_response = $this->crud_model->enroll_an_user_in_a_course($this->session->userdata('user_id'), $course['id']);
-
-            }
-
-            if ($enrollment_response['success']) {
-              $enrollment_id = $enrollment_response['enrolled_id'];
-            } else {
-              $this->session->set_flashdata('portwallet_error', 'Oops! something went wrong.');
-            }
-
-          }
-
-          /* Currency conversiion code*/
-          if(get_user_country() == 'bd' || get_user_country() == 'BD'){
-            $amount_to_pay_now = ($course['amount_to_pay_now']);
-          }else{
-            $amount_to_pay_now = get_bdt_price($course['amount_to_pay_now']);
-
-          }
-
-          if($responseData->data->order->amount < $amount_to_pay_now){
-            $enrollment_payment_data = array(
-              'invoice_id' => $responseData->data->invoice_id,
-              'payment_method' => "Portwallet",
-              'enrollment_id' => $enrollment_id,
-              'amount' => $responseData->data->order->amount,
-              'status' => "ACCEPTED",
-              'created_at' => $current_time,
-            );
-
-            $enrollment_payment_response = $this->crud_model->insert_into_enrollment_payment($enrollment_payment_data);
-            $this->session->set_flashdata('portwallet_error', 'Oops! your given amount and our course amount doesn"t match.please provide a valid amount.');
-          }else{
-            $enrollment_payment_data = array(
-              'invoice_id' => $responseData->data->invoice_id,
-              'payment_method' => "Portwallet",
-              'enrollment_id' => $enrollment_id,
-              'amount' => $amount_to_pay_now,
-              'status' => "ACCEPTED",
-              'created_at' => $current_time,
-            );
-
-            $enrollment_payment_response = $this->crud_model->insert_into_enrollment_payment($enrollment_payment_data);
-          }
-
-          // enrollment_payment - invoice_id, payment_method, enrollment_id, amount, status, created_at, last_modified
-
-
-
-          if (!$enrollment_payment_response['success']) {
-            $this->session->set_flashdata('portwallet_error', 'Oops! something went wrong.');
-          }
+        } else {
+            $this->api_url = 'https://api.portwallet.com/payment/v2/invoice';
+            $this->app_key = 'b0367cce4ca6fae035cec157c85c9d9e';
+            $this->secret_key = '9cb4aea573d1336165311690cebb8875';
+            //$this->app_key = '23b844c80146b36df469b0cf63d5080e';
+            //$this->secret_key = 'a017c8cadeb13d7a9a72ec902573c287';
 
         }
 
-      } else {
-        $this->session->set_flashdata('portwallet_error', "Failed to make transaction!");
-      }
+        PortWallet::setApiMode("live");
+//N.B.: API mode should be set first before creating an instance of PortWalletClient
 
-    } else {
-      $this->session->set_flashdata('portwallet_error', 'Payment failed!');
+        /**
+         * initiate the PortWallet client
+         */
+        //dd($this->app_key,$this->secret_key);
+        $portWallet = new PortWalletClient($this->app_key, $this->secret_key);
+        //dd($portWallet);
+        //$authorization = “Bearer “. base64_encode(APPKEY.”:”.md5(SECRETKEY.time()));
+//dd($portWallet);
+       /**
+        * Your data
+        */
+      //  dd($request->amount);
+       $data = array(
+           'order' => array(
+             //'amount' => 1,
+              'amount' => floatval($request->amount),
+               'currency' => 'BDT',
+              // 'redirect_url' => 'https://globalskills.com.bd/portwallet/portwallet_verify_transaction/shopping_cart',
+               'redirect_url' => URL::to('/portwallet/portwallet_verify_transaction/shopping_cart'),
+               'ipn_url' => 'http://www.yoursite.com/ipn',
+               'reference' => 'ABC123',
+               'validity' => 900,
+           ),
+           'product' => array(
+               'name' => $request->course_title,
+               'description' => 'Course Payment',
+           ),
+           'billing' => array(
+               'customer' => array(
+                   'name' => $request->name,
+                   'email' => $request->email,
+                   'phone' => $request->phone,
+                   'address' => array(
+                       'street' => 'Hayat Rose Park, Level 5, House No 16 Main Road, Bashundhara Residential Area',
+                        'city' => 'Dhaka',
+                       'state' => 'Dhaka',
+                       'zipcode' => 1229,
+                       'country' => 'BGD',
+                   ),
+               ),
+           ),
+           'discount' => array(
+               'enable' => 1,
+               'codes' => array(
+                   0 => 'Bengal 1',
+                   1 => 'Bengal 2',
+               ),
+           ),
+           'emi' => [
+               'enable' => 1,
+               'tenures' => [],
+           ]
+       );
+
+       try {
+
+           $invoice = $portWallet->invoice->create($data);
+
+           $paymentUrl = $invoice->getPaymentUrl();
+
+       } catch (InvalidArgumentException $ex) {
+           echo $ex->getMessage();
+       }catch (PortWalletException $ex) {
+           echo $ex->getMessage();
+       }
+
+        //return redirect($paymentUrl);
+        $notification=array(
+            'message'=>'Congratulations Course has been successfully Enrolled!!!',
+            'alert-type'=>'success'
+        );
+        return redirect($paymentUrl)->with($notification);
+   }
+
+    public function portwalletVerifyTransaction() {
+
+
+        if ($_GET['status'] == 'ACCEPTED') {
+            $cart_data= Cart::all();
+          //  dd(session()->get('cart');
+            foreach ($cart_data as $cart){
+
+
+                $data = new UserEnrollment();
+                $data->user_id          = $cart['user_id'];
+                $data->course_id        = $cart['course_id'];
+                $data->regular_price    = $_GET['amount'];
+                $data->access           = 100;
+                $data->created_by       = Auth::id();
+                $data->save();
+            }
+            $notification=array(
+                'message'=>'Congratulations Course has been successfully Enrolled!!!',
+                'alert-type'=>'success'
+            );
+            //session()->forget('cart');
+            Cart::truncate();
+            return redirect('/carts')->with($notification);
+
+        }
+
+
+
     }
 
-    if (!$this->session->flashdata('portwallet_error')) {
-      $this->session->set_flashdata('portwallet_success', 'Payment successful!');
-    }
 
-    if ($from == 'shopping_cart') {
-      redirect(base_url('home/shopping_cart?payment-status="successful"'));
-    } else {
-      redirect(base_url('user/payment_history'));
-    }
-  }
-  // debug($responseData);
-}
 }

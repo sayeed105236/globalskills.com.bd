@@ -14,7 +14,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-                <h1 class="text-white">Our Classroom Courses</h1>
+
      </div>
         </div>
     </div>
@@ -46,16 +46,17 @@
           <div class="widget widget_archive">
                             <h5 class="widget-title style-1">All Courses Categories</h5>
                             <ul>
-                                <li class="active"><a href="#">General</a></li>
+                                 <li class=""><a href="{{route('classroom-courses')}}">All Courses</a></li>
 
-                                @foreach($course_categories as $row)
-                                <li><a href="#">{{$row->mcategory_title}}</a></li>
-                                @endforeach
-                            </ul>
+                                 @foreach($course_categories as $row)
+                                 <li><a href="{{ url('/home/classroom_courses/'.$row->id) }}">{{$row->mcategory_title}}</a></li>
+                                 @endforeach
+                             </ul>
                         </div>
-          <div class="widget">
+                        <!-- <h1>Sidebar Images </h1> -->
+        <!--  <div class="widget">
             <a href="#"><img src="{{ asset('images/adv/adv.jpg')}}" alt=""/></a>
-          </div>
+          </div> -->
           <div class="widget recent-posts-entry widget-courses">
                             <h5 class="widget-title style-1">Recent Courses</h5>
                             <div class="widget-post-bx">
@@ -64,17 +65,17 @@
                                     <div class="ttr-post-media"> <img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" width="200" height="143" alt=""> </div>
                                     <div class="ttr-post-info">
                                         <div class="ttr-post-header">
-                                            <h6 class="post-title"><a href="/home/classroom/course_details/{{$row->id}}">{{$row->classroom_course_title}}</a></h6>
+                                            <h6 class="post-title"><a href="{{ url('home/classroom/course_details/'.$row->id.'/'.$row->classroom_slug) }}">{{Str::limit($row->classroom_course_title,18)}}</a></h6>
                                         </div>
                                         <div class="ttr-post-meta">
                                             <ul>
                                                 <li class="price">
 
-                                                  <h5>{{$row->exam_fee}}৳</h5>
+                                                  <del>{{$row->training_fee}}৳</del>
                                                 </li>
                                                 <li class="price">
 
-                                                  <h5>{{$row->training_fee}}৳</h5>
+                                                  <h5>{{$row->exam_fee}}৳</h5>
                                                 </li>
                                             </ul>
                                         </div>
@@ -94,24 +95,40 @@
               <div class="cours-bx">
                 <div class="action-box">
                   <img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" alt="">
-                  @include('frontend.partials.cart_button')
+
                 </div>
                 <div class="info-bx text-center">
-                  <h5><a href="/home/classroom/course_details/{{$row->id}}">{{$row->classroom_course_title}}</a></h5>
+                  <h5><a href="{{ url('home/classroom/course_details/'.$row->id.'/'.$row->classroom_slug) }}">{{Str::limit($row->classroom_course_title,18)}}</a></h5>
                   <span>{{$row->course_category->mcategory_title}}</span>
                 </div>
 
-                  <div class="cours-more-info">
-                    <div class="review">
-                      <span></span>
-                      <h7>Exam Fee</h7>
-                    <h5>{{$row->exam_fee}}৳</h5>
-                    </div>
-                    <div class="price">
-                        <h7>Training Fee</h7>
-                      <h5>{{$row->training_fee}}৳</h5>
-                    </div>
+                <div class="cours-more-info">
+                  <div class="review">
+                    <span>Review</span>
+                    <ul class="cours-star">
+                      @if (App\Models\CourseReview::where('classroomcourse_id',$row->id)->first())
+
+
+                      @php
+                         $courseReview=App\Models\CourseReview::where('classroomcourse_id',$row->id)->where('status','approve')->latest()->get();
+                        $rating = App\Models\CourseReview::where('classroomcourse_id',$row->id)->where('status','approve')->avg('rating');
+                        $avgRating = number_format($rating,1);
+                      @endphp
+                      @for ($i =1 ; $i <= 5 ; $i++)
+                      <span style="color: red" class="fa fa-star{{ ($i <= $avgRating) ? '' : '-empty' }}"></span>
+                    @endfor
+
+                    @else
+                    <span class="text-danger">No Review</span>
+                    @endif
+
+                    </ul>
                   </div>
+                  <div class="price">
+                    <del>{{$row->training_fee}}৳</del>
+                    <h5 style="color:#ca2128;">{{$row->exam_fee}}৳</h5>
+                  </div>
+                </div>
 
 
               </div>

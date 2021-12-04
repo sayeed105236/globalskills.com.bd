@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\MainCategory;
 use App\Models\CourseCategory;
 use App\Models\ClassroomInfo;
+use App\Models\ClassroomTrainer;
 
 class ClassroomCourse extends Model
 {
@@ -24,4 +25,8 @@ class ClassroomCourse extends Model
   {
     return $this->belongsTo(ClassroomInfo::class, 'classroom_course_id','id');
   }
+  public function trainer(){
+
+    return $this->belongsTo(ClassroomTrainer::class,'trainer_id');
+   }
 }

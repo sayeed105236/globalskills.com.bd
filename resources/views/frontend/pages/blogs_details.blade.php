@@ -13,7 +13,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-                <h1 class="text-white">Blog Details</h1>
+
     </div>
         </div>
     </div>
@@ -43,7 +43,7 @@
                 <li><a href="#"><i class="fa fa-calendar"></i>May 14 2019</a></li>
                 <li><a href="#"><i class="fa fa-comments-o"></i>10 Comment</a></li>
               </ul>
-              <h5 class="post-title" style="color:#ca2128;">Title</h5>
+              <h1 class="post-title" style="color:#ca2128;">Title</h1>
               <p>Short Description</p>
 
               <h5 class="post-title"style="color:#ca2128;">Sub Title</h5>
@@ -55,7 +55,7 @@
                 <div class="col-lg-6 col-xl-6">
                   <div class="service-bx">
                     <div class="action-box">
-                      <img src="{{ asset('images/blog/default/thum1.jpg')}}" alt="">
+                    <iframe width="350" height="210" src="https://www.youtube.com/embed/wjZTzFAmQeQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                     </div>
 
@@ -178,42 +178,21 @@
             <div class="widget recent-posts-entry">
               <h6 class="widget-title">Recent Posts</h6>
               <div class="widget-post-bx">
+                @foreach($lts_blogs as $row)
                 <div class="widget-post clearfix">
-                  <div class="ttr-post-media"> <img src="{{ asset('images/blog/recent-blog/pic1.jpg')}}" width="200" height="143" alt=""> </div>
+                  <div class="ttr-post-media"> <img src="{{asset('storage/blogs/' .$row->blogs_image)}}" width="200" height="143" alt=""> </div>
                   <div class="ttr-post-info">
                     <div class="ttr-post-header">
-                      <h6 class="post-title"><a href="blog-details.html">This Story Behind Education Will Haunt You Forever.</a></h6>
+                      <h6 class="post-title"><a href="{{ url('blogs_details/'.$row->id.'/'.$row->blogs_slug) }}">{{$row->blogs_title}}</a></h6>
                     </div>
                     <ul class="media-post">
-                      <li><a href="#"><i class="fa fa-calendar"></i>Oct 23 2019</a></li>
-                      <li><a href="#"><i class="fa fa-comments-o"></i>15 Comment</a></li>
+                      <li><a href="#"><i class="fa fa-calendar"></i>{{$row->created_at}}</a></li>
+
                     </ul>
                   </div>
                 </div>
-                <div class="widget-post clearfix">
-                  <div class="ttr-post-media"> <img src="{{ asset('images/blog/recent-blog/pic2.jpg')}}" width="200" height="160" alt=""> </div>
-                  <div class="ttr-post-info">
-                    <div class="ttr-post-header">
-                      <h6 class="post-title"><a href="blog-details.html">What Will Education Be Like In The Next 50 Years?</a></h6>
-                    </div>
-                    <ul class="media-post">
-                      <li><a href="#"><i class="fa fa-calendar"></i>May 14 2019</a></li>
-                      <li><a href="#"><i class="fa fa-comments-o"></i>23 Comment</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="widget-post clearfix">
-                  <div class="ttr-post-media"> <img src="{{ asset('images/blog/recent-blog/pic3.jpg')}}" width="200" height="160" alt=""> </div>
-                  <div class="ttr-post-info">
-                    <div class="ttr-post-header">
-                      <h6 class="post-title"><a href="blog-details.html">Eliminate Your Fears And Doubts About Education.</a></h6>
-                    </div>
-                    <ul class="media-post">
-                      <li><a href="#"><i class="fa fa-calendar"></i>June 12 2019</a></li>
-                      <li><a href="#"><i class="fa fa-comments-o"></i>27 Comment</a></li>
-                    </ul>
-                  </div>
-                </div>
+                @endforeach
+
               </div>
             </div>
           <!--  <div class="widget widget-newslatter">

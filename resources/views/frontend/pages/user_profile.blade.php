@@ -13,7 +13,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-                <h1 class="text-white">User Profile</h1>
+
      </div>
         </div>
     </div>
@@ -44,10 +44,10 @@
             </div>
             <div class="profile-social">
               <ul class="list-inline m-a0">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
               </ul>
             </div>
             <div class="profile-tabnav">
@@ -55,12 +55,14 @@
                 <li class="nav-item">
                   <a class="nav-link active" data-toggle="tab" href="#courses"><i class="ti-book"></i>Courses</a>
                 </li>
-                <li class="nav-item">
+              <!--  <li class="nav-item">
                   <a class="nav-link" data-toggle="tab" href="#quiz-results"><i class="ti-bookmark-alt"></i>Quiz Results </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#edit-profile"><i class="ti-pencil-alt"></i>Edit Profile</a>
-                </li>
+                </li>-->
+              <!--  <li class="nav-item">
+                  <a class="nav-link"  href="#edit-profile"><i class="ti-pencil-alt"></i>Edit Profile</a>
+                </li>-->
+                <li><a class="nav-link"  href="/user_profile/{{Auth::user()->id}}"> <i class="ti-pencil-alt"></i>Edit Profile</li></a>
+
                 <li class="nav-item">
                   <a class="nav-link" data-toggle="tab" href="#change-password"><i class="ti-lock"></i>Change Password</a>
                 </li>
@@ -75,282 +77,39 @@
                 <div class="profile-head">
                   <h3>My Courses</h3>
                   <div class="feature-filters style1 ml-auto">
-                    <ul class="filters" data-toggle="buttons">
-                      <li data-filter="" class="btn active">
-                        <input type="radio">
-                        <a href="#"><span>All</span></a>
-                      </li>
-                      <li data-filter="publish" class="btn">
-                        <input type="radio">
-                        <a href="#"><span>Publish</span></a>
-                      </li>
-                      <li data-filter="pending" class="btn">
-                        <input type="radio">
-                        <a href="#"><span>Pending</span></a>
-                      </li>
-                    </ul>
+
                   </div>
                 </div>
                 <div class="courses-filter">
                   <div class="clearfix">
-                    <ul id="masonry" class="ttr-gallery-listing magnific-image row">
-                      <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 publish">
+                    <ul class="ttr-gallery-listing magnific-image row">
+                      @foreach($users->user_enrollments as $row)
+
+                      <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6">
                         <div class="cours-bx">
                           <div class="action-box">
-                            <img src="{{ asset('images/courses/pic1.jpg')}}" alt="">
-                            <a href="#" class="btn">Read More</a>
+                            <img src="{{asset('storage/courses/'.$row->course->course_image)}}" alt="" height="420"
+                              width="700" alt="">
+                            <a href="/home/course_details/view/{{$row->course->id}}/{{$row->course->elearning_slug}}" class="btn"><i class="fa fa-play-circle"></i></a>
                           </div>
                           <div class="info-bx text-center">
-                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                            <span>Programming</span>
+                            <h5><a href="/home/course_details/view/{{$row->course->id}}/{{$row->course->elearning_slug}}">{{Str::limit($row->course->course_title,18)}}</a></h5>
+                            <span>{{$row->course->course_category->mcategory_title}}</span>
                           </div>
-                          <div class="cours-more-info">
-                            <div class="review">
-                              <span>3 Review</span>
-                              <ul class="cours-star">
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                              </ul>
-                            </div>
-                            <div class="price">
-                              <del>$190</del>
-                              <h5>$120</h5>
-                            </div>
+                          <div class="cours-more-info d-flex justify-content-center">
+
+                            <a class="btn btn-primary" href="/home/course_details/view/{{$row->course->id}}/{{$row->course->elearning_slug}}"><i class="fa fa-play-circle"></i></a>
                           </div>
                         </div>
                       </li>
-                      <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 pending">
-                        <div class="cours-bx">
-                          <div class="action-box">
-                            <img src="{{ asset('images/courses/pic2.jpg')}}" alt="">
-                            <a href="#" class="btn">Read More</a>
-                          </div>
-                          <div class="info-bx text-center">
-                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                            <span>Programming</span>
-                          </div>
-                          <div class="cours-more-info">
-                            <div class="review">
-                              <span>3 Review</span>
-                              <ul class="cours-star">
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                              </ul>
-                            </div>
-                            <div class="price">
-                              <del>$190</del>
-                              <h5>$120</h5>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 publish">
-                        <div class="cours-bx">
-                          <div class="action-box">
-                            <img src="{{ asset('images/courses/pic3.jpg')}}" alt="">
-                            <a href="#" class="btn">Read More</a>
-                          </div>
-                          <div class="info-bx text-center">
-                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                            <span>Programming</span>
-                          </div>
-                          <div class="cours-more-info">
-                            <div class="review">
-                              <span>3 Review</span>
-                              <ul class="cours-star">
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                              </ul>
-                            </div>
-                            <div class="price">
-                              <del>$190</del>
-                              <h5>$120</h5>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 pending">
-                        <div class="cours-bx">
-                          <div class="action-box">
-                            <img src="{{ asset('images/courses/pic4.jpg')}}" alt="">
-                            <a href="#" class="btn">Read More</a>
-                          </div>
-                          <div class="info-bx text-center">
-                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                            <span>Programming</span>
-                          </div>
-                          <div class="cours-more-info">
-                            <div class="review">
-                              <span>3 Review</span>
-                              <ul class="cours-star">
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                              </ul>
-                            </div>
-                            <div class="price">
-                              <del>$190</del>
-                              <h5>$120</h5>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 publish">
-                        <div class="cours-bx">
-                          <div class="action-box">
-                            <img src="{{ asset('images/courses/pic5.jpg')}}" alt="">
-                            <a href="#" class="btn">Read More</a>
-                          </div>
-                          <div class="info-bx text-center">
-                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                            <span>Programming</span>
-                          </div>
-                          <div class="cours-more-info">
-                            <div class="review">
-                              <span>3 Review</span>
-                              <ul class="cours-star">
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                              </ul>
-                            </div>
-                            <div class="price">
-                              <del>$190</del>
-                              <h5>$120</h5>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 pending">
-                        <div class="cours-bx">
-                          <div class="action-box">
-                            <img src="{{ asset('images/courses/pic6.jpg')}}" alt="">
-                            <a href="#" class="btn">Read More</a>
-                          </div>
-                          <div class="info-bx text-center">
-                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                            <span>Programming</span>
-                          </div>
-                          <div class="cours-more-info">
-                            <div class="review">
-                              <span>3 Review</span>
-                              <ul class="cours-star">
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                              </ul>
-                            </div>
-                            <div class="price">
-                              <del>$190</del>
-                              <h5>$120</h5>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 publish">
-                        <div class="cours-bx">
-                          <div class="action-box">
-                            <img src="{{ asset('images/courses/pic7.jpg')}}" alt="">
-                            <a href="#" class="btn">Read More</a>
-                          </div>
-                          <div class="info-bx text-center">
-                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                            <span>Programming</span>
-                          </div>
-                          <div class="cours-more-info">
-                            <div class="review">
-                              <span>3 Review</span>
-                              <ul class="cours-star">
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                              </ul>
-                            </div>
-                            <div class="price">
-                              <del>$190</del>
-                              <h5>$120</h5>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 book">
-                        <div class="cours-bx">
-                          <div class="action-box">
-                            <img src="{{ asset('images/courses/pic8.jpg')}}" alt="">
-                            <a href="#" class="btn">Read More</a>
-                          </div>
-                          <div class="info-bx text-center">
-                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                            <span>Programming</span>
-                          </div>
-                          <div class="cours-more-info">
-                            <div class="review">
-                              <span>3 Review</span>
-                              <ul class="cours-star">
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                              </ul>
-                            </div>
-                            <div class="price">
-                              <del>$190</del>
-                              <h5>$120</h5>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 publish">
-                        <div class="cours-bx">
-                          <div class="action-box">
-                            <img src="{{ asset('images/courses/pic9.jpg')}}" alt="">
-                            <a href="#" class="btn">Read More</a>
-                          </div>
-                          <div class="info-bx text-center">
-                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                            <span>Programming</span>
-                          </div>
-                          <div class="cours-more-info">
-                            <div class="review">
-                              <span>3 Review</span>
-                              <ul class="cours-star">
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li class="active"><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                              </ul>
-                            </div>
-                            <div class="price">
-                              <del>$190</del>
-                              <h5>$120</h5>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
+                      @endforeach
+
+
                     </ul>
                   </div>
                 </div>
               </div>
-              <div class="tab-pane" id="quiz-results">
+            <!--<div class="tab-pane" id="quiz-results">
                 <div class="profile-head">
                   <h3>Quiz Results</h3>
                 </div>
@@ -380,7 +139,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>-->
               <div class="tab-pane" id="edit-profile">
                 <div class="profile-head">
                   <h3>Edit Profile</h3>
@@ -497,47 +256,7 @@
                   </div>
                 </form>
               </div>
-              <div class="tab-pane" id="change-password">
-                <div class="profile-head">
-                  <h3>Change Password</h3>
-                </div>
-                <form class="edit-profile">
-                  <div class="">
-                    <div class="form-group row">
-                      <div class="col-12 col-sm-8 col-md-8 col-lg-9 ml-auto">
-                        <h3>Password</h3>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-4 col-md-4 col-lg-3 col-form-label">Current Password</label>
-                      <div class="col-12 col-sm-8 col-md-8 col-lg-7">
-                        <input class="form-control" type="password" value="">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-4 col-md-4 col-lg-3 col-form-label">New Password</label>
-                      <div class="col-12 col-sm-8 col-md-8 col-lg-7">
-                        <input class="form-control" type="password" value="">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-12 col-sm-4 col-md-4 col-lg-3 col-form-label">Re Type New Password</label>
-                      <div class="col-12 col-sm-8 col-md-8 col-lg-7">
-                        <input class="form-control" type="password" value="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12 col-sm-4 col-md-4 col-lg-3">
-                    </div>
-                    <div class="col-12 col-sm-8 col-md-8 col-lg-7">
-                      <button type="reset" class="btn">Save changes</button>
-                      <button type="reset" class="btn-secondry">Cancel</button>
-                    </div>
-                  </div>
-
-                </form>
-              </div>
+            @include('frontend.users.changepassword')
             </div>
           </div>
         </div>

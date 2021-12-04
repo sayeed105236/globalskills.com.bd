@@ -25,19 +25,26 @@
           <h4 class="card-title">E-Learning Courses</h4>
           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#CourseAddModal">Add</a>
         </div>
-        @if(Session::has('category_added'))
+        @if(Session::has('course_added'))
         <div class="alert alert-success" role="alert">
 
           <div class="alert-body">
-            {{Session::get('category_added')}}
+            {{Session::get('course_added')}}
           </div>
         </div>
-        @endif
-        @if(Session::has('category_updated'))
+
+        @elseif(Session::has('course_updated'))
         <div class="alert alert-success" role="alert">
 
           <div class="alert-body">
-            {{Session::get('category_updated')}}
+            {{Session::get('course_updated')}}
+          </div>
+        </div>
+        @elseif(Session::has('course_deleted'))
+        <div class="alert alert-danger" role="alert">
+
+          <div class="alert-body">
+            {{Session::get('course_deleted')}}
           </div>
         </div>
         @endif
@@ -59,6 +66,11 @@
                     <div class="form-group">
                       <label for="categorytitle">Course Title</label>
                       <input type="text" class="form-control" name="course_title" aria-describedby="categorytitle" placeholder="Enter title">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="categorytitle">Accredation Name (If Exists)</label>
+                      <input type="text" class="form-control" name="accredation_name" aria-describedby="categorytitle" placeholder="Enter title">
 
                     </div>
                     <div class="form-group">
@@ -104,6 +116,20 @@
                       <input type="number" class="form-control" name="sale_price" aria-describedby="sale_price" placeholder="Enter Sale Price">
 
                     </div>
+                    <div class="form-group">
+                      <label for="sale_price">Preview Video ID</label>
+                      <input type="text" class="form-control" name="preview_id" aria-describedby="sale_price" placeholder="Enter Preview ID">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="custom select">Preview Video Type</label>
+                      <select class="form-control" name="video_type">
+
+                        <option value="1">Vimeo</option>
+                        <option value="0">Youtube</option>
+
+                      </select>
+                    </div>
 
                     <div class="form-group">
                       <label for="custom select">Status</label>
@@ -127,7 +153,7 @@
           </div>
         </div>
         <div class="table table-responsive">
-          <table class="table table-bordered" id="course_table">
+          <table class="table table-bordered" id="course_list">
             <thead>
               <tr>
                 <th>
@@ -140,6 +166,7 @@
                 <th>Course Category</th>
                 <th>Regular Price</th>
                 <th>Sale price</th>
+                <th>Preview ID</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
@@ -187,6 +214,7 @@
                 </td>
                 <td>{{$row->regular_price}}৳</td>
                 <td>{{$row->sale_price}}৳</td>
+                <td>{{ $row->preview_id }}</td>
 
 
                 </td>
@@ -200,8 +228,9 @@
                   </td>
                 <td>
                   <a href="/admin/home/courses/course_overviews/{{$row->id}}"><i class="fas fa-file-upload"></i></a>
-                  <a href="/admin/home/courses/edit/{{$row->id}}"><i class="fas fa-edit"></i></a>
-                  <a href="/admin/home/courses/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
+                  <a href="#" data-toggle="modal" data-target="#CourseEditModal{{$row->id}}"><i class="fas fa-edit"></i></a>
+                  <a id="delete" href="/admin/home/courses/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
+                  @include('backend.modals.courseeditmodal')
 
                 </td>
               </tr>
@@ -216,7 +245,22 @@
 
 </div>
 
+<script>
+  $(function(){
+    'use strict';
 
+    $('#course_list').DataTable({
+      responsive: false,
+      language: {
+        searchPlaceholder: 'Search...',
+        sSearch: '',
+        lengthMenu: '_MENU_ ',
+      }
+    });
+
+
+  });
+</script>
 
 
 @endsection

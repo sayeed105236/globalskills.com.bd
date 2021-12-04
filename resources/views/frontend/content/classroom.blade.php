@@ -26,7 +26,7 @@
       <div class="item" >
         <div class="cours-bx">
           <div class="action-box">
-            <img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" alt="">
+            <a href="{{ url('home/classroom/course_details/'.$row->id.'/'.$row->classroom_slug) }}"><img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" alt=""></a>
             <!--<form class="hidden" action="{{route('add-carts')}}" method="post">
               @csrf
               <input type="hidden" name="classroom_course_id" value="{{$row->id}}">
@@ -35,24 +35,34 @@
             </form>-->
           </div>
           <div class="info-bx text-center">
-            <h5><a href="/home/classroom/course_details/{{$row->id}}">{{$row->classroom_course_title}}</a></h5>
+            <h5><a href="{{ url('home/classroom/course_details/'.$row->id.'/'.$row->classroom_slug) }}">{{Str::limit($row->classroom_course_title,18)}}</a></h5>
             <span>{{$row->course_category->mcategory_title}}</span>
           </div>
           <div class="cours-more-info">
             <div class="review">
               <span>Review</span>
               <ul class="cours-star">
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
-                <li class="active"><i class="fa fa-star"></i></li>
+                @if (App\Models\CourseReview::where('classroomcourse_id',$row->id)->first())
+
+
+                @php
+                   $courseReview=App\Models\CourseReview::where('classroomcourse_id',$row->id)->where('status','approve')->latest()->get();
+                  $rating = App\Models\CourseReview::where('classroomcourse_id',$row->id)->where('status','approve')->avg('rating');
+                  $avgRating = number_format($rating,1);
+                @endphp
+                @for ($i =1 ; $i <= 5 ; $i++)
+                <span style="color: red" class="fa fa-star{{ ($i <= $avgRating) ? '' : '-empty' }}"></span>
+              @endfor
+
+              @else
+              <span class="text-danger">No Review</span>
+              @endif
 
               </ul>
             </div>
             <div class="price">
-              <del>{{$row->exam_fee}}৳</del>
-              <h5 style="color:#ca2128;">{{$row->training_fee}}৳</h5>
+              <del>{{$row->training_fee}}৳</del>
+              <h5 style="color:#ca2128;">{{$row->exam_fee}}৳</h5>
             </div>
           </div>
         </div>

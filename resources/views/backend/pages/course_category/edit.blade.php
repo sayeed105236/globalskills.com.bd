@@ -31,9 +31,6 @@
     </div>
 
   </div>
-
-
-
 </div>
 <div class="modal fade" id="CategoryEditModal" tabindex="-1" role="dialog" aria-labelledby="CategoryEditModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -50,7 +47,7 @@
           <input type="hidden" name="id" value="{{$course_category->id}}">
             <div class="form-group">
               <label for="categorytitle">Category Title</label>
-              <input type="text" class="form-control" name="mcategory_title" aria-describedby="categorytitle" value="{{$course_category->mcategory_title}}" placeholder="Enter title">
+              <input data-validation="required" type="text" class="form-control" name="mcategory_title" aria-describedby="categorytitle" value="{{$course_category->mcategory_title}}" placeholder="Enter title">
 
             </div>
 

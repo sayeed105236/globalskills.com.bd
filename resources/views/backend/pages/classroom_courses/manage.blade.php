@@ -42,6 +42,15 @@
           </div>
         </div>
 
+
+        @elseif(Session::has('course_updated'))
+        <div class="alert alert-success" role="alert">
+
+          <div class="alert-body">
+            {{Session::get('course_updated')}}
+          </div>
+        </div>
+
         @endif
 
 
@@ -51,7 +60,7 @@
         <!-- Modal -->
 
         <div class="table table-responsive">
-          <table class="table table-bordered" id="course_table">
+          <table class="table table-bordered" id="classroom_course_list">
             <thead>
               <tr>
                 <th>
@@ -108,8 +117,8 @@
                   <span class="font-weight-bold"> {{$row->course_category->mcategory_title}}</span>
                 </td>
 
-                <td>{{$row->exam_fee}}৳</td>
                 <td>{{$row->training_fee}}৳</td>
+                <td>{{$row->exam_fee}}৳</td>
 
 
                 </td>
@@ -123,9 +132,10 @@
                   </td>
                 <td>
                   <a href="/admin/home/classroom/courses/course_details/{{$row->id}}"><i class="fas fa-file-upload"></i></a>
-                  <a href="/admin/home/classroom/courses/edit/{{$row->id}}"><i class="fas fa-edit"></i></a>
+                  <a href="#" data-toggle="modal" data-target="#ClassroomCourseEditModal{{$row->id}}" ><i class="fas fa-edit"></i></a>
 
-                  <a href="/admin/home/classroom/courses/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
+                  <a id="delete" href="/admin/home/classroom/courses/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
+                  @include('backend.modals.classroom_courseeditmodal')
 
                 </td>
               </tr>
@@ -133,14 +143,26 @@
             </tbody>
           </table>
         </div>
-        <div class="col-lg-12 m-b20">
-
-            {{$classroom_courses->links('frontend.partials.pagination')}}
-
-        </div>
+      
       </div>
     </div>
   </div>
 
 </div>
+<script>
+  $(function(){
+    'use strict';
+
+    $('#classroom_course_list').DataTable({
+      responsive: true,
+      language: {
+        searchPlaceholder: 'Search...',
+        sSearch: '',
+        lengthMenu: '_MENU_ ',
+      }
+    });
+
+
+  });
+</script>
 @endsection

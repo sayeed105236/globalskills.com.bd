@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="LessonAddModal">Add Course</h5>
+                <h5 class="modal-title" id="LessonAddModal">Add Lesson</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -34,6 +34,12 @@
 
                     </div>
                     <div class="form-group">
+                        <label for="vimeo_id">Youtube Url</label>
+                        <input type="text" class="form-control" name="youtube_url" aria-describedby="youtube_url"
+                               placeholder="Youtube Url">
+
+                    </div>
+                    <div class="form-group">
                         <label for="lesson_title">Lesson Title</label>
                         <input type="text" class="form-control" name="lesson_title" aria-describedby="lesson_title"
                                placeholder="Enter Lesson name">
@@ -41,14 +47,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="custom select">Preview</label>
-                        <select class="form-control" name="preview">
-                            <option label="Choose"></option>
+                 <label for="custom select">Preview</label>
+                 <select class="form-control" name="preview">
+                     <option label="Choose"></option>
 
-                            <option value="Preview">Preview</option>
-                            <option value="Not Preview">Not Preview</option>
-                        </select>
-                    </div>
+                     <option value="1">Preview</option>
+                     <option value="0">Not Preview</option>
+                 </select>
+             </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Lesson Files</label>
                         <input type="file" name="file" class="form-control-file" id="files"

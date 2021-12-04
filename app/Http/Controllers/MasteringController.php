@@ -12,4 +12,10 @@ class MasteringController extends Controller
     return view('frontend.pages.index');
 
   }
+  public function congrats()
+  {
+
+    return view('frontend.pages.congratulations');
+
+  }
 }

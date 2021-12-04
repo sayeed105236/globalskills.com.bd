@@ -17,8 +17,12 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->integer('course_category_id');
             $table->integer('main_category_id');
+            $table->string('preview_id')->nullable();
+            $table->integer('video_type')->nullable();
+            $table->string('accredation_name')->nullable();
             $table->string('course_image');
             $table->string('course_title');
+            $table->string('elearning_slug')->nullable();
             $table->integer('regular_price');
             $table->integer('sale_price');
             $table->boolean('status')->default(1);

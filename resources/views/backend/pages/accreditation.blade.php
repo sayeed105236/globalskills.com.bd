@@ -99,7 +99,7 @@
                 <td>
 
 
-                  <a href="/admin/home/accreditation/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
+                  <a id="delete" href="/admin/home/accreditation/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
 
                 </td>
               </tr>

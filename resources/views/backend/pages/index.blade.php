@@ -105,8 +105,13 @@
           <span class="wc-des">
             Joined New User
           </span>
+          <?php
+          $users=App\Models\User::all();
+
+           ?>
           <span class="wc-stats counter">
-            350
+
+            {{count($users)}}
           </span>
           <div class="progress wc-progress">
             <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>

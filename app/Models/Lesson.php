@@ -10,7 +10,7 @@ use App\Models\Section;
 class Lesson extends Model
 {
     use HasFactory;
-    use HasFactory;
+  
 
     protected $table ="lessons";
     public function course(){

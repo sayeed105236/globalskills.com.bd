@@ -8,9 +8,9 @@
         </div>
         <div class="pt-social-link">
           <ul class="list-inline m-a0">
-            <li><a href="https://www.facebook.com/globalskillsbd" class="btn-link"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="https://twitter.com/gsdabd?lang=en" class="btn-link"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://www.linkedin.com/company/globalskillsbd" class="btn-link"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://www.facebook.com/globalskillsbd" class="btn-link"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://twitter.com/gsdabd?lang=en" class="btn-link"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/globalskillsbd" class="btn-link"><i class="fab fa-linkedin"></i></a></li>
 
           </ul>
         </div>
@@ -48,6 +48,7 @@
                 <li><a href="{{route('about')}}">About</a></li>
                 <li><a href="{{route('faq')}}">FAQs</a></li>
                 <li><a href="{{route('contact')}}">Contact</a></li>
+
               </ul>
             </div>
           </div>
@@ -56,7 +57,8 @@
               <h5 class="footer-title">Get In Touch</h5>
               <ul>
 
-                <li><a href="#">Blog</a></li>
+                <li><a href="{{route('all-blogs')}}">Blog</a></li>
+                  <li><a href="{{route('certificate-request')}}">Request for Certificate</a></li>
 
 
             </div>
@@ -76,16 +78,12 @@
                 </div>
       <div class="col-12 col-lg-3 col-md-5 col-sm-12 footer-col-4">
                     <div class="widget widget_gallery gallery-grid-4">
-                        <h5 class="footer-title">Our Gallery</h5>
-                        <ul class="magnific-image">
-            <li><a href="{{ asset('images/gallery/1.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/1.jpg')}}" alt=""></a></li>
-            <li><a href="{{ asset('images/gallery/2.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/2.jpg')}}" alt=""></a></li>
-            <li><a href="{{ asset('images/gallery/3.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/3.jpg')}}" alt=""></a></li>
-            <li><a href="{{ asset('images/gallery/4.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/4.jpg')}}" alt=""></a></li>
-            <li><a href="{{ asset('images/gallery/5.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/5.jpg')}}" alt=""></a></li>
-            <li><a href="{{ asset('images/gallery/6.jpg')}}" class="magnific-anchor"><img src="{{ asset('images/gallery/6.jpg')}}" alt=""></a></li>
+                        <h5 class="footer-title">Our Location</h5>
 
-          </ul>
+
+
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.1664037741634!2d90.42673481498255!3d23.812681084558736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c782948ffbf9%3A0xe43c376a71bfb570!2zR2xvYmFsIFNraWxscyBEZXZlbG9wbWVudCBBZ2VuY3kg4KaX4KeN4Kay4KeL4Kas4Ka-4KayIOCmuOCnjeCmleCmv-CmsuCmuCDgpqHgp4fgpq3gp4fgprLgpqrgpq7gp4fgpqjgp43gpp8g4KaP4Kac4KeH4Kao4KeN4Ka44Ka_!5e0!3m2!1sbn!2sbd!4v1632647227179!5m2!1sbn!2sbd" width="250" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
                     </div>
                 </div>
             </div>
