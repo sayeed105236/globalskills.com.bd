@@ -20,7 +20,13 @@
 
 <!-- External JavaScripts -->
 @include('backend.partials.scripts')
+<script>
+        $('.select2-show-search').select2({
+          minimumResultsForSearch: ''
+        });
+    </script>
 </body>
+
 
 <!-- Mirrored from educhamp.themetrades.com/demo/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:09:05 GMT -->
 </html>

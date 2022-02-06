@@ -34,6 +34,13 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CourseReviewController;
 use App\Http\Controllers\ReviewFromAdminController;
 use App\Http\Controllers\TrainerController;
+use App\Http\Controllers\ExpertController;
+use App\Http\Controllers\MocktestController;
+use App\Http\Controllers\TopicController;
+use App\Http\Controllers\ResultsController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\QuestionsOptionsController;
+
 use App\Http\Controllers\UserRequestCertificateController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
@@ -73,6 +80,7 @@ Route::get('/admin/certificate-request-approve/{id}', [UserRequestCertificateCon
 
 //Route::get('/certificate', [AboutController::class,'certificate'])->name('about');
 Route::get('/events', [EventController::class,'index'])->name('event');
+Route::get('/our_experts', [FrontendController::class,'our_experts'])->name('all-experts');
 Route::get('/event_details/{id}', [EventController::class,'event_details']);
 Route::get('/submit', [PaymentController::class,'submit']);
 
@@ -345,6 +353,59 @@ Route::get('/admin/home/download-pdf/{id}', [UserRequestCertificateController::c
 Route::get('/admin/faqs', [FaqController::class,'create'])->name('faqs')->middleware('is_admin');
 Route::post('/admin/faqs/store', [FaqController::class,'store'])->name('store')->middleware('is_admin');
 Route::get('/admin/delete-faq/{faq_id}', [FaqController::class,'deleteFaq'])->middleware('is_admin');
+Route::get('/admin/home/experts', [ExpertController::class,'Manage'])->name('experts')->middleware('is_admin');
+Route::post('/admin/home/experts/store', [ExpertController::class, 'storeExpert'])->name('store-expert')->
+middleware('is_admin');
+Route::post('/admin/home/experts/update', [ExpertController::class, 'updateExpert'])->name('update-expert')->
+middleware('is_admin');
+Route::get('/admin/experts/delete/{id}', [ExpertController::class,'deleteExpert'])->middleware('is_admin');
+//////////////////////=====================Quiz Route====================////////////////////////////
+
+Route::get('mocktest/topics/view/{id}', [MocktestController::class,'quizView'])->name('course-view')->middleware('is_admin');
+
+Route::get('/admin/subcategory/ajax/{cat_id}', [TopicController::class, 'getSubCat'])->middleware('is_admin');
+
+Route::get('admin/topic/create', [TopicController::class,'create'])->name('admin-topic')->middleware('is_admin');
+Route::post('admin/topic/store', [TopicController::class,'store'])->name('topics-store')->middleware('is_admin');
+Route::get('admin/topic/show', [TopicController::class,'index'])->name('topics-show')->middleware('is_admin');
+Route::get('admin/topic/edit/{id}', [TopicController::class,'edit'])->name('topics-edit')->middleware('is_admin');
+Route::post('admin/topic/update', [TopicController::class,'update'])->name('topics-update')->middleware('is_admin');
+Route::get('admin/topic-delete/{id}',[TopicController::class,'delete'])->middleware('is_admin');
+
+Route::get('topic/questions/view/{id}', [TopicController::class,'view'])->name('topics-view')->middleware('is_admin');
+
+
+Route::get('result/index',[ResultsController::class,'index'])->name('results.index')->middleware('is_admin');
+Route::get('result/edit/{id}',[ResultsController::class,'edit'])->name('results.edit')->middleware('is_admin');
+Route::get('result/show/{id}',[ResultsController::class,'show'])->name('results.show')->middleware('is_admin');
+Route::post('result/store',[ResultsController::class,'store'])->name('results.store')->middleware('is_admin');
+Route::post('result/update', [ResultController::class,'update'])->name('results.update')->middleware('is_admin');
+Route::get('result/index/{id}',[ResultsController::class,'result'])->name('result-index')->middleware('is_admin');
+
+
+Route::get('admin/question/index',[QuestionController::class,'index'])->name('questions-index')->middleware('is_admin');
+Route::get('question/edit/{id}',[QuestionController::class,'edit'])->name('questions-edit')->middleware('is_admin');
+Route::get('question/show/{id}',[QuestionController::class,'show'])->name('questions-show')->middleware('is_admin');
+Route::post('admin/question/store',[QuestionController::class,'store'])->name('questions-store')->middleware('is_admin');
+Route::post('question/update', [QuestionController::class,'update'])->name('questions-update')->middleware('is_admin');
+Route::get('/question-delete/{id}',[QuestionController::class,'questionDelete'])->middleware('is_admin');
+
+Route::get('admin/QuestionsOptions/index',[QuestionsOptionsController::class,'index'])->name('questionsOptions-index')->middleware('is_admin');
+Route::get('admin/QuestionsOptions/edit/{id}',[QuestionsOptionsController::class,'edit'])->name('questionsOptions-edit')->middleware('is_admin');
+Route::post('admin/QuestionsOptions/store',[QuestionsOptionsController::class,'store'])->name('questionsOptions-store')->middleware('is_admin');
+Route::post('admin/QuestionsOptions/update/{id}',[QuestionsOptionsController::class,'update'])->name('questionsOptions-update')->middleware('is_admin');
+Route::get('admin/QuestionsOptions/show',[QuestionsOptionsController::class,'show'])->name('questionsOptions-show')->middleware('is_admin');
+Route::get('/QuestionsOptions-delete/{id}',[QuestionsOptionsController::class,'optionDelete'])->middleware('is_admin');
+
+Route::get('mock/category',[MocktestController::class,'mockCategory'])->name('mock-category')->middleware('is_admin');
+Route::get('view/category',[MocktestController::class,'viewCategory'])->name('view-category')->middleware('is_admin');
+Route::post('mock/category/store',[MocktestController::class,'addMock'])->name('add-mock')->middleware('is_admin');
+Route::get('/mock-delete/{mock_id}',[MocktestController::class,'delete'])->middleware('is_admin');
+
+Route::post('mock/category/update',[MocktestController::class,'mockUpdate'])->name('update-mock')->middleware('is_admin');
+Route::get('admin/calendar',[FrontendController::class,'calendar'])->name('training-calendar')->middleware('is_admin');
+
+Route::get('home/mock_details/{id}', [MocktestController::class, 'course_details_frontend'])->name('mock-details');
 
 //sitemap route
 

@@ -16,7 +16,7 @@ class CreateAdminBlogsTable extends Migration
         Schema::create('admin_blogs', function (Blueprint $table) {
             $table->id();
             $table->string('blogs_title')->nullable();
-            $table->string('blogs_slug')->nullable()
+            $table->string('blogs_slug')->nullable();
             $table->string('blogs_image')->nullable();
             $table->string('short_description')->nullable();
 

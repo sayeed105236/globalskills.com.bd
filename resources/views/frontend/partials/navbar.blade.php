@@ -81,6 +81,9 @@
           <li class="add-mega-menu"><a href="{{route('all-blogs')}}">Blogs</a>
 
           </li>
+          <li class="add-mega-menu"><a href="{{route('all-experts')}}">Heroes</a>
+
+          </li>
 
 
         </ul>

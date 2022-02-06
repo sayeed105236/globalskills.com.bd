@@ -11,6 +11,7 @@ use App\Models\ClassroomInfo;
 use App\Models\User;
 use App\Models\CourseReview;
 use App\Models\ClassroomTrainer;
+use App\Models\Expert;
 
 class FrontendController extends Controller
 {
@@ -63,6 +64,12 @@ class FrontendController extends Controller
     //dd($id);
 
     return back();
+  }
+  public function our_experts()
+  {
+    $experts= Expert::all();
+
+    return view('frontend.pages.our_experts',compact('experts'));
   }
 
 

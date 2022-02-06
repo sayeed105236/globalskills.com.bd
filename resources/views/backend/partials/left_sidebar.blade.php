@@ -51,6 +51,36 @@
                       </a>
               </li>
               <li>
+                    <a href="#" class="ttr-material-button">
+                        <span class="ttr-icon"><i class="fas fa-question-circle"></i></span>
+                        <span class="ttr-label">Mock Test</span>
+                        <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+                    </a>
+                    <ul>
+                        <li class=""><a href="{{ route('mock-category') }}"
+                                class="list-group-item list-group-item-action bg-light">Mock Test Category</a>
+                        </li>
+                        <li class=""><a href="{{ route('admin-topic') }}"
+                                class="list-group-item list-group-item-action bg-light">Create new quiz</a>
+                        </li>
+
+
+                        <li class=""><a href="{{ route('results.index') }}"
+                                class="list-group-item list-group-item-action bg-light">All Results</a>
+                        </li>
+                        <li class=""><a href="{{ route('topics-show') }}"
+                                class="list-group-item list-group-item-action bg-light">Topics</a>
+                        </li>
+                        <li class=""><a href="{{ route('questions-index') }}"
+                                class="list-group-item list-group-item-action bg-light">Questions</a>
+                        </li>
+                        <li class=""> <a href="{{ route('questionsOptions-index') }}"
+                                class="list-group-item list-group-item-action bg-light">Questions Options</a>
+                        </li>
+
+                    </ul>
+                </li>
+              <li>
               <a href="{{route('manage-training-course')}}" class="ttr-material-button">
                 <span class="ttr-icon"><i class="fas fa-book-reader"></i></span>
                         <span class="ttr-label">Training Without Exam Courses</span>
@@ -62,6 +92,12 @@
                         <span class="ttr-label">Users</span>
                       </a>
                   </li>
+                  <li>
+                  <a href="{{route('experts')}}" class="ttr-material-button">
+                    <span class="ttr-icon"><i class="fas fa-users"></i></span>
+                            <span class="ttr-label">Our Certified Experts</span>
+                          </a>
+                      </li>
                   <li>
                   <a href="{{route('accreditation')}}" class="ttr-material-button">
                     <span class="ttr-icon"><i class="fab fa-cc-diners-club"></i></span>
@@ -125,6 +161,27 @@
                                       </li>
                                     </ul>
                                 </li>
+                                <!-- <li>
+                      <a href="#" class="ttr-material-button">
+                        <span class="ttr-icon"><i class="fas fa-question-circle"></i></span>
+                                <span class="ttr-label">Mock Test</span>
+                                <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+                              </a>
+                              <ul>
+                                <li>
+                                  <a href="mailbox.html" class="ttr-material-button"><span class="ttr-label">Quiz</span></a>
+                                </li>
+                                <li>
+                                  <a href="mailbox-compose.html" class="ttr-material-button"><span class="ttr-label">Questions</span></a>
+                                </li>
+                        <li>
+                                  <a href="mailbox-read.html" class="ttr-material-button"><span class="ttr-label">Student Report</span></a>
+                                </li>
+                                <li>
+                                          <a href="mailbox-read.html" class="ttr-material-button"><span class="ttr-label">Top Student Report</span></a>
+                                        </li>
+                              </ul>
+                          </li> -->
                     <li>
           <a href="#" class="ttr-material-button">
             <span class="ttr-icon"><i class="ti-email"></i></span>

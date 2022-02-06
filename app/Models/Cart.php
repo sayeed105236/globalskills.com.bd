@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\User;
 use App\Models\ClassroomCourse;
 use App\Models\Checkout;
+use App\Models\mockTestCategory;
 
 use Auth;
 class Cart extends Model
@@ -25,6 +26,9 @@ class Cart extends Model
 
           public function user(){
             return $this->belongsTo(User::class, 'user_id');
+          }
+          public function mocktest(){
+            return $this->belongsTo(mockTestCategory::class, 'mocktest_id');
           }
 
 
@@ -72,6 +76,7 @@ class Cart extends Model
           {
 
             $course_id = $request->course_id;
+            $mocktest_id = $request->mocktest_id;
             $course_category_id=$request->course_category_id;
             $user_id = $request->user_id;
             $request= $request->amount;
@@ -85,6 +90,7 @@ class Cart extends Model
                           $checkout= Checkout::where('user_id',Auth::id())
 
                                       ->where('course_id',$request->course_id)
+                                      ->orWhere('mocktest_id',$request->mocktest_id)
 
                                       ->first();
               }
@@ -94,6 +100,7 @@ class Cart extends Model
                           if (Auth::check()) {
                             $checkout->user_id= Auth::id();
                             $checkout->course_id = $course_id;
+                            $checkout->mocktest_id = $mocktest_id;
                             $checkout->course_category_id= $course_category_id;
                             $checkout->ip_address= $ip_address;
                             $checkout->amount= $amount;

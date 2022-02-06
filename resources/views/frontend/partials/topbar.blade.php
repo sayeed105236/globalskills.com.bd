@@ -6,6 +6,8 @@
           <li><a href="{{route('faq')}}"><i class="fa fa-question-circle"></i>Ask a Question</a></li>
           <li><a href="javascript:;"><i class="fa fa-envelope-o"></i>info@globalskills.com.bd</a></li>
            <li><a href="javascript:;"><i class="fa fa-mobile"></i>+8801766343434</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#CalenderModal"><i class="fa fa-calendar-alt"></i>Calender</a></li>
+            @include('frontend.modals.calendermodal')
           <li>
             @if(Session::has('cart_added'))
             <div class="alert alert-success" role="alert">

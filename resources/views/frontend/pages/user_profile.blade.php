@@ -55,6 +55,7 @@
                 <li class="nav-item">
                   <a class="nav-link active" data-toggle="tab" href="#courses"><i class="ti-book"></i>Courses</a>
                 </li>
+                <li><a class="nav-link"   href="/result/index/{{Auth::user()->id}}"> <i class="ti-pencil-alt"></i>Quiz History</a></li>
               <!--  <li class="nav-item">
                   <a class="nav-link" data-toggle="tab" href="#quiz-results"><i class="ti-bookmark-alt"></i>Quiz Results </a>
                 </li>-->
@@ -88,17 +89,32 @@
                       <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6">
                         <div class="cours-bx">
                           <div class="action-box">
+                              @if($row->course_id != null)
                             <img src="{{asset('storage/courses/'.$row->course->course_image)}}" alt="" height="420"
                               width="700" alt="">
                             <a href="/home/course_details/view/{{$row->course->id}}/{{$row->course->elearning_slug}}" class="btn"><i class="fa fa-play-circle"></i></a>
+                             @elseif($row->mocktest_id != null)
+                            <img src="{{ asset($row->mocktest->image) }}"  alt="" style="height:145px; width:700px;">
+                            <a href="/mocktest/topics/view/{{$row->mocktest->id}}" class="btn"><i class="fa fa-play-circle"></i></a>
+                            @endif
                           </div>
                           <div class="info-bx text-center">
+                              @if($row->course_id != null)
                             <h5><a href="/home/course_details/view/{{$row->course->id}}/{{$row->course->elearning_slug}}">{{Str::limit($row->course->course_title,18)}}</a></h5>
                             <span>{{$row->course->course_category->mcategory_title}}</span>
+                             @elseif($row->mocktest_id != null)
+
+                            <h5><a href="/mocktest/topics/view/{{$row->mocktest->id}}">{{Str::limit($row->mocktest->mock_category,18)}}</a></h5>
+                            <span>Moctest Category</span>
+
+                            @endif
                           </div>
                           <div class="cours-more-info d-flex justify-content-center">
-
+                              @if($row->course_id != null)
                             <a class="btn btn-primary" href="/home/course_details/view/{{$row->course->id}}/{{$row->course->elearning_slug}}"><i class="fa fa-play-circle"></i></a>
+                               @elseif($row->mocktest_id != null)
+                                 <a class="btn btn-primary" href="/mocktest/topics/view/{{$row->mocktest->id}}"><i class="fa fa-play-circle"></i></a>
+                                 @endif
                           </div>
                         </div>
                       </li>

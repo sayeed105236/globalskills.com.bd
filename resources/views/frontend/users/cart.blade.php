@@ -64,33 +64,99 @@
                             <tbody>
                             <?php
                             $price = 0;
+                            $carts= App\Models\Cart::all();
+
                             ?>
+
                             @foreach(App\Models\Cart::totalCarts() as $row)
                                 <tr>
                                     <td>
                                         {{$loop->index+1}}
                                     </td>
                                     <td>
+                                      @if($row->course_id != null)
                                         <span class="font-weight-bold"><a
-                                                href="home/course_details/{{$row->course->id}}">{{$row->course->course_title}}</a></span>
+                                                href="home/course_details/{{isset($row->course->id)}}">{{$row->course->course_title}}</a></span>
+
+                                      @elseif($row->mocktest_id != null)
+                                      <span class="font-weight-bold"><a
+                                              href="#">{{$row->mocktest->mock_category}}</a></span>
+                                              @else
+                                              No Data
+                                              @endif
                                     </td>
-                                    <td><img src="{{asset('storage/courses/' .$row->course->course_image)}}" alt="image"
-                                             height="50"
-                                             width="50"/></td>
-                                    <td>{{$row->course->course_category->mcategory_title}}</td>
                                     <td>
-                                        <del>{{$row->course->regular_price}}৳</del>
+                                        @if($row->course_id != null)
+
+                                      <img src="{{asset('storage/courses/' .$row->course->course_image)}}" alt="image"
+                                             height="50"
+                                             width="50"/>
+                                             @elseif($row->mocktest_id != null)
+                                             <img src="{{ asset($row->mocktest->image) }}" alt="image"
+                                                    height="50"
+                                                    width="50"/>
+                                                    @else
+                                                    No Data
+                                                    @endif
+
+
+                                           </td>
+                                    <td>
+                                        @if($row->course_id != null)
+
+                                      {{$row->course->course_category->mcategory_title}}
+                                    @elseif($row->mocktest_id != null)
+                                        MockTest Category
+                                        @else
+                                        No Data
+                                        @endif
 
                                     </td>
-                                    <td>{{$row->course->sale_price}}৳</td>
+
+                                    <td>
+                                        <del>
+                                            @if($row->course_id != null)
+
+
+                                          {{$row->course->regular_price}}৳</del>
+                                        @elseif($row->mocktest_id != null)
+                                            {{$row->mocktest->regular_price}}৳</del>
+
+                                            @else
+                                            No Data
+
+                                          @endif
+
+                                    </td>
+                                    <td>
+                                        @if($row->course_id != null)
+
+                                      {{$row->course->sale_price}}৳
+                                    @elseif($row->mocktest_id != null)
+                                        {{$row->mocktest->discount_price}}৳</del>
+                                        @else
+
+                                        No Data
+                                        @endif
+
+                                    </td>
 
                                     <td>
                                         <?php
-                                        if ($row->course->sale_price > 0) {
-                                            $price += $row->course->sale_price;
-                                         } else {
-                                            $price += $row->course->regular_price;
+                                        if ($row->course_id != null) {
+                                          if ($row->course->sale_price > 0) {
+                                              $price += $row->course->sale_price;
+                                           } else {
+                                              $price += $row->course->regular_price;
+                                          }
+                                        }elseif($row->mocktest_id != null) {
+                                          if ($row->mocktest->discount_price > 0) {
+                                              $price += $row->mocktest->discount_price;
+                                           } else {
+                                              $price += $row->mocktest->regular_price;
+                                          }
                                         }
+
 
                                         ?>
                                         <a id="delete" href="/carts/delete/{{$row->id}}"><i class="fa fa-trash"></i></a>
@@ -100,8 +166,80 @@
 
                             </tbody>
                         </table>
+
+
                     </div>
+
                 </div>
+                <hr>
+
+
+                @foreach(App\Models\Cart::totalCarts() as $row)
+                  @if($row->course_id != null)
+
+                @if($row->course->id == 15)
+
+
+                <div class="widget recent-posts-entry widget-courses">
+                                  <h5 class="widget-title style-1"></h5>
+                                  <div class="widget-post-bx">
+
+                                      <div class="widget-post clearfix">
+                                          <div class="ttr-post-media"> <img src="{{asset('storage/courses/' .$row->course->course_image)}}" alt="image"
+                                                   height="50"
+                                                   width="50"/> </div>
+                                          <div class="ttr-post-info">
+                                              <div class="ttr-post-header">
+                                                  <h6 class="post-title"><a href="#"> Add on Take 2</a></h6>
+                                              </div>
+                                              <h6>Take2 gives you a second chance at retaking this examination, at a fixed, attractive price.</h6>
+                                              <div class="ttr-post-meta">
+                                                <ul>
+
+
+
+
+                                                    <li class="price">
+
+                                                      <h5 style="color:#ca2128;">8999৳</h5>
+                                                    </li>
+                                                    <li class="price">
+
+                                                       <form class="hidden" action="{{route('add-carts')}}" method="post">
+                                                        @csrf
+                                                        <?php
+                                                        $take2= App\Models\Course::where('id','20')->get()->first();
+                                                        //dd($take2);
+                                                         ?>
+                                                        <input type="hidden" name="course_id" value="{{$take2->id}}">
+
+                                                        <button  class="btn btn-sm"><i class="fa fa-check-circle"> Add To Cart</i></button>
+
+                                                      </form>
+                                                    </li>
+
+
+                                                </ul>
+                                              </div>
+                                          </div>
+                                      </div>
+
+
+                                  </div>
+                              </div>
+
+                  @endif
+                  @endif
+                @endforeach
+
+
+
+
+
+
+
+
+
             </div>
 
             <div class="col-6">

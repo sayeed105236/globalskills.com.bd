@@ -24,10 +24,12 @@ class CartController extends Controller
     }
     public function add_cart(Request $request)
     {
+      //dd($request);
 
 
           $course_id = $request->course_id;
           $classroom_course_id=$request->classroom_course_id;
+          $mocktest_id = $request->mocktest_id;
           $user_id = $request->user_id;
           $ip_address=$request->ip();
 
@@ -36,6 +38,7 @@ class CartController extends Controller
         $cart[] = array(
             "course_id" => $course_id,
             "classroom_course_id" => $classroom_course_id,
+            "mocktest_id" => $mocktest_id,
             "user_id" => $user_id,
             "qty" => 1,
         );
@@ -47,15 +50,25 @@ class CartController extends Controller
                         $cart= Cart::where('user_id',Auth::id())
 
                                     ->where('course_id',$request->course_id)
+                                    //->orWhere('mocktest_id',$request->mocktest_id)
 
                                     ->first();
-            }else {
-              $cart= Cart::where('ip_address',request()->ip())
+            } elseif (Auth::check()) {
 
-                          ->where('course_id',$request->course_id)
+                            $cart= Cart::where('user_id',Auth::id())
 
-                          ->first();
-            }
+                                        ->where('mocktest_id',$request->mocktest_id)
+                                        //->orWhere('mocktest_id',$request->mocktest_id)
+
+                                        ->first();
+                }else {
+                  $cart= Cart::where('ip_address',request()->ip())
+
+                                ->where('course_id',$request->course_id)
+                              ->orWhere('mocktest_id',$request->mocktest_id)
+
+                              ->first();
+                }
                       if (!is_null($cart)) {
                         //
 
@@ -67,6 +80,7 @@ class CartController extends Controller
                           $cart->user_id= Auth::id();
                         }
                         $cart->course_id = $course_id;
+                        $cart->mocktest_id = $mocktest_id;
                         $cart->classroom_course_id= $classroom_course_id;
                         $cart->ip_address= $ip_address;
 
@@ -95,6 +109,7 @@ class CartController extends Controller
 
               $course_id = $request->course_id;
               $classroom_course_id=$request->classroom_course_id;
+              $mocktest_id = $request->mocktest_id;
               $user_id = $request->user_id;
               $ip_address=$request->ip();
 
@@ -104,12 +119,25 @@ class CartController extends Controller
                             $cart= Cart::where('user_id',Auth::id())
 
                                         ->where('course_id',$request->course_id)
+                                        ->orWhere('mocktest_id',$request->mocktest_id)
 
                                         ->first();
-                }else {
+                }elseif (Auth::check()) {
+
+                                $cart= Cart::where('user_id',Auth::id())
+
+                                            ->where('mocktest_id',$request->mocktest_id)
+                                            //->orWhere('mocktest_id',$request->mocktest_id)
+
+                                            ->first();
+                    }
+
+
+                else {
                   $cart= Cart::where('ip_address',request()->ip())
 
                               ->where('course_id',$request->course_id)
+                              ->orWhere('mocktest_id',$request->mocktest_id)
 
                               ->first();
                 }
@@ -125,6 +153,7 @@ class CartController extends Controller
                             }
                             $cart->course_id = $course_id;
                             $cart->classroom_course_id= $classroom_course_id;
+                            $cart->mocktest_id =$mocktest_id;
                             $cart->ip_address= $ip_address;
 
 

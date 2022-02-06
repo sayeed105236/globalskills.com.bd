@@ -3,9 +3,9 @@
 	<!-- META ============================================= -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="keywords" content="" />
-	<meta name="author" content="" />
-	<meta name="robots" content="" />
+	<meta name="keywords" content="ITIL|PRINCE2|PMP|ISO" />
+	<meta name="author" content="https://www.globalskills.com.bd/home/course_details/13/PRINCE2%C2%AE-Foundation-Training-(With-Exam)" />
+	<meta name="robots" content="https://www.globalskills.com.bd/home/course_details/15/ITIL4@-Foundation-Training-&-Certification-(Engish)" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 	<!-- DESCRIPTION -->
 	<meta name="description" content="Global Skills Development Agency" />

@@ -18,8 +18,18 @@
 
   <!-- Classroom -->
   @include('frontend.content.classroom')
+  <?php
+  $mocktest= App\Models\mockTestCategory::all();
+  //dd($mocktest < 0);
+
+   ?>
   <!-- Classroom -->
+  <?php if ($mocktest > null): ?>
+
+
+  @include('frontend.content.mocktest')
   <!--@include('frontend.content.training_without_exam')-->
+  <?php endif; ?>
   @include('frontend.content.accreditation')
 
   <!-- Mock Test -->
