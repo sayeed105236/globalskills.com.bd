@@ -149,6 +149,7 @@ Route::get('admin/home/main_category/delete/{id}',[MainCategoryController::class
 
 //user routes
 Route::get('admin/home/users',[UserController::class,'List'])->middleware('is_admin')->name('user-lists');
+Route::get('admin/home/enrollments',[UserController::class,'enrollments'])->middleware('is_admin')->name('enrollments-lists');
 Route::get('admin/home/users/delete/{id}',[UserController::class,'deleteUser'])->middleware('is_admin');
 
 //course category routes

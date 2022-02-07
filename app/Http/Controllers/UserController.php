@@ -89,4 +89,9 @@ class UserController extends Controller
       $evolutions=Evolution::all();
       return view('backend.pages.manage_evolution',compact('evolutions'));
     }
+    public function enrollments()
+    {
+      $enrollments = UserEnrollment::all();
+      return view('backend.pages.user_enrollments',compact('enrollments'));
+    }
 }

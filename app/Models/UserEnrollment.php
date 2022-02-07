@@ -15,15 +15,15 @@ class UserEnrollment extends Model
 
     public function users(){
 
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
     public function course(){
 
-        return $this->belongsTo(Course::class);
+        return $this->belongsTo(Course::class,'course_id');
     }
     public function mocktest(){
 
-        return $this->belongsTo(mockTestCategory::class);
+        return $this->belongsTo(mockTestCategory::class,'mocktest_id');
     }
 
 }

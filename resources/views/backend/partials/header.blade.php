@@ -59,7 +59,9 @@
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{{asset('backend')}}/lib/toastr/toastr.css">
 
+
     @stack('css')
+	
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

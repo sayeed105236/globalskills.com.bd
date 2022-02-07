@@ -198,4 +198,7 @@ src="https://www.facebook.com/tr?id=415184348686393&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Facebook Pixel Code -->
 
+
+
+
 @stack('scripts')

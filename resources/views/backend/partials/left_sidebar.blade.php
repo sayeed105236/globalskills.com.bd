@@ -147,6 +147,12 @@
                                               </a>
                                           </li>
                                           <li>
+                                          <a href="{{route('enrollments-lists')}}" class="ttr-material-button">
+                                            <span class="ttr-icon"><i class="fas fa-clipboard-check"></i></span>
+                                                    <span class="ttr-label">Latest Enrollments</span>
+                                                  </a>
+                                              </li>
+                                          <li>
                             <a href="#" class="ttr-material-button">
                               <span class="ttr-icon"><i class="fas fa-users"></i></span>
                                       <span class="ttr-label">Trainer List</span>

@@ -8,6 +8,9 @@ use TusPhp\Config;
 
 class FileStore extends AbstractCache
 {
+    /** @var int */
+    public const LOCK_NONE = 0;
+
     /** @var string */
     protected $cacheDir;
 
@@ -36,7 +39,7 @@ class FileStore extends AbstractCache
      *
      * @return self
      */
-    public function setCacheDir(string $path) : self
+    public function setCacheDir(string $path): self
     {
         $this->cacheDir = $path;
 
@@ -48,7 +51,7 @@ class FileStore extends AbstractCache
      *
      * @return string
      */
-    public function getCacheDir() : string
+    public function getCacheDir(): string
     {
         return $this->cacheDir;
     }
@@ -60,7 +63,7 @@ class FileStore extends AbstractCache
      *
      * @return self
      */
-    public function setCacheFile(string $file) : self
+    public function setCacheFile(string $file): self
     {
         $this->cacheFile = $file;
 
@@ -72,7 +75,7 @@ class FileStore extends AbstractCache
      *
      * @return string
      */
-    public function getCacheFile() : string
+    public function getCacheFile(): string
     {
         return $this->cacheDir . $this->cacheFile;
     }
@@ -125,34 +128,53 @@ class FileStore extends AbstractCache
     }
 
     /**
+     * @param string        $path
+     * @param int           $type
+     * @param callable|null $cb
+     *
+     * @return mixed
+     */
+    protected function lock(string $path, int $type = LOCK_SH, callable $cb = null)
+    {
+        $out    = false;
+        $handle = @fopen($path, File::READ_BINARY);
+
+        if (false === $handle) {
+            return $out;
+        }
+
+        try {
+            if (flock($handle, $type)) {
+                clearstatcache(true, $path);
+
+                $out = $cb($handle);
+            }
+        } finally {
+            flock($handle, LOCK_UN);
+            fclose($handle);
+        }
+
+        return $out;
+    }
+
+    /**
      * Get contents of a file with shared access.
      *
      * @param string $path
      *
      * @return string
      */
-    public function sharedGet(string $path) : string
+    public function sharedGet(string $path): string
     {
-        $contents = '';
-        $handle   = @fopen($path, File::READ_BINARY);
+        return $this->lock($path, LOCK_SH, function ($handle) use ($path) {
+            $contents = fread($handle, filesize($path) ?: 1);
 
-        if (false === $handle) {
-            return $contents;
-        }
-
-        try {
-            if (flock($handle, LOCK_SH)) {
-                clearstatcache(true, $path);
-
-                $contents = fread($handle, filesize($path) ?: 1);
-
-                flock($handle, LOCK_UN);
+            if (false === $contents) {
+                return '';
             }
-        } finally {
-            fclose($handle);
-        }
 
-        return $contents;
+            return $contents;
+        });
     }
 
     /**
@@ -160,12 +182,13 @@ class FileStore extends AbstractCache
      *
      * @param string $path
      * @param string $contents
+     * @param int    $lock
      *
-     * @return int
+     * @return int|false
      */
-    public function put(string $path, string $contents) : int
+    public function put(string $path, string $contents, int $lock = LOCK_EX)
     {
-        return file_put_contents($path, $contents, LOCK_EX);
+        return file_put_contents($path, $contents, $lock);
     }
 
     /**
@@ -180,21 +203,24 @@ class FileStore extends AbstractCache
             $this->createCacheFile();
         }
 
-        $contents = json_decode($this->sharedGet($cacheFile), true) ?? [];
+        return $this->lock($cacheFile, LOCK_EX, function ($handle) use ($cacheKey, $cacheFile, $value) {
+            $contents = fread($handle, filesize($cacheFile) ?: 1) ?? '';
+            $contents = json_decode($contents, true) ?? [];
 
-        if ( ! empty($contents[$cacheKey]) && \is_array($value)) {
-            $contents[$cacheKey] = $value + $contents[$cacheKey];
-        } else {
-            $contents[$cacheKey] = $value;
-        }
+            if ( ! empty($contents[$cacheKey]) && \is_array($value)) {
+                $contents[$cacheKey] = $value + $contents[$cacheKey];
+            } else {
+                $contents[$cacheKey] = $value;
+            }
 
-        return $this->put($cacheFile, json_encode($contents));
+            return $this->put($cacheFile, json_encode($contents), self::LOCK_NONE);
+        });
     }
 
     /**
      * {@inheritDoc}
      */
-    public function delete(string $key) : bool
+    public function delete(string $key): bool
     {
         $cacheKey = $this->getActualCacheKey($key);
         $contents = $this->getCacheContents();
@@ -211,7 +237,7 @@ class FileStore extends AbstractCache
     /**
      * {@inheritDoc}
      */
-    public function keys() : array
+    public function keys(): array
     {
         $contents = $this->getCacheContents();
 
@@ -229,7 +255,7 @@ class FileStore extends AbstractCache
      *
      * @return bool
      */
-    public function isValid(string $key) : bool
+    public function isValid(string $key): bool
     {
         $key  = $this->getActualCacheKey($key);
         $meta = $this->getCacheContents()[$key] ?? [];
@@ -264,7 +290,7 @@ class FileStore extends AbstractCache
      *
      * @return string
      */
-    public function getActualCacheKey(string $key) : string
+    public function getActualCacheKey(string $key): string
     {
         $prefix = $this->getPrefix();
 
