@@ -23,12 +23,12 @@
 
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link active" style="color:red;" href="#">Course Info</a>
+            <a class="nav-link active" style="color:red;" href="/admin/home/classroom/courses/course_details/course_info/{{$classroom_course->id}}">Course Info</a>
           </li>
 
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Media</a>
+            <a class="nav-link" href="/admin/home/classroom/courses/course_details/course_media/{{$classroom_course->id}}">Media</a>
           </li>
           <a class="btn btn-primary" href=" /admin/home/classroom/courses/course_details/{{$classroom_course->id}}" >Back</a>
 

@@ -28,10 +28,17 @@
 
 
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0);">Media</a>
+            <a class="nav-link" href="/admin/home/classroom/courses/course_details/course_media/{{$classroom_courses->id}}">Media</a>
           </li>
-            <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#ClassroomCourseDetailsAddModal">Add Course Details<i class="fas fa-plus-circle"></i></a>
+          <?php
+          $course_details= App\Models\ClassroomInfo::where('classroom_course_id',$classroom_courses->id)->first();
+          //dd($course_details);
+
+           ?>
+           @if($course_details == null)
+            <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#ClassroomCourseDetailsAddModal"><i class="fas fa-plus-circle"></i></a>
               @include('backend.modals.classroom_course_detailsaddmodal')
+              @endif
         </ul>
       </div>
     </div>

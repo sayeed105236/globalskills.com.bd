@@ -37,10 +37,7 @@
                 <textarea id="learning_outcomes" class="form-control" name="classroom_learning_outcomes">{{$classroom_course_details->classroom_learning_outcomes}} </textarea>
               </div>
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Classroom Course Banner Thumbnails</label>
-                  <input type="file" name="image" class="form-control-file" id="classroom_banner_image" onchange="previewImage(this)">
-            </div>
+          
 
 
 

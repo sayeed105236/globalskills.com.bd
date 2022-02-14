@@ -31,7 +31,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0);">Media</a>
+            <a class="nav-link" href="/admin/home/courses/course_details/course_media/{{$course->id}}">Media</a>
           </li>
             <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#CourseDetailsAddModal"><i class="fas fa-plus-circle"></i></a>
             @include('backend.modals.course_details_addmodal')

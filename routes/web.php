@@ -175,11 +175,14 @@ Route::get('admin/home/courses/delete/{id}',[CourseController::class,'deleteCour
 //admin add e-learning course details
 Route::get('admin/home/courses/course_details/{id}',[CourseController::class,'CourseDetails'])->middleware('is_admin');
 Route::get('admin/home/courses/course_details/course_info/{id}',[CourseController::class,'CourseInfo'])->middleware('is_admin');
+Route::get('admin/home/courses/course_details/course_media/{id}',[CourseController::class,'CourseMedia'])->middleware('is_admin');
 Route::get('admin/home/courses/course_details/course_curricullum/{id}',[CourseController::class,'CourseCurricullum'])->middleware('is_admin');
 Route::get('admin/home/courses/course_overviews/{id}',[CourseController::class,'CourseOverview'])->middleware('is_admin');
 
 Route::post('admin/home/courses/course_details/store',[CourseController::class,'StoreCourseDetails'])->name('store-course-details')->middleware('is_admin');
 Route::post('admin/home/courses/course_details/update',[CourseController::class,'UpdateCourseDetails'])->name('update-course-details')->middleware('is_admin');
+Route::post('admin/home/courses/course_details/course-image/update',[CourseController::class,'UpdateCourseImage'])->name('update-course-image')->middleware('is_admin');
+Route::post('admin/home/courses/course_details/course-banner-image/update',[CourseController::class,'UpdateCourseBannerImage'])->name('update-course-banner-image')->middleware('is_admin');
 
 Route::get('home/course_details/{id}/{slug}',[CourseController::class,'course_details_frontend']);
 Route::get('admin/home/course_details/sections/{id}',[CourseController::class,'Section'])->middleware('is_admin');
@@ -224,8 +227,11 @@ Route::get('/home/classroom/course_details/booking/{id}', [FrontendController::c
 //admin add classroom course details
 Route::get('/admin/home/classroom/courses/course_details/{id}',[ClassroomCourseController::class,'CourseDetailsBackend'])->middleware('is_admin');
 Route::get('/admin/home/classroom/courses/course_details/course_info/{id}',[ClassroomCourseController::class,'ClassroomCourseInfo'])->middleware('is_admin');
+Route::get('/admin/home/classroom/courses/course_details/course_media/{id}',[ClassroomCourseController::class,'ClassroomCourseMedia'])->middleware('is_admin');
 Route::post('admin/home/classroom/courses/course_details/store',[ClassroomCourseController::class,'StoreClassroomCourseDetails'])->name('store-classroom-course-details')->middleware('is_admin');
 Route::post('admin/home/classroom/courses/course_details/update',[ClassroomCourseController::class,'UpdateClassroomCourseDetails'])->name('update-classroom-course-details')->middleware('is_admin');
+Route::post('admin/home/classroom/courses/course_details/course-media-image/update',[ClassroomCourseController::class,'UpdateClassroomCourseImage'])->name('update-classroom-course-image')->middleware('is_admin');
+Route::post('admin/home/classroom/courses/course_details/course-media-image/banner/update',[ClassroomCourseController::class,'UpdateClassroomCourseBannerImage'])->name('update-classroom-course-banner-image')->middleware('is_admin');
 
 //admin add accreditation images
 Route::get('/admin/home/accreditation/manage', [AccreditationController::class, 'Manage'])->name('accreditation')->

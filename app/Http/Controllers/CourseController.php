@@ -100,7 +100,37 @@ class CourseController extends Controller
     $regular_price= $request->regular_price;
     $sale_price= $request-> sale_price;
     $accredation_name=$request->accredation_name;
+
+    $status = $request->status;
+    $course_categories= CourseCategory::all();
+    $main_categories= MainCategory::all();
+    $course = Course::find($request->id);
+    $course->main_category_id = $main_category_id;
+    $course->course_category_id= $course_category_id;
+    $course->course_title= $course_title;
+    $course->elearning_slug=$elearning_slug;
+    $course->regular_price= $regular_price;
+    $course-> sale_price= $sale_price;
+
+    $course->accredation_name=$accredation_name;
+
+    $course->status= $status;
+
+    $course->save();
+    $notification=array(
+        'message'=>'Course record has been updated successfully!!!',
+        'alert-type'=>'success'
+    );
+    return Redirect()->back()->with($notification);
+
+
+  }
+  public function UpdateCourseImage(Request $request)
+
+  {
+    //dd($request);
     $course_image =$request->file('file');
+    //dd($course_image);
     $filename=null;
     $uploadedFile = $request->file('image');
     $oldfilename = $course['course_image'] ?? 'demo.jpg';
@@ -129,29 +159,15 @@ class CourseController extends Controller
         //file check in storage
 
     }
-
-    $status = $request->status;
-    $course_categories= CourseCategory::all();
-    $main_categories= MainCategory::all();
     $course = Course::find($request->id);
-    $course->main_category_id = $main_category_id;
-    $course->course_category_id= $course_category_id;
-    $course->course_title= $course_title;
-    $course->elearning_slug=$elearning_slug;
-    $course->regular_price= $regular_price;
-    $course-> sale_price= $sale_price;
+
     $course->course_image= $filename;
-    $course->accredation_name=$accredation_name;
-
-    $course->status= $status;
-
     $course->save();
     $notification=array(
-        'message'=>'Course record has been updated successfully!!!',
+        'message'=>'Course image has been updated successfully!!!',
         'alert-type'=>'success'
     );
     return Redirect()->back()->with($notification);
-
 
   }
   public function deleteCourse($id)
@@ -166,6 +182,12 @@ class CourseController extends Controller
     return Redirect()->back()->with($notification);
 
 
+  }
+  public function CourseMedia($id)
+  {
+    $course= Course::find($id);
+    $course_details_banner= CourseOverview::where('course_id',$id)->first();
+    return view('backend.pages.courses.course_media',compact('course','course_details_banner'));
   }
   public function CourseDetails($id)
   {
@@ -251,6 +273,35 @@ class CourseController extends Controller
     $quiz= $request->quiz;
 
 
+
+
+    $course_details = CourseOverview::find($request->id);
+    $course_details->course_id=$course_id;
+    $course_details->short_description=$short_description;
+    $course_details->course_description=$course_description;
+
+    $course_details->learning_outcomes= $learning_outcomes;
+    $course_details->certification= $certification;
+
+    $course_details->instructor_id= $instructor_id;
+    $course_details->skill= $skill;
+    $course_details->language= $language;
+    $course_details-> quiz =$quiz;
+
+    $course_details->banner_image= $filename;
+
+    $course_details->save();
+    $notification=array(
+        'message'=>'Course details record has been updated successfully!!!',
+        'alert-type'=>'success'
+    );
+    return Redirect()->back()->with($notification);
+
+  }
+  public function UpdateCourseBannerImage(Request $request)
+
+  {
+    //dd($request);
     $filename=null;
     $uploadedFile = $request->file('image');
     $oldfilename = $course['banner_image'] ?? 'demo.jpg';
@@ -279,25 +330,12 @@ class CourseController extends Controller
         //file check in storage
 
     }
-
-    $course_details = CourseOverview::find($request->id);
-    $course_details->course_id=$course_id;
-    $course_details->short_description=$short_description;
-    $course_details->course_description=$course_description;
-
-    $course_details->learning_outcomes= $learning_outcomes;
-    $course_details->certification= $certification;
-
-    $course_details->instructor_id= $instructor_id;
-    $course_details->skill= $skill;
-    $course_details->language= $language;
-    $course_details-> quiz =$quiz;
+      $course_details = CourseOverview::find($request->id);
 
     $course_details->banner_image= $filename;
-
     $course_details->save();
     $notification=array(
-        'message'=>'Course details record has been updated successfully!!!',
+        'message'=>'Course banner image has been updated successfully!!!',
         'alert-type'=>'success'
     );
     return Redirect()->back()->with($notification);

@@ -35,7 +35,7 @@
          <div class="col-lg-3 col-md-4 col-sm-6 mt-4">
            <div class="service-bx"  style=" background-color:#F5F5F5;">
              <div class="action-box rounded-circle">
-               <img src="{{asset("storage/experts/$row->expert_image")}}" alt="image" height="150" width="150">
+               <img src="{{asset("storage/experts/$row->expert_image")}}" alt="image" height="50" width="50">
              </div>
              <div class="info-bx text-center">
 

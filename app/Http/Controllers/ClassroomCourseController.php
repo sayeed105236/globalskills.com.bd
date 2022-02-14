@@ -169,6 +169,13 @@ class ClassroomCourseController extends Controller
           $classroom_course = ClassroomCourse::find($id);
           return view('/backend/pages/classroom_courses.classroom_course_info',compact('course_categories','main_categories','classroom_course','classroom_course_details'));
         }
+        public function ClassroomCourseMedia($id)
+
+        {
+              $classroom_course_details= ClassroomInfo::where('classroom_course_id',$id)->first();
+              $classroom_course = ClassroomCourse::find($id);
+              return view('/backend/pages/classroom_courses.classroom_course_media',compact('classroom_course','classroom_course_details'));
+        }
         public function StoreClassroomCourseDetails(Request $request)
         {
 
@@ -303,6 +310,102 @@ class ClassroomCourseController extends Controller
           return Redirect()->back()->with($notification);
 
         }
+        public function UpdateClassroomCourseImage(Request $request)
+        {
+
+
+          $classroom_course_image =$request->file('file');
+          $filename=null;
+          $uploadedFile = $request->file('image');
+          $oldfilename = $classroom_course['classroom_course_image'] ?? 'demo.jpg';
+
+          $oldfileexists = Storage::disk('public')->exists('Classroom courses/' . $oldfilename);
+
+          if ($uploadedFile !== null) {
+
+              if ($oldfileexists && $oldfilename != $uploadedFile) {
+                  //Delete old file
+                  Storage::disk('public')->delete('Classroom courses/' . $oldfilename);
+              }
+              $filename_modified = str_replace(' ', '_', $uploadedFile->getClientOriginalName());
+              $filename = time() . '_' . $filename_modified;
+
+              Storage::disk('public')->putFileAs(
+                  'Classroom courses/',
+                  $uploadedFile,
+                  $filename
+              );
+
+              $data['image'] = $filename;
+          } elseif (empty($oldfileexists)) {
+              throw new GeneralException('Classroom Course image not found!');
+              //return redirect()->back()->with(['flash_danger' => 'User image not found!']);
+              //file check in storage
+
+          }
+          $classroom_course = ClassroomCourse::find($request->id);
+
+          $classroom_course->classroom_course_image= $filename;
+
+
+
+          $classroom_course->save();
+
+          $notification=array(
+              'message'=>'Course Image record has been updated successfully!!!',
+              'alert-type'=>'success'
+          );
+          return Redirect()->back()->with($notification);
+
+        }
+
+        public function UpdateClassroomCourseBannerImage(Request $request)
+        {
+
+          $filename=null;
+          $uploadedFile = $request->file('image');
+          $oldfilename = $classroom_course['classroom_banner_image'] ?? 'demo.jpg';
+
+          $oldfileexists = Storage::disk('public')->exists('Classroomk Courses/banners/' . $oldfilename);
+
+          if ($uploadedFile !== null) {
+
+              if ($oldfileexists && $oldfilename != $uploadedFile) {
+                  //Delete old file
+                  Storage::disk('public')->delete('Classroomk Courses/banners/' . $oldfilename);
+              }
+              $filename_modified = str_replace(' ', '_', $uploadedFile->getClientOriginalName());
+              $filename = time() . '_' . $filename_modified;
+
+              Storage::disk('public')->putFileAs(
+                  'Classroomk Courses/banners/',
+                  $uploadedFile,
+                  $filename
+              );
+
+              $data['image'] = $filename;
+          } elseif (empty($oldfileexists)) {
+              throw new GeneralException('Classroom Course banner image not found!');
+              //return redirect()->back()->with(['flash_danger' => 'User image not found!']);
+              //file check in storage
+
+          }
+
+          $classroom_course_details = ClassroomInfo::find($request->id);
+
+          $classroom_course_details->classroom_banner_image= $filename;
+
+          $classroom_course_details->save();
+          $notification=array(
+              'message'=>'Course details record has been updated successfully!!!',
+              'alert-type'=>'success'
+          );
+          return Redirect()->back()->with($notification);
+
+
+        }
+
+
         public function subcategoryWiseClassroomCourseShow($subcat_id)
         {
           $course= ClassroomCourse::where('course_category_id',$subcat_id)->orderBy('id','DESC')->latest()->limit(2)->paginate(9);

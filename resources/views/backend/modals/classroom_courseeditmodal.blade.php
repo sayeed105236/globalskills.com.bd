@@ -17,10 +17,7 @@
               <input type="text" class="form-control" value="{{$row->classroom_course_title}}" name="classroom_course_title" aria-describedby="classroom_course_title" placeholder="Enter title" required>
 
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Course Thumbnails</label>
-                  <input type="file" name="image" class="form-control-file" id="classroom_course_image" onchange="previewImage(this)">
-            </div>
+            
             <div class="form-group">
               <label for="custom select">Select Course Category</label>
               <select class="form-control" name="course_category_id" required>
