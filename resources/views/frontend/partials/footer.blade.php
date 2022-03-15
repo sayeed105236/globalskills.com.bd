@@ -48,6 +48,7 @@
                 <li><a href="{{route('about')}}">About</a></li>
                 <li><a href="{{route('faq')}}">FAQs</a></li>
                 <li><a href="{{route('contact')}}">Contact</a></li>
+                <li><a href="{{route('privacy-policy')}}">Privacy Policy</a></li>
 
               </ul>
             </div>

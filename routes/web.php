@@ -40,6 +40,8 @@ use App\Http\Controllers\TopicController;
 use App\Http\Controllers\ResultsController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuestionsOptionsController;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\PrivacyPolicyController;
 
 use App\Http\Controllers\UserRequestCertificateController;
 use Illuminate\Support\Facades\App;
@@ -91,7 +93,8 @@ Route::get('/paymentsuccess', [CourseController::class,'paymentSuccess']);
 Route::get('/search', [SearchController::class,'autoComplete'])->name('autocomplete');
 Route::post('/booking', [BookingController::class,'SendMail'])->name('sendmail');
 
-
+//privacy policy
+Route::get('/privacy-policy', [PrivacyPolicyController::class,'index'])->name('privacy-policy');
 
 Route::get('/faqs', [FaqController::class,'index'])->name('faq');
 Route::get('/errors', [ErrorController::class,'index'])->name('error');
@@ -369,6 +372,8 @@ Route::get('/admin/experts/delete/{id}', [ExpertController::class,'deleteExpert'
 //////////////////////=====================Quiz Route====================////////////////////////////
 
 Route::get('mocktest/topics/view/{id}', [MocktestController::class,'quizView'])->name('course-view')->middleware('is_admin');
+Route::get('/admin/users/cart', [CartController::class,'CartView'])->name('cart-view')->middleware('is_admin');
+
 
 Route::get('/admin/subcategory/ajax/{cat_id}', [TopicController::class, 'getSubCat'])->middleware('is_admin');
 
@@ -413,6 +418,35 @@ Route::post('mock/category/update',[MocktestController::class,'mockUpdate'])->na
 Route::get('admin/calendar',[FrontendController::class,'calendar'])->name('training-calendar')->middleware('is_admin');
 
 Route::get('home/mock_details/{id}', [MocktestController::class, 'course_details_frontend'])->name('mock-details');
+
+Route::group(['middleware' => ['auth', 'permission']], function() {
+        /**
+         * Logout Routes
+         */
+        Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+
+        /**
+         * User Routes
+         */
+        Route::group(['prefix' => 'users'], function() {
+            Route::get('/', 'UsersController@index')->name('users.index');
+            Route::get('/create', 'UsersController@create')->name('users.create');
+            Route::post('/create', 'UsersController@store')->name('users.store');
+            Route::get('/{user}/show', 'UsersController@show')->name('users.show');
+            Route::get('/{user}/edit', 'UsersController@edit')->name('users.edit');
+            Route::patch('/{user}/update', 'UsersController@update')->name('users.update');
+            Route::delete('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
+        });
+
+        /**
+         * User Routes
+         */
+
+
+        Route::resource('roles', RolesController::class);
+        Route::resource('permissions', PermissionsController::class);
+    });
+
 
 //sitemap route
 

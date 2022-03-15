@@ -179,4 +179,10 @@ class CartController extends Controller
               $cart->delete();
               return view('frontend.users.buynow')->with('cart_deleted','Course has been deleted from cart successfully!');
             }
+            public function CartView()
+            {
+              $carts= Cart::all();
+
+              return view('backend.pages.cart_view',compact('carts'));
+            }
 }

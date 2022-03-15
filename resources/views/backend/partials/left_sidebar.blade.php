@@ -123,6 +123,12 @@
                                       </a>
                                   </li>
                                   <li>
+                                  <a href="{{route('cart-view')}}" class="ttr-material-button">
+                                    <span class="ttr-icon"><i class="fa fa-shopping-cart"></i></span>
+                                            <span class="ttr-label">Cart Lists</span>
+                                          </a>
+                                      </li>
+                                  <li>
                                   <a href="{{route('bookings-list')}}" class="ttr-material-button">
                                     <span class="ttr-icon"><i class="fas fa-folder-open"></i></span>
                                             <span class="ttr-label">Classroom Course Booking</span>
@@ -225,6 +231,7 @@
                                  <span class="ttr-label">FaQs</span>
                                </a>
                            </li>
+                           <li> <a href="{{ route('roles.index') }}" class="ttr-material-button">Roles</a></li>
 
       </ul>
       <!-- sidebar menu end -->

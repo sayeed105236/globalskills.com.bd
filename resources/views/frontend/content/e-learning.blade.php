@@ -69,7 +69,7 @@
             </div>
             <div class="price">
               <del>{{$row->regular_price}}৳</del>
-              <h5 style="color:#ca2128;">{{$row->sale_price}}৳</h5>
+              <h5 style="color:#ca2128;">{{$row->sale_price}}৳ ({{(number_format(($row->sale_price)/91)),2}}$)</h5>
             </div>
           </div>
         </div>

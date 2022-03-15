@@ -54,7 +54,7 @@
   <!-- Recent News -->
   @include('frontend.content.recent_news')
   <br><br>
-  <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+  <script src="{{asset('js/google.js')}}" defer></script>
   <div class="elfsight-app-0fea9826-bb05-44ec-9de8-a0d76565257f"></div>
 
   <!-- Recent News End -->

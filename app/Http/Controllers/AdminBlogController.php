@@ -94,7 +94,7 @@ class AdminBlogController extends Controller
       $blog->save();
 
 
-      $blog->save();
+      
         return back()->with('blog_updated','Blog has been updated successfully!');
     }
 
