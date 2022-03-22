@@ -61,8 +61,21 @@
 
 
     </div>
-<!-- contact area END -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Video</h4>
+                <div class="video-player" id="plyr-video-player">
+                    <iframe class="yvideo" width="420" height="345" src="https://www.youtube-nocookie.com/embed/cPVgwz5aN1o?autoplay=1&rel=0&showinfo=0" allowfullscreen allow="autoplay"></iframe>
+<input src="" width="854" height="60" allowfullscreen>
+                </div>
 
+            </div>
+        </div>
+    </div>
+    <iframe width="854" style="position: absolute" height="480" src="https://www.youtube-nocookie.com/embed/cPVgwz5aN1o?autoplay=1&rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+<!-- contact area END --><input src="" width="854" height="60" allowfullscreen>
+<!-- <input type="text" style="position: relative; width:854px; height: 60px; background-color: black" name="" value="" disabled  allowfullscreen> -->
 <!-- Content END-->
 
 

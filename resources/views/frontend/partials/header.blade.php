@@ -25,6 +25,8 @@
 
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-media-player.css')}}">
 
 	<!--[if lt IE 9]
 	<script src="{{ asset('js/html5shiv.min.js')}}"></script>
